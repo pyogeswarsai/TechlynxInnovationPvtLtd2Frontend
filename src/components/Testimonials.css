@@ -1,0 +1,133 @@
+
+.testimonial-page {
+  background-image: url("/t2.jpg");
+   
+  background-size: cover;
+  
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 3rem 1rem;
+}
+
+.section-title {
+  font-weight: 700;
+  color: #2c3e50;
+  font-size: 2rem;
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 2.5rem;
+  }
+}
+
+/* ========================
+   Testimonial Card
+======================== */
+.testimonial-card {
+   /* background-image: url("/t2.jpg"); 
+  background-size: cover;
+  background-position: center; */
+  padding: 2rem;
+  border-radius: 12px;
+  border: 2px solid black;
+  background-color: #ffffff;
+  max-width: 700px;
+}
+
+/* Avatar */
+.avatar-circle {
+  width: 70px;
+  height: 70px;
+  background-color: #d2e4f2;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-initial {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* Name (h5) */
+.testimonial-card h5 {
+  font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+  .testimonial-card h5 {
+    font-size: 1.1rem;
+  }
+
+  .testimonial-text {
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .testimonial-card h5 {
+    font-size: 1.3rem;
+  }
+
+  .testimonial-text {
+    font-size: 1.3rem;
+  }
+}
+
+/* Testimonial Text */
+.testimonial-text {
+  font-size: 1rem;
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+
+/* ========================
+   Carousel Indicators
+======================== */
+.carousel-indicators [data-bs-target] {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #999;
+  margin: 0 6px;
+}
+
+.carousel-indicators .active {
+  background-color: #00ff77;
+}
+
+/* ========================
+   Explore Button
+======================== */
+.explore-btn {
+  font-size: 1.3rem;
+  color: white;
+}
+
+/* Font resizing for button */
+@media (min-width: 768px) {
+  .explore-btn {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .explore-btn {
+    font-size: 1.7rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .explore-btn {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .explore-btn {
+    font-size: 2.3rem;
+  }
+}

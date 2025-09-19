@@ -1,0 +1,39 @@
+.connect-section {
+  background: #f8f9fa;
+}
+
+/* Contact Info Box */
+.contact-info {
+  background: #fff;
+}
+
+.contact-info p {
+  margin: 8px 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.social-icons a {
+  font-size: 1.2rem;
+  margin-right: 12px;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #0056b3;
+}
+
+/* Form */
+form {
+  border-radius: 10px;
+}
+
+form .form-control {
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+form button {
+  border-radius: 8px;
+}

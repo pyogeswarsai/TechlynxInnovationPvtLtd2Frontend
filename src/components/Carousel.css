@@ -1,0 +1,22 @@
+/* Background image section */
+.carousel-section {
+  background-image: url("/TrainingSteps-bg.jpg");
+  background-size: cover;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Optional dark overlay for better readability */
+.carousel-section .overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}

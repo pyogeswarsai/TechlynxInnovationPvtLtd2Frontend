@@ -1,0 +1,54 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.container-fluid {
+  overflow-x: hidden;
+}
+
+/* Responsive images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Card overflow fix */
+.card {
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Headings */
+.heading-main {
+  font-size: 2rem;
+}
+
+.subheading {
+  font-size: 1.1rem;
+}
+
+.bullet-text,
+.footer-text,
+.btn-large {
+  font-size: 1rem;
+}
+
+/* Tablet & Desktop Sizes */
+@media (min-width: 768px) {
+  .heading-main { font-size: 2.5rem; }
+  .bullet-text,
+  .footer-text,
+  .btn-large { font-size: 1.1rem; }
+}
+
+@media (min-width: 992px) {
+  .subheading { font-size: 1.5rem; }
+  .bullet-text { font-size: 1.3rem; }
+  .footer-text { font-size: 1.2rem; }
+  .btn-large { font-size: 1.1rem; }
+}

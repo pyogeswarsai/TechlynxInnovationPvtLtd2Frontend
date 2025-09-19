@@ -1,0 +1,115 @@
+/* Background image */
+.hero-hire-bg {
+  height: 75vh; 
+  min-height: 400px; /* Prevent collapsing on small screens */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/* Dark overlay over background image */
+.hero-hire-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+
+/* Content on top of hero */
+.hero-hire-content {
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 8%;
+  transform: translateY(-50%);
+  max-width: 600px;
+  z-index: 2;
+  color: #fff;
+}
+
+/* Headline */
+.hero-hire-content h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.2;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Description */
+.hero-hire-content p {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 400;
+  color: #fff;
+}
+
+/* CTA Button */
+.btn-sky {
+  background-color: #00aaff;
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.btn-sky:hover {
+  background-color: #0088cc;
+}
+
+/* Badge */
+.hero-hire-content .badge {
+  font-size: 1rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+/* Default for small devices (phones & tablets) */
+.responsive-btn {
+  padding: 8px 16px; 
+  font-size: 1rem;   /* btn-md style */
+  border-radius: 8px;
+}
+
+/* Larger devices (laptops & desktops) */
+@media (min-width: 992px) {
+  .responsive-btn {
+    padding: 12px 24px; 
+    font-size: 1.25rem; /* btn-lg style */
+  }
+}
+
+/* Tablet and Mobile Content Centering */
+@media (max-width: 991.98px) {
+  .hero-hire-content {
+    left: 50%;
+    transform: translate(-50%, -50%); /* Perfect vertical + horizontal centering */
+    text-align: center;
+    max-width: 90%;
+  }
+}
+
+/* Adjust text/button sizing on small screens */
+@media (max-width: 767.98px) {
+  .hero-hire-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-hire-content p {
+    font-size: 1rem;
+  }
+
+  .btn-sky {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+}

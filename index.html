@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/logo.jpg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Techlynx Innovations Pvt. Ltd</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <!-- Chatbot -->
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+  <df-messenger intent="WELCOME" chat-title="TechlynxBot"
+    agent-id="587307ab-3c05-494e-bd23-f60719719b53"
+    language-code="en"></df-messenger>
+
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>

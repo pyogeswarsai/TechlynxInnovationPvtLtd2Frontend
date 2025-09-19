@@ -1,0 +1,78 @@
+.review-card {
+  border-radius: 12px;
+  border:2px solid grey;
+  background: #fff;
+  transition: transform 0.3s ease;
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  margin: 10px;
+}
+
+/* Hover effect */
+.review-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Profile images */
+.review-card img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border: 3px solid #007bff;
+  border-radius: 50%;
+}
+
+/* Review text */
+.review-text {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.5;
+  margin-top: 8px;
+  padding: 0 10px;
+}
+.carousel-indicators.indicators-outside {
+  position: static !important;   
+  margin-top: 30px;              
+  display: flex;
+  justify-content: center;     
+}
+
+
+.carousel-indicators.indicators-outside [data-bs-target] {
+  background-color: #007bff;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+}
+
+.carousel-indicators.indicators-outside .active {
+  background-color: #0056b3;
+}
+
+/* 📱 Mobile */
+@media(max-width:425px) {
+  .review-card img {
+    width: 60px;
+    height: 60px !important;
+    object-fit: cover;
+    border: 3px solid #007bff;
+    border-radius: 50%;
+
+  }
+}
+@media(max-width:768px) {
+  .review-card img {
+    width: 60px;
+    height: 60px !important;
+    object-fit: cover;
+    border: 3px solid #007bff;
+    border-radius: 50%;
+
+  }
+}

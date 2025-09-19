@@ -1,0 +1,161 @@
+/* ------------------ Process Cards ------------------ */
+.wedoHeading {
+  color: rgb(112, 9, 112);
+}
+
+.process-card {
+  background: #f6f3ef;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: clamp(0.9rem, 1vw, 1.2rem); /* responsive font */
+}
+
+.process-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+  background: #fff;
+}
+
+.process-card span {
+  font-size: clamp(1.2rem, 2vw, 2rem); /* responsive icons */
+}
+
+/* ------------------ Section Headings ------------------ */
+h3.fw-bold {
+  margin-bottom: 15px;
+  font-size: clamp(1.2rem, 2vw, 2rem);
+}
+
+h5.fw-bold {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: clamp(1rem, 1.5vw, 1.6rem);
+}
+
+p, li {
+  font-size: clamp(0.9rem, 1vw, 1.2rem);
+  line-height: 1.6;
+}
+
+/* ------------------ Buttons ------------------ */
+.btn-warning,
+.btn-success,
+.btn-danger {
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: bold;
+  font-size: clamp(0.9rem, 1vw, 1.2rem);
+}
+
+/* ------------------ Section Images ------------------ */
+.section-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* ------------------ Category Cards ------------------ */
+.category-card {
+  position: relative;
+  width: 100%;
+  height: clamp(180px, 25vh, 350px); /* responsive height */
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.category-card h4 {
+  color: #fff;
+  font-weight: bold;
+  font-size: clamp(1rem, 2vw, 2rem);
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.category-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.category-card:hover .overlay {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.category-card.active {
+  border: 3px solid #0d6efd;
+  box-shadow: 0px 8px 25px rgba(13, 110, 253, 0.6);
+}
+
+/* ------------------ Responsive ------------------ */
+@media (max-width: 576px) {
+  .section-img {
+    height: 220px;
+  }
+  .category-card {
+    height: 180px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .section-img {
+    height: 300px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section-img {
+    height: 380px;
+  }
+  .category-card {
+    height: 220px;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .section-img {
+    height: 450px;
+  }
+  .category-card {
+    height: 260px;
+  }
+}
+
+@media (min-width: 1441px) {
+  .section-img {
+    height: 70vh;
+    max-height: 90vh;
+  }
+  .category-card {
+    height: 350px;
+  }
+  h3.fw-bold {
+    font-size: 2.2rem;
+  }
+  h5.fw-bold, p, li {
+    font-size: 1.4rem;
+  }
+  .process-card span {
+    font-size: 2.2rem;
+  }
+}
