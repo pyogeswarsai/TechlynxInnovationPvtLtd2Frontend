@@ -3,34 +3,34 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Homepage from './pages/Homepage';
 
-import Python from './Pages/python';
-import Java from "./Pages/java";
-import Net from "./Pages/net";
-import Mean from "./Pages/mean";
-import Mern from "./Pages/mern";
-import WebDevelopment from "./Pages/webdevelopment";
-import Frontend from "./Pages/frontend";
-import Backend from "./Pages/backend";
-import Ai from "./Pages/ai";
-import Ml from "./Pages/ml";
-import Cloud from "./Pages/cloud";
-import Cyber from "./Pages/cyber";
-import DataBase from "./Pages/database";
-import DataScience from "./Pages/datascience";
-import BlockChain from "./Pages/blockchain";
-import Devops from "./Pages/devops";
-import BusinessAnalyst from "./Pages/business";
-import Digital from "./Pages/digital";
-import Testing from "./Pages/testing";
-import Selenium from "./Pages/selenium";
-import Automation from "./Pages/automation";
-import EnrollForm from "./Pages/enroll";
+import Pythonfullstack from './pages/pythonFullStack';
+import Java from "./pages/java";
+import Net from "./pages/net";
+import Mean from "./pages/mean";
+import Mern from "./pages/mern";
+import WebDevelopment from "./pages/webdevelopment";
+import Frontend from "./pages/frontend";
+import Backend from "./pages/backend";
+import Ai from "./pages/ai";
+import Ml from "./pages/ml";
+import Cloud from "./pages/cloud";
+import Cyber from "./pages/cyber";
+import DataBase from "./pages/database";
+import DataScience from "./pages/datascience";
+import BlockChain from "./pages/blockchain";
+import Devops from "./pages/devops";
+import BusinessAnalyst from "./pages/business";
+import Digital from "./pages/digital";
+import Testing from "./pages/testing";
+import Selenium from "./pages/selenium";
+import Automation from "./pages/automation";
+import EnrollForm from "./pages/enroll";
 import Course from './pages/Course';
 
 import TrainingPage from './pages/TrainingPage';
 
-import HiringSection from "./Pages/HiringSection"
-import JobApplication from "./Pages/JobApplication"
+import HiringSection from "./pages/HiringSection"
+import JobApplication from "./pages/JobApplication"
 
 import MainContactPage from './pages/MainContactPage';
 import ExpertInstructors from './pages/ExpertInstructors';
@@ -42,7 +42,7 @@ const App = () => {
       <Route path='/' element={<Homepage />} />
 
       <Route path='/courses' element={<Course />} />
-      <Route path="/courses/python-full-stack" element={<Python />} />
+      <Route path="/courses/python-full-stack" element={<Pythonfullstack />} />
       <Route path="/courses/java-full-stack" element={<Java />} />
       <Route path="/courses/net-full-stack" element={<Net />} />
       <Route path="/courses/mean-full-stack" element={<Mean />} />
