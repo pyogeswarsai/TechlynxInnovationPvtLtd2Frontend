@@ -56,12 +56,12 @@ const Header = () => {
           Leading Training & Placement for Technology & Innovation
         </p>
         <div className="flex flex-wrap justify-center gap-4 text-lg">
-          <a
-            href=""
+          <Link
+            to="/courses"
             className="btn border fw-bold border-white rounded-pill mb-2  px-4 py-2 cursor-pointer me-2"
           >
             🚀 Advanced Courses
-          </a>
+          </Link>
 
           <Link
             to="/contact-us/instructors"
