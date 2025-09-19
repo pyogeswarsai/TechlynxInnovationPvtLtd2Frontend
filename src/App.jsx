@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Homepage from './pages/Homepage';
 
-import Python from "./Pages/python";
+import Python from './Pages/python';
 import Java from "./Pages/java";
 import Net from "./Pages/net";
 import Mean from "./Pages/mean";
