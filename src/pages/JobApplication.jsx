@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./job.css";
+import "./Job.css";
 import { Link } from "react-router-dom";
 
 function JobApplication() {
