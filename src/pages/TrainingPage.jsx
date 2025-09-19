@@ -1,11 +1,11 @@
 import React from 'react'
 
-import TrainingHome from '../Components/TrainingHome';
-import Modes from '../Components/Modes';
-import Steps from '../Components/Steps';
-import CarouselBoxes from '../Components/Carouselboxes';
-import Reviews from '../Components/Reviews';
-import ConnectWithUs from '../Components/ConectWithUs';
+import TrainingHome from '../components/TrainingHome';
+import Modes from '../components/Modes';
+import Steps from '../components/Steps';
+import CarouselBoxes from '../components/Carouselboxes';
+import Reviews from '../components/Reviews';
+import ConnectWithUs from '../components/ConectWithUs';
 import HomeNavbar from '../components/HomeNavbar';
 import Homefooter from '../components/Homefooter';
 
