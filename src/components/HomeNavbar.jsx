@@ -133,10 +133,28 @@ function HomeNavbar() {
                 </li>
               </ul>
             </div>
+              <Link
+                to="/training"
+                className="nav-link text-dark"
+                role="button"
+              >
+                Training
+              </Link>
+              <Link
+                to="/hire-talent"
+                className="nav-link text-dark"
+                role="button"
+              >
+                Hire Talent
+              </Link>
+              <Link
+                to="/contact-us"
+                className="nav-link text-dark"
+                role="button"
+              >
+                Contact
+              </Link>
 
-            <Nav.Link to="/training" className="text-dark">Training</Nav.Link>
-            <Nav.Link to="/hire-talent" className="text-dark">Hire Talent</Nav.Link>
-            <Nav.Link to="/contact-us" className="text-dark">Contact Us</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </div>

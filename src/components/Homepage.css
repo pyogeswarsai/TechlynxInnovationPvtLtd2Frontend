@@ -69,7 +69,9 @@
   display: block !important;
 }
 
-
+.navigation {
+  color: #000 !important;
+}
 /* ************************* Hero section styling ********************************** */
 .hero-slide {
   height: 100vh;
