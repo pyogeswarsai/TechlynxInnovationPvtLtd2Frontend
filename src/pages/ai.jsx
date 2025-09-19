@@ -187,7 +187,7 @@ function Ai() {
               <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                   <li className="breadcrumb-item">
-                    <a href="/courses">Courses</a>
+                    <Link to="/courses">Courses</Link>
                   </li>
                   <li className="breadcrumb-item active" aria-current="page">
                     Artificial Intelligence
