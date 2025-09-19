@@ -134,9 +134,9 @@ function HomeNavbar() {
               </ul>
             </div>
 
-            <Nav.Link href="/training" className="text-dark">Training</Nav.Link>
-            <Nav.Link href="/hire-talent" className="text-dark">Hire Talent</Nav.Link>
-            <Nav.Link href="/contact-us" className="text-dark">Contact Us</Nav.Link>
+            <Nav.Link to="/training" className="text-dark">Training</Nav.Link>
+            <Nav.Link to="/hire-talent" className="text-dark">Hire Talent</Nav.Link>
+            <Nav.Link to="/contact-us" className="text-dark">Contact Us</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </div>
