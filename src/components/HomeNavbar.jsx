@@ -145,7 +145,7 @@ function HomeNavbar() {
                 className="nav-link text-dark"
                 role="button"
               >
-                Hire Talent
+                Hire-Talent
               </Link>
               <Link
                 to="/contact-us"
