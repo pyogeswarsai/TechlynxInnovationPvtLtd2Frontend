@@ -12,11 +12,13 @@ import Homecontact from '../components/Homecontact'
 import Homefooter from '../components/Homefooter'
 import Homesocialmedia from '../components/Homesocialmedia'
 import Homeceotalk from '../components/Homeceotalk'
+import HomeNavbarTop from '../components/HomeNavbarTop'
 
 
 const Homepage = () => {
   return (
     <div>
+        <HomeNavbarTop />
         <HomeTopNavbar />
         <HomeNavbar />
         <Homehero />

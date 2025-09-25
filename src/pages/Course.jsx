@@ -23,6 +23,7 @@ import {
 import "./course.css";
 import HomeNavbar from "../components/HomeNavbar";
 import Homefooter from "../components/Homefooter";
+import Homesocialmedia from "../components/Homesocialmedia";
 function Course() {
   const slides = [
     {
@@ -601,6 +602,7 @@ function Course() {
           </div>
         </div>
       </div>
+      <Homesocialmedia />
       <Homefooter/>
     </div>
   );

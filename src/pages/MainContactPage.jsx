@@ -6,6 +6,7 @@ import FeedbackSection from "../components/FeedbackSection";
 import FAQ from "../components/FAQ";
 import Footer from "../components/Footer";
 import HomeNavbar from '../components/HomeNavbar';
+import Homesocialmedia from '../components/Homesocialmedia';
 
 const MainContactPage = () => {
   return (
@@ -16,6 +17,7 @@ const MainContactPage = () => {
       <ContactPage />
       <FeedbackSection />
       <FAQ />
+      <Homesocialmedia />
       <Footer />
     </div>
   )

@@ -8,6 +8,7 @@ import Testimonials from '../components/Testimonials'
 import Getintoch from '../components/Getintoch';
 import HomeNavbar from '../components/HomeNavbar';
 import Homefooter from '../components/Homefooter';
+import Homesocialmedia from '../components/Homesocialmedia';
 const HiringSection = () => {
   return (
     <div>
@@ -22,6 +23,7 @@ const HiringSection = () => {
       <section id='Getintoch'>
         <Getintoch />
       </section>
+      <Homesocialmedia />
       <Homefooter />
     </div>
   )

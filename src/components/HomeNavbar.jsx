@@ -33,7 +33,7 @@ function HomeNavbar() {
       <div  className="navbar-container container ">
         <Navbar.Brand
           href="/"
-          className="d-flex align-items-center text-wrap fs-4 fw-bold text-dark"
+          className="d-flex align-items-center text-wrap fs-4 fw-bold text-dark brand-hover"
         >
           <img
             src="/logo.jpg"
@@ -42,17 +42,17 @@ function HomeNavbar() {
             height="45"
             className="me-2"
           />
-          Techlynx Innovations Pvt. Ltd
+          <span className="brand-text">Techlynx Innovations Pvt. Ltd</span>
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="main-navbar-nav" />
         <Navbar.Collapse id="main-navbar-nav">
-          <Nav className="ms-auto fs-5 fw-semibold">
+          <Nav className="ms-auto fs-5">
             {/* Multi-Level Dropdown */}
-            <div className="nav-item dropdown multi-dropdown">
+            <div className="nav-item dropdown multi-dropdown ">
               <Link
                 to=""
-                className="nav-link dropdown-toggle text-dark"
+                className="nav-link dropdown-toggle"
                 role="button"
               >
                 Courses
@@ -133,23 +133,83 @@ function HomeNavbar() {
                 </li>
               </ul>
             </div>
+
+            <div className="nav-item dropdown multi-dropdown ">
+              <Link
+                to=""
+                className="nav-link dropdown-toggle"
+                role="button"
+              >
+                Services
+              </Link>
+              <ul className="dropdown-menu">
+                <li>
+                  <Link to="/services/full-stack-development-service" className="dropdown-item">Full Stack Development</Link>
+                </li>
+                <li>
+                  <Link to="/services/web-development-service" className="dropdown-item">Web Development</Link>
+                </li>
+                <li>
+                  <Link to="/services/mobile-app-development-service" className="dropdown-item">Mobile App Development</Link>
+                </li>
+                <li>
+                  <Link to="/services/ai-solutions-service" className="dropdown-item">AI Solutions</Link>
+                </li>
+                <li>
+                  <Link to="/services/data-analytics-service" className="dropdown-item">Data Analytics</Link>
+                </li>
+                <li>
+                  <Link to="/services/cloud-services-service" className="dropdown-item">Cloud Services</Link>
+                </li>
+                <li>
+                  <Link to="/services/devops-cicd-service" className="dropdown-item">DevOps & CI/CD</Link>
+                </li>
+                <li>
+                  <Link to="/services/cybersecurity-service" className="dropdown-item">Cybersecurity Services</Link>
+                </li>
+                <li>
+                  <Link to="/services/blockchain-development-service" className="dropdown-item">Blockchain Development</Link>
+                </li>
+                <li>
+                  <Link to="/services/qa-testing-service" className="dropdown-item">Quality Assurance & Testing</Link>
+                </li>
+                <li>
+                  <Link to="/services/uiux-design-service" className="dropdown-item">UI/UX Design & Prototyping</Link>
+                </li>
+                <li>
+                  <Link to="/services/itsupport-maintenance-service" className="dropdown-item">IT Support & Maintenance</Link>
+                </li>
+                <li>
+                  <Link to="/services/digital-marketing-service" className="dropdown-item">Digital Marketing & SEO</Link>
+                </li>
+                <li>
+                  <Link to="/services/recruitment-service" className="dropdown-item">Recruitment & Talent Acquisition</Link>
+                </li>
+                <li>
+                  <Link to="/services/hr-outsourcing-service" className="dropdown-item">HR Outsourcing services</Link>
+                </li>                
+                <li>
+                  <Link to="/services" className="dropdown-item fw-bold">View All Services</Link>
+                </li>
+              </ul>
+            </div>
               <Link
                 to="/training"
-                className="nav-link text-dark"
+                className="nav-link "
                 role="button"
               >
                 Training
               </Link>
               <Link
                 to="/hire-talent"
-                className="nav-link text-dark"
+                className="nav-link "
                 role="button"
               >
                 Hire-Talent
               </Link>
               <Link
                 to="/contact-us"
-                className="nav-link text-dark"
+                className="nav-link "
                 role="button"
               >
                 Contact

@@ -1,11 +1,111 @@
-/******************** Top navbar *****************/
-.topNavContainer {
-  background: linear-gradient(90deg, #00c6ff, #0072ff);
+/*********************** Navbar Top ********************/
+.navbar-top {
+  background-color: #ff6600; /* Orange strip */
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  padding: 6px 10px;
+  font-weight: 500;
+  width: 100%;
 }
+
+.navbar-top-text {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.navbar-top .highlight {
+  font-weight: bold;
+  color: #ffff00; /* Yellow highlight */
+}
+
+.navbar-top .top-link {
+  font-weight: bold;
+  margin-left: 5px;
+  color: #ffff00;
+  text-decoration: underline;
+}
+
+.navbar-top .top-link:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .navbar-top {
+    font-size: 12px;
+    padding: 4px 6px;
+  }
+}
+
+
+/******************** Top navbar *****************/
+.navbar-contact {
+  background: #007bff; /* Blue strip */
+  color: white;
+  font-size: 16px;
+  padding: 4px 0;
+}
+
+.contact-info-top {
+  text-align: center;
+  padding: 4px 0;
+}
+
+.contact-info-top span {
+  margin: 0 12px;
+  font-weight: 500;
+}
+
+.scroll-bottom {
+  background: #0056b3;
+  padding: 4px 0;
+}
+
+.scroll-bottom marquee {
+  font-weight: bold;
+  color: #ffcc00; /* Yellow */
+}
+
+.mobile-contact {
+  text-align: center;
+}
+
+.toggle-btn {
+  background: #0056b3;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.toggle-btn:hover {
+  background: #004494;
+}
+
+.mobile-contacts {
+  background: #0066cc;
+  padding: 8px;
+  margin-top: 4px;
+  border-radius: 6px;
+}
+
 
 /************************ Main navbar **********************/
 .navbar-container {
   max-width: 100% !important;
+}
+.brand-hover .brand-text {
+  display: inline-block;
+  transition: transform 0.4s ease, color 0.4s ease;
+}
+
+.brand-hover:hover .brand-text {
+  transform: scale(1.05);
+  color: #007bff; /* Bootstrap primary or your brand color */
 }
 
 .multi-dropdown .dropdown-menu {
@@ -88,7 +188,7 @@
 
 .hero-content {
   position: relative;
-  top: 30%;
+  top: 25%;
   z-index: 2;
   max-width: 850px;
   animation: fadeIn 1.5s ease-in-out;
@@ -171,6 +271,16 @@
   margin-bottom: 15px;
   transition: transform 0.3s ease;
   animation: floatIcon 3s infinite ease-in-out;
+}
+
+.cards-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.cards-link:hover {
+  text-decoration: none;
 }
 
 @keyframes floatIcon {
@@ -792,6 +902,38 @@
 
 /********************** FAQ section *********************/
 /**** no styling **************/
+.faq-scroll {
+  max-height: 500px; /* Default for desktop */
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+/* Small to medium screens (already scrolls as you said) */
+@media (max-width: 991px) {
+  .faq-scroll {
+    max-height: 450px;
+  }
+}
+
+/* Larger screens (laptops/desktops) */
+@media (min-width: 992px) {
+  .faq-scroll {
+    max-height: 600px; /* Allow up to ~10 questions */
+  }
+}
+
+/* Scrollbar styling (optional, modern look) */
+.faq-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.faq-scroll::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border-radius: 10px;
+}
+.faq-scroll::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
 
 /************ Contact section ***********/
 .cta-strip {

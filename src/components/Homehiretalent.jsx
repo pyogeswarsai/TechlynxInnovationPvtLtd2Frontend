@@ -27,7 +27,11 @@ import {
   FaMoneyBillWave,
   FaClock,
   FaBuilding,
-  FaMobile
+  FaMobile,
+  FaGlobe,
+  FaPeopleArrows,
+  FaPeopleCarry,
+  FaBriefcase
 } from "react-icons/fa";
 import "./Homepage.css";
 
@@ -42,6 +46,15 @@ function Homehiretalent() {
       description:
         "We design and build complete digital ecosystems using React, Node.js, MongoDB and modern best-practices.",
       color: "#4F46E5",
+    },
+    {
+      key: "web",
+      icon: <FaGlobe />,
+      title: "Web Development",
+      tagline: "End-to-end web applications",
+      description:
+        "We design and build complete web application using React, Node.js and modern best-practices.",
+      color: "#f37f2dff",
     },
     {
       key: "cloud",
@@ -80,108 +93,170 @@ function Homehiretalent() {
       color: "#F97316",
     },
     {
-        key: "mobileapp",
-        icon: <FaMobile />,
-        title: "Mobile App Development",
-        tagline: "Mobile solutions",
-        description: "Native and hybrid apps that are fast, responsive, and built for every platform.",
-        color: "#16f969ff"
+      key: "mobileapp",
+      icon: <FaMobile />,
+      title: "Mobile App Development",
+      tagline: "Mobile solutions",
+      description: "Native and hybrid apps that are fast, responsive, and built for every platform.",
+      color: "#16f969ff"
+    },
+    {
+      key: "hr",
+      icon: <FaPeopleArrows />,
+      title: "HR & Recruitment",
+      tagline: "End-to-end talent acquisition and onboarding processes",
+      description:
+        "Comprehensive HR services including staffing, payroll management, compliance, and training programs.",
+      color: "#4F46E5",
+    },
+    {
+      key: "consulting",
+      icon: <FaShieldAlt />,
+      title: "Startup & Business Consulting",
+      tagline: "Project planning and execution strategies",
+      description:
+        "Strategic guidance for entrepreneurs and SMEs to scale efficiently and achieve sustainable growth.",
+      color: "#0EA5A4",
     },
   ];
 
   // Careers data
   const careers = [
-  {
-    key: "fullstack",
-    icon: <FaLaptopCode />,
-    title: "Full Stack Developer",
-    short: "Build end-to-end web applications.",
-    salary: "₹6–10 LPA",
-    experience: "2–4 years",
-    mode: "Hybrid",
-    responsibilities: [
-      "Develop frontend & backend features",
-      "Integrate APIs and services",
-      "Maintain application performance",
-    ],
-    openings: 3,
-  },
-  {
-    key: "software",
-    icon: <FaCode />,
-    title: "Software Engineer",
-    short: "Develop robust and scalable software solutions.",
-    salary: "₹5–9 LPA",
-    experience: "1–3 years",
-    mode: "Onsite",
-    responsibilities: [
-      "Write clean, maintainable code",
-      "Participate in design discussions",
-      "Fix bugs and optimize performance",
-    ],
-    openings: 5,
-  },
-  {
-    key: "frontend",
-    icon: <FaDesktop />,
-    title: "Frontend Developer",
-    short: "Create engaging UI experiences.",
-    salary: "₹4–8 LPA",
-    experience: "1–3 years",
-    mode: "Hybrid",
-    responsibilities: [
-      "Develop responsive user interfaces",
-      "Optimize UX for performance",
-      "Collaborate with designers & backend team",
-    ],
-    openings: 4,
-  },
-  {
-    key: "backend",
-    icon: <FaServer />,
-    title: "Backend Developer",
-    short: "Design scalable backend systems.",
-    salary: "₹5–9 LPA",
-    experience: "2–4 years",
-    mode: "Remote",
-    responsibilities: [
-      "Build APIs and services",
-      "Ensure security and reliability",
-      "Work with databases and server logic",
-    ],
-    openings: 3,
-  },
-  {
-    key: "cloud",
-    icon: <FaCloud />,
-    title: "Cloud Engineer",
-    short: "Deploy and manage cloud infrastructure.",
-    salary: "₹7–12 LPA",
-    experience: "3–5 years",
-    mode: "Hybrid",
-    responsibilities: [
-      "Manage cloud resources and deployments",
-      "Optimize cloud cost and performance",
-      "Implement CI/CD pipelines",
-    ],
-    openings: 2,
-  },
-  {
-    key: "datascientist",
-    icon: <FaDatabase />,
-    title: "Data Scientist",
-    short: "Analyze data and build predictive models.",
-    salary: "₹8–15 LPA",
-    experience: "2–5 years",
-    mode: "Hybrid",
-    responsibilities: [
-      "Analyze datasets for insights",
-      "Build and deploy machine learning models",
-      "Collaborate with product and engineering teams",
-    ],
-    openings: 2,
-  },
-];
+    {
+      key: "fullstack",
+      icon: <FaLaptopCode />,
+      title: "Full Stack Developer",
+      short: "Build end-to-end web applications.",
+      salary: "₹6–10 LPA",
+      experience: "2–4 years",
+      mode: "Hybrid",
+      responsibilities: [
+        "Develop frontend & backend features",
+        "Integrate APIs and services",
+        "Maintain application performance",
+      ],
+      openings: 3,
+    },
+    {
+      key: "software",
+      icon: <FaCode />,
+      title: "Software Engineer",
+      short: "Develop robust and scalable software solutions.",
+      salary: "₹5–9 LPA",
+      experience: "1–3 years",
+      mode: "Onsite",
+      responsibilities: [
+        "Write clean, maintainable code",
+        "Participate in design discussions",
+        "Fix bugs and optimize performance",
+      ],
+      openings: 5,
+    },
+    {
+      key: "frontend",
+      icon: <FaDesktop />,
+      title: "Frontend Developer",
+      short: "Create engaging UI experiences.",
+      salary: "₹4–8 LPA",
+      experience: "1–3 years",
+      mode: "Hybrid",
+      responsibilities: [
+        "Develop responsive user interfaces",
+        "Optimize UX for performance",
+        "Collaborate with designers & backend team",
+      ],
+      openings: 4,
+    },
+    {
+      key: "backend",
+      icon: <FaServer />,
+      title: "Backend Developer",
+      short: "Design scalable backend systems.",
+      salary: "₹5–9 LPA",
+      experience: "2–4 years",
+      mode: "Remote",
+      responsibilities: [
+        "Build APIs and services",
+        "Ensure security and reliability",
+        "Work with databases and server logic",
+      ],
+      openings: 3,
+    },
+    {
+      key: "cloud",
+      icon: <FaCloud />,
+      title: "Cloud Engineer",
+      short: "Deploy and manage cloud infrastructure.",
+      salary: "₹7–12 LPA",
+      experience: "3–5 years",
+      mode: "Hybrid",
+      responsibilities: [
+        "Manage cloud resources and deployments",
+        "Optimize cloud cost and performance",
+        "Implement CI/CD pipelines",
+      ],
+      openings: 2,
+    },
+    {
+      key: "datascientist",
+      icon: <FaDatabase />,
+      title: "Data Scientist",
+      short: "Analyze data and build predictive models.",
+      salary: "₹8–15 LPA",
+      experience: "2–5 years",
+      mode: "Hybrid",
+      responsibilities: [
+        "Analyze datasets for insights",
+        "Build and deploy machine learning models",
+        "Collaborate with product and engineering teams",
+      ],
+      openings: 2,
+    },
+    {
+      key: "HR1",
+      icon: <FaPeopleArrows />,
+      title: "HR Executive",
+      short: "Analyze data and build predictive models.",
+      salary: "₹3.5–5 LPA",
+      experience: "0–2 years",
+      mode: "Hybrid",
+      responsibilities: [
+        "Handle recruitment",
+        "Employee relations",
+        "Pay roll management",
+      ],
+      openings: 2,
+    },
+    {
+      key: "hr2",
+      icon: <FaPeopleArrows />,
+      title: "HR Manager",
+      short: "Analyze data and build predictive models.",
+      salary: "₹8–10 LPA",
+      experience: "4–7 years",
+      mode: "Hybrid",
+      responsibilities: [
+        "Leads HR policies",
+        "Talent aquisition",
+        "Organisational development",
+      ],
+      openings: 2,
+    },
+    {
+      key: "manager",
+      icon: <FaBriefcase />,
+      title: "Project Manager",
+      short: "Analyze data and build predictive models.",
+      salary: "₹10–12 LPA",
+      experience: "5–8 years",
+      mode: "Hybrid",
+      responsibilities: [
+        "Overseas Projects",
+        "Ensuring time delivery within budjet",
+      ],
+      openings: 2,
+    },
+  ];
 
   const [activeTab, setActiveTab] = useState("services");
   const [selectedServiceKey, setSelectedServiceKey] = useState(services[0].key);
@@ -267,9 +342,8 @@ function Homehiretalent() {
                       data-aos-delay={idx * 80}
                     >
                       <Card
-                        className={`service-card h-100 ${
-                          selectedServiceKey === s.key ? "active" : ""
-                        }`}
+                        className={`service-card h-100 ${selectedServiceKey === s.key ? "active" : ""
+                          }`}
                         onClick={() => onSelectService(s.key, idx)}
                         style={{ cursor: "pointer" }}
                       >
@@ -299,6 +373,7 @@ function Homehiretalent() {
                 </Row>
 
                 {/* selected service detail panel */}
+                {/* selected service detail panel */}
                 <div
                   ref={detailRef}
                   className="service-detail mt-4 p-4 rounded shadow-sm"
@@ -320,20 +395,35 @@ function Homehiretalent() {
                     <Col md={6} sm={8} xs={12}>
                       <h4 className="mb-1">{selectedService.title}</h4>
                       <p className="text-muted mb-2">{selectedService.description}</p>
-
                     </Col>
 
-                    <Col xs={12} md={3} className="text-center">
+                    <Col xs={12} md={3} className="text-center d-flex flex-column gap-2">
+                      {/* New Button 1: Explore More */}
+                      <Link to="/services">
+                        <Button variant="outline-primary" className="w-100">
+                          Explore More Services
+                        </Button>
+                      </Link>
+
+                      {/* Existing Button 2: Explore Related Careers */}
                       <Button
                         variant="primary"
-                        className="me-2 mb-2 w-100 w-md-auto"
-                        onClick={() => setActiveTab("careers")}
+                        className="w-100 text-wrap"
+                        onClick={() => {
+                          setActiveTab("careers");
+                          setTimeout(() => {
+                            document
+                              .getElementById("careers-section")
+                              ?.scrollIntoView({ behavior: "smooth" });
+                          }, 200);
+                        }}
                       >
                         Explore Related Careers
                       </Button>
                     </Col>
                   </Row>
                 </div>
+
               </div>
             </Tab.Pane>
 
@@ -398,6 +488,15 @@ function Homehiretalent() {
                   </Col>
                 ))}
               </Row>
+              {/* New button at bottom of Careers */}
+              <div className="text-center mt-5">
+                <Link to="/hire-talent">
+                  <Button variant="primary" size="lg">
+                    Explore More Jobs
+                  </Button>
+                </Link>
+              </div>
+
             </Tab.Pane>
           </Tab.Content>
         </Tab.Container>

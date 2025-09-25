@@ -37,7 +37,12 @@ const Homebatchorevent = () => {
         <div className="course-slider">
           <div className="course-track">
             <span>Full Stack Development</span>
+            <span>Programming Languages & Frameworks</span>
             <span>Cloud Solutions</span>
+            <span>Database Management</span>
+            <span>Business & Marketing</span>
+            <span>Web Development</span>
+            <span>Testing & QA</span>
             <span>AI & ML</span>
             <span>Data Science</span>
             <span>Mobile App Development</span>

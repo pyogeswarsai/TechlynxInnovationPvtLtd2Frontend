@@ -4,54 +4,179 @@ import { Accordion, Form, Button, Container } from "react-bootstrap";
 
 const faqs = [
   {
-    question: "What training programs does Techlynx offer?",
+    question: "What does your company do?",
     answer:
-      "We provide hands-on training in Full Stack Development, Cloud Computing, AI Solutions, Data Analytics, Cybersecurity, Mobile App Development, and more.",
+      "We are a technology solutions provider offering software development, IT consulting, cloud services, cybersecurity, and digital transformation solutions to businesses across various industries.",
   },
   {
-    question: "Are the training sessions online or offline?",
+    question: "Where is your company located?",
     answer:
-      "We offer both online and offline sessions to suit different learning needs.",
+      "Our headquarters are located in [Guntur, AP, India], with additional offices and remote teams serving clients globally.",
   },
   {
-    question: "Do I get a certificate after course completion?",
+    question: "How long have you been in business?",
     answer:
-      "Yes, every participant receives an industry-recognized certificate from Techlynx Innovations.",
+      "We have been delivering IT services and innovative solutions for over [X years], working with startups, SMEs, and enterprise-level organizations.",
   },
   {
-    question: "Does Techlynx provide internship opportunities?",
+    question: "What industries do you serve?",
     answer:
-      "Yes, we regularly offer internships where candidates work on real-time projects under mentorship.",
+      "We serve industries such as finance, healthcare, education, e-commerce, manufacturing, logistics, retail, and technology startups.",
   },
   {
-    question: "Can I join Techlynx as a full-time employee after training?",
+    question: "Do you provide services internationally?",
     answer:
-      "High-performing trainees and interns may be offered full-time roles at Techlynx.",
+      "Yes, we serve clients across multiple countries and time zones through both onsite and remote engagement models.",
   },
   {
-    question: "What job roles are available at Techlynx?",
+    question: "What services do you offer?",
     answer:
-      "We hire interns, full stack developers, cloud engineers, AI engineers, UI/UX designers, mobile app developers, and more.",
+      "Our services include software development, mobile app development, IT consulting, cloud solutions, cybersecurity, digital marketing, data analytics, and IT infrastructure management.",
   },
   {
-    question: "Do you provide placement assistance?",
+    question: "Do you provide custom software development?",
     answer:
-      "Yes, we provide career guidance, interview preparation, and placement support through our hiring partners.",
+      "Yes, we specialize in custom software solutions tailored to meet the unique needs and goals of your business.",
   },
   {
-    question: "What if I face issues during the application process?",
+    question: "Can you help with mobile application development?",
     answer:
-      "You can always contact our support team at support@techlynxinnovations.com for assistance.",
+      "Absolutely. We design and develop Android, iOS, and cross-platform mobile apps optimized for performance, security, and user experience.",
   },
   {
-    question: "What payment options are available for training?",
+    question: "Do you offer cloud migration and management?",
     answer:
-      "We accept UPI, net banking, debit/credit cards, and EMI options for selected programs.",
+      "Yes, we help businesses migrate to cloud platforms (AWS, Azure, Google Cloud), optimize workloads, and manage cloud infrastructure efficiently.",
   },
   {
-    question: "Is there a refund policy if I discontinue training?",
+    question: "What cybersecurity solutions do you provide?",
     answer:
-      "Yes, refund policies vary depending on the course. Please check the Terms & Conditions page for detailed information.",
+      "Our cybersecurity services include vulnerability assessments, penetration testing, endpoint protection, compliance audits, and 24/7 monitoring.",
+  },
+  {
+    question: "Do you offer IT support and maintenance?",
+    answer:
+      "Yes, we provide ongoing technical support, system monitoring, bug fixes, updates, and maintenance to ensure smooth business operations.",
+  },
+  {
+    question: "How do you start a new project?",
+    answer:
+      "We begin with a consultation to understand your requirements, followed by proposal submission, planning, design, development, testing, and deployment.",
+  },
+  {
+    question: "How long does a project usually take?",
+    answer:
+      "Project timelines depend on complexity. Small projects may take 2–6 weeks, while enterprise solutions can take several months.",
+  },
+  {
+    question: "Do you use Agile methodology?",
+    answer:
+      "Yes, we follow Agile and Scrum practices to ensure transparency, flexibility, and faster delivery.",
+  },
+  {
+    question: "Will I have a dedicated project manager?",
+    answer:
+      "Yes, every client is assigned a dedicated project manager to ensure smooth communication and project tracking.",
+  },
+  {
+    question: "Can you work with our in-house team?",
+    answer:
+      "Absolutely, we can collaborate with your internal IT team for joint development, consulting, or support.",
+  },
+  {
+    question: "What technologies do you specialize in?",
+    answer:
+      "We work with a wide range of technologies including Java, .NET, Python, PHP, React, Angular, Node.js, Flutter, AWS, Azure, Google Cloud, and more.",
+  },
+  {
+    question: "Do you provide AI and Machine Learning solutions?",
+    answer:
+      "Yes, we develop AI/ML-based solutions for predictive analytics, chatbots, automation, and business intelligence.",
+  },
+  {
+    question: "Can you integrate software with existing systems?",
+    answer:
+      "Yes, we offer API development and system integration services to seamlessly connect with your existing applications.",
+  },
+  {
+    question: "Do you offer website development and digital solutions?",
+    answer:
+      "Yes, we provide responsive web design, e-commerce platforms, CMS development, SEO, and digital marketing solutions.",
+  },
+  {
+    question: "How do you ensure data security?",
+    answer:
+      "We follow strict security protocols including encryption, secure authentication, firewalls, and GDPR/ISO compliance.",
+  },
+  {
+    question: "Are your solutions GDPR and HIPAA compliant?",
+    answer:
+      "Yes, we ensure that solutions adhere to compliance standards required for industries such as healthcare and finance.",
+  },
+  {
+    question: "Do you sign NDAs for projects?",
+    answer:
+      "Yes, we sign Non-Disclosure Agreements (NDAs) to protect client confidentiality and intellectual property.",
+  },
+  {
+    question: "How much do your services cost?",
+    answer:
+      "Pricing depends on the complexity, technology stack, and timeline of the project. We offer flexible engagement models: fixed price, hourly, or dedicated team.",
+  },
+  {
+    question: "Do you offer free consultation?",
+    answer:
+      "Yes, we provide an initial consultation free of charge to understand your project requirements.",
+  },
+  {
+    question: "What payment methods do you accept?",
+    answer:
+      "We accept payments via bank transfer, credit card, and secure online payment gateways.",
+  },
+  {
+    question: "Do you offer long-term contracts?",
+    answer:
+      "Yes, we offer both short-term projects and long-term contracts for continuous support and collaboration.",
+  },
+  {
+    question: "Do you hire freshers?",
+    answer:
+      "Yes, we welcome fresh graduates and provide training programs to help them grow in the IT industry.",
+  },
+  {
+    question: "How can I apply for a job in your company?",
+    answer:
+      "You can apply through our Careers page or send your resume to [HR email ID].",
+  },
+  {
+    question: "Do you offer internships?",
+    answer:
+      "Yes, we offer internships for students and freshers to gain practical IT experience.",
+  },
+  {
+    question: "What skills do you look for in candidates?",
+    answer:
+      "We value strong problem-solving skills, coding expertise, teamwork, adaptability, and willingness to learn.",
+  },
+  {
+    question: "Do you collaborate with other IT companies?",
+    answer:
+      "Yes, we partner with IT companies, startups, and enterprises for joint projects, outsourcing, and technology collaborations.",
+  },
+  {
+    question: "Do you work with startups?",
+    answer:
+      "Absolutely. We help startups with MVP development, product scaling, funding pitch support, and IT consultation.",
+  },
+  {
+    question: "Can you provide dedicated IT resources?",
+    answer:
+      "Yes, we offer staff augmentation and dedicated development teams to meet your business needs.",
+  },
+  {
+    question: "Do you provide white-label solutions?",
+    answer:
+      "Yes, we provide white-label software solutions that can be customized and branded for your company.",
   },
 ];
 
@@ -80,6 +205,7 @@ function Homefaq() {
         />
 
         {/* Accordion */}
+        <div className="faq-scroll">
         <Accordion className="text-start">
           {filteredFaqs.length > 0 ? (
             filteredFaqs.map((faq, index) => (
@@ -96,6 +222,7 @@ function Homefaq() {
             <p className="text-muted text-center">No results found.</p>
           )}
         </Accordion>
+        </div>
 
         {/* Contact Support */}
         <div className="mt-5">

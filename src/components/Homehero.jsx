@@ -22,8 +22,8 @@ function Homehero() {
             style={{ backgroundImage: `url(${img})` }}
           >
             <Container className="hero-content text-center text-white">
-              <h1 className="fw-bold display-3 text-warning animate-fade">
-                Build Skills. Shape Careers. Drive Innovation.
+              <h1 className="fw-bold display-3 text-warning px-2 animate-fade">
+                Coach Minds, Create Opportunities, Change Lives
               </h1>
               <p className="lead mb-4 fs-4 animate-slide">
                 At Techlynx Innovations, we coach, train, and place talent within our ecosystem—bridging learning with real-world impact.

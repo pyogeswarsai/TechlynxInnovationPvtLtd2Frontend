@@ -8,6 +8,7 @@ import Reviews from '../components/Reviews';
 import ConnectWithUs from '../components/ConectWithUs';
 import HomeNavbar from '../components/HomeNavbar';
 import Homefooter from '../components/Homefooter';
+import Homesocialmedia from '../components/Homesocialmedia';
 
 const TrainingPage = () => {
   return (
@@ -19,6 +20,7 @@ const TrainingPage = () => {
       <CarouselBoxes/>
       <Reviews />
       <ConnectWithUs/>
+      <Homesocialmedia />
       <Homefooter />
     </div>
   )

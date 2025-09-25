@@ -41,15 +41,23 @@ const Homefooter = () => {
             <ul className="contact-info bg-dark">
               <li>
                 <FaMapMarkerAlt />
-                <span>33-6-73, Arundlepet, 19/3, Opp.Ravindranath Tagore Statue, Guntur, A.P - 522002</span>
+                <span><span className='text-danger'>Registered Address:</span><br/>33-6-73, Arundlepet, 19/3, Opp.Ravindranath Tagore Statue, Guntur, A.P - 522002</span>
               </li>
               <li>
+                <FaMapMarkerAlt />
+                <span><span className='text-danger'>Residential Address:</span><br/>10/3, Near Tagore chowk, Sali Pet, Arundelpet, Guntur, AP - 522601</span>
+              </li>              
+              <li>
                 <FaPhone />
-                <span>+91 9989681812 , +91 9542982674</span>
+                <span>+919989681812 , +919542982674</span>
               </li>
               <li>
                 <FaEnvelope />
                 <span>info@techlynxinnovations.com</span>
+              </li>
+              <li>
+                <FaEnvelope />
+                <span>hr@techlynxinnovations.com</span>
               </li>
             </ul>
           </div>

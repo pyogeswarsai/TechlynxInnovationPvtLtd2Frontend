@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Homepage from './pages/Homepage';
+import HomeProjects from './pages/HomeProjects';
 
 import Pythonfullstack from './pages/pythonFullStack';
 import Java from "./pages/java";
@@ -27,6 +28,23 @@ import Automation from "./pages/automation";
 import EnrollForm from "./pages/enroll";
 import Course from './pages/Course';
 
+import ServiceHomepage from './pages/ServiceHomepage';
+import FullStackDevelopmentServices from './pages/FullStackDevelopment';
+import MobileAppDevelopmentServices from './pages/MobileAppDevelopment';
+import AISolutionsServices from './pages/AISolutions';
+import DataAnalyticsServices from './pages/DataAnalytics';
+import CloudSerives from './pages/CloudServices';
+import CyberSecurityServices from './pages/CyberSecurity';
+import BlockchainDevelopmentServices from './pages/BlockchainDevelopment';
+import UIUXDesignServices from './pages/UIUXDesign';
+import WebDevelopmentServices from './pages/WebDevelopmentServices';
+import DevOpsServices from './pages/DevOpsServices';
+import QaTestingServices from './pages/QaTestingServices';
+import ItSupportMaintenanceServices from './pages/ItSupportMaintenance';
+import DigitalMarketingServices from './pages/DigitalMarketingServices';
+import HRRecruitmentServices from './pages/HRRecruitmentServices';
+import HROutsourcingServices from './pages/HROutsourcingServices';
+
 import TrainingPage from './pages/TrainingPage';
 
 import HiringSection from "./pages/HiringSection"
@@ -36,10 +54,13 @@ import MainContactPage from './pages/MainContactPage';
 import ExpertInstructors from './pages/ExpertInstructors';
 
 
+
+
 const App = () => {
   return (
     <Routes>
       <Route path='/' element={<Homepage />} />
+      <Route path='/projects' element={<HomeProjects />} />
 
       <Route path='/courses' element={<Course />} />
       <Route path="/courses/python-full-stack" element={<Pythonfullstack />} />
@@ -64,6 +85,23 @@ const App = () => {
       <Route path="/courses/selenium" element={<Selenium />} />
       <Route path="/courses/automation-testing" element={<Automation />} />
       <Route path="/enroll" element={<EnrollForm />} />
+
+      <Route path='/services' element={<ServiceHomepage />} />
+      <Route path='/services/full-stack-development-service' element={<FullStackDevelopmentServices />}/>
+      <Route path='/services/web-development-service' element={<WebDevelopmentServices />} />
+      <Route path='/services/mobile-app-development-service' element={<MobileAppDevelopmentServices />} />
+      <Route path='/services/ai-solutions-service' element={<AISolutionsServices />} />
+      <Route path='/services/data-analytics-service' element={<DataAnalyticsServices />} />
+      <Route path='/services/cloud-services-service' element={<CloudSerives />} />
+      <Route path='/services/devops-cicd-service' element={<DevOpsServices />} />
+      <Route path='/services/cybersecurity-service' element={<CyberSecurityServices />} />
+      <Route path='/services/blockchain-development-service'element={<BlockchainDevelopmentServices />} />
+      <Route path='/services/qa-testing-service' element={<QaTestingServices />} />
+      <Route path='/services/uiux-design-service' element={<UIUXDesignServices />} />
+      <Route path='/services/itsupport-maintenance-service' element={<ItSupportMaintenanceServices />} />
+      <Route path='/services/digital-marketing-service' element={<DigitalMarketingServices />} />
+      <Route path='/services/recruitment-service' element={<HRRecruitmentServices />} />
+      <Route path='/services/hr-outsourcing-service' element={<HROutsourcingServices />} />
 
       <Route path='/training' element={<TrainingPage />} />
 
