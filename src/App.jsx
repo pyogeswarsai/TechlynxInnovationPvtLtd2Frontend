@@ -44,6 +44,13 @@ import ItSupportMaintenanceServices from './pages/ItSupportMaintenance';
 import DigitalMarketingServices from './pages/DigitalMarketingServices';
 import HRRecruitmentServices from './pages/HRRecruitmentServices';
 import HROutsourcingServices from './pages/HROutsourcingServices';
+import CustomAPIService from './pages/CustomAPIService';
+import IoTSolutionsService from './pages/IoTSolutionsService';
+import ContentWritingService from './pages/ContentWritingService';
+import VideoEditingService from './pages/VideoEditingService';
+import GameDevelopmentService from './pages/GameDevelopmentService';
+import GraphicDesignBrandingService from './pages/GraphicDesignBrandingService';
+import ThreeDModelingAnimationService from './pages/ThreeDModelingAnimationService';
 
 import TrainingPage from './pages/TrainingPage';
 
@@ -102,6 +109,13 @@ const App = () => {
       <Route path='/services/digital-marketing-service' element={<DigitalMarketingServices />} />
       <Route path='/services/recruitment-service' element={<HRRecruitmentServices />} />
       <Route path='/services/hr-outsourcing-service' element={<HROutsourcingServices />} />
+      <Route path='/services/custom-api-development' element= {<CustomAPIService />} />
+      <Route path='/services/iot-solutions' element={<IoTSolutionsService />} />
+      <Route path='/services/content-writing' element={<ContentWritingService />} />
+      <Route path='/services/video-editing' element={<VideoEditingService />} />
+      <Route path='/services/game-development' element={<GameDevelopmentService />} />
+      <Route path='/services/graphic-design' element={<GraphicDesignBrandingService />} />
+      <Route path='/services/3d-modeling' element={<ThreeDModelingAnimationService />} />
 
       <Route path='/training' element={<TrainingPage />} />
 

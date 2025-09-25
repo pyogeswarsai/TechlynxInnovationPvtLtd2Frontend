@@ -48,7 +48,7 @@ const coursesData = {
       price: "₹29,999/-",
       description:
         "Learn Core Java, OOP concepts, control structures, arrays, and build simple console-based applications.",
-      image: "/javaFullStack.jpg",
+      image: "/javaCourse.jpg",
       link: "/courses/java-full-stack",
     },
     {
@@ -56,7 +56,7 @@ const coursesData = {
       price: "₹29,999/-",
       description:
         "Learn Python syntax, data types, control flow, functions, and build simple console-based programs.",
-      image: "/pythonFullStack.jpg",
+      image: "/pythonCourse.jpg",
       link: "/courses/python-full-stack",
     },
     {
@@ -64,7 +64,7 @@ const coursesData = {
       price: "₹19,999/-",
       description:
         "Learn Node.js fundamentals, modules, HTTP server creation, file handling, and build simple backend APIs.",
-      image: "/dotnetFullStack.jpeg",
+      image: "/NodeCourse.jpg",
       link: "/courses/net-full-stack",
     },
     {
@@ -72,7 +72,7 @@ const coursesData = {
       price: "₹14,999/-",
       description:
         "Learn Dart, Flutter widgets, UI design, navigation, and build cross-platform mobile apps.",
-      image: "/mernFullStack.jpg",
+      image: "/flutterCourse.jpg",
       link: "/courses/mern-full-stack",
     },
     {
@@ -80,7 +80,7 @@ const coursesData = {
       price: "₹19,999/-",
       description:
         "Learn React Native components, navigation, state management, and build cross-platform mobile apps.",
-      image: "/meanFullStack.jpg",
+      image: "/reactNativeCourse.jpg",
       link: "/courses/mean-full-stack",
     },
   ],
@@ -112,7 +112,7 @@ const coursesData = {
       price: "₹39,999/-",
       description:
         "Learn PHP syntax, forms, sessions, MySQL integration, and build dynamic web pages with backend logic.",
-      image: "/webDevelopment.jpg",
+      image: "/phpCourse.jpg",
       link: "/courses/web-development",
     },
   ],
@@ -144,7 +144,7 @@ const coursesData = {
       price: "₹17,999/-",
       description:
         "Learn unit testing principles, JUnit annotations, assertions, and build reliable test cases for Java applications.",
-      image: "/seleniumTesting.jpg",
+      image: "/junitCourse.jpg",
       link: "/courses/selenium",
     },
     {
@@ -152,7 +152,7 @@ const coursesData = {
       price: "₹17,999/-",
       description:
         "Learn JMeter installation, test plans, thread groups, samplers, assertions, and perform load & performance testing.",
-      image: "/seleniumTesting.jpg",
+      image: "/jmeterCourse.jpg",
       link: "/courses/selenium",
     },
   ],
@@ -171,7 +171,7 @@ const coursesData = {
       price: "₹29,999/-",
       description:
         "Learn Excel, SQL, Python, statistics, and data visualization to extract insights and support decision-making.",
-      image: "/dataScience.jpg",
+      image: "/dataAnalyticsCourse.jpg",
       link: "/courses/datascience",
     },
     {
@@ -179,7 +179,7 @@ const coursesData = {
       price: "₹24,999/-",
       description:
         "Learn data import, Power Query, DAX basics, and build interactive dashboards for business insights.",
-      image: "/dataScience.jpg",
+      image: "/powerBICourse.jpg",
       link: "/courses/datascience",
     },
     {
@@ -187,7 +187,7 @@ const coursesData = {
       price: "₹24,999/-",
       description:
         "Learn data connections, charts, filters, dashboards, and build interactive visualizations for business insights.",
-      image: "/dataScience.jpg",
+      image: "/tableauCourse.jpg",
       link: "/courses/datascience",
     },
   ],
@@ -214,7 +214,7 @@ const coursesData = {
       price: "₹99,999/-",
       description:
         "Learn neural networks, CNNs, RNNs, and build intelligent models using Python and TensorFlow for real-world data.",
-      image: "/machineLearning.jpg",
+      image: "/deepLearningCourse.jpg",
       link: "/courses/machine-learning",
     },
   ],
@@ -233,7 +233,7 @@ const coursesData = {
       price: "₹34,999/-",
       description:
         "Learn SQL syntax, CRUD operations, joins, constraints, and manage relational databases with real-world queries.",
-      image: "/databaseAdministrator.jpg",
+      image: "/mysqlCourse.jpg",
       link: "/courses/database-administration",
     },
     {
@@ -241,7 +241,7 @@ const coursesData = {
       price: "₹34,999/-",
       description:
         "Learn NoSQL concepts, collections, CRUD operations, aggregation, and build scalable databases with MongoDB.",
-      image: "/databaseAdministrator.jpg",
+      image: "/mongodbCourse.jpg",
       link: "/courses/database-administration",
     },
   ],
@@ -252,7 +252,7 @@ const coursesData = {
       price: "₹24,999/-",
       description:
         "Learn business analysis fundamentals, documentation, Agile processes, Excel, SQL, Power BI, and data-driven decision-making.",
-      image: "/businessAnalystIntelligence.jpg",
+      image: "/businessAnalystCourse.png",
       link: "/courses/business-analyst-intelligence",
     },
     {
@@ -260,7 +260,7 @@ const coursesData = {
       price: "₹24,999/-",
       description:
         "Learn data warehousing, ETL, dashboards, OLAP, and BI tools like Power BI/Tableau to drive data-informed decisions.",
-      image: "/businessAnalystIntelligence.jpg",
+      image: "/businessIntelligenceCourse.webp",
       link: "/courses/business-analyst-intelligence",
     },
     {

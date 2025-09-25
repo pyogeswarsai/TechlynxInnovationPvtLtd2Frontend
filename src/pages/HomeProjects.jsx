@@ -1,6 +1,7 @@
 // Projects.jsx
 import React from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import './HomeProjects.css';
 
 const projects = [
   {
@@ -24,9 +25,9 @@ const projects = [
 function HomeProjects() {
   return (
     <section className="projects py-5">
-      <Container>
+      <Container className="projectPage">
         <h2 className="text-center fw-bold mb-4">Our Projects</h2>
-        <Row className="g-4">
+        <Row className="g-4 justify-content-center">
           {projects.map((proj, idx) => (
             <Col key={idx} md={6} lg={4}>
               <Card className="project-card h-100 shadow-sm">

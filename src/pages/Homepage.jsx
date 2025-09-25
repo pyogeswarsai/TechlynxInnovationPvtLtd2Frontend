@@ -14,7 +14,6 @@ import Homesocialmedia from '../components/Homesocialmedia'
 import Homeceotalk from '../components/Homeceotalk'
 import HomeNavbarTop from '../components/HomeNavbarTop'
 
-
 const Homepage = () => {
   return (
     <div>
@@ -22,6 +21,8 @@ const Homepage = () => {
         <HomeTopNavbar />
         <HomeNavbar />
         <Homehero />
+        {/* <HeroSection1 />
+        <HeroSection2 /> */}
         <Homewhychooseus />
         <Homecourses />
         <Hometraining />

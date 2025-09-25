@@ -47,20 +47,27 @@ function HomeNavbar() {
 
         <Navbar.Toggle aria-controls="main-navbar-nav" />
         <Navbar.Collapse id="main-navbar-nav">
-          <Nav className="ms-auto fs-5">
+          <Nav className="ms-auto px-3  fs-5">
             {/* Multi-Level Dropdown */}
-            <div className="nav-item dropdown multi-dropdown ">
-              <Link
-                to=""
-                className="nav-link dropdown-toggle"
+            <Link
+                to="/"
+                className="nav-link "
                 role="button"
               >
-                Courses
+                Home
+              </Link>
+            <div className="nav-item px-2 dropdown multi-dropdown ">
+              <Link
+                to=""
+                className=" px-2 nav-link dropdown-toggle"
+                role="button"
+              >
+                 All Courses
               </Link>
               <ul className="dropdown-menu">
 
                 <li className="dropdown-submenu">
-                  <Link to="" className="dropdown-item">Full Stack Developer</Link>
+                  <Link to="" className=" dropdown-item">Full Stack Developer</Link>
                   <ul className="dropdown-menu">
                     <li><Link to="/courses/java-full-stack" className="dropdown-item">Java full stack</Link></li>
                     <li><Link to="/courses/python-full-stack" className="dropdown-item">Python full stack</Link></li>
@@ -71,60 +78,81 @@ function HomeNavbar() {
                 </li>
 
                 <li className="dropdown-submenu">
-                  <Link to="" className="dropdown-item">Software Developer</Link>
+                  <Link to="" className=" dropdown-item">Programming Languages & Frameworks</Link>
                   <ul className="dropdown-menu">
-                    <li><Link to="/courses/frontend-development" className="dropdown-item">Frontend Developer</Link></li>
-                    <li><Link to="/courses/backend-development" className="dropdown-item">Backend Developer</Link></li>
-                    <li><Link to="/courses/web-development" className="dropdown-item">Web Development</Link></li>
+                    <li><Link to="/courses/java" className="dropdown-item">Java</Link></li>
+                    <li><Link to="/courses/python" className="dropdown-item">Python</Link></li>
+                    <li><Link to="/courses/node" className="dropdown-item">Node.Js</Link></li>
+                    <li><Link to="/courses/flutter" className="dropdown-item">Flutter</Link></li>
+                    <li><Link to="/courses/react-native" className="dropdown-item">React Native</Link></li>
                   </ul>
                 </li>
 
                 <li className="dropdown-submenu">
-                  <Link to="" className="dropdown-item">Software Testing</Link>
+                  <Link to="" className=" px-3 dropdown-item">Web Development</Link>
+                  <ul className="dropdown-menu">
+                    <li><Link to="/courses/frontend-development" className="dropdown-item">Frontend Developer</Link></li>
+                    <li><Link to="/courses/backend-development" className="dropdown-item">Backend Developer</Link></li>
+                    <li><Link to="/courses/web-development" className="dropdown-item">Web Developmer</Link></li>
+                    <li><Link to="/courses/php-development" className="dropdown-item">PHP Developmer</Link></li>
+                  </ul>
+                </li>
+
+                <li className="dropdown-submenu">
+                  <Link to="" className="dropdown-item">Testing & QA</Link>
                   <ul className="dropdown-menu">
                     <li><Link to="/courses/manual-testing" className="dropdown-item">Manual Testing</Link></li>
                     <li><Link to="/courses/automation-testing" className="dropdown-item">Automation Testing</Link></li>
                     <li><Link to="/courses/selenium" className="dropdown-item">Selenium</Link></li>
+                    <li><Link to="/courses/junit" className="dropdown-item">Junit</Link></li>
+                    <li><Link to="/courses/jmeter" className="dropdown-item">Jmeter</Link></li>
                   </ul>
                 </li>
 
-                <li className="dropdown-submenu">
+                <li className=" dropdown-submenu">
                   <Link to="" className="dropdown-item">Data Science</Link>
                   <ul className="dropdown-menu">
                     <li><Link to="/courses/datascience" className="dropdown-item">Data Science</Link></li>
+                    <li><Link to="/courses/data-analytics" className="dropdown-item">Data Analytics</Link></li>
+                    <li><Link to="/courses/powerbi" className="dropdown-item">Power BI</Link></li>
+                    <li><Link to="/courses/tableau" className="dropdown-item">Tableau</Link></li>
                   </ul>
                 </li>
 
-                <li className="dropdown-submenu">
+                <li className=" dropdown-submenu">
                   <Link to="" className="dropdown-item">AI & ML</Link>
                   <ul className="dropdown-menu">
                     <li><Link to="/courses/artificial-intelligence" className="dropdown-item">Artificial Intelligence</Link></li>
                     <li><Link to="/courses/machine-learning" className="dropdown-item">Machine learning</Link></li>
+                    <li><Link to="/courses/deep-learning" className="dropdown-item">Deep learning</Link></li>
                   </ul>
                 </li>
 
                 <li className="dropdown-submenu">
-                  <Link to="" className="dropdown-item">Database Management</Link>
-                  <ul className="dropdown-menu">
-                    <li><Link to="/courses/database-administration" className="dropdown-item">Database Administration</Link></li>
-                  </ul>
-                </li>
-
-                <li className="dropdown-submenu">
-                  <Link to="" className="dropdown-item">Business & Digital</Link>
-                  <ul className="dropdown-menu">
-                    <li><Link to="/courses/business-analyst-intelligence" className="dropdown-item">Business Analyst & Intelligence</Link></li>
-                    <li><Link to="/courses/digital-marketing" className="dropdown-item">Digital Marketing</Link></li>
-                  </ul>
-                </li>
-
-                <li className="dropdown-submenu">
-                  <Link to="" className="dropdown-item">Emerging Tech</Link>
+                  <Link to="" className="dropdown-item">Security & Emerging Tech</Link>
                   <ul className="dropdown-menu">
                     <li><Link to="/courses/cybersecurity" className="dropdown-item">Cybersecurity</Link></li>
                     <li><Link to="/courses/blockchain-integration" className="dropdown-item">Blockchain Integration</Link></li>
                     <li><Link to="/courses/devops-engineering" className="dropdown-item">DevOps Engineering</Link></li>
                     <li><Link to="/courses/cloud-computing" className="dropdown-item">Cloud Computing</Link></li>
+                  </ul>
+                </li>
+
+                <li className=" dropdown-submenu">
+                  <Link to="" className="dropdown-item">Database Management</Link>
+                  <ul className="dropdown-menu">
+                    <li><Link to="/courses/database-administration" className="dropdown-item">Database Administration</Link></li>
+                    <li><Link to="/courses/mysql" className="dropdown-item">MySQL</Link></li>
+                    <li><Link to="/courses/mongoDB" className="dropdown-item">MongoDB</Link></li>
+                  </ul>
+                </li>
+
+                <li className="dropdown-submenu">
+                  <Link to="" className="dropdown-item">Business & Marketing</Link>
+                  <ul className="dropdown-menu">
+                    <li><Link to="/courses/business-analyst" className="dropdown-item">Business Analyst</Link></li>
+                    <li><Link to="/courses/business-intelligence" className="dropdown-item">Business Intelligence</Link></li>
+                    <li><Link to="/courses/digital-marketing" className="dropdown-item">Digital Marketing</Link></li>
                   </ul>
                 </li>                                                                               
 
@@ -140,7 +168,7 @@ function HomeNavbar() {
                 className="nav-link dropdown-toggle"
                 role="button"
               >
-                Services
+                 Our Services
               </Link>
               <ul className="dropdown-menu">
                 <li>
@@ -187,7 +215,28 @@ function HomeNavbar() {
                 </li>
                 <li>
                   <Link to="/services/hr-outsourcing-service" className="dropdown-item">HR Outsourcing services</Link>
-                </li>                
+                </li>
+                <li>
+                  <Link to="/services/custom-api-development" className="dropdown-item">Custom API Development & Integration</Link>
+                </li>
+                <li>
+                  <Link to="/services/iot-solutions" className="dropdown-item">IoT Solutions</Link>
+                </li>
+                <li>
+                  <Link to="/services/content-writing" className="dropdown-item">Content Writing & Copywriting</Link>
+                </li>
+                <li>
+                  <Link to="/services/video-editing" className="dropdown-item">Video Editing & Production</Link>
+                </li>
+                <li>
+                  <Link to="/services/game-development" className="dropdown-item">Game Development</Link>
+                </li>
+                <li>
+                  <Link to="/services/graphic-design" className="dropdown-item">Graphic Design & Branding</Link>
+                </li>
+                <li>
+                  <Link to="/services/3d-modeling" className="dropdown-item">3D Modeling & Animation</Link>
+                </li>               
                 <li>
                   <Link to="/services" className="dropdown-item fw-bold">View All Services</Link>
                 </li>
@@ -195,21 +244,21 @@ function HomeNavbar() {
             </div>
               <Link
                 to="/training"
-                className="nav-link "
+                className="px-2 nav-link "
                 role="button"
               >
                 Training
               </Link>
               <Link
                 to="/hire-talent"
-                className="nav-link "
+                className="px-2 nav-link "
                 role="button"
               >
                 Hire-Talent
               </Link>
               <Link
                 to="/contact-us"
-                className="nav-link "
+                className="px-2 nav-link "
                 role="button"
               >
                 Contact

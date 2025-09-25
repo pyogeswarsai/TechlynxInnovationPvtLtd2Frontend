@@ -1,5 +1,5 @@
 // Footer.jsx
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaMapMarkerAlt, FaPhone, FaEnvelope, FaYoutube } from 'react-icons/fa';
 import './Homepage.css';
 import { Link } from 'react-router-dom';
 
@@ -20,6 +20,7 @@ const Homefooter = () => {
               <a href="https://x.com/TechlynxLimited"><FaTwitter /></a>
               <a href="https://www.instagram.com/techlynxinnovations/"><FaInstagram /></a>
               <a href="https://www.linkedin.com/in/nagul-meera-shaik-0b8650379/"><FaLinkedinIn /></a>
+              <a href='https://www.youtube.com/@techlynxinnovationsprivatelimi'><FaYoutube /></a>
             </div>
           </div>
           
@@ -85,7 +86,7 @@ const Homefooter = () => {
         <div className="row">
           <div className="col-12">
             <div className="copyright">
-              <p>&copy; 2025 Techlynx Innovations Pvt Ltd. All Rights Reserved.</p>
+              <p className='fs-6'>&copy; 2025 Techlynx Innovations Pvt Ltd. All Rights Reserved.</p>
             </div>
           </div>
         </div>
