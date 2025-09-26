@@ -76,12 +76,12 @@ export default function EnrollForm() {
           <div className="row g-0 align-items-center">
             <div className="col-lg-5 p-4 enroll-info">
               <div className="breadcrumb mb-4 custom-breadcrumb text-start">
-                <a
-                  href="/courses"
+                <Link
+                  to="/courses"
                   className="breadcrumb-link text-primary text-decoration-none"
                 >
                   Courses
-                </a>
+                </Link>
                 <span className="mx-1 text-muted">/</span>
                 <span className="text-dark">Enroll Now</span>
               </div>

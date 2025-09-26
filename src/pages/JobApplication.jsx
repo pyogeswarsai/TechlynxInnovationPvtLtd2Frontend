@@ -430,11 +430,11 @@ function JobApplication() {
                 </div>
 
                 <div className="text-center mt-auto">
-                  <button type="submit" className="btn btn-info text-white px-4">
+                  <button type="submit" className="btn btn-info text-white px-4 m-1">
                     Submit Application
                   </button>
                   <Link to="/hire-talent">
-                    <button type="button" className="btn btn-info text-white ms-1">
+                    <button type="button" className="btn btn-info text-white m-1">
                       Go Back
                     </button>
                   </Link>
@@ -443,7 +443,7 @@ function JobApplication() {
             </>
           ) : alreadyApplied ? (
             <div className="text-center my-auto">
-              <h3 className="text-warning">⚠ {serverMessage}</h3>
+              <h3 className="text-dark">⚠ {serverMessage}</h3>
               {/* <p>We’ll reach you if your skills match.</p> */}
               <button className="btn btn-secondary mt-3 me-2" onClick={resetForm}>
                 Submit Another Application
