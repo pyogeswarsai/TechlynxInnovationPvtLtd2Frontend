@@ -44,13 +44,18 @@ function ConnectWithUs() {
           <div className="col-lg-5 d-flex flex-column justify-content-center">
             <div className="contact-info p-4 shadow-sm rounded">
               <h5 className="fw-bold mb-3 text-center text-dark">Get In Touch</h5>
-              <h6 className="text-center">Contact us now to explore our innovative solutions!</h6>
-              <p><FaMapMarkerAlt className="me-2 text-primary" /> Guntur:</p>
-              <p>33-6-73,Arundelpet,19/3,opp.Ravindranath Tagore Statue, Guntur,A.p-522002</p>
-              <p><FaEnvelope className="me-2 text-primary" /> info@techlynxinnovations.com</p>
+
+              <b><p><FaMapMarkerAlt className="me-2 text-primary" />Registered address: </p></b>
+              <p>33-6-73, Arundelpet, 19/3, Opp.Ravindranath Tagore Statue, Guntur, A.P - 522002.</p>
+              <b><p><FaMapMarkerAlt className="me-2 text-primary" />Residential address: </p></b>
+              <p>#10/3, Near Tagore chowk, Sali Pet, Arundelpet, Guntur, Andhra Pradesh - 522601.</p>
+              <b><p>Phone No: </p></b>
               <p><FaPhone className="me-2 text-primary" /> +91 9989681812</p>
               <p><FaPhone className="me-2 text-primary" /> +91 9542982674</p>
-              
+              <b><p>Mail Id: </p></b>
+              <p><FaEnvelope className="me-2 text-primary" />info@techlynxinnovations.com</p>
+              <p><FaEnvelope className="me-2 text-primary" />hr@techlynxinnovations.com</p>
+
 
               <div className="social-icons mt-3">
                 <a href="#"><FaFacebook /></a>

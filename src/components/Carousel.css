@@ -20,3 +20,18 @@
   align-items: center;
   padding: 2rem;
 }
+
+.carousel-arrow {
+  font-size: 1.5rem; /* desktop/tablet size */
+  padding: 0.5rem 0.8rem;
+  border-width: 3px !important;
+}
+
+/* Mobile view */
+@media (max-width: 425px) {
+  .carousel-arrow {
+    font-size: 0.8rem; /* smaller arrow */
+    padding: 0.15rem 0.3rem !important;
+    line-height: 1;
+  }
+}

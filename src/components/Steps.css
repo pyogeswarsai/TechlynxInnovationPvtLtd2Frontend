@@ -70,9 +70,12 @@
   color: white;
   transform: rotateY(180deg);
   display: flex;
+  flex-direction: column;   /* keep column layout */
   justify-content: center;
   align-items: center;
   border-radius: 20px;
+  padding: 10px;            /* ensure content fits inside */
+  text-align: center;
 }
 
 
@@ -95,6 +98,8 @@
   transform:none;
 }
 }
+
+ 
 
 .heading-main {
   color: #fff;

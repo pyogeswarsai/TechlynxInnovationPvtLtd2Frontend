@@ -5,35 +5,72 @@ import './Steps.css';
 
 const steps = [
   {
-    icon: "bi-card-checklist",
-    title: "Follow 3A",
-    desc: "Our structured learning model focuses on Attendance, Assignment & Assessment, encouraging consistency and helping you achieve a success score.",
-  },
+  icon: "bi-card-checklist",
+  title: "Follow 3A",
+  desc: (
+    <>
+      Our structured learning model focuses on{" "}
+      <span style={{ color: "yellow",fontWeight:"bold" }}>Attendance</span>,{" "}
+      <span style={{ color: "yellow",fontWeight:"bold" }}>Assignment</span> &{" "}
+      <span style={{ color: "yellow",fontWeight:"bold" }}>Assessment</span>, encouraging consistency and helping you achieve a success score.
+    </>
+  )
+},
   {
     icon: "bi-person-gear",
     title: "Industry-Specific Skills",
-    desc: "Gain hands-on expertise with tools and technologies tailored to high-demand roles in data, development, cloud, testing and marketing.",
+    desc:(
+    <>
+      Gain hands-on expertise with tools and technologies tailored to high-demand roles in{" "}
+      <span style={{color:"yellow",fontWeight:"bold"}}> data, development, cloud, testing and marketing.</span>
+    </>
+    )
   },
-  {
+{
     icon: "bi-person-badge",
     title: "Profile Building",
-    desc: "Get expert guidance on resume creation, LinkedIn, and web portfolio development to confidently present your skills to employers.",
+    desc:(
+    <>
+      Get expert guidance on{" "}
+      <span style={{color:"yellow",fontWeight:"bold"}}>resume creation, LinkedIn, and web portfolio development</span>,to confidently present your skills to employers.
+    </>
+    )
   },
   {
     icon: "bi-file-earmark-check",
     title: "Exam",
-    desc: "Clear the final evaluation exam designed to test your technical understanding and practical readiness to conquer real-world challenges.",
+    desc:(
+    <>
+      Clear the {" "}
+      <span style={{color:"yellow",fontWeight:"bold"}}>final evaluation exam designed to test your technical understanding and practical readiness</span>,Clear the  to conquer real-world challenges.
+    </>
+    )
   },
   {
-    icon: "bi-award",
-    title: "Global Certification",
-    desc: "Earn globally recognized certifications that validate your expertise and enhance your professional credibility across industries.",
-  },
-  {
-    icon: "bi-briefcase",
-    title: "Integrated Internship",
-    desc: "Apply your knowledge in real projects and case studies through an internship that prepares you to understand workplace challenges and build credibility.",
-  },
+  icon: "bi-award",
+  title: "Global Certification",
+  desc: (
+    <>
+      <span style={{ color: "yellow", fontWeight: "bold" }}>
+        Earn globally recognized certifications
+      </span>
+      , that validate your expertise and enhance your professional credibility across industries.
+    </>
+  )
+},
+{
+  icon: "bi-briefcase",
+  title: "Integrated Internship",
+  desc: (
+    <>
+      Apply your{" "}
+      <span style={{ color: "yellow", fontWeight: "bold" }}>
+        knowledge in real projects and case studies through an internship
+      </span>{" "}
+       real projects, real impact.
+    </>
+  )
+}
 ];
 
 function Steps() {

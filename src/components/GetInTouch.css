@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Nosifer&display=swap');
+
+
+.get{
+    font-family: "Nosifer", sans-serif;
+}
+
 .custom-card {
   transition: box-shadow 0.3s ease;
   box-shadow: 0 2px 10px rgba(47, 51, 57, 0.3);
@@ -53,8 +60,9 @@
 
 .contact-link {
   color: #075bb0;
+  font-size: 13px;
   /* Deep Blue */
 }
 .contact-link:hover {
-  color: #cb2222; /* Slightly darker on hover */
+  color: gold; 
 }

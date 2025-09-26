@@ -62,8 +62,8 @@ const FeedbackSection = () => {
     }
 
     const payload = {
-      name: anonymous ? "Anonymous" : feedbackName,
-      email: anonymous ? "N/A" : feedbackEmail,
+      name: feedbackName,
+      email: feedbackEmail,
       category: feedbackCategory,
       overall_rating: overallRating,
       course_quality: sliders.courseQuality,
@@ -102,7 +102,7 @@ const FeedbackSection = () => {
   return (
     <section className="container py-5">
       <div className="text-center mb-5">
-        <h2 className="h2 fw-bold text-dark mb-3">Share Your Feedback</h2>
+        <h2 className="h1 fw-bold text-dark mb-3 send">Share Your Feedback</h2>
         <p className="fs-5 text-secondary">
           Help us improve our training programs and services
         </p>
@@ -121,6 +121,7 @@ const FeedbackSection = () => {
                 <input
                   type="text"
                   name="feedbackName"
+                  placeholder="Enter your name"
                   required
                   className="form-control rounded-xl"
                 />
@@ -130,6 +131,7 @@ const FeedbackSection = () => {
                 <input
                   type="email"
                   name="feedbackEmail"
+                  placeholder="Enter your email"
                   required
                   className="form-control rounded-xl"
                 />
@@ -168,30 +170,36 @@ const FeedbackSection = () => {
             </div>
 
             {/* Star Rating */}
-            <div className="mb-3">
+<div className="mb-3">
               <label className="form-label fw-semibold">Overall Rating *</label>
               <div className="d-flex justify-content-center gap-3 mb-2 flex-wrap">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <span
                     key={star}
-                    className={`star cursor-pointer ${
-                      star <= overallRating ? "text-warning" : "text-gray-300"
+                    className={`star cursor-pointer d-inline-flex align-items-center justify-content-center rounded-circle ${
+                      star <= overallRating
+                        ? "bg-success text-white"
+                        : "text-dark"
                     }`}
                     onClick={() => handleStarClick(star)}
                     style={{
-                      fontSize: window.innerWidth < 576 ? "2.2rem" : "3rem",
+                      fontSize: window.innerWidth < 576 ? "2rem" : "2.5rem",
+                      width: window.innerWidth < 576 ? "2.8rem" : "3.5rem",
+                      height: window.innerWidth < 576 ? "2.8rem" : "3.5rem",
                     }}
                   >
                     ⭐
                   </span>
                 ))}
               </div>
+
               <input
                 type="hidden"
                 name="overallRating"
                 value={overallRating}
                 required
               />
+
               <div className="text-center text-secondary">{ratingText}</div>
             </div>
 
@@ -245,17 +253,6 @@ const FeedbackSection = () => {
                 className="form-control rounded-xl p-2"
                 placeholder="Any suggestions on how we can improve our services?"
               ></textarea>
-            </div>
-
-            {/* Anonymous */}
-            <div className="form-check mb-4">
-              <input
-                type="checkbox"
-                id="anonymous"
-                name="anonymous"
-                className="form-check-input"
-              />
-              <label className="form-check-label">Submit feedback anonymously</label>
             </div>
 
             <button

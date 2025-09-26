@@ -23,7 +23,7 @@ function TrainingHome() {
             </h1>
             <ul className='list-unstyled mt-3'>
               <li><span style={{color:"gold", fontSize:"25px"}}>&#9733;</span> 100% Certification pass Guarentee</li>
-              <li><span style={{color:"gold", fontSize:"25px"}}>&#9733;</span> 250+ hours In-depth Online Classes</li>
+              <li><span style={{color:"gold", fontSize:"25px"}}>&#9733;</span> 250+ hours In-depth Classes</li>
               <li><span style={{color:"gold", fontSize:"25px"}}>&#9733;</span> Experts and  real-time project Faculty</li>
               <li><span style={{color:"gold", fontSize:"25px"}}>&#9733;</span> Patience and Friendly Nature</li>
             </ul>

@@ -1,12 +1,9 @@
-/* .s1 {
-  width: 250px;
-  margin-left: 5px;
+/* @import url('https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&family=Annie+Use+Your+Telescope&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Charm:wght@400;700&display=swap');
+
+.send{
+   font-family: "Charm", cursive;
 }
-
-.custom-shadow {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-} */
-
 
 /* Prevent global horizontal overflow */
 html, body {
@@ -32,8 +29,52 @@ iframe, img {
 
 @media (max-width: 1024px){
   .s1 {
-  width: 100%;         /* full width on small screens */
+       
   max-width: 200px;    /* but never exceed 250px */
-  margin: 2px 2px;      /* center align */
+  
 }
+}
+
+
+input{
+  height: 35px;
+}
+
+.form-label {
+    font-family: "Charm", cursive;
+  font-size: 19px;
+  margin-bottom: 1px;
+  display: inline-block;
+}
+/* Reduce placeholder size */
+input::placeholder,
+textarea::placeholder {
+  font-size: 15px;     
+  color: #888;         
+}
+
+
+.btn {
+  font-size: 0.9rem; /* smaller on mobile */
+  font-weight: 600;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+@media (min-width: 768px) {
+  .btn {
+    font-size: 1rem; /* normal size on tablets & desktops */
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .btn {
+    width: 100%; /* full width on very small screens */
+    justify-content: center;
+  }
 }

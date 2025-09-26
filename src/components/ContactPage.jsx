@@ -102,12 +102,12 @@ const ContactPage = () => {
       <div className="row g-4">
         <div className="col-lg-6">
           <div className="bg-white rounded-3xl p-4 shadow-xl">
-            <h3 className="h3 fw-bold text-dark mb-4">Send us a Message</h3>
+            <h3 className="h2 fw-bold text-dark mb-4 send">Send us a Message</h3>
 
             <form onSubmit={handleSubmit} className="d-grid gap-3">
               <div className="row g-3">
                 <div className="col-md-6">
-                  <label className="form-label fw-semibold">First Name *</label>
+                  <label className="form-label">First Name *</label>
                   <input
                     type="text"
                     id="firstName"
@@ -133,7 +133,7 @@ const ContactPage = () => {
                 </div>
               </div>
 
-              <label className="form-label fw-semibold">Email Address *</label>
+              <label className="form-label">Email Address *</label>
               <input
                 type="email"
                 id="email"
@@ -176,7 +176,7 @@ const ContactPage = () => {
                 required
                 className="form-select rounded-xl"
               >
-                <option value="">Select a course</option>
+                <option value="fs-6">Select a course</option>
                 <option value="python-full-stack">Python Full Stack</option>
                 <option value="java-full-stack">Java Full Stack</option>
                 <option value="dotnet">.Net</option>
@@ -204,7 +204,7 @@ const ContactPage = () => {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                rows="5"
+                rows="4"
                 className="form-control rounded-xl"
                 placeholder="Tell us about your goals and how we can help..."
               ></textarea>
@@ -230,7 +230,7 @@ const ContactPage = () => {
         {/* Location + Social Media Section (Same as before) */}
         <div className="col-lg-6 d-flex flex-column gap-4">
           <div className="bg-white rounded-3xl p-4 shadow-xl">
-            <h3 className="h3 fw-bold text-dark mb-2">Our Locations</h3>
+            <h3 className="h3 fw-bold text-dark mb-4 send">Our Locations</h3>
             <div className="rounded-2xl overflow-hidden shadow-lg mb-2">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3829.3884187489507!2d80.44121207490933!3d16.303085984410824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4a750072463f81%3A0x99b6c2dc7b39e20f!2sTECHLYNX%20INNOVATIONS%20PVT%20LTD!5e0!3m2!1sen!2sin!4v1757658139847!5m2!1sen!2sin"
@@ -248,7 +248,7 @@ const ContactPage = () => {
                 onClick={openGoogleMaps}
                 className="btn btn-primary d-flex align-items-center"
               >
-                🗺️ Open in Google Maps
+                🗺 Open in Google Maps
               </button>
               <button
                 onClick={getDirections}
@@ -260,63 +260,82 @@ const ContactPage = () => {
 
             <div className="bg-light rounded-2xl p-3">
               <h4 className="fw-bold mb-2">📍 Techlynx Innovations Pvt Ltd</h4>
-              <p>
-                33-6-73 Arundelpet 19/3, Opp Rabindranath Tagore, Brodipet,
-                Guntur, Andhra Pradesh, India, 522002
+              <p className="fs-6">
+                10/3, near Tagore chowk, Sali Pet, Arundelpet, Guntur, Andhra
+                Pradesh 522601
               </p>
               <div className="row text-sm">
                 <div className="col-6">
-                  <strong>🏢 Facilities:</strong> Modern classrooms, computer
+                  <strong className="fs-5 send">🏢 Facilities:</strong> Modern classrooms, computer
                   labs, library
                 </div>
                 <div className="col-6">
-                  <strong>🚌 Transport:</strong> Well connected by public
+                  <strong className="fs-5 send">🚌 Transport:</strong> Well connected by public
                   transport
                 </div>
                 <div className="col-6 mt-1">
-                  <strong>🏪 Nearby:</strong> Collection O Hotel Jaya Fortune,
+                  <strong className="fs-5 send">🏪 Nearby:</strong> Collection O Hotel Jaya Fortune,
                   Tagore chowk, Arundelpet, Guntur
                 </div>
                 <div className="col-6 mt-1">
-                  <strong>📞 Contact:</strong> +91-9989681812 , +91-9542982674
+                  <strong className="fs-5 send">📞 Contact:</strong> +91-9989681812 , +91-9542982674
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-3xl p-4 shadow-xl">
-            <h3 className="h4 fw-bold text-dark mb-3">Connect With Us</h3>
-            <div className="row row-cols-1 row-cols-md-2 g-2">
-              <a
-                href="https://www.facebook.com/profile.php?id=61579158831359"
-                target="_blank"
-                className="btn btn-primary s1 d-flex align-items-center justify-content-center"
-              >
-                <i className="fab fa-facebook-f"></i> Facebook
-              </a>
-              <a
-                href="https://x.com/TechlynxLimited"
-                target="_blank"
-                className="btn btn-info s1 d-flex align-items-center justify-content-center"
-              >
-                <i className="fab fa-twitter"></i> Twitter
-              </a>
-              <a
-                href="https://www.linkedin.com/in/nagul-meera-shaik-0b8650379/"
-                target="_blank"
-                className="btn btn-dark s1 d-flex align-items-center justify-content-center"
-              >
-                <i className="fab fa-linkedin-in"></i> LinkedIn
-              </a>
-              <a
-                href="https://www.youtube.com/@techlynxinnovationsprivatelimi"
-                target="_blank"
-                className="btn btn-danger s1 d-flex align-items-center justify-content-center"
-              >
-                <i className="fab fa-youtube"></i> YouTube
-              </a>
+            <div className="bg-white rounded-3xl p-4 shadow-xl">
+            <h3 className="h4 fw-bold text-dark mb-3 send">Connect With Us</h3>
+            <div className="row g-2 text-center">
+              <div className="col-6 col-md-6">
+                <a
+                  href="https://www.facebook.com/profile.php?id=61579158831359"
+                  target="_blank"
+                  className="btn btn-primary text-dark s1 d-flex align-items-center justify-content-center"
+                >
+                  <i className="fab fa-facebook-f"></i> Facebook
+                </a>
+              </div>
+              <div className="col-6 col-md-6">
+                <a
+                  href="https://x.com/TechlynxLimited"
+                  target="_blank"
+                  className="btn btn-warning s1 d-flex align-items-center justify-content-center"
+                >
+                  <i className="fab fa-twitter"></i> Twitter
+                </a>
+              </div>
+              <div className="col-6 col-md-6">
+                <a
+                  href="https://www.linkedin.com/in/nagul-meera-shaik-0b8650379/"
+                  target="_blank"
+                  className="btn btn-dark s1 d-flex align-items-center justify-content-center"
+                >
+                  <i className="fab fa-linkedin-in"></i> LinkedIn
+                </a>
+              </div>
+              <div className="col-6 col-md-6">
+                <a
+                  href="https://www.youtube.com/@techlynxinnovationsprivatelimi"
+                  target="_blank"
+                  className="btn btn-danger s1 d-flex align-items-center justify-content-center"
+                >
+                  <i className="fab fa-youtube"></i> YouTube
+                </a>
+              </div>
+
+              {/* Instagram Centered with Left Space */}
+              <div className="col-6 col-md-6">
+                <a
+                  href="https://www.instagram.com/techlynxinnovations/"
+                  target="_blank"
+                  className="btn btn-info text-white s1 d-flex align-items-center justify-content-center"
+                >
+                  <i className="fab fa-instagram"></i> Instagram
+                </a>
+              </div>
             </div>
-          </div>
+            </div>
         </div>
       </div>
     </div>

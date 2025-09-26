@@ -29,6 +29,14 @@ import {
   SiMysql,
 } from "react-icons/si";
 
+const slideShow = keyframes`
+  0% { background-image: url("https://wordandway.org/wp-content/uploads/2017/08/webRNS-CARTER-CHURCH1-072817.jpg"); }
+  33% { background-image: url("https://i.pinimg.com/736x/db/ef/99/dbef99e72c80addb81a9b39c3c80b8a6.jpg"); }
+  66% { background-image: url("https://i.pinimg.com/736x/9d/a3/aa/9da3aad4357c549e9a3449e667afd7f9.jpg"); }
+  100% { background-image: url("https://i.pinimg.com/1200x/da/e5/15/dae5151f2233ec2c33a168a5bd4418a5.jpg"); }
+`;
+
+
 // Fade-in animation
 const fadeIn = keyframes`
   from { opacity: 0; transform: translateY(20px); }
@@ -63,14 +71,14 @@ const HeroSection = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background-image: url("https://wordandway.org/wp-content/uploads/2017/08/webRNS-CARTER-CHURCH1-072817.jpg");
   background-attachment: fixed;
   background-size: cover;
-  background-position: center;
-  min-height: 500px;
+  // background-position: center;
+  min-height: 730px;
   padding: 0 20px;
-  color: white;
+  color: #ff0000ff;
   text-align: left;
+  animation: ${slideShow} 10s infinite ease-in-out;
 
   @media (max-width: 768px) {
     justify-content: center;
@@ -332,9 +340,9 @@ const ExpertInstructors = () => {
     <PageContainer>
       {/* Hero Section */}
       <HeroSection>
-        <HeroText className="text-warning">
+        <HeroText className="display-1 get ">
           Empowering Experts, Shaping Futures
-          <p className="fs-6 text-light">
+          <p className="fs-5 text-light send text-center mt-3">
             Our training programs are designed to foster practical skills, industry insights, and career growth,
             bridging the gap between learning and employment.
           </p>
@@ -346,13 +354,13 @@ const ExpertInstructors = () => {
         {features.map((feature) => (
           <FeatureCard key={feature.id}>
             <FeatureImage src={feature.imageUrl} alt={feature.title} />
-            <h4>{feature.title}</h4>
+            <h4 className="send">{feature.title}</h4>
           </FeatureCard>
         ))}
       </FeatureGrid>
 
       {/* Expert Instructors Section */}
-      <SectionTitle>OUR EXPERT INSTRUCTORS</SectionTitle>
+      <SectionTitle className="send">OUR EXPERT INSTRUCTORS</SectionTitle>
       <InstructorsGrid>
         {instructors.map((instructor) => (
           <InstructorCard key={instructor.id}>
@@ -370,7 +378,7 @@ const ExpertInstructors = () => {
                 </a>
               </SocialIcons>
             </InstructorImageWrapper>
-            <InstructorName>{instructor.name}</InstructorName>
+            <InstructorName className="heading">{instructor.name}</InstructorName>
             <HorizontalLine />
             <InstructorTitle>{instructor.title}</InstructorTitle>
           </InstructorCard>
@@ -380,14 +388,14 @@ const ExpertInstructors = () => {
       {/* Categories Section */}
       <CategoriesSection>
         <CategoriesLeft>
-          <h2 className="text-warning fw-bold">Explore Our Categories</h2>
-          <p>
+          <h2 className="text-warning h1 fw-bold heading">Explore Our Categories</h2>
+          <p className="send">
             Discover the most popular programming languages and technologies that help you master your career.
             Get hands-on experience in Python, Java, HTML, and more with our expert instructors.
           </p>
         </CategoriesLeft>
 
-        <CategoriesRight className="pt-4">
+        <CategoriesRight className="pt-5 mt-3">
           <ScrollingIconsWrapper>
             <ScrollingIcons>
               <CategoryCard><FaPython size={32} /><CategoryName>Python</CategoryName></CategoryCard>

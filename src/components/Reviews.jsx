@@ -3,18 +3,18 @@ import "./Reviews.css";
 
 function Reviews() {
   const reviews = [
-    { name: "Prathyusha Kolluri", role: "Software Engineer", img: "pra.jpg", text: "Techlynx Innovations Pvt. Ltd. provides an excellent work culture that values innovation, teamwork, and personal growth. The company offers abundant opportunities for learning and career development, making it a truly rewarding place to work." },
-    { name: "Renuka kolasanakoti", role: "HR", img: "re.jpg", text: "A beautiful platform for software as well HR career, if you have big dream into software fields -you can get it true through the TECHLYNX INNOVATIONS PRIVATE LIMITED COMPANY which is located in Guntur, Andhra Pradesh." },
-    { name: "vignasai chunduru", role: "HR", img: "vig.jpg", text: "Beautifull platform for Software as well HR career." },
-    { name: "Yogeshwarsai polisetty", role: "Team Leader", img: "yog.jpg", text: "Techlynx Innovations Pvt. Ltd gives us high-quality solutions at the right cost. The team is supportive, innovative and easy to work with. It's also a great place for students and freshers to grow and learn. A perfect partner for business looking for reliable and modern tech solutions." },
-    { name: "Meghana kunchanapalli", role: "Trainee", img: "me.jpg", text: "It is a good platform to start career and improve skills. the team is Friendly and supportive." },
-    { name: "Bushra Shaik", role: "Team Leader", img: "bu.jpg", text: "Great company with excellent service and a professional team. Highly recommended for freshers." },
-    { name: "chandra shekar kadiyala", role: "Trainee", img: "cha.jpg", text: "Techlynx Innovations Pvt Ltd is a leading IT company known for delivering innovative solutions. Their expertise in technology and commitment to quality is impressive. The team is professional and responsive, ensuring timely project delivery. Highly recommended for businesses seeking reliable tech partners." },
-    { name: "Sravani martham", role: "Trainee", img: "sra.jpg", text: "Techlynx Innovations Private limited is a Good company to start career,it is the best platform for freshers and management services is excellent .it's a wonderful to grow personally and professionally it is the best opportunities for learning and career development." },
-    { name: "jhansi vemula", role: "Trainee", img: "ja.jpg", text: "Techlynx Innovations Pvt Ltd is a workplace where we feel comfortable, supported, and respected.It offers us a good work-life balance.I appreciate the company because it prioritize capabilities and offer flexibility. Techlynx gives opportunities for career development and learning new skills." },
-    { name: "Chaitanaya gadiboena", role: "Trainee", img: "chai.jpg", text: "TECHLYNX INNOVATIONS PVT LTD IS THE BEST PLATFORM TO OURSELF." },
-    { name: "Harshith Sai bontha", role: "Team Leader", img: "harry.jpg", text: "I had a wonderful experience with this company. The team is highly professional, approachable, and always ready to assist with a positive attitude." },
-    { name: "Imam Chan Basha Shaik", role: "Team Leader", img: "chan.jpg", text: "It's a Good Platform to work and grow in life personally, professionally. Good working culture friendly atomsphere." },
+    { name: "Prathyusha Kolluri", role: "Operational Manager", img: "pra.jpg", text: "Techlynx Innovations Pvt.Ltd, provides an excellent work culture that values innovation, teamwork, personal growth. The company offers abundant opportunities for career development, making it a truly rewarding place to work." },
+    { name: "Renuka Kolasanakoti", role: "HR", img: "re.jpg", text: "A beautiful platform for software as well HR career. If you have big dream into software fields - you can get it true through. The TECHLYNX INNOVATIONS PRIVATE LIMITED COMPANY which is located in Guntur, 522002, Andhra Pradesh." },
+    { name: "Vignasai Chunduru", role: "HR", img: "vig.jpg", text: "Beautifull platform for Software as well as HR career. The company helps for learning and career development, Great place to work, friendly atomsphere. Techlynx Innovations Pvt.Ltd gives us high-quality solutions." },
+    { name: "Yogeswarsai Polisetty", role: "Team Leader", img: "yog.jpg", text: "Techlynx Innovations Pvt. Ltd gives us high-quality solutions at the right cost. It's also a great place for students, freshers to grow, learn. A perfect partner for business looking for reliable, modern tech solutions." },
+    { name: "Meghana Kunchanapalli", role: "Trainee", img: "me.jpg", text: "It is a good platform to start career. The team is Friendly and Supportive. Managers guide well and encourage growth. The company focuses on teamwork, innovation. Overall, it is a good company for career development." },
+    { name: "Bushra Shaik", role: "Team Leader", img: "bu.jpg", text: "Great company with excellent service and a professional team. Highly recommended for freshers. The company helps for learning and career development, Great place to work, friendly atomsphere. The company focuses on teamwork and innovation." },
+    { name: "Chandra Sekhar Kadiyala", role: "Trainee", img: "cha.jpg", text: "Techlynx Innovations Pvt Ltd is a leading IT company known for delivering innovative solutions. Their expertise in technology and commitment to quality is impressive. The team is professional and responsive, ensuring timely project delivery." },
+    { name: "Sravani Martham", role: "Trainee", img: "sra.jpg", text: "Techlynx Innovations Private limited is a Good company to start career, it is the best platform for freshers, management services is Excellent. It's a wonderful to grow personally and professionally it is the best opportunities for learning, career development." },
+    { name: "Jhansi Vemula", role: "Trainee", img: "ja.jpg", text: "Techlynx Innovations Pvt Ltd, we feel comfortable, supported, respected. It offers us a good work-life balance. I appreciate the company because it prioritize capabilities, offer flexibility. Techlynx gives opportunities for career development learning new skills." },
+    { name: "Chaitanya Gadiboena", role: "Trainee", img: "chai.jpg", text: "Techlynx Innovations pvt.ltd is the best platform to ourself. The company focuses on teamwork and innovation. The office culture is professional and respectful. Overall, it is a good company for career development. The company gives good exposure to real projects." },
+    { name: "Harshith Sai Bontha", role: "Team Leader", img: "harry.jpg", text: "I had a wonderful experience with this company. The team is highly professional, approachable, and always ready to assist with a positive attitude. Overall, it is a good company for career development. The company gives good exposure to real projects." },
+    { name: "Imam Chan Basha Shaik", role: "Team Leader", img: "chan.jpg", text: "It's a Good Platform to work and grow in life personally, professionally. Good working culture friendly atomsphere. Managers guide well and encourage growth. It is a nice place to learn and improve technical knowledge. The office culture is professional and respectful." },
   ];
 
   // 🔹 Responsive chunk size
@@ -25,6 +25,8 @@ function Reviews() {
       if (window.innerWidth < 640) {
         setChunkSize(1); // 📱 Phone → 1 card
       } else if (window.innerWidth < 992) {
+        setChunkSize(2); // 📱 Tablet → 2 cards
+      } else if (window.innerWidth < 1440) {
         setChunkSize(2); // 📱 Tablet → 2 cards
       } else {
         setChunkSize(3); // 💻 Laptop → 3 cards
