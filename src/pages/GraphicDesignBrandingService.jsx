@@ -1,116 +1,206 @@
-import React from "react";
-import { FaPaintBrush, FaPalette, FaPenNib, FaVectorSquare, FaBullhorn, FaImage } from "react-icons/fa";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const GraphicDesignBrandingService = () => {
+  const [openFaqIndex, setOpenFaqIndex] = useState(null);
+  const [activeStack, setActiveStack] = useState('design');
+
+  const toggleFaq = (index) => {
+    setOpenFaqIndex(openFaqIndex === index ? null : index);
+  };
+
+  const handleStackChange = (stack) => {
+    setActiveStack(stack);
+  };
+
+  const faqs = [
+    {
+      question: "What is included in your branding services?",
+      answer: "We provide logo design, color palette creation, typography, brand guidelines, and complete visual identity design."
+    },
+    {
+      question: "Can you redesign an existing brand identity?",
+      answer: "Yes, we help refresh or completely rebrand your business identity while maintaining brand recognition."
+    },
+    {
+      question: "Do you provide marketing materials?",
+      answer: "Absolutely. We design brochures, business cards, social media creatives, ads, presentations, and more."
+    },
+    {
+      question: "How do you ensure uniqueness in design?",
+      answer: "We conduct competitor research, brainstorm creative concepts, and ensure all designs reflect your brand values and story."
+    },
+    {
+      question: "Do you provide digital assets for online branding?",
+      answer: "Yes, we design digital assets such as banners, UI/UX elements, social media templates, and brand kits."
+    }
+  ];
+
+  const stacks = {
+    design: [
+      { name: "Adobe Photoshop", logo: "🖼️", description: "Photo editing and creative graphics" },
+      { name: "Adobe Illustrator", logo: "🎨", description: "Vector graphics and logo design" },
+      { name: "CorelDRAW", logo: "✏️", description: "Professional vector illustration" },
+      { name: "Canva", logo: "📱", description: "Quick and modern design templates" }
+    ],
+    branding: [
+      { name: "Logo Design", logo: "🌟", description: "Unique logos that represent your brand identity" },
+      { name: "Typography", logo: "🔤", description: "Custom font styling for consistency" },
+      { name: "Color Theory", logo: "🌈", description: "Strategic color palettes to match your brand personality" },
+      { name: "Brand Guidelines", logo: "📘", description: "Complete branding manuals for consistency" }
+    ],
+    digital: [
+      { name: "Social Media Design", logo: "📢", description: "Creative posts, ads, and stories for all platforms" },
+      { name: "UI/UX Design", logo: "💻", description: "Modern interfaces for websites and apps" },
+      { name: "Marketing Collateral", logo: "📰", description: "Brochures, flyers, presentations" },
+      { name: "Motion Graphics", logo: "🎞️", description: "Animated visuals and explainer videos" }
+    ]
+  };
+
   return (
-    <div className="service-page">
+    <div className="graphic-design-branding">
       {/* Hero Section */}
       <section className="hero">
-        <img
-          src="https://img.freepik.com/free-vector/graphic-design-abstract-concept-illustration_335657-3875.jpg"
-          alt="Graphic Design & Branding"
-          className="hero-image"
-        />
-        <div className="hero-text">
+        <div className="container">
           <h1>Graphic Design & Branding</h1>
-          <p>
-            Transform your ideas into visually stunning designs and build a strong brand identity that stands out in the market.
-          </p>
+          <p className="fs-5">Build a powerful and memorable brand identity with stunning visuals.</p>
+          <a href="#contact" className="btn">Request a Free Brand Audit</a>
         </div>
       </section>
 
-      {/* Overview */}
+      {/* Service Overview */}
       <section className="overview">
-        <h2>Overview</h2>
-        <p>
-          At Techlynx Innovations, we help businesses create impactful designs and cohesive branding strategies. 
-          From logos to full brand guidelines, we ensure your brand communicates clearly, consistently, 
-          and creatively across all platforms.
-        </p>
+        <div className="container mb-5">
+          <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                <Link to="/services">Services</Link>
+              </li>
+              <li className="breadcrumb-item active" aria-current="page">
+                Graphic Design & Branding
+              </li>
+            </ol>
+          </nav>
+        </div>
+        <div className="container">
+          <h2 className="text-center">Creative Design That Inspires</h2>
+          <div className="overview-content">
+            <div className="overview-text">
+              <p className="text-body fs-5">At Techlynx Innovations, we help brands stand out with unique, modern, and impactful graphic designs.</p>
+              <p className="text-body fs-5">Our team creates everything from logos and marketing materials to full branding packages that establish a lasting identity.</p>
+              <p className="text-body fs-5">We blend creativity with strategy to make your brand visually consistent across digital and print platforms.</p>
+            </div>
+            <div className="overview-image">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1350&q=80" alt="Graphic Design" />
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* Offerings */}
+      {/* Service Offerings */}
       <section className="offerings">
-        <h2>Our Graphic Design & Branding Services</h2>
-        <div className="offering-cards">
-          <div className="offering-card">
-            <FaPaintBrush className="icon" />
-            <h3>Logo Design</h3>
-            <p>Unique and memorable logos that capture your brand’s essence.</p>
-          </div>
-          <div className="offering-card">
-            <FaPalette className="icon" />
-            <h3>Brand Identity</h3>
-            <p>Complete branding packages including color schemes, fonts, and style guides.</p>
-          </div>
-          <div className="offering-card">
-            <FaPenNib className="icon" />
-            <h3>Print Design</h3>
-            <p>Eye-catching brochures, flyers, posters, and business cards.</p>
-          </div>
-          <div className="offering-card">
-            <FaVectorSquare className="icon" />
-            <h3>UI Graphics</h3>
-            <p>Custom graphics and illustrations tailored for websites and apps.</p>
-          </div>
-          <div className="offering-card">
-            <FaBullhorn className="icon" />
-            <h3>Marketing Collateral</h3>
-            <p>Designs for advertisements, social media campaigns, and promotions.</p>
-          </div>
-          <div className="offering-card">
-            <FaImage className="icon" />
-            <h3>Packaging Design</h3>
-            <p>Creative product packaging that communicates value and attracts buyers.</p>
+        <div className="container">
+          <h2 className="text-center">Our Graphic Design & Branding Services</h2>
+          <p className="text-center text-body">Creative solutions to build and elevate your brand</p>
+          <div className="offering-grid">
+            <div className="offering-card">
+              <div className="icon">🌟</div>
+              <h3>Logo & Identity</h3>
+              <p className="text-primary fs-5">Unique logo designs and complete brand identity kits.</p>
+              <ul>
+                <li>Logo design</li>
+                <li>Typography</li>
+                <li>Color palette</li>
+              </ul>
+            </div>
+            <div className="offering-card">
+              <div className="icon">📢</div>
+              <h3>Marketing Materials</h3>
+              <p className="text-primary fs-5">Print and digital designs that promote your business effectively.</p>
+              <ul>
+                <li>Brochures & flyers</li>
+                <li>Business cards</li>
+                <li>Posters & ads</li>
+              </ul>
+            </div>
+            <div className="offering-card">
+              <div className="icon">📱</div>
+              <h3>Digital Branding</h3>
+              <p className="text-primary fs-5">Engaging designs for websites and social platforms.</p>
+              <ul>
+                <li>Social media creatives</li>
+                <li>Web banners</li>
+                <li>Email templates</li>
+              </ul>
+            </div>
+            <div className="offering-card">
+              <div className="icon">🎞️</div>
+              <h3>Motion Graphics</h3>
+              <p className="text-primary fs-5">Dynamic animations and videos to bring your brand to life.</p>
+              <ul>
+                <li>Explainer videos</li>
+                <li>Animated logos</li>
+                <li>Promotional videos</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Process */}
-      <section className="process">
-        <h2>Our Process</h2>
-        <ol>
-          <li>Understand your business, audience, and goals</li>
-          <li>Research competitors and identify design direction</li>
-          <li>Brainstorm and create initial design concepts</li>
-          <li>Refine based on feedback and ensure brand consistency</li>
-          <li>Deliver final designs in multiple formats</li>
-        </ol>
+      {/* Tech Stack Expertise */}
+      <section className="stacks">
+        <div className="container">
+          <h2 className="text-center">Our Design Tools & Expertise</h2>
+          <p className="text-center text-dark f5-5">We craft designs using industry-leading tools</p>
+          <div className="stack-tabs">
+            <button className={`stack-tab ${activeStack === 'design' ? 'active' : ''}`} onClick={() => handleStackChange('design')}>
+              Design Tools
+            </button>
+            <button className={`stack-tab ${activeStack === 'branding' ? 'active' : ''}`} onClick={() => handleStackChange('branding')}>
+              Branding
+            </button>
+            <button className={`stack-tab ${activeStack === 'digital' ? 'active' : ''}`} onClick={() => handleStackChange('digital')}>
+              Digital Media
+            </button>
+          </div>
+          <div className="tech-grid">
+            {stacks[activeStack].map((tech, index) => (
+              <div className="tech-card" key={index}>
+                <div className="tech-logo">{tech.logo}</div>
+                <h3>{tech.name}</h3>
+                <p className="text-dark">{tech.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
-      {/* Pricing */}
-      <section className="pricing">
-        <h2>Pricing</h2>
-        <p>
-          Pricing depends on the scope of design and branding needs. 
-          We offer flexible packages for startups, growing businesses, and enterprise clients.
-        </p>
-      </section>
-
-      {/* FAQs */}
+      {/* FAQ */}
       <section className="faq">
-        <h2>Frequently Asked Questions</h2>
-        <div className="faq-item">
-          <h3>Do you provide complete brand guidelines?</h3>
-          <p>Yes, we deliver detailed brand identity guidelines including logos, fonts, and usage rules.</p>
-        </div>
-        <div className="faq-item">
-          <h3>Can you redesign my existing brand?</h3>
-          <p>Absolutely! We specialize in refreshing and modernizing existing brand identities.</p>
-        </div>
-        <div className="faq-item">
-          <h3>Do you also design for social media?</h3>
-          <p>Yes, we create branded graphics for all major social platforms to keep your brand consistent.</p>
+        <div className="container">
+          <h2 className="text-center">Graphic Design & Branding FAQs</h2>
+          {faqs.map((faq, index) => (
+            <div className="faq-item" key={index}>
+              <div className="faq-question" onClick={() => toggleFaq(index)}>
+                {faq.question} <span>{openFaqIndex === index ? '-' : '+'}</span>
+              </div>
+              {openFaqIndex === index && (
+                <div className="faq-answer active">
+                  <p>{faq.answer}</p>
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </section>
 
       {/* CTA */}
-      <section className="cta">
-        <h2>Build a Brand That Stands Out</h2>
-        <p>
-          Partner with Techlynx Innovations to craft powerful designs and branding strategies that connect with your audience.
-        </p>
-        <button className="cta-button">Contact Us</button>
+      <section className="cta" id="contact">
+        <div className="container">
+          <h2>Let’s Design Your Brand Story</h2>
+          <p>Contact us today to create a unique and powerful brand identity that resonates with your audience.</p>
+          <Link to="/contact-us" className="btn">Get in Touch</Link>
+        </div>
       </section>
 
       <style jsx>{`

@@ -1,117 +1,206 @@
-import React from "react";
-import { FaCube, FaCubes, FaDraftingCompass, FaVideo, FaVrCardboard, FaFilm } from "react-icons/fa";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const ThreeDModelingAnimationService = () => {
+  const [openFaqIndex, setOpenFaqIndex] = useState(null);
+  const [activeStack, setActiveStack] = useState('3d');
+
+  const toggleFaq = (index) => {
+    setOpenFaqIndex(openFaqIndex === index ? null : index);
+  };
+
+  const handleStackChange = (stack) => {
+    setActiveStack(stack);
+  };
+
+  const faqs = [
+    {
+      question: "What industries do you serve with 3D modeling?",
+      answer: "We provide 3D solutions for gaming, films, advertising, architecture, product design, e-commerce, and education."
+    },
+    {
+      question: "Do you create product animations?",
+      answer: "Yes, we create realistic 3D product animations for marketing, prototyping, and presentations."
+    },
+    {
+      question: "Can you design for AR/VR experiences?",
+      answer: "Absolutely! We build immersive 3D assets optimized for AR/VR and Metaverse applications."
+    },
+    {
+      question: "Do you offer custom character design?",
+      answer: "Yes, our artists specialize in creating unique characters, environments, and animations."
+    },
+    {
+      question: "What software do you use?",
+      answer: "We use Blender, Autodesk Maya, Cinema4D, Unity, Unreal Engine, and Adobe After Effects."
+    }
+  ];
+
+  const stacks = {
+    "3d": [
+      { name: "Blender", logo: "🐵", description: "Open-source 3D modeling, texturing, and animation" },
+      { name: "Autodesk Maya", logo: "🎨", description: "High-end 3D modeling, rigging & animation" },
+      { name: "Cinema 4D", logo: "🎬", description: "Motion graphics and 3D visualizations" },
+      { name: "ZBrush", logo: "🖌️", description: "Digital sculpting for characters and objects" }
+    ],
+    "animation": [
+      { name: "After Effects", logo: "✨", description: "2D/3D compositing and motion design" },
+      { name: "Unity 3D", logo: "🎮", description: "Real-time 3D environments & game animations" },
+      { name: "Unreal Engine", logo: "⚡", description: "Cinematic animation & immersive experiences" },
+      { name: "Moho/Spine", logo: "🦴", description: "2D character rigging & skeletal animation" }
+    ],
+    "visuals": [
+      { name: "Rendering Engines", logo: "🌐", description: "Cycles, V-Ray, Arnold for realistic rendering" },
+      { name: "Architectural Viz", logo: "🏠", description: "Interior, exterior, and walkthrough models" },
+      { name: "Product Demos", logo: "📦", description: "Interactive 3D prototypes & ads" },
+      { name: "AR/VR Assets", logo: "👓", description: "Immersive 3D content for AR/VR apps" }
+    ]
+  };
+
   return (
-    <div className="service-page">
+    <div className="modeling-animation">
       {/* Hero Section */}
       <section className="hero">
-        <img
-          src="https://img.freepik.com/free-vector/3d-animation-concept-illustration_114360-9195.jpg"
-          alt="3D Modeling & Animation"
-          className="hero-image"
-        />
-        <div className="hero-text">
-          <h1>3D Modeling & Animation</h1>
-          <p>
-            Bring ideas to life with stunning 3D models and animations that captivate, engage, and inspire audiences.
-          </p>
+        <div className="container">
+          <h1>3D Modeling & Animation Services</h1>
+          <p className="fs-5">Bring your ideas to life with stunning 3D models, animations, and immersive experiences.</p>
+          <a href="#contact" className="btn">Request Demo</a>
         </div>
       </section>
 
-      {/* Overview */}
+      {/* Service Overview */}
       <section className="overview">
-        <h2>Overview</h2>
-        <p>
-          At Techlynx Innovations, we create high-quality 3D models and animations tailored for 
-          industries like gaming, film, architecture, marketing, and product design. 
-          Our creative team transforms concepts into immersive visuals with attention to detail and realism.
-        </p>
+        <div className="container mb-5">
+          <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                <Link to="/services">Services</Link>
+              </li>
+              <li className="breadcrumb-item active" aria-current="page">
+                3D Modeling & Animation
+              </li>
+            </ol>
+          </nav>
+        </div>
+        <div className="container">
+          <h2 className="text-center">Visual Storytelling Through 3D</h2>
+          <div className="overview-content">
+            <div className="overview-text">
+              <p className="text-body fs-5">At Techlynx Innovations, we design realistic 3D assets and animations that elevate your brand, products, and projects.</p>
+              <p className="text-body fs-5">From character modeling and motion graphics to architectural visualization and AR/VR experiences, we craft visually stunning solutions.</p>
+              <p className="text-body fs-5">Our team uses industry-leading tools to deliver precision, creativity, and immersive digital storytelling.</p>
+            </div>
+            <div className="overview-image">
+              <img src="https://5.imimg.com/data5/SELLER/Default/2024/3/397118331/XO/GP/QL/2825084/3d-modeling-animation-services-1000x1000.jpeg" alt="3D Modeling & Animation" />
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* Offerings */}
+      {/* Service Offerings */}
       <section className="offerings">
-        <h2>Our 3D Modeling & Animation Services</h2>
-        <div className="offering-cards">
-          <div className="offering-card">
-            <FaCube className="icon" />
-            <h3>3D Modeling</h3>
-            <p>Accurate and detailed 3D models for products, architecture, and characters.</p>
-          </div>
-          <div className="offering-card">
-            <FaCubes className="icon" />
-            <h3>Character Design</h3>
-            <p>Creative character modeling and rigging for games, films, and animations.</p>
-          </div>
-          <div className="offering-card">
-            <FaVideo className="icon" />
-            <h3>3D Animation</h3>
-            <p>Dynamic animations that bring stories and products to life with fluid motion.</p>
-          </div>
-          <div className="offering-card">
-            <FaDraftingCompass className="icon" />
-            <h3>Architectural Visualization</h3>
-            <p>Photorealistic 3D renders and walkthroughs for architectural projects.</p>
-          </div>
-          <div className="offering-card">
-            <FaFilm className="icon" />
-            <h3>VFX & Motion Graphics</h3>
-            <p>Special effects and motion graphics for films, ads, and presentations.</p>
-          </div>
-          <div className="offering-card">
-            <FaVrCardboard className="icon" />
-            <h3>AR/VR 3D Content</h3>
-            <p>Immersive 3D models and animations for AR and VR experiences.</p>
+        <div className="container">
+          <h2 className="text-center">Our 3D & Animation Services</h2>
+          <p className="text-center text-body">Creative 3D solutions for business, entertainment, and technology</p>
+          <div className="offering-grid">
+            <div className="offering-card">
+              <div className="icon">🖌️</div>
+              <h3>3D Modeling</h3>
+              <p className="text-primary fs-5">Custom 3D assets for products, architecture, and characters.</p>
+              <ul>
+                <li>Product design</li>
+                <li>Architectural visualization</li>
+                <li>Game assets</li>
+              </ul>
+            </div>
+            <div className="offering-card">
+              <div className="icon">🎬</div>
+              <h3>Animation</h3>
+              <p className="text-primary fs-5">Cinematic animations for storytelling and branding.</p>
+              <ul>
+                <li>Character animation</li>
+                <li>Explainer videos</li>
+                <li>Motion graphics</li>
+              </ul>
+            </div>
+            <div className="offering-card">
+              <div className="icon">🏗️</div>
+              <h3>Visualizations</h3>
+              <p className="text-primary fs-5">3D environments for real estate, ads, and simulations.</p>
+              <ul>
+                <li>Interior & exterior walkthroughs</li>
+                <li>Simulation design</li>
+                <li>AR/VR experiences</li>
+              </ul>
+            </div>
+            <div className="offering-card">
+              <div className="icon">📦</div>
+              <h3>Product Animation</h3>
+              <p className="text-primary fs-5">Showcase products with realistic 3D demos.</p>
+              <ul>
+                <li>Interactive product views</li>
+                <li>Advertising visuals</li>
+                <li>Prototype visualization</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Process */}
-      <section className="process">
-        <h2>Our Process</h2>
-        <ol>
-          <li>Understand client requirements and objectives</li>
-          <li>Create initial sketches, concepts, and storyboards</li>
-          <li>Develop detailed 3D models and environments</li>
-          <li>Apply textures, lighting, and animation techniques</li>
-          <li>Review, refine, and finalize with client feedback</li>
-          <li>Deliver production-ready models and animations</li>
-        </ol>
+      {/* Tech Stack Expertise */}
+      <section className="stacks">
+        <div className="container">
+          <h2 className="text-center">Our 3D & Animation Expertise</h2>
+          <p className="text-center text-dark f5-5">Cutting-edge tools and platforms for world-class visuals</p>
+          <div className="stack-tabs">
+            <button className={`stack-tab ${activeStack === '3d' ? 'active' : ''}`} onClick={() => handleStackChange('3d')}>
+              3D Design
+            </button>
+            <button className={`stack-tab ${activeStack === 'animation' ? 'active' : ''}`} onClick={() => handleStackChange('animation')}>
+              Animation
+            </button>
+            <button className={`stack-tab ${activeStack === 'visuals' ? 'active' : ''}`} onClick={() => handleStackChange('visuals')}>
+              Visualization
+            </button>
+          </div>
+          <div className="tech-grid">
+            {stacks[activeStack].map((tech, index) => (
+              <div className="tech-card" key={index}>
+                <div className="tech-logo">{tech.logo}</div>
+                <h3>{tech.name}</h3>
+                <p className="text-dark">{tech.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
-      {/* Pricing */}
-      <section className="pricing">
-        <h2>Pricing</h2>
-        <p>
-          Pricing varies based on complexity, project scope, and rendering needs. 
-          We offer flexible packages for businesses, startups, and creative agencies.
-        </p>
-      </section>
-
-      {/* FAQs */}
+      {/* FAQ */}
       <section className="faq">
-        <h2>Frequently Asked Questions</h2>
-        <div className="faq-item">
-          <h3>Do you provide animations for marketing videos?</h3>
-          <p>Yes, we create 3D animations tailored for advertisements, explainer videos, and branding.</p>
-        </div>
-        <div className="faq-item">
-          <h3>Can you design 3D assets for games?</h3>
-          <p>Absolutely! We develop optimized 3D models and characters for various gaming platforms.</p>
-        </div>
-        <div className="faq-item">
-          <h3>Do you support AR/VR projects?</h3>
-          <p>Yes, we design immersive 3D content for augmented and virtual reality applications.</p>
+        <div className="container">
+          <h2 className="text-center">3D Modeling & Animation FAQs</h2>
+          {faqs.map((faq, index) => (
+            <div className="faq-item" key={index}>
+              <div className="faq-question" onClick={() => toggleFaq(index)}>
+                {faq.question} <span>{openFaqIndex === index ? '-' : '+'}</span>
+              </div>
+              {openFaqIndex === index && (
+                <div className="faq-answer active">
+                  <p>{faq.answer}</p>
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </section>
 
       {/* CTA */}
-      <section className="cta">
-        <h2>Turn Your Vision into 3D Reality</h2>
-        <p>
-          Collaborate with Techlynx Innovations to create stunning 3D models and animations that inspire your audience.
-        </p>
-        <button className="cta-button">Contact Us</button>
+      <section className="cta" id="contact">
+        <div className="container">
+          <h2>Want Stunning 3D Visuals?</h2>
+          <p>Let us design engaging 3D models and animations that make your brand unforgettable.</p>
+          <Link to="/contact-us" className="btn">Get Started</Link>
+        </div>
       </section>
 
       <style jsx>{`
@@ -286,18 +375,18 @@ const ThreeDModelingAnimationService = () => {
           font-weight: bold;
         }
 
-        .solutions { background: white; }
+        .stacks { background: white; }
 
-        .solution-tabs {
+        .stack-tabs {
           display: flex;
           justify-content: center;
           margin: 2.5rem 0;
           flex-wrap: wrap;
         }
 
-        .solution-tab {
+        .stack-tab {
           padding: 0.9rem 2.2rem;
-          background: #a061ffff;
+          background: #ff6f61;
           border: none;
           font-weight: 600;
           cursor: pointer;
@@ -307,8 +396,8 @@ const ThreeDModelingAnimationService = () => {
           font-size: 1.1rem;
         }
 
-        .solution-tab.active {
-          background: #ff4757;
+        .stack-tab.active {
+          background: var(--secondary);
           color: white;
         }
 
@@ -587,7 +676,8 @@ const ThreeDModelingAnimationService = () => {
           .plan.featured { transform: scale(1); }
           section { padding: 3.5rem 0; }
         }
-      `}</style>      
+      `}</style>
+
     </div>
   );
 };

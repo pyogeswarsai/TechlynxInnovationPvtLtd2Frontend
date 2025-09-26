@@ -45,11 +45,12 @@ function Wedo() {
         >
           Proactive Recruitment Strategy
         </h1>
-        <p className="lead text-black w-100 mt-3" data-aos="fade-up">
+<p className="lead main-topic   text-black w-100 mt-3" data-aos="fade-up">
           We have divided our process into three categories:{" "}
           <strong>Students</strong>, <strong>Freshers</strong>, and{" "}
           <strong>Experienced </strong>. <br />
-          Select the category that suits you best to explore the step-by-step
+        </p>
+        <p>  Select the category that suits you best to explore the step-by-step
           process. By choosing this company, you are taking the right path
           towards your career growth.
         </p>

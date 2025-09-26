@@ -1,116 +1,206 @@
-import React from "react";
-import { FaPenFancy, FaFileAlt, FaBullhorn, FaBookOpen, FaEdit, FaGlobe } from "react-icons/fa";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const ContentWritingService = () => {
+  const [openFaqIndex, setOpenFaqIndex] = useState(null);
+  const [activeStack, setActiveStack] = useState('web');
+
+  const toggleFaq = (index) => {
+    setOpenFaqIndex(openFaqIndex === index ? null : index);
+  };
+
+  const handleStackChange = (stack) => {
+    setActiveStack(stack);
+  };
+
+  const faqs = [
+    {
+      question: "What types of content do you write?",
+      answer: "We provide blog posts, website content, product descriptions, social media content, ad copy, whitepapers, and more."
+    },
+    {
+      question: "Do you write SEO-optimized content?",
+      answer: "Yes, all our content is SEO-optimized to improve search visibility and drive organic traffic."
+    },
+    {
+      question: "Can you handle technical writing?",
+      answer: "Absolutely. Our writers specialize in technical documentation, tutorials, case studies, and industry-specific content."
+    },
+    {
+      question: "Do you offer content for startups?",
+      answer: "Yes, we craft brand-focused content strategies to help startups build authority and engage their audience effectively."
+    },
+    {
+      question: "How do you ensure originality?",
+      answer: "We use plagiarism detection tools and guarantee 100% original, tailored content for every client."
+    }
+  ];
+
+  const stacks = {
+    web: [
+      { name: "SEO Tools", logo: "🔍", description: "Yoast, SEMrush, Ahrefs for SEO-friendly writing" },
+      { name: "CMS Platforms", logo: "💻", description: "WordPress, Wix, HubSpot for content publishing" },
+      { name: "Web Copywriting", logo: "📝", description: "Landing pages, service pages, CTAs" },
+      { name: "Content Strategy", logo: "📊", description: "Keyword planning & topic research" }
+    ],
+    marketing: [
+      { name: "Social Media Content", logo: "📱", description: "Creative posts, captions & ad campaigns" },
+      { name: "Email Copywriting", logo: "📧", description: "Persuasive newsletters & promotional emails" },
+      { name: "Ad Copy", logo: "🎯", description: "Google Ads, Facebook Ads, and marketing campaigns" },
+      { name: "Brand Storytelling", logo: "📖", description: "Engaging narratives that connect with audiences" }
+    ],
+    professional: [
+      { name: "Technical Writing", logo: "⚙️", description: "Documentation, guides, and manuals" },
+      { name: "Whitepapers", logo: "📄", description: "In-depth reports for businesses" },
+      { name: "Case Studies", logo: "📚", description: "Showcasing real-world client success stories" },
+      { name: "Thought Leadership", logo: "💡", description: "Expert content for industry authority" }
+    ]
+  };
+
   return (
-    <div className="service-page">
+    <div className="content-writing">
       {/* Hero Section */}
       <section className="hero">
-        <img
-          src="https://img.freepik.com/free-vector/content-writing-concept-illustration_114360-8929.jpg"
-          alt="Content Writing & Copywriting"
-          className="hero-image"
-        />
-        <div className="hero-text">
-          <h1>Content Writing & Copywriting</h1>
-          <p>
-            Craft powerful content and persuasive copy that engages your audience, builds trust, and drives conversions.
-          </p>
+        <div className="container">
+          <h1>Content Writing & Copywriting Services</h1>
+          <p className="fs-5">Engaging, SEO-driven, and impactful content that builds your brand voice.</p>
+          <a href="#contact" className="btn">Request Free Sample</a>
         </div>
       </section>
 
-      {/* Overview */}
+      {/* Service Overview */}
       <section className="overview">
-        <h2>Overview</h2>
-        <p>
-          At Techlynx Innovations, our expert writers deliver compelling content and impactful copy 
-          tailored to your brand voice. From blogs and articles to marketing campaigns and product descriptions, 
-          we help businesses communicate effectively and grow their digital presence.
-        </p>
+        <div className="container mb-5">
+          <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                <Link to="/services">Services</Link>
+              </li>
+              <li className="breadcrumb-item active" aria-current="page">
+                Content Writing
+              </li>
+            </ol>
+          </nav>
+        </div>
+        <div className="container">
+          <h2 className="text-center">Words That Work for Your Business</h2>
+          <div className="overview-content">
+            <div className="overview-text">
+              <p className="text-body fs-5">At Techlynx Innovations, we create content that engages, converts, and strengthens your digital presence.</p>
+              <p className="text-body fs-5">Our writers specialize in SEO-friendly content, technical documentation, storytelling, and marketing copy tailored to your industry.</p>
+              <p className="text-body fs-5">Whether you're a startup or an enterprise, we provide content strategies that drive visibility and results.</p>
+            </div>
+            <div className="overview-image">
+              <img src="https://tse4.mm.bing.net/th/id/OIP.sQ-8pezX_iSf9ANzPE99WgHaFj?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Content Writing" />
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* Offerings */}
+      {/* Service Offerings */}
       <section className="offerings">
-        <h2>Our Writing & Copywriting Services</h2>
-        <div className="offering-cards">
-          <div className="offering-card">
-            <FaPenFancy className="icon" />
-            <h3>Creative Copywriting</h3>
-            <p>Engaging copy for ads, landing pages, and marketing campaigns.</p>
-          </div>
-          <div className="offering-card">
-            <FaFileAlt className="icon" />
-            <h3>Content Writing</h3>
-            <p>High-quality blogs, articles, and web content to boost your brand.</p>
-          </div>
-          <div className="offering-card">
-            <FaBullhorn className="icon" />
-            <h3>SEO Copywriting</h3>
-            <p>Content optimized with keywords to improve search rankings and visibility.</p>
-          </div>
-          <div className="offering-card">
-            <FaBookOpen className="icon" />
-            <h3>Technical Writing</h3>
-            <p>Clear and concise documentation, manuals, and guides for your products.</p>
-          </div>
-          <div className="offering-card">
-            <FaEdit className="icon" />
-            <h3>Editing & Proofreading</h3>
-            <p>Ensure content accuracy, grammar, and brand tone consistency.</p>
-          </div>
-          <div className="offering-card">
-            <FaGlobe className="icon" />
-            <h3>Website & Social Media Content</h3>
-            <p>Compelling content strategies for digital platforms to engage your audience.</p>
+        <div className="container">
+          <h2 className="text-center">Our Content Writing Services</h2>
+          <p className="text-center text-body">Professional writing solutions for all business needs</p>
+          <div className="offering-grid">
+            <div className="offering-card">
+              <div className="icon">📝</div>
+              <h3>Website Content</h3>
+              <p className="text-primary fs-5">Clear and persuasive copy for websites and landing pages.</p>
+              <ul>
+                <li>Home & About pages</li>
+                <li>Service pages</li>
+                <li>Product descriptions</li>
+              </ul>
+            </div>
+            <div className="offering-card">
+              <div className="icon">📖</div>
+              <h3>Blogs & Articles</h3>
+              <p className="text-primary fs-5">SEO-optimized blogs to engage and educate your audience.</p>
+              <ul>
+                <li>Industry blogs</li>
+                <li>How-to guides</li>
+                <li>Thought leadership pieces</li>
+              </ul>
+            </div>
+            <div className="offering-card">
+              <div className="icon">📱</div>
+              <h3>Marketing Copy</h3>
+              <p className="text-primary fs-5">Engaging ad copy, social content, and email campaigns.</p>
+              <ul>
+                <li>Social media posts</li>
+                <li>Ad campaigns</li>
+                <li>Email newsletters</li>
+              </ul>
+            </div>
+            <div className="offering-card">
+              <div className="icon">⚙️</div>
+              <h3>Technical Writing</h3>
+              <p className="text-primary fs-5">Accurate, detailed, and user-friendly documentation.</p>
+              <ul>
+                <li>User manuals</li>
+                <li>Case studies</li>
+                <li>Whitepapers</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Process */}
-      <section className="process">
-        <h2>Our Process</h2>
-        <ol>
-          <li>Understand your brand, audience, and goals</li>
-          <li>Research topics, competitors, and SEO strategies</li>
-          <li>Write original, engaging, and relevant content</li>
-          <li>Edit, proofread, and align with brand tone</li>
-          <li>Deliver optimized content ready for publishing</li>
-        </ol>
+      {/* Tech Stack Expertise */}
+      <section className="stacks">
+        <div className="container">
+          <h2 className="text-center">Our Content Expertise</h2>
+          <p className="text-center text-dark f5-5">Tools and strategies we use for impactful writing</p>
+          <div className="stack-tabs">
+            <button className={`stack-tab ${activeStack === 'web' ? 'active' : ''}`} onClick={() => handleStackChange('web')}>
+              Web Content
+            </button>
+            <button className={`stack-tab ${activeStack === 'marketing' ? 'active' : ''}`} onClick={() => handleStackChange('marketing')}>
+              Marketing Copy
+            </button>
+            <button className={`stack-tab ${activeStack === 'professional' ? 'active' : ''}`} onClick={() => handleStackChange('professional')}>
+              Professional Writing
+            </button>
+          </div>
+          <div className="tech-grid">
+            {stacks[activeStack].map((tech, index) => (
+              <div className="tech-card" key={index}>
+                <div className="tech-logo">{tech.logo}</div>
+                <h3>{tech.name}</h3>
+                <p className="text-dark">{tech.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
-      {/* Pricing */}
-      <section className="pricing">
-        <h2>Pricing</h2>
-        <p>
-          Pricing depends on word count, complexity, and type of content. 
-          We offer flexible packages for blogs, web pages, ad copy, and more.
-        </p>
-      </section>
-
-      {/* FAQs */}
+      {/* FAQ */}
       <section className="faq">
-        <h2>Frequently Asked Questions</h2>
-        <div className="faq-item">
-          <h3>Do you provide SEO-optimized content?</h3>
-          <p>Yes, all our content is optimized for search engines to maximize visibility.</p>
-        </div>
-        <div className="faq-item">
-          <h3>Can you adapt to different industries?</h3>
-          <p>Absolutely! Our writers have experience across diverse sectors and niches.</p>
-        </div>
-        <div className="faq-item">
-          <h3>What if I need revisions?</h3>
-          <p>We provide multiple revisions to ensure the final content meets your expectations.</p>
+        <div className="container">
+          <h2 className="text-center">Content Writing FAQs</h2>
+          {faqs.map((faq, index) => (
+            <div className="faq-item" key={index}>
+              <div className="faq-question" onClick={() => toggleFaq(index)}>
+                {faq.question} <span>{openFaqIndex === index ? '-' : '+'}</span>
+              </div>
+              {openFaqIndex === index && (
+                <div className="faq-answer active">
+                  <p>{faq.answer}</p>
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </section>
 
       {/* CTA */}
-      <section className="cta">
-        <h2>Boost Your Brand with Words That Sell</h2>
-        <p>
-          Get in touch with us today for impactful content and copywriting that elevates your business.
-        </p>
-        <button className="cta-button">Contact Us</button>
+      <section className="cta" id="contact">
+        <div className="container">
+          <h2>Looking for Impactful Content?</h2>
+          <p>Let us help you craft engaging and SEO-driven content that grows your brand and connects with your audience.</p>
+          <Link to="/contact-us" className="btn">Get in Touch</Link>
+        </div>
       </section>
 
       <style jsx>{`
@@ -285,18 +375,18 @@ const ContentWritingService = () => {
           font-weight: bold;
         }
 
-        .solutions { background: white; }
+        .stacks { background: white; }
 
-        .solution-tabs {
+        .stack-tabs {
           display: flex;
           justify-content: center;
           margin: 2.5rem 0;
           flex-wrap: wrap;
         }
 
-        .solution-tab {
+        .stack-tab {
           padding: 0.9rem 2.2rem;
-          background: #a061ffff;
+          background: #ff6f61;
           border: none;
           font-weight: 600;
           cursor: pointer;
@@ -306,8 +396,8 @@ const ContentWritingService = () => {
           font-size: 1.1rem;
         }
 
-        .solution-tab.active {
-          background: #ff4757;
+        .stack-tab.active {
+          background: var(--secondary);
           color: white;
         }
 

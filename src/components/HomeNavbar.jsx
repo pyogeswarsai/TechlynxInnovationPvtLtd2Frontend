@@ -78,7 +78,7 @@ function HomeNavbar() {
                 </li>
 
                 <li className="dropdown-submenu">
-                  <Link to="" className=" dropdown-item">Programming Languages & Frameworks</Link>
+                  <Link to="" className=" dropdown-item">Programming Languages <br/> & Frameworks</Link>
                   <ul className="dropdown-menu">
                     <li><Link to="/courses/java" className="dropdown-item">Java</Link></li>
                     <li><Link to="/courses/python" className="dropdown-item">Python</Link></li>

@@ -98,43 +98,43 @@ const services = [
     title: "Custom API Development & Integration",
     description: "We develop robust and scalable APIs tailored to your business needs and integrate them with your existing systems, enabling smooth data flow and automation.",
     path: "custom-api-development",
-    vidName: "/Hr_service.mp4"
+    vidName: "/Custom_API.mp4"
   },
   {
     title: "IoT Solutions",
     description: "From smart devices to industrial automation, we provide end-to-end IoT solutions that collect, analyze, and act on real-time data for smarter operations.",
     path: "iot-solutions",
-    vidName: "/Hr_service.mp4"
+    vidName: "/IoT.mp4"
   },
   {
     title: "Content Writing & Copywriting",
     description: "Our creative team crafts compelling content and copy that engages audiences, strengthens brand voice, and drives meaningful results.",
     path: "content-writing",
-    vidName: "/Hr_service.mp4"
+    vidName: "/Content_Writing.mp4"
   },
   {
     title: "Video Editing & Production",
     description: "We produce professional videos with high-quality editing, animation, and effects to communicate your message effectively across all platforms.",
     path: "video-editing",
-    vidName: "/Hr_service.mp4"
+    vidName: "/Video_editing.mp4"
   },
   {
     title: "Game Development",
     description: "Our team develops engaging games for web, mobile, and desktop, combining storytelling, graphics, and gameplay mechanics to captivate players.",
     path: "game-development",
-    vidName: "/Hr_service.mp4"
+    vidName: "/game_development.mp4"
   },
   {
     title: "Graphic Design & Branding",
     description: "We create memorable logos, brand assets, and graphic designs that visually represent your brand and leave a lasting impression.",
     path: "graphic-design",
-    vidName: "/Hr_service.mp4"
+    vidName: "/Graphic_design.mp4"
   },
   {
     title: "3D Modeling & Animation",
     description: "We design realistic 3D models and animations for games, advertising, architecture, and more, turning concepts into visually stunning realities.",
     path: "3d-modeling",
-    vidName: "/Hr_service.mp4"
+    vidName: "/Modeling.mp4"
   },
 ];
 

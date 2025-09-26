@@ -7,7 +7,7 @@ body,
   color: #222;
   margin: 0;
   padding: 0;
-  background: #f8f9fa;
+
 }
 
 /* ===============================
@@ -17,6 +17,7 @@ main.row {
   display: flex;
   flex: 1;
   min-height: 100vh; /* full screen height */
+  
 }
 
 /* ===============================
@@ -64,8 +65,8 @@ main.row {
    Form Labels & Inputs
 ================================ */
 .form-label {
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: bold;
   margin-bottom: 6px;
 }
 .form-control,
@@ -142,7 +143,8 @@ textarea:focus {
 
   /* ✅ Add margin & card effect to form on mobile */
   .col-12.col-md-8 {
-    margin: 8px; /* same as Bootstrap m-2 */
+    /* margin: 8px; */
+     /* same as Bootstrap m-2 */
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
@@ -155,4 +157,16 @@ textarea:focus {
   min-width: 200px;
   padding: 10px 20px;
   border-radius: 0;
+}
+.text-form{
+  background: linear-gradient(130deg, #5eb2f2, #fda085, #9a5bd9);
+
+}
+@media (min-width: 2560px) {
+  main.row {
+    width: 100% ;   /* keep total content from stretching too wide */
+    margin: 0 auto !important;      /* center the layout */
+  }
+
+  
 }

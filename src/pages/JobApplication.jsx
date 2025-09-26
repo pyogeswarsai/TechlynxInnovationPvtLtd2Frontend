@@ -172,13 +172,13 @@ function JobApplication() {
   };
 
   return (
-    <div className="container-fluid min-vh-100 d-flex flex-column bg-light">
+    <div className="container-fluid min-vh-100 min-vw-100 d-flex flex-column bg-light">
       <main className="row flex-grow-1 shadow rounded">
         <div className="col-md-4 d-none d-md-flex p-0">
           <img src="../job-1.jpg" alt="Job Opportunity" className="job-image" />
         </div>
 
-        <div className="col-12 col-md-8 p-4 p-md-5 d-flex flex-column bg-white">
+        <div className="text-form col-12 col-md-8 p-4 p-md-5 d-flex flex-column bg-white">
           { !submitted && !alreadyApplied ? (
             <>
               <div className="d-flex align-items-center justify-content-center mb-3 company-header">
@@ -201,6 +201,7 @@ function JobApplication() {
                       type="text"
                       name="fullName"
                       className="form-control"
+                      placeholder="Enter your Full Name"
                       value={formData.fullName}
                       onChange={handleChange}
                     />
@@ -213,6 +214,7 @@ function JobApplication() {
                       type="email"
                       name="email"
                       className="form-control"
+                      placeholder="Enter your Email"
                       value={formData.email}
                       onChange={handleChange}
                     />
@@ -225,6 +227,7 @@ function JobApplication() {
                       type="tel"
                       name="phone"
                       className="form-control"
+                      placeholder="Enter your PhoneNo"
                       value={formData.phone}
                       onChange={handleChange}
                     />
@@ -244,23 +247,41 @@ function JobApplication() {
                     >
                       <option value="">Select position</option>
                       {[
-                        { id: "JOB001", title: "Data Analyst" },
-                        { id: "JOB002", title: "Data Scientist" },
-                        { id: "JOB003", title: "Machine Learning Engineer" },
-                        { id: "JOB004", title: "Cyber Security Analyst" },
-                        { id: "JOB005", title: "Software Engineer" },
-                        { id: "JOB006", title: "Cloud Engineer" },
-                        { id: "JOB007", title: "Frontend Developer" },
-                        { id: "JOB008", title: "Backend Developer" },
-                        { id: "JOB009", title: "HR Executive" },
-                        { id: "JOB010", title: "HR Manager" },
-                        { id: "JOB011", title: "Business Analyst" },
-                        { id: "JOB012", title: "Project Manager" },
-                        { id: "JOB013", title: "UI/UX Designer" },
-                        { id: "JOB014", title: "Digital Marketing Specialist" },
-                        { id: "JOB015", title: "Talent Acquisition Specialist" },
-                        { id: "JOB016", title: "DevOps Engineer" },
-                        { id: "JOB017", title: "FullStack Developer" },
+{ id: "JOB101", title: "Java Full Stack Developer"},
+                        { id: "JOB102", title: "Python Full Stack Developer"},
+                        { id: "JOB103", title: "NET Full Stack Develope" },
+                        { id: "JOB104", title: "MERN Full Stack Developer" },
+                        { id: "JOB105", title: "MEAN Full Stack Developer" },
+                        { id: "JOB201", title: "Java Developer" },
+                        { id: "JOB202", title: "Python Developer" },
+                        { id: "JOB203", title: "Node.js Developer" },
+                        { id: "JOB204", title: "Flutter Developer" },
+                        { id: "JOB205", title: "React Native Developer" },
+                        { id: "JOB301", title: "Frontend Developer" },
+                        { id: "JOB302", title: "Backend Developer" },
+                        { id: "JOB303", title: "Web Developer" },
+                        { id: "JOB304", title: "PHP Developer" },
+                        { id: "JOB401", title: "Manual Tester" },
+                        { id: "JOB402", title: "Automation Tester" },
+                        { id: "JOB403", title: "Selenium Tester" },
+                        { id: "JOB404", title: "JUnit Tester" },
+                        { id: "JOB405", title: "JMeter Tester" },
+                        { id: "JOB501", title: "Data Scientist" },
+                        { id: "JOB502", title: "Data Analyst" },
+                        { id: "JOB503", title: "Power BI Developer" },
+                        { id: "JOB504", title: "Tableau Develope" },
+                        { id: "JOB601", title: "AI Engineer" },
+                        { id: "JOB602", title: "Machine Learning Engineer" },
+                        { id: "JOB603", title: "Deep Learning Engineer" },
+                        { id: "JOB701", title: "Cybersecurity Specialist" },
+                        { id: "JOB702", title: "Blockchain Developer" },
+                        { id: "JOB703", title: "DevOps Engineer" },
+                        { id: "JOB704", title: "Cloud Engineer" },
+                        { id: "JOB801", title: "MySQL Developer" },
+                        { id: "JOB802", title: "MongoDB Developer" },
+                        { id: "JOB901", title: "Business Intelligence Specialist" },
+                        { id: "JOB902", title: "Business Analyst" },
+                        { id: "JOB903", title: "Digital Marketing Specialist" },
                       ].map((job) => (
                         <option key={job.id} value={job.id}>
                           {job.id} - {job.title}
@@ -270,7 +291,7 @@ function JobApplication() {
                   </div>
 
                   {/* Resume Upload */}
-                  <div className="mb-3">
+                  <div className="mb-3 col-mb-6">
                     <label className="form-label">Upload Resume</label>
                     <input
                       type="file"
@@ -282,7 +303,7 @@ function JobApplication() {
 
                   {/* Experience */}
                   <div className="mb-3">
-                    <h5>Experience</h5>
+                    <label className="form-label">Experience</label>
                     {formData.experience.map((exp, index) => (
                       <div className="row mb-2" key={index}>
                         <div className="col-md-4">
@@ -305,7 +326,7 @@ function JobApplication() {
                             onChange={(e) => handleExpChange(index, e)}
                           />
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-md-4">
                           <input
                             type="text"
                             name="years"
@@ -339,7 +360,7 @@ function JobApplication() {
 
                   {/* Education */}
                   <div className="mb-3">
-                    <h5>Education</h5>
+                    <label className="form-label">Education</label>
                     {formData.education.map((edu, index) => (
                       <div className="row mb-2" key={index}>
                         <div className="col-md-4">
@@ -399,6 +420,7 @@ function JobApplication() {
                     <label className="form-label">Cover Letter</label>
                     <textarea
                       name="coverLetter"
+                      placeholder="Role-Focused/Optional"
                       className="form-control"
                       rows="4"
                       value={formData.coverLetter}

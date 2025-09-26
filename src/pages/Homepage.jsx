@@ -21,8 +21,6 @@ const Homepage = () => {
         <HomeTopNavbar />
         <HomeNavbar />
         <Homehero />
-        {/* <HeroSection1 />
-        <HeroSection2 /> */}
         <Homewhychooseus />
         <Homecourses />
         <Hometraining />

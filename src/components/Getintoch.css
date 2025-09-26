@@ -1,15 +1,24 @@
 .contact-container {
   padding:1rem;   
+  
+}
+body{
   background-color: #e9f3f9;
-  font-family: 'Segoe UI', sans-serif;
 }
 
+
 .main-heading {
-  font-size: 2.5rem;
-  color: #2c3e50;
-  margin-bottom: 2rem;
+  font-size: clamp(1rem, 2vw + 1rem, 2.5rem); /* scales with screen */
+  margin: 0 auto 2rem auto;
   text-align: center;
+  width: fit-content;         /* shrink to fit content */
+  max-width: 90%;             /* prevent overflow on small screens */
+  padding: 0.75rem;    /* spacing that adapts nicely */
+  box-sizing: border-box;
 }
+
+
+
 
 .content-section {
   max-width: 100%;    
@@ -38,8 +47,19 @@
   border: none;
   border-radius: 6px;
   font-size: 1.2rem;
-  cursor: pointer;
+  /* cursor: pointer; */
   transition: background-color 0.3s ease;
+  text-decoration: none !important;
+
+}
+.link-getin {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.link-getin:hover {
+  text-decoration: none;
 }
 
 .connect-btn:hover {

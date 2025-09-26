@@ -1,115 +1,206 @@
-import React from "react";
-import { FaWifi, FaMicrochip, FaCloud, FaMobileAlt, FaLock, FaIndustry } from "react-icons/fa";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const IoTSolutionsService = () => {
+  const [openFaqIndex, setOpenFaqIndex] = useState(null);
+  const [activeStack, setActiveStack] = useState('devices');
+
+  const toggleFaq = (index) => {
+    setOpenFaqIndex(openFaqIndex === index ? null : index);
+  };
+
+  const handleStackChange = (stack) => {
+    setActiveStack(stack);
+  };
+
+  const faqs = [
+    {
+      question: "What is IoT?",
+      answer: "The Internet of Things (IoT) connects physical devices with the internet, enabling them to collect and exchange data."
+    },
+    {
+      question: "What IoT solutions do you provide?",
+      answer: "We build end-to-end IoT systems including device connectivity, cloud integration, data analytics, and mobile/web applications."
+    },
+    {
+      question: "Do you support custom IoT hardware?",
+      answer: "Yes, we can work with custom IoT hardware as well as integrate with existing sensors and devices."
+    },
+    {
+      question: "How secure are your IoT solutions?",
+      answer: "We implement secure communication protocols, encryption, authentication, and real-time monitoring to ensure data safety."
+    },
+    {
+      question: "Which industries benefit from IoT?",
+      answer: "IoT is widely used in smart homes, manufacturing, healthcare, logistics, agriculture, and retail."
+    }
+  ];
+
+  const stacks = {
+    devices: [
+      { name: "Arduino", logo: "🔌", description: "Microcontroller boards for prototyping" },
+      { name: "Raspberry Pi", logo: "🍓", description: "Compact computers for IoT projects" },
+      { name: "ESP8266/ESP32", logo: "📡", description: "Wi-Fi enabled IoT microcontrollers" },
+      { name: "Sensors & Actuators", logo: "🎛️", description: "Hardware components for smart solutions" }
+    ],
+    connectivity: [
+      { name: "MQTT", logo: "📶", description: "Lightweight messaging protocol for IoT" },
+      { name: "CoAP", logo: "🌐", description: "Constrained Application Protocol for devices" },
+      { name: "LoRaWAN", logo: "📡", description: "Low-power wide-area network for IoT" },
+      { name: "NB-IoT", logo: "📲", description: "Cellular IoT connectivity for smart devices" }
+    ],
+    cloud: [
+      { name: "AWS IoT Core", logo: "☁️", description: "Scalable IoT cloud platform by Amazon" },
+      { name: "Azure IoT Hub", logo: "🔷", description: "Microsoft’s secure IoT integration service" },
+      { name: "Google Cloud IoT", logo: "🌎", description: "Data-driven IoT platform from Google" },
+      { name: "ThingSpeak", logo: "📊", description: "IoT analytics and visualization platform" }
+    ]
+  };
+
   return (
-    <div className="service-page">
+    <div className="iot-solutions">
       {/* Hero Section */}
       <section className="hero">
-        <img
-          src="https://img.freepik.com/free-vector/internet-things-concept-illustration_114360-4948.jpg"
-          alt="IoT Solutions"
-          className="hero-image"
-        />
-        <div className="hero-text">
+        <div className="container">
           <h1>IoT Solutions</h1>
-          <p>
-            Connect devices, sensors, and systems with intelligent IoT solutions that drive automation, efficiency, and data-driven decisions.
-          </p>
+          <p className="fs-5">Connecting devices, people, and systems for a smarter world.</p>
+          <a href="#contact" className="btn">Request a Free Consultation</a>
         </div>
       </section>
 
-      {/* Overview */}
+      {/* Service Overview */}
       <section className="overview">
-        <h2>Overview</h2>
-        <p>
-          Techlynx Innovations delivers cutting-edge IoT solutions that help businesses harness the power of connected devices. 
-          From smart homes and industrial automation to healthcare and logistics, we provide end-to-end IoT development and integration.
-        </p>
+        <div className="container mb-5">
+          <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                <Link to="/services">Services</Link>
+              </li>
+              <li className="breadcrumb-item active" aria-current="page">
+                IoT Solutions
+              </li>
+            </ol>
+          </nav>
+        </div>
+        <div className="container">
+          <h2 className="text-center">Smart Connectivity for Modern Businesses</h2>
+          <div className="overview-content">
+            <div className="overview-text">
+              <p className="text-body fs-5">At Techlynx Innovations, we deliver IoT solutions that connect devices and enable real-time data-driven decisions.</p>
+              <p className="text-body fs-5">Our services cover IoT hardware integration, cloud platforms, analytics, and mobile/web applications for complete IoT ecosystems.</p>
+              <p className="text-body fs-5">From smart homes to industrial automation, we help businesses innovate with intelligent IoT systems.</p>
+            </div>
+            <div className="overview-image">
+              <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1350&q=80" alt="IoT Solutions" />
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* Offerings */}
+      {/* Service Offerings */}
       <section className="offerings">
-        <h2>Our IoT Services</h2>
-        <div className="offering-cards">
-          <div className="offering-card">
-            <FaMicrochip className="icon" />
-            <h3>IoT Device Integration</h3>
-            <p>Seamlessly connect sensors, wearables, and hardware devices to your ecosystem.</p>
-          </div>
-          <div className="offering-card">
-            <FaCloud className="icon" />
-            <h3>Cloud IoT Platforms</h3>
-            <p>Leverage cloud platforms for real-time data collection, monitoring, and analytics.</p>
-          </div>
-          <div className="offering-card">
-            <FaMobileAlt className="icon" />
-            <h3>IoT Mobile Apps</h3>
-            <p>Develop user-friendly mobile applications for device monitoring and control.</p>
-          </div>
-          <div className="offering-card">
-            <FaIndustry className="icon" />
-            <h3>Industrial IoT (IIoT)</h3>
-            <p>Enable predictive maintenance and automation for smart factories and enterprises.</p>
-          </div>
-          <div className="offering-card">
-            <FaWifi className="icon" />
-            <h3>Smart Home & Lifestyle</h3>
-            <p>Create IoT-enabled solutions for energy management, security, and convenience.</p>
-          </div>
-          <div className="offering-card">
-            <FaLock className="icon" />
-            <h3>IoT Security</h3>
-            <p>Implement secure communication protocols and protect against vulnerabilities.</p>
+        <div className="container">
+          <h2 className="text-center">Our IoT Service Offerings</h2>
+          <p className="text-center text-body">Comprehensive IoT solutions for every industry</p>
+          <div className="offering-grid">
+            <div className="offering-card">
+              <div className="icon">🔗</div>
+              <h3>IoT Device Integration</h3>
+              <p className="text-primary fs-5">Connect devices, sensors, and hardware seamlessly.</p>
+              <ul>
+                <li>Smart sensors</li>
+                <li>Wearables</li>
+                <li>Industrial IoT devices</li>
+              </ul>
+            </div>
+            <div className="offering-card">
+              <div className="icon">☁️</div>
+              <h3>Cloud IoT Platforms</h3>
+              <p className="text-primary fs-5">Connect and manage devices on secure cloud platforms.</p>
+              <ul>
+                <li>AWS IoT Core</li>
+                <li>Azure IoT Hub</li>
+                <li>Google IoT Core</li>
+              </ul>
+            </div>
+            <div className="offering-card">
+              <div className="icon">📊</div>
+              <h3>Data Analytics</h3>
+              <p className="text-primary fs-5">Unlock insights with real-time IoT analytics.</p>
+              <ul>
+                <li>Predictive maintenance</li>
+                <li>Smart dashboards</li>
+                <li>AI & ML integration</li>
+              </ul>
+            </div>
+            <div className="offering-card">
+              <div className="icon">🔒</div>
+              <h3>IoT Security</h3>
+              <p className="text-primary fs-5">Ensure safe communication and secure devices.</p>
+              <ul>
+                <li>Data encryption</li>
+                <li>Secure authentication</li>
+                <li>Monitoring & compliance</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Process */}
-      <section className="process">
-        <h2>Our Process</h2>
-        <ol>
-          <li>Understand business needs and use cases</li>
-          <li>Design IoT architecture and device connectivity</li>
-          <li>Develop IoT applications and cloud integration</li>
-          <li>Ensure scalability, security, and performance</li>
-          <li>Deploy solutions and provide ongoing monitoring</li>
-        </ol>
+      {/* Tech Stack Expertise */}
+      <section className="stacks">
+        <div className="container">
+          <h2 className="text-center">Our IoT Technology Expertise</h2>
+          <p className="text-center text-dark f5-5">Building scalable IoT systems with the latest tools</p>
+          <div className="stack-tabs">
+            <button className={`stack-tab ${activeStack === 'devices' ? 'active' : ''}`} onClick={() => handleStackChange('devices')}>
+              IoT Devices
+            </button>
+            <button className={`stack-tab ${activeStack === 'connectivity' ? 'active' : ''}`} onClick={() => handleStackChange('connectivity')}>
+              Connectivity
+            </button>
+            <button className={`stack-tab ${activeStack === 'cloud' ? 'active' : ''}`} onClick={() => handleStackChange('cloud')}>
+              Cloud Platforms
+            </button>
+          </div>
+          <div className="tech-grid">
+            {stacks[activeStack].map((tech, index) => (
+              <div className="tech-card" key={index}>
+                <div className="tech-logo">{tech.logo}</div>
+                <h3>{tech.name}</h3>
+                <p className="text-dark">{tech.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
-      {/* Pricing */}
-      <section className="pricing">
-        <h2>Pricing</h2>
-        <p>
-          IoT solution pricing varies based on device complexity, scale, and integrations. 
-          Contact us to get a customized plan that fits your requirements.
-        </p>
-      </section>
-
-      {/* FAQs */}
+      {/* FAQ */}
       <section className="faq">
-        <h2>Frequently Asked Questions</h2>
-        <div className="faq-item">
-          <h3>What industries can benefit from IoT?</h3>
-          <p>IoT is widely used in healthcare, manufacturing, logistics, agriculture, retail, and smart homes.</p>
-        </div>
-        <div className="faq-item">
-          <h3>Do you provide hardware or just software solutions?</h3>
-          <p>We focus on IoT software development and integration, but we also work with hardware providers as needed.</p>
-        </div>
-        <div className="faq-item">
-          <h3>How do you ensure IoT security?</h3>
-          <p>We apply encryption, authentication protocols, and continuous monitoring for safe IoT environments.</p>
+        <div className="container">
+          <h2 className="text-center">IoT Solutions FAQs</h2>
+          {faqs.map((faq, index) => (
+            <div className="faq-item" key={index}>
+              <div className="faq-question" onClick={() => toggleFaq(index)}>
+                {faq.question} <span>{openFaqIndex === index ? '-' : '+'}</span>
+              </div>
+              {openFaqIndex === index && (
+                <div className="faq-answer active">
+                  <p>{faq.answer}</p>
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </section>
 
       {/* CTA */}
-      <section className="cta">
-        <h2>Transform Your Business with IoT</h2>
-        <p>
-          Let’s bring intelligence to your devices and systems. Get in touch with our experts today.
-        </p>
-        <button className="cta-button">Contact Us</button>
+      <section className="cta" id="contact">
+        <div className="container">
+          <h2>Ready to Build Smarter IoT Solutions?</h2>
+          <p>Contact us to create scalable IoT systems that connect devices and transform your business operations.</p>
+          <Link to="/contact-us" className="btn">Get in Touch</Link>
+        </div>
       </section>
 
       <style jsx>{`
@@ -160,14 +251,31 @@ const IoTSolutionsService = () => {
         .offering-card ul { list-style: none; padding: 0; margin: 1.5rem 0; text-align: left; }
         .offering-card ul li { padding: 0.5rem 0; position: relative; padding-left: 1.5rem; }
         .offering-card ul li:before { content: "✓"; color: var(--secondary); position: absolute; left: 0; font-weight: bold; }
-        .platforms { background: white; }
-        .platform-tabs { display: flex; justify-content: center; margin: 2.5rem 0; flex-wrap: wrap; }
-        .platform-tab {
-          padding: 0.9rem 2.2rem; background: #ff6f61; border: none; font-weight: 600; cursor: pointer;
-          transition: all 0.3s ease; margin: 0.5rem; border-radius: 30px; font-size: 1.1rem;
+        .stacks { background: white; }
+
+        .stack-tabs {
+          display: flex;
+          justify-content: center;
+          margin: 2.5rem 0;
+          flex-wrap: wrap;
         }
-        .platform-tab.active { background: var(--secondary); color: white; }
-        .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem; }
+
+        .stack-tab {
+          padding: 0.9rem 2.2rem;
+          background: #ff6f61;
+          border: none;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          margin: 0.5rem;
+          border-radius: 30px;
+          font-size: 1.1rem;
+        }
+
+        .stack-tab.active {
+          background: var(--secondary);
+          color: white;
+        }        .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem; }
         .tech-card {
           background: white; border-radius: 12px; padding: 2rem; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.05);
           transition: all 0.3s ease; border: 1px solid #f1f1f1;

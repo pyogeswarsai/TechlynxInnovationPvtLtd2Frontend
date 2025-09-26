@@ -1,117 +1,206 @@
-import React from "react";
-import { FaVideo, FaFilm, FaMagic, FaMusic, FaCamera, FaYoutube } from "react-icons/fa";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const VideoEditingService = () => {
+  const [openFaqIndex, setOpenFaqIndex] = useState(null);
+  const [activeStack, setActiveStack] = useState('editing');
+
+  const toggleFaq = (index) => {
+    setOpenFaqIndex(openFaqIndex === index ? null : index);
+  };
+
+  const handleStackChange = (stack) => {
+    setActiveStack(stack);
+  };
+
+  const faqs = [
+    {
+      question: "What types of videos do you edit?",
+      answer: "We edit corporate videos, ads, social media reels, explainer videos, YouTube content, music videos, and event highlights."
+    },
+    {
+      question: "Do you create motion graphics?",
+      answer: "Yes, we design professional motion graphics, intros, and animated transitions to enhance your videos."
+    },
+    {
+      question: "Can you edit videos for social media?",
+      answer: "Absolutely! We create engaging short-form videos optimized for Instagram, TikTok, Facebook, and YouTube."
+    },
+    {
+      question: "Do you provide color correction and grading?",
+      answer: "Yes, we offer cinematic color correction and grading to give your videos a professional look."
+    },
+    {
+      question: "Which tools do you use?",
+      answer: "We use Adobe Premiere Pro, After Effects, Final Cut Pro, DaVinci Resolve, and advanced plugins."
+    }
+  ];
+
+  const stacks = {
+    editing: [
+      { name: "Adobe Premiere Pro", logo: "🎬", description: "Industry-standard editing for films & commercials" },
+      { name: "Final Cut Pro", logo: "🍏", description: "Professional editing for Apple/macOS workflows" },
+      { name: "DaVinci Resolve", logo: "🎨", description: "Advanced color grading & video post-production" },
+      { name: "Filmora", logo: "✨", description: "Quick editing for social media & short videos" }
+    ],
+    graphics: [
+      { name: "After Effects", logo: "⚡", description: "Motion graphics, intros, and VFX" },
+      { name: "Cinema 4D", logo: "🎭", description: "3D motion graphics integration" },
+      { name: "Blender", logo: "🐵", description: "3D animation & visual effects" },
+      { name: "Element 3D", logo: "🌐", description: "3D models inside After Effects" }
+    ],
+    sound: [
+      { name: "Adobe Audition", logo: "🎧", description: "Audio editing & mixing for videos" },
+      { name: "Pro Tools", logo: "🎹", description: "Professional audio post-production" },
+      { name: "Logic Pro", logo: "🎵", description: "Music editing & sound effects" },
+      { name: "Sound Design", logo: "🔊", description: "Custom soundscapes & effects" }
+    ]
+  };
+
   return (
-    <div className="service-page">
+    <div className="video-editing">
       {/* Hero Section */}
       <section className="hero">
-        <img
-          src="https://img.freepik.com/free-vector/video-editing-concept-illustration_114360-8027.jpg"
-          alt="Video Editing & Production"
-          className="hero-image"
-        />
-        <div className="hero-text">
-          <h1>Video Editing & Production</h1>
-          <p>
-            Delivering engaging, creative, and professional video content that tells your story and captivates your audience.
-          </p>
+        <div className="container">
+          <h1>Video Editing Services</h1>
+          <p className="fs-5">Transform raw footage into captivating stories with professional editing, effects, and sound design.</p>
+          <a href="#contact" className="btn">Request Free Demo</a>
         </div>
       </section>
 
-      {/* Overview */}
+      {/* Service Overview */}
       <section className="overview">
-        <h2>Overview</h2>
-        <p>
-          At Techlynx Innovations, we specialize in creating stunning video content from concept to final cut. 
-          Whether it’s promotional videos, ads, explainer videos, or social media content, 
-          our team ensures top-quality production and editing that brings your vision to life.
-        </p>
+        <div className="container mb-5">
+          <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                <Link to="/services">Services</Link>
+              </li>
+              <li className="breadcrumb-item active" aria-current="page">
+                Video Editing
+              </li>
+            </ol>
+          </nav>
+        </div>
+        <div className="container">
+          <h2 className="text-center">Crafting Stories Through Visuals</h2>
+          <div className="overview-content">
+            <div className="overview-text">
+              <p className="text-body fs-5">At Techlynx Innovations, we turn your raw footage into polished, cinematic videos that engage and inspire audiences.</p>
+              <p className="text-body fs-5">Our team specializes in corporate video editing, ads, social media reels, and storytelling for brands of all sizes.</p>
+              <p className="text-body fs-5">From transitions and motion graphics to sound design and color grading — we deliver videos that leave an impact.</p>
+            </div>
+            <div className="overview-image">
+              <img src="https://images.unsplash.com/photo-1586899028174-e7098604235b?auto=format&fit=crop&w=1350&q=80" alt="Video Editing" />
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* Offerings */}
+      {/* Service Offerings */}
       <section className="offerings">
-        <h2>Our Video Services</h2>
-        <div className="offering-cards">
-          <div className="offering-card">
-            <FaCamera className="icon" />
-            <h3>Video Production</h3>
-            <p>Full-scale video shoots for commercials, corporate, and brand storytelling.</p>
-          </div>
-          <div className="offering-card">
-            <FaVideo className="icon" />
-            <h3>Video Editing</h3>
-            <p>Seamless editing with cuts, transitions, color correction, and visual effects.</p>
-          </div>
-          <div className="offering-card">
-            <FaMagic className="icon" />
-            <h3>Motion Graphics & VFX</h3>
-            <p>Engage audiences with dynamic animations, 2D/3D graphics, and effects.</p>
-          </div>
-          <div className="offering-card">
-            <FaMusic className="icon" />
-            <h3>Sound Design</h3>
-            <p>Professional sound mixing, voiceovers, and background music integration.</p>
-          </div>
-          <div className="offering-card">
-            <FaFilm className="icon" />
-            <h3>Short Films & Documentaries</h3>
-            <p>High-quality film production for storytelling and awareness campaigns.</p>
-          </div>
-          <div className="offering-card">
-            <FaYoutube className="icon" />
-            <h3>Social Media & Ads</h3>
-            <p>Optimized videos for YouTube, Instagram, and other digital platforms.</p>
+        <div className="container">
+          <h2 className="text-center">Our Video Editing Services</h2>
+          <p className="text-center text-body">Professional editing solutions for businesses, creators, and brands</p>
+          <div className="offering-grid">
+            <div className="offering-card">
+              <div className="icon">🎬</div>
+              <h3>Corporate & Ads</h3>
+              <p className="text-primary fs-5">Polished videos for business promotions and ads.</p>
+              <ul>
+                <li>Corporate films</li>
+                <li>Product commercials</li>
+                <li>Explainer videos</li>
+              </ul>
+            </div>
+            <div className="offering-card">
+              <div className="icon">📱</div>
+              <h3>Social Media Editing</h3>
+              <p className="text-primary fs-5">Short-form content designed for digital platforms.</p>
+              <ul>
+                <li>Instagram Reels</li>
+                <li>YouTube videos</li>
+                <li>TikTok & Facebook videos</li>
+              </ul>
+            </div>
+            <div className="offering-card">
+              <div className="icon">🎨</div>
+              <h3>Motion Graphics</h3>
+              <p className="text-primary fs-5">Engaging animations and transitions for branding.</p>
+              <ul>
+                <li>Logo animations</li>
+                <li>Dynamic titles</li>
+                <li>Infographic videos</li>
+              </ul>
+            </div>
+            <div className="offering-card">
+              <div className="icon">🎧</div>
+              <h3>Sound & Color</h3>
+              <p className="text-primary fs-5">Cinematic sound design and color grading.</p>
+              <ul>
+                <li>Sound mixing</li>
+                <li>Voiceover integration</li>
+                <li>Color correction</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Process */}
-      <section className="process">
-        <h2>Our Process</h2>
-        <ol>
-          <li>Understand client vision and video requirements</li>
-          <li>Create script, storyboard, and production plan</li>
-          <li>Record footage and gather raw media</li>
-          <li>Edit, add graphics, music, and effects</li>
-          <li>Review with client and refine final output</li>
-          <li>Deliver in high-quality formats for multiple platforms</li>
-        </ol>
+      {/* Tech Stack Expertise */}
+      <section className="stacks">
+        <div className="container">
+          <h2 className="text-center">Our Video Editing Expertise</h2>
+          <p className="text-center text-dark f5-5">Advanced tools for world-class video production</p>
+          <div className="stack-tabs">
+            <button className={`stack-tab ${activeStack === 'editing' ? 'active' : ''}`} onClick={() => handleStackChange('editing')}>
+              Editing
+            </button>
+            <button className={`stack-tab ${activeStack === 'graphics' ? 'active' : ''}`} onClick={() => handleStackChange('graphics')}>
+              Motion Graphics
+            </button>
+            <button className={`stack-tab ${activeStack === 'sound' ? 'active' : ''}`} onClick={() => handleStackChange('sound')}>
+              Sound & Music
+            </button>
+          </div>
+          <div className="tech-grid">
+            {stacks[activeStack].map((tech, index) => (
+              <div className="tech-card" key={index}>
+                <div className="tech-logo">{tech.logo}</div>
+                <h3>{tech.name}</h3>
+                <p className="text-dark">{tech.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
-      {/* Pricing */}
-      <section className="pricing">
-        <h2>Pricing</h2>
-        <p>
-          Video production costs depend on video length, complexity, and production scale. 
-          We offer packages for short social videos, corporate films, and full-scale productions.
-        </p>
-      </section>
-
-      {/* FAQs */}
+      {/* FAQ */}
       <section className="faq">
-        <h2>Frequently Asked Questions</h2>
-        <div className="faq-item">
-          <h3>What types of videos do you create?</h3>
-          <p>We create promotional, corporate, training, product, explainer, and social media videos.</p>
-        </div>
-        <div className="faq-item">
-          <h3>Do you provide end-to-end video production?</h3>
-          <p>Yes, from concept and filming to editing and final delivery, we handle everything.</p>
-        </div>
-        <div className="faq-item">
-          <h3>Can you edit videos I already have?</h3>
-          <p>Absolutely! We can work with your raw footage and polish it into a professional final product.</p>
+        <div className="container">
+          <h2 className="text-center">Video Editing FAQs</h2>
+          {faqs.map((faq, index) => (
+            <div className="faq-item" key={index}>
+              <div className="faq-question" onClick={() => toggleFaq(index)}>
+                {faq.question} <span>{openFaqIndex === index ? '-' : '+'}</span>
+              </div>
+              {openFaqIndex === index && (
+                <div className="faq-answer active">
+                  <p>{faq.answer}</p>
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </section>
 
       {/* CTA */}
-      <section className="cta">
-        <h2>Create Stunning Videos for Your Brand</h2>
-        <p>
-          Let’s bring your vision to life with creative video production and editing services.
-        </p>
-        <button className="cta-button">Contact Us</button>
+      <section className="cta" id="contact">
+        <div className="container">
+          <h2>Need Professional Video Editing?</h2>
+          <p>Let us edit, enhance, and bring your footage to life with stunning visuals and sound.</p>
+          <Link to="/contact-us" className="btn">Start Your Project</Link>
+        </div>
       </section>
 
       <style jsx>{`
@@ -286,16 +375,16 @@ const VideoEditingService = () => {
           font-weight: bold;
         }
 
-        .services { background: white; }
+        .stacks { background: white; }
 
-        .service-tabs {
+        .stack-tabs {
           display: flex;
           justify-content: center;
           margin: 2.5rem 0;
           flex-wrap: wrap;
         }
 
-        .service-tab {
+        .stack-tab {
           padding: 0.9rem 2.2rem;
           background: #ff6f61;
           border: none;
@@ -307,7 +396,7 @@ const VideoEditingService = () => {
           font-size: 1.1rem;
         }
 
-        .service-tab.active {
+        .stack-tab.active {
           background: var(--secondary);
           color: white;
         }

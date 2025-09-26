@@ -54,11 +54,11 @@ const Homefooter = () => {
               </li>
               <li>
                 <FaEnvelope />
-                <span>info@techlynxinnovations.com</span>
+                <span className='fs-5'>info@techlynxinnovations.com</span>
               </li>
               <li>
                 <FaEnvelope />
-                <span>hr@techlynxinnovations.com</span>
+                <span className='fs-5'>hr@techlynxinnovations.com</span>
               </li>
             </ul>
           </div>
@@ -74,7 +74,7 @@ const Homefooter = () => {
               }}  
             >
               <div className="mb-2">
-                <input type="email" className="form-control bg-white" placeholder="Your Email" required/>
+                <input type="email" className="form-control bg-white text-center" placeholder="Your Email" required/>
               </div>
               <button type="submit" className="btn btn-primary w-100">Subscribe</button>
             </form>

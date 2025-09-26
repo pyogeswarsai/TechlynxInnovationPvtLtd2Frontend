@@ -1,6 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+//npm install react-bootstrap bootstrap
 import "./Hero_hire.css";
 
 const slides = [
@@ -40,7 +41,7 @@ const Hero_hire = () => {
       id="heroHireCarousel"
       className="carousel slide carousel-fade"
       data-bs-ride="carousel"
-      data-bs-interval="2000"
+      data-bs-interval="8000"
       data-bs-pause="false"
     >
       <div className="carousel-inner">

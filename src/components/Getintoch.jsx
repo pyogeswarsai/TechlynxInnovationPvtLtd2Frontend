@@ -8,8 +8,9 @@ const Getintoch = () => {
   };
 
   return (
-    <div className="contact-container">
-      <h1 className="main-heading">Get in Touch</h1>
+    <div className="contact-container container">
+      
+      <img src="https://www.mainboardsuccess.co.uk/wp-content/uploads/2021/03/get-in-touch-image-.png" alt="get in toch"  className='img-responsive d-block mx-auto'/>
 
       <div className="content-section">
         <h2>Start Your Career with Us</h2>
@@ -25,7 +26,7 @@ const Getintoch = () => {
           🚀 Your journey starts here. Let's grow together!
         </p>
 
-        <Link to="/contact-us"><button className="connect-btn" >
+        <Link to="/contact-us" className='link-getin'><button className="connect-btn mb-2" >
           Connect With Us
         </button></Link>
       </div>

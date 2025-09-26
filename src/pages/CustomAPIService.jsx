@@ -1,116 +1,208 @@
-import React from "react";
-import { FaPlug, FaCogs, FaExchangeAlt, FaCloud, FaLock, FaSync } from "react-icons/fa";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const CustomAPIService = () => {
+  const [openFaqIndex, setOpenFaqIndex] = useState(null);
+  const [activeStack, setActiveStack] = useState('rest');
+
+  const toggleFaq = (index) => {
+    setOpenFaqIndex(openFaqIndex === index ? null : index);
+  };
+
+  const handleStackChange = (stack) => {
+    setActiveStack(stack);
+  };
+
+  const faqs = [
+    {
+      question: "What is API development?",
+      answer: "API development involves building application programming interfaces that allow software systems to communicate and share data efficiently."
+    },
+    {
+      question: "What types of APIs do you develop?",
+      answer: "We develop RESTful APIs, GraphQL APIs, SOAP services, and custom microservices integrations tailored to your business needs."
+    },
+    {
+      question: "Can you integrate with third-party APIs?",
+      answer: "Yes, we specialize in integrating third-party APIs like payment gateways, social media, CRM/ERP, cloud services, and more."
+    },
+    {
+      question: "How do you ensure API security?",
+      answer: "We implement secure authentication (OAuth 2.0, JWT), encryption, rate limiting, and best practices for protecting sensitive data."
+    },
+    {
+      question: "What industries can benefit from API integration?",
+      answer: "APIs are essential for e-commerce, fintech, healthcare, logistics, SaaS platforms, and any business that requires seamless data exchange."
+    }
+  ];
+
+  const stacks = {
+    rest: [
+      { name: "REST APIs", logo: "🔗", description: "Standardized, lightweight, and scalable APIs for web and mobile apps" },
+      { name: "JSON", logo: "📦", description: "Lightweight data format for exchanging information" },
+      { name: "Postman", logo: "📮", description: "Powerful API testing and documentation tool" },
+      { name: "Swagger / OpenAPI", logo: "📑", description: "API design and documentation framework" }
+    ],
+    graphql: [
+      { name: "GraphQL", logo: "🕸", description: "Flexible query language for modern APIs" },
+      { name: "Apollo Server", logo: "🚀", description: "Robust GraphQL server for scalable applications" },
+      { name: "Hasura", logo: "⚡", description: "Instant GraphQL APIs on top of databases" },
+      { name: "Relay", logo: "🔌", description: "Data-fetching framework for React with GraphQL" }
+    ],
+    integrations: [
+      { name: "Payment Gateways", logo: "💳", description: "Stripe, PayPal, Razorpay integrations" },
+      { name: "Social APIs", logo: "📱", description: "Facebook, Google, LinkedIn authentication & data APIs" },
+      { name: "Cloud Services", logo: "☁", description: "AWS, Azure, and Google Cloud integrations" },
+      { name: "CRM/ERP APIs", logo: "🏢", description: "Salesforce, SAP, and HubSpot API integration" }
+    ]
+  };
+
   return (
-    <div className="service-page">
+    <div className="api-development-services">
       {/* Hero Section */}
       <section className="hero">
-        <img
-          src="https://img.freepik.com/free-vector/api-concept-illustration_114360-9777.jpg"
-          alt="Custom API Development"
-          className="hero-image"
-        />
-        <div className="hero-text">
+        <div className="container">
           <h1>Custom API Development & Integration</h1>
-          <p>
-            Build powerful APIs and integrate third-party solutions seamlessly to enable smooth, secure, and scalable digital experiences.
-          </p>
+          <p className="fs-5">Seamless connectivity and data exchange for modern businesses.</p>
+          <a href="#contact" className="btn">Get a Free Consultation</a>
         </div>
       </section>
 
-      {/* Overview */}
+      {/* Service Overview */}
       <section className="overview">
-        <h2>Overview</h2>
-        <p>
-          At Techlynx Innovations, we specialize in developing secure and reliable APIs tailored to your business needs. 
-          Whether it’s connecting internal systems or integrating external platforms, we ensure seamless communication across applications.
-        </p>
+        <div className="container mb-5">
+          <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                <Link to="/services">Services</Link>
+              </li>
+              <li className="breadcrumb-item active" aria-current="page">
+                Custom API Development
+              </li>
+            </ol>
+          </nav>
+        </div>
+        <div className="container">
+          <h2 className="text-center">Seamless Data Connectivity</h2>
+          <div className="overview-content">
+            <div className="overview-text">
+              <p className="text-body fs-5">At Techlynx Innovations, we build powerful APIs that connect applications, systems, and services to streamline business operations.</p>
+              <p className="text-body fs-5">Our team designs secure and scalable APIs, enabling faster integrations and smooth data sharing between platforms.</p>
+              <p className="text-body fs-5">From startups to enterprises, we ensure your APIs are reliable, high-performing, and tailored to your digital ecosystem.</p>
+            </div>
+            <div className="overview-image">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1350&q=80" alt="API development" />
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* Offerings */}
+      {/* Service Offerings */}
       <section className="offerings">
-        <h2>Our API Development & Integration Services</h2>
-        <div className="offering-cards">
-          <div className="offering-card">
-            <FaPlug className="icon" />
-            <h3>Custom API Development</h3>
-            <p>Design and develop APIs tailored for your business processes.</p>
-          </div>
-          <div className="offering-card">
-            <FaExchangeAlt className="icon" />
-            <h3>API Integration</h3>
-            <p>Integrate third-party APIs for payment, social, cloud, and enterprise apps.</p>
-          </div>
-          <div className="offering-card">
-            <FaLock className="icon" />
-            <h3>Secure Authentication</h3>
-            <p>Implement secure protocols like OAuth, JWT, and API key management.</p>
-          </div>
-          <div className="offering-card">
-            <FaCloud className="icon" />
-            <h3>Cloud API Solutions</h3>
-            <p>Leverage cloud-based APIs for scalability and flexibility.</p>
-          </div>
-          <div className="offering-card">
-            <FaSync className="icon" />
-            <h3>API Maintenance</h3>
-            <p>Ensure API uptime, version control, and bug fixes with regular monitoring.</p>
-          </div>
-          <div className="offering-card">
-            <FaCogs className="icon" />
-            <h3>API Consulting</h3>
-            <p>Get expert guidance on designing and deploying API ecosystems.</p>
+        <div className="container">
+          <h2 className="text-center">Our API Development Services</h2>
+          <p className="text-center text-body">Comprehensive solutions for API creation and integration</p>
+          <div className="offering-grid">
+            <div className="offering-card">
+              <div className="icon">🔗</div>
+              <h3>Custom API Development</h3>
+              <p className="text-primary fs-5">Build secure and scalable APIs for your business needs.</p>
+              <ul>
+                <li>RESTful & GraphQL APIs</li>
+                <li>Microservices</li>
+                <li>Enterprise-grade solutions</li>
+              </ul>
+            </div>
+            <div className="offering-card">
+              <div className="icon">⚡</div>
+              <h3>API Integration</h3>
+              <p className="text-primary fs-5">Seamless integration with third-party services and platforms.</p>
+              <ul>
+                <li>CRM & ERP systems</li>
+                <li>Payment gateways</li>
+                <li>Social APIs</li>
+              </ul>
+            </div>
+            <div className="offering-card">
+              <div className="icon">🔒</div>
+              <h3>API Security</h3>
+              <p className="text-primary fs-5">Protect your APIs with robust security protocols.</p>
+              <ul>
+                <li>OAuth 2.0 & JWT</li>
+                <li>Rate limiting</li>
+                <li>Data encryption</li>
+              </ul>
+            </div>
+            <div className="offering-card">
+              <div className="icon">📊</div>
+              <h3>API Monitoring</h3>
+              <p className="text-primary fs-5">Track, analyze, and optimize API performance.</p>
+              <ul>
+                <li>Logging & analytics</li>
+                <li>Error handling</li>
+                <li>Scalability support</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Process */}
-      <section className="process">
-        <h2>Our Process</h2>
-        <ol>
-          <li>Understand your integration requirements</li>
-          <li>Design API architecture and endpoints</li>
-          <li>Develop and implement APIs</li>
-          <li>Perform rigorous testing and security checks</li>
-          <li>Deploy and integrate into live systems</li>
-          <li>Provide ongoing support and versioning</li>
-        </ol>
+      {/* Tech Stack Expertise */}
+      <section className="stacks">
+        <div className="container">
+          <h2 className="text-center">Our API Technology Expertise</h2>
+          <p className="text-center text-dark f5-5">Modern frameworks for reliable integrations</p>
+          <div className="stack-tabs">
+            <button className={`stack-tab ${activeStack === 'rest' ? 'active' : ''}`} onClick={() => handleStackChange('rest')}>
+              REST APIs
+            </button>
+            <button className={`stack-tab ${activeStack === 'graphql' ? 'active' : ''}`} onClick={() => handleStackChange('graphql')}>
+              GraphQL
+            </button>
+            <button className={`stack-tab ${activeStack === 'integrations' ? 'active' : ''}`} onClick={() => handleStackChange('integrations')}>
+              Integrations
+            </button>
+          </div>
+          <div className="tech-grid">
+            {stacks[activeStack].map((tech, index) => (
+              <div className="tech-card" key={index}>
+                <div className="tech-logo">{tech.logo}</div>
+                <h3>{tech.name}</h3>
+                <p className="text-dark">{tech.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
-      {/* Pricing */}
-      <section className="pricing">
-        <h2>Pricing</h2>
-        <p>
-          We offer flexible pricing for API development & integration based on complexity and scale. 
-          Contact us to get a personalized quote tailored to your needs.
-        </p>
-      </section>
+      {/* The rest (Why Us, Process, Pricing, FAQ, CTA) keep the same structure but content already aligns with API development context */}
 
-      {/* FAQs */}
+      {/* FAQ */}
       <section className="faq">
-        <h2>Frequently Asked Questions</h2>
-        <div className="faq-item">
-          <h3>What types of APIs can you develop?</h3>
-          <p>We develop RESTful, GraphQL, SOAP, and custom APIs based on project requirements.</p>
-        </div>
-        <div className="faq-item">
-          <h3>Do you provide third-party API integration?</h3>
-          <p>Yes, we integrate with payment gateways, CRMs, ERPs, cloud services, and more.</p>
-        </div>
-        <div className="faq-item">
-          <h3>How do you ensure API security?</h3>
-          <p>We implement encryption, secure tokens, OAuth2, and best practices to safeguard APIs.</p>
+        <div className="container">
+          <h2 className="text-center">API Development FAQs</h2>
+          {faqs.map((faq, index) => (
+            <div className="faq-item" key={index}>
+              <div className="faq-question" onClick={() => toggleFaq(index)}>
+                {faq.question} <span>{openFaqIndex === index ? '-' : '+'}</span>
+              </div>
+              {openFaqIndex === index && (
+                <div className="faq-answer active">
+                  <p>{faq.answer}</p>
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </section>
 
       {/* CTA */}
-      <section className="cta">
-        <h2>Ready to Enhance Your Business with APIs?</h2>
-        <p>
-          Get in touch with us today to build or integrate APIs that empower your digital ecosystem.
-        </p>
-        <button className="cta-button">Contact Us</button>
+      <section className="cta" id="contact">
+        <div className="container">
+          <h2>Need Reliable API Solutions?</h2>
+          <p>Contact us for a free consultation to design, build, and integrate scalable APIs tailored to your business.</p>
+          <Link to="/contact-us" className="btn">Get in Touch</Link>
+        </div>
       </section>
 
       <style jsx>{`

@@ -1,117 +1,294 @@
-import React from "react";
-import { FaGamepad, FaLaptopCode, FaCube, FaVrCardboard, FaMobileAlt, FaUsers } from "react-icons/fa";
-
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 const GameDevelopmentService = () => {
+  const [openFaqIndex, setOpenFaqIndex] = useState(null);
+  const [activeService, setActiveService] = useState('design');
+
+  const toggleFaq = (index) => {
+    setOpenFaqIndex(openFaqIndex === index ? null : index);
+  };
+
+  const handleServiceChange = (service) => {
+    setActiveService(service);
+  };
+
+  const faqs = [
+    { question: "What platforms do you develop games for?", answer: "We build games for mobile (iOS & Android), PC, consoles, and AR/VR platforms." },
+    { question: "Do you provide both 2D and 3D game development?", answer: "Yes, we specialize in both 2D casual games and high-quality 3D immersive games." },
+    { question: "Can you help with publishing on app stores?", answer: "Yes, we assist with publishing, marketing strategies, and post-launch updates." },
+    { question: "Do you create multiplayer or online games?", answer: "Absolutely, we develop multiplayer, co-op, and online games with scalable servers." },
+    { question: "Do you offer game design and storytelling?", answer: "Yes, our creative team provides complete storytelling, level design, and character creation." }
+  ];
+
+  const services = {
+    design: [
+      { name: "Concept Design", logo: "🎨", description: "Creative storylines & engaging gameplay ideas" },
+      { name: "Character Design", logo: "🧙‍♂️", description: "Unique characters with personality & depth" },
+      { name: "Level Design", logo: "🗺️", description: "Exciting levels with balanced challenges" },
+      { name: "Game UI/UX", logo: "🎮", description: "User-friendly game menus & interfaces" }
+    ],
+    development: [
+      { name: "2D Game Development", logo: "🕹️", description: "Casual and arcade-style 2D games" },
+      { name: "3D Game Development", logo: "🌍", description: "Immersive 3D games for all platforms" },
+      { name: "AR/VR Games", logo: "🕶️", description: "Next-gen AR/VR gaming experiences" },
+      { name: "Multiplayer Games", logo: "🌐", description: "Online & multiplayer game solutions" }
+    ],
+    postlaunch: [
+      { name: "Game Testing", logo: "🧪", description: "Bug-free & optimized gameplay" },
+      { name: "Monetization Strategy", logo: "💰", description: "Ads, in-app purchases, and subscriptions" },
+      { name: "Publishing Support", logo: "🚀", description: "Assistance with App Store & Play Store" },
+      { name: "Ongoing Updates", logo: "🔄", description: "Regular patches & new content updates" }
+    ]
+  };
+
   return (
-    <div className="service-page">
-      {/* Hero Section */}
+    <div className="gamedev">
       <section className="hero">
-        <img
-          src="https://img.freepik.com/free-vector/game-development-concept-illustration_114360-8314.jpg"
-          alt="Game Development"
-          className="hero-image"
-        />
-        <div className="hero-text">
-          <h1>Game Development</h1>
-          <p>
-            Designing and developing immersive, interactive, and engaging games across platforms to entertain and inspire players.
-          </p>
+        <div className="container">
+          <h1>Game Development Services</h1>
+          <p>Transform your vision into interactive and immersive gaming experiences.</p>
+          <a href="#contact" className="btn">Start Your Game Project</a>
         </div>
       </section>
 
-      {/* Overview */}
       <section className="overview">
-        <h2>Overview</h2>
-        <p>
-          Techlynx Innovations provides end-to-end game development services, from concept design and prototyping 
-          to coding, testing, and deployment. Our team blends creativity with cutting-edge technology to deliver 
-          exceptional gaming experiences on mobile, PC, console, and VR/AR platforms.
-        </p>
+        <div className="container mb-5">
+          <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                <Link to="/services">Services</Link>
+              </li>
+              <li className="breadcrumb-item active" aria-current="page">
+                Game Development
+              </li>
+            </ol>
+          </nav>
+        </div>
+        <div className="container">
+          <h2 className="text-center">Bring Ideas to Life</h2>
+          <div className="overview-content">
+            <div className="overview-text">
+              <p className='text-body fs-5'>At Techlynx Innovations, we create cutting-edge games that entertain, engage, and inspire players worldwide.</p>
+              <p className='text-body fs-5'>From concept design to development and post-launch updates, we deliver complete game development solutions.</p>
+            </div>
+            <div className="overview-image">
+              <img src="https://tse3.mm.bing.net/th/id/OIP.yLBp6oHpk3AR-H3sQwlw3wHaD4?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Game Development" />
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* Offerings */}
       <section className="offerings">
-        <h2>Our Game Development Services</h2>
-        <div className="offering-cards">
-          <div className="offering-card">
-            <FaGamepad className="icon" />
-            <h3>PC & Console Games</h3>
-            <p>High-performance games developed for PC, PlayStation, Xbox, and other consoles.</p>
-          </div>
-          <div className="offering-card">
-            <FaMobileAlt className="icon" />
-            <h3>Mobile Game Development</h3>
-            <p>Fun and engaging games for iOS and Android platforms.</p>
-          </div>
-          <div className="offering-card">
-            <FaCube className="icon" />
-            <h3>3D & 2D Game Design</h3>
-            <p>Immersive 3D environments and creative 2D graphics for all genres.</p>
-          </div>
-          <div className="offering-card">
-            <FaVrCardboard className="icon" />
-            <h3>AR/VR Game Development</h3>
-            <p>Next-gen gaming experiences with augmented and virtual reality.</p>
-          </div>
-          <div className="offering-card">
-            <FaLaptopCode className="icon" />
-            <h3>Game Prototyping</h3>
-            <p>Rapid prototyping to bring ideas to life and test gameplay mechanics.</p>
-          </div>
-          <div className="offering-card">
-            <FaUsers className="icon" />
-            <h3>Multiplayer & Online Games</h3>
-            <p>Build interactive online and multiplayer gaming platforms with real-time engagement.</p>
+        <div className="container">
+          <h2 className="text-center">Our Services</h2>
+          <p className="text-center">Comprehensive game development solutions</p>
+          <div className="offering-grid">
+            <div className="offering-card">
+              <div className="icon">🎨</div>
+              <h3>Game Design</h3>
+              <p className='text-dark fs-5'>From concept art to storylines.</p>
+              <ul>
+                <li>Character design</li>
+                <li>Level design</li>
+                <li>Game UI/UX</li>
+              </ul>
+            </div>
+            <div className="offering-card">
+              <div className="icon">🕹️</div>
+              <h3>Game Development</h3>
+              <p className='text-dark fs-5'>Engaging 2D & 3D experiences.</p>
+              <ul>
+                <li>2D/3D development</li>
+                <li>Multiplayer games</li>
+                <li>AR/VR experiences</li>
+              </ul>
+            </div>
+            <div className="offering-card">
+              <div className="icon">🧪</div>
+              <h3>Game Testing</h3>
+              <p className='text-dark fs-5'>Optimized for seamless gameplay.</p>
+              <ul>
+                <li>Performance testing</li>
+                <li>Bug fixing</li>
+                <li>Playtesting</li>
+              </ul>
+            </div>
+            <div className="offering-card">
+              <div className="icon">🚀</div>
+              <h3>Publishing & Support</h3>
+              <p className='text-dark fs-5'>From launch to updates.</p>
+              <ul>
+                <li>Store publishing</li>
+                <li>Monetization strategy</li>
+                <li>Post-launch updates</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Process */}
+      <section className="services">
+        <div className="container">
+          <h2 className="text-center">Our Expertise</h2>
+          <p className="text-center">Complete solutions for every stage of game development</p>
+          <div className="service-tabs">
+            <button className={`service-tab ${activeService === 'design' ? 'active' : ''}`} onClick={() => handleServiceChange('design')}>
+              Design
+            </button>
+            <button className={`service-tab ${activeService === 'development' ? 'active' : ''}`} onClick={() => handleServiceChange('development')}>
+              Development
+            </button>
+            <button className={`service-tab ${activeService === 'postlaunch' ? 'active' : ''}`} onClick={() => handleServiceChange('postlaunch')}>
+              Post-Launch
+            </button>
+          </div>
+          <div className="tech-grid">
+            {services[activeService].map((service, index) => (
+              <div className="tech-card" key={index}>
+                <div className="tech-logo">{service.logo}</div>
+                <h3>{service.name}</h3>
+                <p className='text-dark'>{service.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="why-us">
+        <div className="container">
+          <h2 className="text-center">Why Choose Us</h2>
+          <div className="benefits">
+            <div className="benefit">
+              <h3>Creative Expertise</h3>
+              <p className='text-dark fs-5'>Talented designers & storytellers.</p>
+            </div>
+            <div className="benefit">
+              <h3>Cross-Platform</h3>
+              <p className='text-dark fs-5'>Games for mobile, PC, and consoles.</p>
+            </div>
+            <div className="benefit">
+              <h3>End-to-End Support</h3>
+              <p className='text-dark fs-5'>From concept to updates & beyond.</p>
+            </div>
+          </div>
+          <div className="testimonials">
+            <h3 className="text-center">Client Feedback</h3>
+            <div className="testimonial">
+              <p className='text-dark fs-5'>"Techlynx brought our fantasy RPG to life with stunning visuals and smooth gameplay."</p>
+              <p className="testimonial-author">- Sarah Parker, Indie Studio CEO</p>
+            </div>
+            <div className="testimonial">
+              <p className='text-dark fs-5'>"Their multiplayer support made our game an instant hit with players worldwide."</p>
+              <p className="testimonial-author">- David Johnson, Game Producer</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="process">
-        <h2>Our Process</h2>
-        <ol>
-          <li>Define game concept, story, and target audience</li>
-          <li>Create design documents, art, and gameplay mechanics</li>
-          <li>Develop game architecture and coding</li>
-          <li>Integrate audio, graphics, and effects</li>
-          <li>Test gameplay, fix bugs, and optimize performance</li>
-          <li>Launch and provide post-release support</li>
-        </ol>
+        <div className="container">
+          <h2 className="text-center">Our Process</h2>
+          <div className="process-steps">
+            <div className="step">
+              <div className="step-number">1</div>
+              <h3>Concept</h3>
+              <p className='text-dark'>Brainstorming ideas and game design.</p>
+            </div>
+            <div className="step">
+              <div className="step-number">2</div>
+              <h3>Design</h3>
+              <p className='text-dark'>Art, characters, and levels creation.</p>
+            </div>
+            <div className="step">
+              <div className="step-number">3</div>
+              <h3>Development</h3>
+              <p className='text-dark'>Coding and building game mechanics.</p>
+            </div>
+            <div className="step">
+              <div className="step-number">4</div>
+              <h3>Testing</h3>
+              <p className='text-dark'>Debugging & performance optimization.</p>
+            </div>
+            <div className="step">
+              <div className="step-number">5</div>
+              <h3>Launch</h3>
+              <p className='text-dark '>Publishing & continuous updates.</p>
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* Pricing */}
       <section className="pricing">
-        <h2>Pricing</h2>
-        <p>
-          Game development costs depend on the complexity, platform, and features. 
-          We offer flexible pricing models for indie projects, enterprise games, and large-scale productions.
-        </p>
+        <div className="container">
+          <h2 className="text-center">Pricing</h2>
+          <p className="text-center text-dark">Flexible packages for all types of games</p>
+          <div className="pricing-plans">
+            <div className="plan">
+              <h3>Indie Starter</h3>
+              <p>For small 2D/mini games</p>
+              <div className="price">₹50,000+</div>
+              <ul className="plan-features">
+                <li>Basic concept design</li>
+                <li>2D development</li>
+                <li>Basic testing</li>
+                <li>3 months support</li>
+              </ul>
+              <a href="#contact" className="btn">Get Started</a>
+            </div>
+            <div className="plan featured">
+              <div className="popular-badge">Popular</div>
+              <h3>Pro Studio</h3>
+              <p>For mid-size 3D games</p>
+              <div className="price">₹2,00,000+</div>
+              <ul className="plan-features">
+                <li>3D development</li>
+                <li>Multiplayer integration</li>
+                <li>AR/VR support</li>
+                <li>6 months support</li>
+              </ul>
+              <a href="#contact" className="btn">Get Started</a>
+            </div>
+            <div className="plan">
+              <h3>Enterprise Gaming</h3>
+              <p>Full-scale AAA game support</p>
+              <div className="price">₹5,00,000+</div>
+              <ul className="plan-features">
+                <li>High-end 3D/VR games</li>
+                <li>Advanced multiplayer</li>
+                <li>Publishing & monetization</li>
+                <li>12 months support</li>
+              </ul>
+              <a href="#contact" className="btn">Get a Quote</a>
+            </div>
+          </div>
+          <p className="text-center text-dark" style={{ marginTop: "2rem" }}><a href="#contact">Contact us</a> for custom game development solutions.</p>
+        </div>
       </section>
 
-      {/* FAQs */}
       <section className="faq">
-        <h2>Frequently Asked Questions</h2>
-        <div className="faq-item">
-          <h3>Which platforms do you develop games for?</h3>
-          <p>We develop games for mobile (iOS & Android), PC, consoles, and AR/VR devices.</p>
-        </div>
-        <div className="faq-item">
-          <h3>Can you handle both design and development?</h3>
-          <p>Yes, we offer end-to-end services including design, coding, graphics, and post-launch support.</p>
-        </div>
-        <div className="faq-item">
-          <h3>Do you build multiplayer games?</h3>
-          <p>Absolutely! We specialize in real-time multiplayer and online gaming solutions.</p>
+        <div className="container">
+          <h2 className="text-center">FAQs</h2>
+          {faqs.map((faq, index) => (
+            <div className="faq-item" key={index}>
+              <div className="faq-question" onClick={() => toggleFaq(index)}>
+                {faq.question} <span>{openFaqIndex === index ? '-' : '+'}</span>
+              </div>
+              {openFaqIndex === index && (
+                <div className="faq-answer active">
+                  <p>{faq.answer}</p>
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="cta">
-        <h2>Bring Your Game Idea to Life</h2>
-        <p>
-          Partner with Techlynx Innovations to create immersive games that captivate players worldwide.
-        </p>
-        <button className="cta-button">Contact Us</button>
+      <section className="cta" id="contact">
+        <div className="container">
+          <h2>Build Your Dream Game</h2>
+          <p>Let’s bring your vision to life with our game development expertise.</p>
+          <Link to="/contact-us" className="btn">Get in Touch</Link>
+        </div>
       </section>
 
       <style jsx>{`
@@ -249,7 +426,7 @@ const GameDevelopmentService = () => {
           .plan.featured { transform: scale(1); }
           section { padding: 3.5rem 0; }
         }
-      `}</style>      
+      `}</style>
     </div>
   );
 };
