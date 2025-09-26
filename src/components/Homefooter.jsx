@@ -42,7 +42,7 @@ const Homefooter = () => {
             <ul className="contact-info bg-dark">
               <li>
                 <FaMapMarkerAlt />
-                <span><span className='text-danger'>Registered Address:</span><br/>33-6-73, Arundlepet, 19/3, Opp.Ravindranath Tagore Statue, Guntur, A.P - 522002</span>
+                <span><span className='text-danger'>Registered Address:</span><br/>33-6-73, Arundelpet, 19/3, Opp.Ravindranath Tagore Statue, Guntur, A.P - 522002</span>
               </li>
               <li>
                 <FaMapMarkerAlt />
