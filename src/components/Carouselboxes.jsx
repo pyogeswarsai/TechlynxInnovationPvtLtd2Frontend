@@ -269,12 +269,12 @@ function Carouselboxes() {
       {
         name: "Business Intelligence",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ-yrYNle4ylVTmScl44OLO7MtF3RrGcanrw&s",
-        link: "/courses/bussiness-intelligence"
+        link: "/courses/business-intelligence"
       },
       {
         name: "Business Analyst",
         img: "https://cdn-icons-png.flaticon.com/512/942/942748.png",
-        link: "/courses/bussiness-analyst"
+        link: "/courses/business-analyst"
       },
       {
         name: "Digital Marketing",
