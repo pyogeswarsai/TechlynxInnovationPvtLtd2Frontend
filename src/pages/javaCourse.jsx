@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useRef } from "react";
 import {
   FaCheckCircle,
   FaStar,
@@ -22,87 +22,102 @@ import "./python.css";
 import { Link } from "react-router-dom";
 const tools = [
   {
-    name: "AWS",
-    img: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+    name: "Introduction to Java",
+    img: "https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png",
+    desc: "Learn the basics of Java programming, its syntax, \nJDK/JRE setup, and how to write your first Java program.",
+  }, 
+  {
+    name: "Variables and Data Types",
+    img: "https://i.stechies.com/userfiles/images/Java-Data-Variable-Type.png",
+    desc: "Understand variables in Java, primitive and non-primitive data types,\n and how to store and use values in a program.",
   },
   {
-    name: "Microsoft Azure",
-    img: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_Azure.svg",
+    name: "Operators",
+    img: "https://cdn.educba.com/academy/wp-content/uploads/2020/02/Java-Operators.jpg",
+    desc: "Learn how to use arithmetic, relational, logical, \nassignment, and bitwise operators in Java applications.",
   },
   {
-    name: "Google Cloud",
-    img: "https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_logo.svg",
+    name: "Control Statements & Loops",
+    img: "https://cdn.educba.com/academy/wp-content/uploads/2020/01/Control-Statement-in-Java.jpg",
+    desc: "Explore conditional statements (if-else, switch) and loops \n(for, while, do-while) to control program execution.",
   },
   {
-    name: "Linux",
-    img: "https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg",
+    name: "Methods in Java",
+    img: "https://www.besanttechnologies.com/wp-content/uploads/2019/05/java-methods.jpg",
+    desc: "Learn how to create reusable methods, pass arguments, \nreturn values, and understand method overloading.",
   },
   {
-    name: "Docker",
-    img: "https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png",
+    name: "Object-Oriented Programming (OOP)",
+    img: "https://media.geeksforgeeks.org/wp-content/uploads/20230712121524/Object-Oriented-Programming-(OOPs)-Concept-in-Java.webp",
+    desc: "Understand OOP concepts in Java: classes, objects, \nconstructors, inheritance, polymorphism, and encapsulation.",
   },
   {
-    name: "Kubernetes",
-    img: "https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg",
+    name: "Exception Handling",
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgmgdgdHy9GpnRHJIAOdFufs_3xCGdK0S7nye0amcm8TYWlpO-yaKsT8sHPNzsUy6sobM&usqp=CAU",
+    desc: "Learn how to handle runtime errors in Java using \ntry-catch, finally, throw, and custom exceptions.",
   },
   {
-    name: "Terraform",
-    img: "https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg",
+    name: "File Handling",
+    img: "https://scaler.com/topics/images/file-handling-in-java-thumbnail.webp",
+    desc: "Learn how to read, write, and manipulate files in Java \nusing FileReader, BufferedReader, FileWriter, and Streams.",
   },
   {
-    name: "Jenkins",
-    img: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Jenkins_logo.svg",
+    name: "Collections Framework",
+    img: "https://miro.medium.com/1*ils7pRJfeTTM8FSSxd7FNA.jpeg",
+    desc: "Master the Java Collections Framework including \nArrayList, HashMap, HashSet, LinkedList, and more.",
   },
   {
-    name: "Git",
-    img: "https://images.assets-landingi.com/uc/37b05982-9ab4-4981-83e8-39f043c18937/GitLogo2Color.svg",
+    name: "JDBC (Java Database Connectivity)",
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQObDPANIkHXT3XPT4_FRAs_EmGK_IJG2WEMR6b3lxctL3X23VmXNiQCuE1Lctkm_yH3fw&usqp=CAU",
+    desc: "Learn how to connect Java with databases (MySQL, Oracle), \nperform CRUD operations, and manage relational data.",
   },
-  { name: "MySQL", img: "https://www.svgrepo.com/show/303251/mysql-logo.svg" },
 ];
 
 // ---------------- FAQ ----------------
 const faqs = [
   {
-    question: "What is a Cloud Computing Full-Stack Developer course?",
+    question: "What is a Java Programming course?",
     answer:
-      "This course trains you in cloud platforms (AWS, Azure, Google Cloud), DevOps tools (Docker, Kubernetes, Jenkins), and full-stack development (frontend, backend, databases, APIs) for building and deploying scalable applications.",
+      "This course trains you in Java programming from basics to advanced concepts, including OOP, exception handling, collections, file handling, and database connectivity.",
   },
   {
     question: "Do I need prior programming knowledge?",
     answer:
-      "Basic knowledge of programming and networking is helpful but not required. The course starts with cloud fundamentals before advancing to DevOps and full-stack concepts.",
+      "No prior programming experience is required. The course starts with Java fundamentals and gradually advances to more complex topics.",
   },
   {
-    question: "What technologies will I learn?",
+    question: "What topics will I learn?",
     answer:
-      "You will learn AWS, Azure, Google Cloud, Docker, Kubernetes, Terraform, Jenkins for DevOps, along with HTML, CSS, JavaScript, React, Python/Node.js, and Git/GitHub for development and version control.",
+      "You will learn Java syntax, variables, data types, operators, control statements, methods, OOP concepts, exception handling, file handling, collections, and JDBC.",
   },
   {
     question: "What projects will I build during the course?",
     answer:
-      "You’ll build projects like Cloud-hosted Web Apps, Serverless Applications, CI/CD Pipelines, Containerized Applications, and Multi-Cloud Deployments.",
+      "You’ll work on practical Java projects such as a student management system, banking application, inventory system, and database-driven apps.",
   },
   {
     question: "What career opportunities are available after this course?",
     answer:
-      "You can work as a Cloud Engineer, Cloud Full-Stack Developer, DevOps Engineer, Site Reliability Engineer (SRE), or Solutions Architect in IT companies.",
+      "You can work as a Java Developer, Backend Developer, Android Developer, Software Engineer, or pursue roles in enterprise application development.",
   },
   {
     question: "Will I receive a certificate after completion?",
     answer:
-      "Yes, upon successful completion, you’ll receive an industry-recognized certificate validating your cloud computing and full-stack development skills.",
+      "Yes, upon successful completion, you’ll receive a certificate validating your Java programming skills, which can be shared with employers or on LinkedIn.",
   },
   {
-    question: "Does the course include placement assistance?",
+    question: "Does the course include guidance for job preparation?",
     answer:
-      "Yes, many programs include career guidance, resume building, interview preparation, and job referrals through hiring partners.",
+      "Yes, many programs provide job preparation guidance including coding challenges, interview prep, resume building, and career advice for Java-related roles.",
   },
 ];
 
-function Cloud() {
+
+function JavaCourse() {
+  
   const [submitted, setSubmitted] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
-
+  const certificateRef = useRef(null); 
   const toggleFaq = (index) => setOpenIndex(openIndex === index ? null : index);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -115,129 +130,155 @@ function Cloud() {
     e.preventDefault(); // prevent page reload
     setSubscribeSubmitted(true);
   };
+   const scrollToCertificate = () => {
+    certificateRef.current?.scrollIntoView({ behavior: "smooth" });
+  }; 
+const steps = [
+  {
+    title: "Module 1: Introduction to Java",
+    details:
+      "Learn the basics of Java including installation (JDK, IDE setup), syntax, variables, and data types. Write your first Java program and understand the structure of a Java class.",
+  },
+  {
+    title: "Module 2: Operators and Control Flow",
+    details:
+      "Understand operators in Java, conditional statements (if-else, switch), and loops (for, while, do-while) to control program execution and logic.",
+  },
+  {
+    title: "Module 3: Methods and Packages",
+    details:
+      "Learn how to create reusable methods, use method overloading, and organize code with packages and access modifiers (public, private, protected).",
+  },
+  {
+    title: "Module 4: Arrays and Strings",
+    details:
+      "Work with arrays (1D, 2D) and Java Strings. Learn operations, methods from the String class, and the difference between mutable and immutable objects.",
+  },
+  {
+    title: "Module 5: Object-Oriented Programming (OOP)",
+    details:
+      "Understand Java OOP concepts: classes, objects, constructors, inheritance, polymorphism, encapsulation, and abstraction. Apply OOP principles in projects.",
+  },
+  {
+    title: "Module 6: Exception Handling",
+    details:
+      "Learn about Java exceptions, error types, and how to handle them using try-catch, finally, throw, and custom exceptions.",
+  },
+  {
+    title: "Module 7: Collections Framework",
+    details:
+      "Explore Java’s Collections framework: ArrayList, HashMap, HashSet, LinkedList, and learn when and how to use different collection types.",
+  },
+  {
+    title: "Module 8: File Handling & I/O Streams",
+    details:
+      "Understand Java I/O streams, read/write files, work with serialization, and handle text and binary data effectively.",
+  },
+  {
+    title: "Module 9: Multithreading & Concurrency",
+    details:
+      "Learn about threads in Java, synchronization, and concurrency utilities to build efficient and responsive applications.",
+  },
+  {
+    title: "Module 10: Database Connectivity (JDBC)",
+    details:
+      "Connect Java applications with databases using JDBC. Perform CRUD operations, prepared statements, and transaction management.",
+  },
+  {
+    title: "Module 11: Final Projects",
+    details:
+      "Build real-world Java applications such as a Library Management System, Student Database App, or simple Banking System.",
+  },
+  {
+    title: "Module 12: Career Preparation",
+    details:
+      "Prepare for Java developer roles with coding practice, interview questions, resume building, and industry insights.",
+  },
+];
 
-  const steps = [
-    {
-      title: "Module 1: Cloud Computing Fundamentals",
-      details:
-        "Introduction to cloud computing, service models (IaaS, PaaS, SaaS), cloud deployment models, and basics of AWS, Azure, and Google Cloud.",
-    },
-    {
-      title: "Module 2: Front-End Development",
-      details:
-        "Learn HTML, CSS, JavaScript, responsive design with Bootstrap/Tailwind, and React.js for building interactive UIs.",
-    },
-    {
-      title: "Module 3: Back-End Development",
-      details:
-        "Master Node.js/Python with Express/Django, build RESTful APIs, perform CRUD operations, and integrate with cloud databases.",
-    },
-    {
-      title: "Module 4: Databases in the Cloud",
-      details:
-        "Work with MySQL/PostgreSQL on RDS, NoSQL databases like DynamoDB, and learn database scaling and optimization.",
-    },
-    {
-      title: "Module 5: Cloud Services & Deployment",
-      details:
-        "Learn EC2, S3, Lambda, Azure Functions, and GCP App Engine. Deploy and manage applications in the cloud environment.",
-    },
-    {
-      title: "Module 6: DevOps Tools & Automation",
-      details:
-        "Work with Docker for containerization, Kubernetes for orchestration, Terraform for Infrastructure as Code, and Jenkins for CI/CD pipelines.",
-    },
-    {
-      title: "Module 7: Security & Monitoring",
-      details:
-        "Learn IAM (Identity and Access Management), cloud security best practices, monitoring with CloudWatch/Prometheus, and logging with ELK stack.",
-    },
-    {
-      title: "Module 8: Multi-Cloud & Serverless Computing",
-      details:
-        "Develop serverless applications using AWS Lambda, Azure Functions, and GCP Cloud Functions. Explore hybrid and multi-cloud deployment strategies.",
-    },
-    {
-      title: "Module 9: Career Preparation",
-      details:
-        "Prepare for cloud & DevOps job interviews with system design basics, cloud architecture scenarios, mock interviews, resume building, and communication skills.",
-    },
-  ];
   return (
     <div>
-      {/* ================= HERO ================= */}
-      <div className="hero-section d-flex flex-column justify-content-center align-items-center text-center text-white">
-        <h3 className="fw-bold display-5">
-          Advanced Certification in Cloud Computing
-        </h3>
-        <p className="fs-5 mt-2">
-          Have a look at all of the most popular courses here!
-        </p>
-      </div>
-      <div className="container my-5">
-        <div className="row align-items-center">
-          {/* Left */}
-          <div className="col-md-6">
-            <div className="container mb-5">
-              <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                  <li className="breadcrumb-item">
-                    <Link to="/courses">Courses</Link>
-                  </li>
-                  <li className="breadcrumb-item active" aria-current="page">
-                    Cloud Computing
-                  </li>
-                </ol>
-              </nav>
-            </div>
-            <h2 className="fw-bold">
-              Advanced Certification in Cloud Computing
-            </h2>
-            <p>Ranked #1 Full Stack Training Institute with Placement.</p>
-            <p>
-              Techlynx provides the Best Full Stack Training in Guntur & Online
-              with<strong> 100% placements.</strong>
-              Learn Full Stack Course from Basics to Advanced and get real-time
-              experience.
-            </p>
-            <ul className="list-unstyled">
-              <li>
-                <FaCheckCircle className="text-success me-2" /> Enroll Now for
-                Trending Courses with Job Assurance
-              </li>
-              <li>
-                <FaCheckCircle className="text-success me-2" /> 1 Years
-                experience in Software Training & Placements
-              </li>
-              <li>
-                <FaCheckCircle className="text-success me-2" /> Branch in Guntur
-              </li>
-            </ul>
-            <div className="d-flex gap-3 mt-4">
-              <Link to="/enroll">
-                <button className="btn btn-warning fw-bold">
-                  Enroll Now <FaArrowRight className="ms-2" />
-                </button>
-              </Link>
-              <button className="btn btn-primary fw-bold">
-                View Certificate <FaUserClock className="ms-2" />
-              </button>
-            </div>
-          </div>
-          {/* Right */}
-          <div className="col-md-6 text-center">
-            <img
-              src="/cl.png"
-              alt="Python Full Stack"
-              className="img-fluid rounded shadow"
-            />
-            <div className="d-flex justify-content-around mt-3">
-              <div>
-                <FaStar className="text-warning" /> <strong>4.9</strong> Ratings
+      <div>
+        {/* ================= HERO ================= */}
+        <div className="hero-section d-flex flex-column justify-content-center align-items-center text-center text-white">
+          <h3 className="fw-bold display-5">
+            Advanced Certification in Java Programming
+          </h3>
+          <p className="fs-5 mt-2">
+            Have a look at all of the most popular courses here!
+          </p>
+        </div>
+        {/* ================= Content ================= */}
+        <div className="container my-5">
+          <div className="row align-items-center">
+            {/* Left */}
+            <div className="col-md-6">
+              <div className="container mb-5">
+                <nav aria-label="breadcrumb">
+                  <ol className="breadcrumb">
+                    <li className="breadcrumb-item">
+                      <Link to="/courses">Courses</Link>
+                    </li>
+                    <li className="breadcrumb-item active" aria-current="page">
+                    Java Programming
+                    </li>
+                  </ol>
+                </nav>
               </div>
-              <div>
-                <FaUsers className="text-success" /> <strong>7.6k</strong>{" "}
-                Learners
+              <h2 className="fw-bold">
+                Advanced Certification in Java Programming
+              </h2>
+              <p>Ranked #1 Full Stack Training Institute with Placement.</p>
+              <p>
+                Techlynx provides the Best Full Stack Training in Guntur &
+                Online with<strong> 100% placements.</strong>
+                Learn Full Stack Course from Basics to Advanced and get
+                real-time experience.
+              </p>
+              <ul className="list-unstyled">
+                <li>
+                  <FaCheckCircle className="text-success me-2" /> Enroll Now for
+                  Trending Courses with Job Assurance
+                </li>
+                <li>
+                  <FaCheckCircle className="text-success me-2" /> 1 Years
+                  experience in Software Training & Placements
+                </li>
+                <li>
+                  <FaCheckCircle className="text-success me-2" />
+                  In Guntur
+                </li>
+              </ul>
+              <div className="d-flex gap-3 mt-4">
+                <Link to="/enroll">
+                  <button className="btn btn-warning fw-bold">
+                    Enroll Now <FaArrowRight className="ms-2" />
+                  </button>
+                </Link>
+                <button
+                  className="btn btn-primary fw-bold"
+                  onClick={scrollToCertificate}
+                >
+                  View Certificate <FaUserClock className="ms-2" />
+                </button>
+              </div>
+            </div>
+            {/* Right */}
+            <div className="col-md-6 text-center">
+              <img
+                src="https://www.mytaskpanel.com/wp-content/uploads/2023/04/consulting-blog-09.webp"
+                alt="Python Programming"
+                className="img-fluid rounded shadow"
+              />
+              <div className="d-flex justify-content-around mt-3">
+                <div>
+                  <FaStar className="text-warning" /> <strong>4.9</strong>{" "}
+                  Ratings
+                </div>
+                <div>
+                  <FaUsers className="text-success" /> <strong>7.6k</strong>{" "}
+                  Learners
+                </div>
               </div>
             </div>
           </div>
@@ -265,7 +306,7 @@ function Cloud() {
             <div className="stat-card purple">
               <FaMapMarkerAlt className="stat-icon" />
               <p className="stat-value">Guntur</p>
-              <h5>Branches</h5>
+              <h5>Branch</h5>
             </div>
           </div>
           <div className="col-md-3 col-6 mb-4">
@@ -288,24 +329,33 @@ function Cloud() {
       {/* ================= TOOLS COVERED ================= */}
       <div className="container my-5">
         <h2 className="tools-heading text-center mb-5">
-          <span className="text-primary fw-bold">Cloud Computing</span>{" "}
-          <span className="fw-semibold">Tools Covered</span>
+          <span className="text-primary fw-bold">
+           Java Programming
+          </span>{" "}
+          <span className="fw-semibold">Topics Covered</span>
         </h2>
+
         <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
           {tools.map((tool, index) => (
             <div className="col" key={index}>
               <div className="tool-card shadow-sm h-100 d-flex flex-column align-items-center justify-content-center p-3">
+                {/* Image with tooltip */}
                 <img
                   src={tool.img}
                   alt={tool.name}
                   className="tool-logo mb-3"
+                  title={tool.desc} // 👈 Tooltip will appear on hover
                 />
-                <h6 className="fw-semibold">{tool.name}</h6>
+                {/* Name with tooltip */}
+                <h6 className="fw-semibold" title={tool.desc}>
+                  {tool.name}
+                </h6>
               </div>
             </div>
           ))}
         </div>
       </div>
+
       {/* ================= ROADMAP + FORM ================= */}
       <div className="container-fluid py-5">
         <div className="row">
@@ -313,7 +363,7 @@ function Cloud() {
           <div className="col-md-6 px-4">
             <div className="flowchart-scrollable">
               <h2 className="roadmap-heading text-primary fw-bold mb-5 text-center">
-                🚀 Cloud computing Roadmap
+                🚀 Java Programming Roadmap
               </h2>
               <div className="timeline">
                 {steps.map((step, index) => (
@@ -394,14 +444,18 @@ function Cloud() {
           </div>
         </div>
       </div>
+
       {/* ================= CERTIFICATE (Wall) ================= */}
-      <section className="certificate-section container py-5">
+      <section
+        ref={certificateRef}
+        className="certificate-section container py-5"
+      >
         <div className="row align-items-center justify-content-center">
           {/* Left Side - Certificate Card */}
           <div className="col-md-6 mb-4">
             <div className="certificate-card p-4 rounded shadow-lg">
               <span className="badge bg-warning text-dark mb-3 ">
-                🎓 TechLynx Official Certificate
+                🎓 Techlynx Official Certificate
               </span>
               <div className="text-center">
                 <img
@@ -410,7 +464,9 @@ function Cloud() {
                   className="img-fluid rounded certificate-img"
                 />
               </div>
-              <h5 className="mt-4 text-success fw-bold">Cloud Computing</h5>
+              <h5 className="mt-4 text-success fw-bold">
+              Java Programming
+              </h5>
               <p className="text-muted small">
                 <FaStar className="text-warning" /> Industry Recognized
                 Certification
@@ -435,13 +491,14 @@ function Cloud() {
               Certificate
             </h2>
             <p className="mt-3 text-secondary">
-              Upon successful completion of our <strong>Cloud Computing</strong>{" "}
-              program at <strong>TechLynx</strong>.
+              Upon successful completion of our{" "}
+              <strong>Java Programming</strong> program at{" "}
+              <strong>Techlynx</strong>.
             </p>
             <ul className="list-unstyled mt-3 text-dark">
               <li>
                 <FaCheckCircle className="text-success me-2" /> Official
-                certification from TechLynx
+                certification from Techlynx
               </li>
               <li>
                 <FaCheckCircle className="text-success me-2" /> Industry
@@ -456,9 +513,10 @@ function Cloud() {
                 validity of certification
               </li>
             </ul>
+            <Link to="/enroll">
             <button className="btn btn-warning btn-lg mt-4 text-dark">
-              🚀 Start Your Journey with TechLynx
-            </button>
+              🚀 Start Your Journey with Techlynx
+            </button></Link>
           </div>
         </div>
       </section>
@@ -534,7 +592,7 @@ function Cloud() {
       <section className="course-fees-container container my-5 p-4 shadow rounded bg-color">
         <h2 className="text-center fw-bold mb-3">Course fees</h2>
         <p className="course-fee text-center fw-boldfw-bold">
-          💰 The course fee is <span className="highlight">₹34,999</span> + GST
+          💰 The course fee is <span className="highlight">₹29,999</span> + GST
         </p>
         <hr />
         <h5 className="text-center fw-semibold mb-4">Invest in your career</h5>
@@ -615,4 +673,4 @@ function Cloud() {
   );
 }
 
-export default Cloud;
+export default JavaCourse;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useRef } from "react";
 import {
   FaCheckCircle,
   FaStar,
@@ -22,87 +22,102 @@ import "./python.css";
 import { Link } from "react-router-dom";
 const tools = [
   {
-    name: "AWS",
-    img: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+    name: "Power BI Desktop",
+    img: "https://cdn.worldvectorlogo.com/logos/power-bi.svg",
+    desc: "Power BI Desktop is the primary development tool for creating interactive dashboards, reports, and data models before publishing to the Power BI Service.",
   },
   {
-    name: "Microsoft Azure",
-    img: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_Azure.svg",
+    name: "Power BI Service",
+    img: "https://img.icons8.com/color/512/power-bi.png",
+    desc: "The Power BI Service (cloud) allows you to publish, share, and collaborate on reports and dashboards with real-time data updates.",
+  },
+{
+  name: "Power Query",
+  img: "https://static1.squarespace.com/static/57cfc8a3d482e945c66724f7/57da3788f5e231f8a01b6b76/5f68275528978b1bff2abeab/1600763192655/PowerQ2.PNG?format=1500w",
+  desc: "Power Query is used for data preparation and transformation. It helps clean, merge, and shape data before loading into Power BI.",
+},
+  {
+    name: "DAX (Data Analysis Expressions)",
+    img: "https://cdn.iconscout.com/icon/free/png-512/free-dax-3628994-3030221.png",
+    desc: "DAX is the formula language in Power BI, used to create custom calculations, measures, and KPIs for advanced analytics.",
   },
   {
-    name: "Google Cloud",
-    img: "https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_logo.svg",
+    name: "Power BI Mobile",
+    img: "https://img.icons8.com/color/512/power-bi.png",
+    desc: "Power BI Mobile app enables you to access and interact with reports and dashboards on smartphones and tablets anytime, anywhere.",
   },
   {
-    name: "Linux",
-    img: "https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg",
+    name: "Power BI Gateway",
+    img: "https://static.wikia.nocookie.net/microsoft/images/8/80/Power_BI_Gateway.png",
+    desc: "On-premises data gateway connects local data sources securely to Power BI Service for scheduled refresh and real-time updates.",
   },
   {
-    name: "Docker",
-    img: "https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png",
+    name: "Power BI Visuals Marketplace",
+    img: "https://img.icons8.com/color/512/combo-chart.png",
+    desc: "Power BI Marketplace offers a wide variety of custom visuals like maps, charts, and graphs that enhance reporting capabilities.",
+  },
+    {
+    name: "Power BI Embedded",
+    img: "https://www.epcgroup.net/wp-content/uploads/2020/08/Power-BI-embedded-pricing.png",
+    desc: "Power BI Embedded allows developers to embed Power BI reports and dashboards into custom applications for interactive data experiences.",
   },
   {
-    name: "Kubernetes",
-    img: "https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg",
-  },
-  {
-    name: "Terraform",
-    img: "https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg",
-  },
-  {
-    name: "Jenkins",
-    img: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Jenkins_logo.svg",
-  },
-  {
-    name: "Git",
-    img: "https://images.assets-landingi.com/uc/37b05982-9ab4-4981-83e8-39f043c18937/GitLogo2Color.svg",
-  },
-  { name: "MySQL", img: "https://www.svgrepo.com/show/303251/mysql-logo.svg" },
+  name: "Power BI Report Builder",
+  img: "https://img.icons8.com/color/480/power-bi.png",
+  desc: "Power BI Report Builder is used to create paginated reports, ideal for printing and sharing detailed formatted reports across organizations.",
+},
+{
+  name: "DAX (Data Analysis Expressions)",
+  img: "https://www.excelgoodies.in/images/Dax_immg.png",
+  desc: "DAX is a formula language in Power BI used to create custom calculations, measures, and aggregations for more advanced data analysis and insights.",
+}
+
 ];
 
 // ---------------- FAQ ----------------
 const faqs = [
   {
-    question: "What is a Cloud Computing Full-Stack Developer course?",
+    question: "What is a Power BI course?",
     answer:
-      "This course trains you in cloud platforms (AWS, Azure, Google Cloud), DevOps tools (Docker, Kubernetes, Jenkins), and full-stack development (frontend, backend, databases, APIs) for building and deploying scalable applications.",
+      "This course trains you in data visualization, modeling, and reporting using Power BI tools like Power Query, DAX, and interactive dashboards.",
   },
   {
-    question: "Do I need prior programming knowledge?",
+    question: "Do I need prior knowledge before learning Power BI?",
     answer:
-      "Basic knowledge of programming and networking is helpful but not required. The course starts with cloud fundamentals before advancing to DevOps and full-stack concepts.",
+      "Basic Excel and data handling skills are helpful but not mandatory. The course starts with fundamentals before moving to advanced concepts.",
   },
   {
     question: "What technologies will I learn?",
     answer:
-      "You will learn AWS, Azure, Google Cloud, Docker, Kubernetes, Terraform, Jenkins for DevOps, along with HTML, CSS, JavaScript, React, Python/Node.js, and Git/GitHub for development and version control.",
+      "You will learn Power BI Desktop, Power Query, DAX, Power BI Service, Power BI Gateway, and Mobile app integration.",
   },
   {
     question: "What projects will I build during the course?",
     answer:
-      "You’ll build projects like Cloud-hosted Web Apps, Serverless Applications, CI/CD Pipelines, Containerized Applications, and Multi-Cloud Deployments.",
+      "You’ll build projects like Sales Dashboards, Financial Reports, HR Analytics, Marketing KPIs, and Real-time Monitoring dashboards.",
   },
   {
     question: "What career opportunities are available after this course?",
     answer:
-      "You can work as a Cloud Engineer, Cloud Full-Stack Developer, DevOps Engineer, Site Reliability Engineer (SRE), or Solutions Architect in IT companies.",
+      "You can work as a Power BI Developer, Data Analyst, Business Intelligence Analyst, or Reporting Specialist in enterprises and startups.",
   },
   {
     question: "Will I receive a certificate after completion?",
     answer:
-      "Yes, upon successful completion, you’ll receive an industry-recognized certificate validating your cloud computing and full-stack development skills.",
+      "Yes, upon successful completion, you’ll receive an industry-recognized certificate validating your Power BI skills.",
   },
   {
     question: "Does the course include placement assistance?",
     answer:
-      "Yes, many programs include career guidance, resume building, interview preparation, and job referrals through hiring partners.",
+      "Yes, many programs include career guidance, resume building, interview prep, and job referrals in analytics and BI roles.",
   },
 ];
 
-function Cloud() {
+function PowerBi() {
+  
   const [submitted, setSubmitted] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
-
+  const certificateRef = useRef(null); 
   const toggleFaq = (index) => setOpenIndex(openIndex === index ? null : index);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -115,129 +130,140 @@ function Cloud() {
     e.preventDefault(); // prevent page reload
     setSubscribeSubmitted(true);
   };
+   const scrollToCertificate = () => {
+    certificateRef.current?.scrollIntoView({ behavior: "smooth" });
+  }; 
 
   const steps = [
-    {
-      title: "Module 1: Cloud Computing Fundamentals",
-      details:
-        "Introduction to cloud computing, service models (IaaS, PaaS, SaaS), cloud deployment models, and basics of AWS, Azure, and Google Cloud.",
-    },
-    {
-      title: "Module 2: Front-End Development",
-      details:
-        "Learn HTML, CSS, JavaScript, responsive design with Bootstrap/Tailwind, and React.js for building interactive UIs.",
-    },
-    {
-      title: "Module 3: Back-End Development",
-      details:
-        "Master Node.js/Python with Express/Django, build RESTful APIs, perform CRUD operations, and integrate with cloud databases.",
-    },
-    {
-      title: "Module 4: Databases in the Cloud",
-      details:
-        "Work with MySQL/PostgreSQL on RDS, NoSQL databases like DynamoDB, and learn database scaling and optimization.",
-    },
-    {
-      title: "Module 5: Cloud Services & Deployment",
-      details:
-        "Learn EC2, S3, Lambda, Azure Functions, and GCP App Engine. Deploy and manage applications in the cloud environment.",
-    },
-    {
-      title: "Module 6: DevOps Tools & Automation",
-      details:
-        "Work with Docker for containerization, Kubernetes for orchestration, Terraform for Infrastructure as Code, and Jenkins for CI/CD pipelines.",
-    },
-    {
-      title: "Module 7: Security & Monitoring",
-      details:
-        "Learn IAM (Identity and Access Management), cloud security best practices, monitoring with CloudWatch/Prometheus, and logging with ELK stack.",
-    },
-    {
-      title: "Module 8: Multi-Cloud & Serverless Computing",
-      details:
-        "Develop serverless applications using AWS Lambda, Azure Functions, and GCP Cloud Functions. Explore hybrid and multi-cloud deployment strategies.",
-    },
-    {
-      title: "Module 9: Career Preparation",
-      details:
-        "Prepare for cloud & DevOps job interviews with system design basics, cloud architecture scenarios, mock interviews, resume building, and communication skills.",
-    },
-  ];
+  {
+    title: "Module 1: Introduction to Power BI",
+    details:
+      "Learn the basics of Power BI, its interface, components, and how to navigate the tool. Understand the difference between Power BI Desktop, Service, and Mobile.",
+  },
+  {
+    title: "Module 2: Data Loading & Transformation",
+    details:
+      "Import data from various sources using Power Query. Clean, transform, merge, and shape datasets to prepare them for analysis.",
+  },
+  {
+    title: "Module 3: Data Modeling",
+    details:
+      "Create relationships between tables, understand data model types, implement calculated columns and measures using DAX, and optimize models for performance.",
+  },
+  {
+    title: "Module 4: Data Visualization",
+    details:
+      "Build interactive reports and dashboards using charts, tables, slicers, and maps. Learn best practices for visual storytelling in Power BI.",
+  },
+  {
+    title: "Module 5: Advanced Analytics",
+    details:
+      "Use DAX functions for advanced calculations, perform time intelligence analysis, create KPIs, and apply statistical insights in your reports.",
+  },
+  {
+    title: "Module 6: Power BI Service & Collaboration",
+    details:
+      "Publish reports to Power BI Service, create workspaces, share dashboards, set up row-level security, and collaborate with teams effectively.",
+  },
+  {
+    title: "Module 7: Power BI Automation & Integration",
+    details:
+      "Learn data refresh schedules, integrate Power BI with Excel, Teams, SharePoint, and other tools, and explore Power Automate for automated workflows.",
+  },
+  {
+    title: "Module 8: Projects",
+    details:
+      "Work on real-world Power BI projects such as sales dashboards, financial reports, HR analytics, and interactive visualizations for decision-making.",
+  },
+  {
+    title: "Module 9: Career Preparation",
+    details:
+      "Prepare for Power BI roles with interview practice, resume building, sample case studies, and guidance on business intelligence career paths.",
+  },
+];
+
   return (
     <div>
-      {/* ================= HERO ================= */}
-      <div className="hero-section d-flex flex-column justify-content-center align-items-center text-center text-white">
-        <h3 className="fw-bold display-5">
-          Advanced Certification in Cloud Computing
-        </h3>
-        <p className="fs-5 mt-2">
-          Have a look at all of the most popular courses here!
-        </p>
-      </div>
-      <div className="container my-5">
-        <div className="row align-items-center">
-          {/* Left */}
-          <div className="col-md-6">
-            <div className="container mb-5">
-              <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                  <li className="breadcrumb-item">
-                    <Link to="/courses">Courses</Link>
-                  </li>
-                  <li className="breadcrumb-item active" aria-current="page">
-                    Cloud Computing
-                  </li>
-                </ol>
-              </nav>
-            </div>
-            <h2 className="fw-bold">
-              Advanced Certification in Cloud Computing
-            </h2>
-            <p>Ranked #1 Full Stack Training Institute with Placement.</p>
-            <p>
-              Techlynx provides the Best Full Stack Training in Guntur & Online
-              with<strong> 100% placements.</strong>
-              Learn Full Stack Course from Basics to Advanced and get real-time
-              experience.
-            </p>
-            <ul className="list-unstyled">
-              <li>
-                <FaCheckCircle className="text-success me-2" /> Enroll Now for
-                Trending Courses with Job Assurance
-              </li>
-              <li>
-                <FaCheckCircle className="text-success me-2" /> 1 Years
-                experience in Software Training & Placements
-              </li>
-              <li>
-                <FaCheckCircle className="text-success me-2" /> Branch in Guntur
-              </li>
-            </ul>
-            <div className="d-flex gap-3 mt-4">
-              <Link to="/enroll">
-                <button className="btn btn-warning fw-bold">
-                  Enroll Now <FaArrowRight className="ms-2" />
-                </button>
-              </Link>
-              <button className="btn btn-primary fw-bold">
-                View Certificate <FaUserClock className="ms-2" />
-              </button>
-            </div>
-          </div>
-          {/* Right */}
-          <div className="col-md-6 text-center">
-            <img
-              src="/cl.png"
-              alt="Python Full Stack"
-              className="img-fluid rounded shadow"
-            />
-            <div className="d-flex justify-content-around mt-3">
-              <div>
-                <FaStar className="text-warning" /> <strong>4.9</strong> Ratings
+      <div>
+        {/* ================= HERO ================= */}
+        <div className="hero-section d-flex flex-column justify-content-center align-items-center text-center text-white">
+          <h3 className="fw-bold display-5">
+            Advanced Certification in Power BI
+          </h3>
+          <p className="fs-5 mt-2">
+            Have a look at all of the most popular courses here!
+          </p>
+        </div>
+        {/* ================= Content ================= */}
+        <div className="container my-5">
+          <div className="row align-items-center">
+            {/* Left */}
+            <div className="col-md-6">
+              <div className="container mb-5">
+                <nav aria-label="breadcrumb">
+                  <ol className="breadcrumb">
+                    <li className="breadcrumb-item">
+                      <Link to="/courses">Courses</Link>
+                    </li>
+                    <li className="breadcrumb-item active" aria-current="page">
+                      Power BI
+                    </li>
+                  </ol>
+                </nav>
               </div>
-              <div>
-                <FaUsers className="text-success" /> <strong>7.6k</strong>{" "}
-                Learners
+              <h2 className="fw-bold">
+                Advanced Certification in Power BI
+              </h2>
+              <p>Ranked #1 Full Stack Training Institute with Placement.</p>
+              <p>
+                Techlynx provides the Best Full Stack Training in Guntur &
+                Online with<strong> 100% placements.</strong>
+                Learn Full Stack Course from Basics to Advanced and get
+                real-time experience.
+              </p>
+              <ul className="list-unstyled">
+                <li>
+                  <FaCheckCircle className="text-success me-2" /> Enroll Now for
+                  Trending Courses with Job Assurance
+                </li>
+                <li>
+                  <FaCheckCircle className="text-success me-2" /> 1 Years
+                  experience in Software Training & Placements
+                </li>
+                <li>
+                  <FaCheckCircle className="text-success me-2" />  In Guntur
+                </li>
+              </ul>
+              <div className="d-flex gap-3 mt-4">
+                <Link to="/enroll">
+                  <button className="btn btn-warning fw-bold">
+                    Enroll Now <FaArrowRight className="ms-2" />
+                  </button>
+                </Link>
+                <button
+                  className="btn btn-primary fw-bold"
+                  onClick={scrollToCertificate}
+                >
+                  View Certificate <FaUserClock className="ms-2" />
+                </button>
+              </div>
+            </div>
+            {/* Right */}
+            <div className="col-md-6 text-center">
+              <img
+                src="https://www.beyondkey.com/blog/wp-content/uploads/2021/08/powerbi-game-changer-op1v1-1160x700-beyondkey-copy.jpg"
+                alt="Power BI"
+                className="img-fluid rounded shadow"
+              />
+              <div className="d-flex justify-content-around mt-3">
+                <div>
+                  <FaStar className="text-warning" /> <strong>4.9</strong>{" "}
+                  Ratings
+                </div>
+                <div>
+                  <FaUsers className="text-success" /> <strong>7.6k</strong>{" "}
+                  Learners
+                </div>
               </div>
             </div>
           </div>
@@ -265,7 +291,7 @@ function Cloud() {
             <div className="stat-card purple">
               <FaMapMarkerAlt className="stat-icon" />
               <p className="stat-value">Guntur</p>
-              <h5>Branches</h5>
+              <h5>Branch</h5>
             </div>
           </div>
           <div className="col-md-3 col-6 mb-4">
@@ -288,24 +314,33 @@ function Cloud() {
       {/* ================= TOOLS COVERED ================= */}
       <div className="container my-5">
         <h2 className="tools-heading text-center mb-5">
-          <span className="text-primary fw-bold">Cloud Computing</span>{" "}
+          <span className="text-primary fw-bold">
+            Power BI
+          </span>{" "}
           <span className="fw-semibold">Tools Covered</span>
         </h2>
+
         <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
           {tools.map((tool, index) => (
             <div className="col" key={index}>
               <div className="tool-card shadow-sm h-100 d-flex flex-column align-items-center justify-content-center p-3">
+                {/* Image with tooltip */}
                 <img
                   src={tool.img}
                   alt={tool.name}
                   className="tool-logo mb-3"
+                  title={tool.desc} // 👈 Tooltip will appear on hover
                 />
-                <h6 className="fw-semibold">{tool.name}</h6>
+                {/* Name with tooltip */}
+                <h6 className="fw-semibold" title={tool.desc}>
+                  {tool.name}
+                </h6>
               </div>
             </div>
           ))}
         </div>
       </div>
+
       {/* ================= ROADMAP + FORM ================= */}
       <div className="container-fluid py-5">
         <div className="row">
@@ -313,7 +348,7 @@ function Cloud() {
           <div className="col-md-6 px-4">
             <div className="flowchart-scrollable">
               <h2 className="roadmap-heading text-primary fw-bold mb-5 text-center">
-                🚀 Cloud computing Roadmap
+                🚀 Power BI Roadmap
               </h2>
               <div className="timeline">
                 {steps.map((step, index) => (
@@ -394,14 +429,18 @@ function Cloud() {
           </div>
         </div>
       </div>
+
       {/* ================= CERTIFICATE (Wall) ================= */}
-      <section className="certificate-section container py-5">
+      <section
+        ref={certificateRef}
+        className="certificate-section container py-5"
+      >
         <div className="row align-items-center justify-content-center">
           {/* Left Side - Certificate Card */}
           <div className="col-md-6 mb-4">
             <div className="certificate-card p-4 rounded shadow-lg">
               <span className="badge bg-warning text-dark mb-3 ">
-                🎓 TechLynx Official Certificate
+                🎓 Techlynx Official Certificate
               </span>
               <div className="text-center">
                 <img
@@ -410,7 +449,9 @@ function Cloud() {
                   className="img-fluid rounded certificate-img"
                 />
               </div>
-              <h5 className="mt-4 text-success fw-bold">Cloud Computing</h5>
+              <h5 className="mt-4 text-success fw-bold">
+               Power BI
+              </h5>
               <p className="text-muted small">
                 <FaStar className="text-warning" /> Industry Recognized
                 Certification
@@ -435,13 +476,14 @@ function Cloud() {
               Certificate
             </h2>
             <p className="mt-3 text-secondary">
-              Upon successful completion of our <strong>Cloud Computing</strong>{" "}
-              program at <strong>TechLynx</strong>.
+              Upon successful completion of our{" "}
+              <strong>Power BI</strong> program at{" "}
+              <strong>Techlynx</strong>.
             </p>
             <ul className="list-unstyled mt-3 text-dark">
               <li>
                 <FaCheckCircle className="text-success me-2" /> Official
-                certification from TechLynx
+                certification from Techlynx
               </li>
               <li>
                 <FaCheckCircle className="text-success me-2" /> Industry
@@ -456,9 +498,10 @@ function Cloud() {
                 validity of certification
               </li>
             </ul>
+            <Link to="/enroll">
             <button className="btn btn-warning btn-lg mt-4 text-dark">
-              🚀 Start Your Journey with TechLynx
-            </button>
+              🚀 Start Your Journey with Techlynx
+            </button></Link>
           </div>
         </div>
       </section>
@@ -534,7 +577,7 @@ function Cloud() {
       <section className="course-fees-container container my-5 p-4 shadow rounded bg-color">
         <h2 className="text-center fw-bold mb-3">Course fees</h2>
         <p className="course-fee text-center fw-boldfw-bold">
-          💰 The course fee is <span className="highlight">₹34,999</span> + GST
+          💰 The course fee is <span className="highlight">₹24,999</span> + GST
         </p>
         <hr />
         <h5 className="text-center fw-semibold mb-4">Invest in your career</h5>
@@ -615,4 +658,4 @@ function Cloud() {
   );
 }
 
-export default Cloud;
+export default PowerBi;

@@ -151,11 +151,10 @@ const FeedbackSection = () => {
                   <div key={idx} className="col">
                     <div
                       onClick={() => handleCategorySelect(category.value)}
-                      className={`p-3 text-center border rounded-xl transition-all cursor-pointer ${
-                        feedbackCategory === category.value
+                      className={`p-3 text-center border rounded-xl transition-all cursor-pointer ${feedbackCategory === category.value
                           ? "border-primary bg-primary bg-opacity-10"
                           : "border-gray-200 bg-light"
-                      }`}
+                        }`}
                     >
                       <div className="fs-3 mb-2">
                         {category.label.split(" ")[0]}
@@ -170,25 +169,22 @@ const FeedbackSection = () => {
             </div>
 
             {/* Star Rating */}
-<div className="mb-3">
+            <div className="mb-3">
               <label className="form-label fw-semibold">Overall Rating *</label>
-              <div className="d-flex justify-content-center gap-3 mb-2 flex-wrap">
+              <div className="d-flex justify-content-center gap-4 mb-2 flex-wrap">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <span
                     key={star}
-                    className={`star cursor-pointer d-inline-flex align-items-center justify-content-center rounded-circle ${
-                      star <= overallRating
-                        ? "bg-success text-white"
-                        : "text-dark"
-                    }`}
+                    className="star cursor-pointer d-inline-flex align-items-center justify-content-center rounded-circle"
                     onClick={() => handleStarClick(star)}
                     style={{
-                      fontSize: window.innerWidth < 576 ? "2rem" : "2.5rem",
-                      width: window.innerWidth < 576 ? "2.8rem" : "3.5rem",
-                      height: window.innerWidth < 576 ? "2.8rem" : "3.5rem",
+                      fontSize: window.innerWidth < 576 ? "3rem" : "4rem",   // bigger star symbol
+                      width: window.innerWidth < 576 ? "4rem" : "5rem",      // bigger clickable area
+                      height: window.innerWidth < 576 ? "4rem" : "5rem",
+                      color: star <= overallRating ? "green" : "black",
                     }}
                   >
-                    ⭐
+                    {star <= overallRating ? "★" : "☆"}
                   </span>
                 ))}
               </div>

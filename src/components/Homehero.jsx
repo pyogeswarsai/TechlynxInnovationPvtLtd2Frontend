@@ -33,7 +33,7 @@ const Homehero = () => {
             <div className="d-flex flex-wrap justify-content-center justify-content-lg-start hero-stats">
               <div className="stat mb-3 me-4">
                 <span className="stat-number">95%</span>
-                <span className="stat-label">Success Rate</span>
+                <span className="stat-label align-items-center text-center">Success Rate</span>
               </div>                
               <div className="stat me-4 mb-3">
                 <span className="stat-number">5+</span>
@@ -43,7 +43,6 @@ const Homehero = () => {
                 <span className="stat-number">30+</span>
                 <span className="stat-label">High-Demand Courses</span>
               </div>
-
             </div>
 
             {/* Actions */}

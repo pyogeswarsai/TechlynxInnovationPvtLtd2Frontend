@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useRef } from "react";
 import {
   FaCheckCircle,
   FaStar,
@@ -19,90 +19,103 @@ import {
 } from "react-icons/fa6";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./python.css";
-import { Link } from "react-router-dom";
-const tools = [
+import { Link } from "react-router-dom";const tools = [
   {
-    name: "AWS",
-    img: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+    name: "Introduction to Tableau",
+    img: "https://miro.medium.com/v2/resize:fit:1400/0*UcvDXUMq8onpVRZO.png",
+    desc: "Get started with Tableau, learn what it is, installation, \nand setting up your first Tableau workbook.",
   },
   {
-    name: "Microsoft Azure",
-    img: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_Azure.svg",
+    name: "Connecting to Data",
+    img: "https://i.ytimg.com/vi/LI15e-H-wXg/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDEKWtVWUX0-Q5IQNJMkfe9FrRZMQ",
+    desc: "Learn to connect Tableau to different data sources including Excel, SQL, and cloud databases.",
   },
   {
-    name: "Google Cloud",
-    img: "https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_logo.svg",
+    name: "Data Preparation & Cleaning",
+    img: "https://cdn.mindmajix.com/courses/tableau-prep-training.png",
+    desc: "Understand how to clean, transform, and prepare data for analysis using Tableau Prep and built-in tools.",
   },
   {
-    name: "Linux",
-    img: "https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg",
+    name: "Visualization Basics",
+    img: "https://www.brandingmag.com/wp-content/uploads/2020/05/image1_Venngage.png",
+    desc: "Learn to create charts, graphs, maps, and dashboards using Tableau’s drag-and-drop interface.",
   },
   {
-    name: "Docker",
-    img: "https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png",
+    name: "Calculated Fields & Aggregations",
+    img: "https://i.ytimg.com/vi/1r9T586WEQQ/maxresdefault.jpg",
+    desc: "Master calculated fields, aggregations, and basic table calculations to derive insights from your data.",
   },
   {
-    name: "Kubernetes",
-    img: "https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg",
+    name: "Filters, Parameters & Actions",
+    img: "https://ik.imagekit.io/upgrad1/abroad-images/imageCompo/images/Types_of_tableau_filtersCB0FRM.png?pr-true",
+    desc: "Implement filters, parameters, and dashboard actions to make your visualizations interactive.",
   },
   {
-    name: "Terraform",
-    img: "https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg",
+    name: "Advanced Analytics & LOD Expressions",
+    img: "https://towardsdatascience.com/wp-content/uploads/2023/12/1jaEq8qTkbdu-TDon4VGpsQ.png",
+    desc: "Use Level of Detail (LOD) expressions, forecasting, and trend analysis for advanced data insights.",
   },
   {
-    name: "Jenkins",
-    img: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Jenkins_logo.svg",
+    name: "Dashboards & Storytelling",
+    img: "https://www.tableau.com/sites/default/files/800x447_dashboard_sheet.png",
+    desc: "Combine multiple visualizations into interactive dashboards and tell data-driven stories.",
   },
   {
-    name: "Git",
-    img: "https://images.assets-landingi.com/uc/37b05982-9ab4-4981-83e8-39f043c18937/GitLogo2Color.svg",
+    name: "Tableau Server & Online",
+    img: "https://rms.koenig-solutions.com/Sync_data/CCE_Logo/2953-awscli(9)(1).pngL.jpg",
+    desc: "Learn how to publish dashboards to Tableau Server or Tableau Online and manage permissions and data refreshes.",
   },
-  { name: "MySQL", img: "https://www.svgrepo.com/show/303251/mysql-logo.svg" },
+  {
+    name: "Best Practices & Optimization",
+    img: "https://www.yash.com/wp-content/uploads/2017/07/Tableau-Performance-Optimization-content-banner.png",
+    desc: "Optimize performance, follow visualization best practices, and maintain data governance.",
+  },
 ];
 
 // ---------------- FAQ ----------------
 const faqs = [
   {
-    question: "What is a Cloud Computing Full-Stack Developer course?",
+    question: "What is a Tableau course?",
     answer:
-      "This course trains you in cloud platforms (AWS, Azure, Google Cloud), DevOps tools (Docker, Kubernetes, Jenkins), and full-stack development (frontend, backend, databases, APIs) for building and deploying scalable applications.",
+      "This course trains you in Tableau from basics to advanced concepts including data connection, preparation, visualization, dashboards, LOD expressions, and Tableau Server.",
   },
   {
     question: "Do I need prior programming knowledge?",
     answer:
-      "Basic knowledge of programming and networking is helpful but not required. The course starts with cloud fundamentals before advancing to DevOps and full-stack concepts.",
+      "No programming experience is required. Basic understanding of data concepts is helpful but not mandatory.",
   },
   {
-    question: "What technologies will I learn?",
+    question: "What topics will I learn?",
     answer:
-      "You will learn AWS, Azure, Google Cloud, Docker, Kubernetes, Terraform, Jenkins for DevOps, along with HTML, CSS, JavaScript, React, Python/Node.js, and Git/GitHub for development and version control.",
+      "You will learn data connection, preparation, visualization basics, calculated fields, aggregations, filters, parameters, actions, advanced analytics, dashboards, and Tableau Server deployment.",
   },
   {
     question: "What projects will I build during the course?",
     answer:
-      "You’ll build projects like Cloud-hosted Web Apps, Serverless Applications, CI/CD Pipelines, Containerized Applications, and Multi-Cloud Deployments.",
+      "You’ll work on projects like sales dashboards, KPI trackers, customer analytics dashboards, and interactive business intelligence reports.",
   },
   {
     question: "What career opportunities are available after this course?",
     answer:
-      "You can work as a Cloud Engineer, Cloud Full-Stack Developer, DevOps Engineer, Site Reliability Engineer (SRE), or Solutions Architect in IT companies.",
+      "You can work as a Tableau Developer, Data Analyst, Business Intelligence Analyst, or Data Visualization Specialist.",
   },
   {
     question: "Will I receive a certificate after completion?",
     answer:
-      "Yes, upon successful completion, you’ll receive an industry-recognized certificate validating your cloud computing and full-stack development skills.",
+      "Yes, upon successful completion, you’ll receive a certificate validating your Tableau skills, which can be shared with employers or on LinkedIn.",
   },
   {
-    question: "Does the course include placement assistance?",
+    question: "Does the course include guidance for job preparation?",
     answer:
-      "Yes, many programs include career guidance, resume building, interview preparation, and job referrals through hiring partners.",
+      "Yes, many programs provide guidance including Tableau project experience, interview prep, resume building, and career advice for Tableau-related roles.",
   },
 ];
 
-function Cloud() {
+function Tableau() {
+  
   const [submitted, setSubmitted] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
-
+  const certificateRef = useRef(null); 
   const toggleFaq = (index) => setOpenIndex(openIndex === index ? null : index);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -115,129 +128,153 @@ function Cloud() {
     e.preventDefault(); // prevent page reload
     setSubscribeSubmitted(true);
   };
+   const scrollToCertificate = () => {
+    certificateRef.current?.scrollIntoView({ behavior: "smooth" });
+  }; const steps = [
+  {
+    title: "Module 1: Introduction to Tableau",
+    details:
+      "Learn what Tableau is, its key features, editions, and interface. Understand the importance of data visualization and how Tableau can help in business intelligence.",
+  },
+  {
+    title: "Module 2: Connecting to Data",
+    details:
+      "Connect Tableau to different data sources like Excel, CSV, SQL databases, and cloud services. Learn about data types, data preparation, and blending data.",
+  },
+  {
+    title: "Module 3: Basic Visualizations",
+    details:
+      "Create bar charts, line charts, pie charts, scatter plots, and highlight tables. Learn about Tableau’s Show Me feature and basic formatting options.",
+  },
+  {
+    title: "Module 4: Calculations & Fields",
+    details:
+      "Understand calculated fields, table calculations, and basic formulas. Learn to use measures, dimensions, and aggregation functions effectively.",
+  },
+  {
+    title: "Module 5: Advanced Visualizations",
+    details:
+      "Build maps, dual-axis charts, heatmaps, bullet charts, and Gantt charts. Learn advanced formatting, labels, and tooltips customization.",
+  },
+  {
+    title: "Module 6: Dashboards & Stories",
+    details:
+      "Create interactive dashboards by combining multiple visualizations. Learn dashboard actions, filters, and best practices for storytelling with data.",
+  },
+  {
+    title: "Module 7: Filters, Parameters & Sets",
+    details:
+      "Use filters, parameters, and sets to make visualizations dynamic. Learn about context filters, cascading filters, and dynamic dashboards.",
+  },
+  {
+    title: "Module 8: Data Modeling & Joins",
+    details:
+      "Understand joins, unions, and data blending. Learn about relationships in Tableau and best practices for combining multiple tables efficiently.",
+  },
+  {
+    title: "Module 9: Analytics & Forecasting",
+    details:
+      "Use built-in analytics features like trend lines, forecasting, reference lines, and clustering. Learn how to derive actionable insights from data.",
+  },
+  {
+    title: "Module 10: Tableau Prep & Data Cleaning",
+    details:
+      "Learn Tableau Prep for cleaning, shaping, and preparing data. Understand joins, pivots, aggregations, and workflow automation for analysis-ready data.",
+  },
+  {
+    title: "Module 11: Tableau Server & Online",
+    details:
+      "Publish dashboards to Tableau Server or Tableau Online. Learn user permissions, scheduling extracts, sharing reports, and collaborating with teams.",
+  },
+  {
+    title: "Module 12: Real-World Projects & Career Prep",
+    details:
+      "Work on real-world Tableau projects like Sales Analysis, Marketing Dashboards, and KPI tracking. Prepare for Tableau certification and job interviews with practical examples.",
+  },
+];
 
-  const steps = [
-    {
-      title: "Module 1: Cloud Computing Fundamentals",
-      details:
-        "Introduction to cloud computing, service models (IaaS, PaaS, SaaS), cloud deployment models, and basics of AWS, Azure, and Google Cloud.",
-    },
-    {
-      title: "Module 2: Front-End Development",
-      details:
-        "Learn HTML, CSS, JavaScript, responsive design with Bootstrap/Tailwind, and React.js for building interactive UIs.",
-    },
-    {
-      title: "Module 3: Back-End Development",
-      details:
-        "Master Node.js/Python with Express/Django, build RESTful APIs, perform CRUD operations, and integrate with cloud databases.",
-    },
-    {
-      title: "Module 4: Databases in the Cloud",
-      details:
-        "Work with MySQL/PostgreSQL on RDS, NoSQL databases like DynamoDB, and learn database scaling and optimization.",
-    },
-    {
-      title: "Module 5: Cloud Services & Deployment",
-      details:
-        "Learn EC2, S3, Lambda, Azure Functions, and GCP App Engine. Deploy and manage applications in the cloud environment.",
-    },
-    {
-      title: "Module 6: DevOps Tools & Automation",
-      details:
-        "Work with Docker for containerization, Kubernetes for orchestration, Terraform for Infrastructure as Code, and Jenkins for CI/CD pipelines.",
-    },
-    {
-      title: "Module 7: Security & Monitoring",
-      details:
-        "Learn IAM (Identity and Access Management), cloud security best practices, monitoring with CloudWatch/Prometheus, and logging with ELK stack.",
-    },
-    {
-      title: "Module 8: Multi-Cloud & Serverless Computing",
-      details:
-        "Develop serverless applications using AWS Lambda, Azure Functions, and GCP Cloud Functions. Explore hybrid and multi-cloud deployment strategies.",
-    },
-    {
-      title: "Module 9: Career Preparation",
-      details:
-        "Prepare for cloud & DevOps job interviews with system design basics, cloud architecture scenarios, mock interviews, resume building, and communication skills.",
-    },
-  ];
   return (
     <div>
-      {/* ================= HERO ================= */}
-      <div className="hero-section d-flex flex-column justify-content-center align-items-center text-center text-white">
-        <h3 className="fw-bold display-5">
-          Advanced Certification in Cloud Computing
-        </h3>
-        <p className="fs-5 mt-2">
-          Have a look at all of the most popular courses here!
-        </p>
-      </div>
-      <div className="container my-5">
-        <div className="row align-items-center">
-          {/* Left */}
-          <div className="col-md-6">
-            <div className="container mb-5">
-              <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                  <li className="breadcrumb-item">
-                    <Link to="/courses">Courses</Link>
-                  </li>
-                  <li className="breadcrumb-item active" aria-current="page">
-                    Cloud Computing
-                  </li>
-                </ol>
-              </nav>
-            </div>
-            <h2 className="fw-bold">
-              Advanced Certification in Cloud Computing
-            </h2>
-            <p>Ranked #1 Full Stack Training Institute with Placement.</p>
-            <p>
-              Techlynx provides the Best Full Stack Training in Guntur & Online
-              with<strong> 100% placements.</strong>
-              Learn Full Stack Course from Basics to Advanced and get real-time
-              experience.
-            </p>
-            <ul className="list-unstyled">
-              <li>
-                <FaCheckCircle className="text-success me-2" /> Enroll Now for
-                Trending Courses with Job Assurance
-              </li>
-              <li>
-                <FaCheckCircle className="text-success me-2" /> 1 Years
-                experience in Software Training & Placements
-              </li>
-              <li>
-                <FaCheckCircle className="text-success me-2" /> Branch in Guntur
-              </li>
-            </ul>
-            <div className="d-flex gap-3 mt-4">
-              <Link to="/enroll">
-                <button className="btn btn-warning fw-bold">
-                  Enroll Now <FaArrowRight className="ms-2" />
-                </button>
-              </Link>
-              <button className="btn btn-primary fw-bold">
-                View Certificate <FaUserClock className="ms-2" />
-              </button>
-            </div>
-          </div>
-          {/* Right */}
-          <div className="col-md-6 text-center">
-            <img
-              src="/cl.png"
-              alt="Python Full Stack"
-              className="img-fluid rounded shadow"
-            />
-            <div className="d-flex justify-content-around mt-3">
-              <div>
-                <FaStar className="text-warning" /> <strong>4.9</strong> Ratings
+      <div>
+        {/* ================= HERO ================= */}
+        <div className="hero-section d-flex flex-column justify-content-center align-items-center text-center text-white">
+          <h3 className="fw-bold display-5">
+            Advanced Certification in Tableau
+          </h3>
+          <p className="fs-5 mt-2">
+            Have a look at all of the most popular courses here!
+          </p>
+        </div>
+        {/* ================= Content ================= */}
+        <div className="container my-5">
+          <div className="row align-items-center">
+            {/* Left */}
+            <div className="col-md-6">
+              <div className="container mb-5">
+                <nav aria-label="breadcrumb">
+                  <ol className="breadcrumb">
+                    <li className="breadcrumb-item">
+                      <Link to="/courses">Courses</Link>
+                    </li>
+                    <li className="breadcrumb-item active" aria-current="page">
+                    Tableau
+                    </li>
+                  </ol>
+                </nav>
               </div>
-              <div>
-                <FaUsers className="text-success" /> <strong>7.6k</strong>{" "}
-                Learners
+              <h2 className="fw-bold">
+                Advanced Certification in Tableau
+              </h2>
+              <p>Ranked #1 Full Stack Training Institute with Placement.</p>
+              <p>
+                Techlynx provides the Best Full Stack Training in Guntur &
+                Online with<strong> 100% placements.</strong>
+                Learn Full Stack Course from Basics to Advanced and get
+                real-time experience.
+              </p>
+              <ul className="list-unstyled">
+                <li>
+                  <FaCheckCircle className="text-success me-2" /> Enroll Now for
+                  Trending Courses with Job Assurance
+                </li>
+                <li>
+                  <FaCheckCircle className="text-success me-2" /> 1 Years
+                  experience in Software Training & Placements
+                </li>
+                <li>
+                  <FaCheckCircle className="text-success me-2" />  In Guntur
+                </li>
+              </ul>
+              <div className="d-flex gap-3 mt-4">
+                <Link to="/enroll">
+                  <button className="btn btn-warning fw-bold">
+                    Enroll Now <FaArrowRight className="ms-2" />
+                  </button>
+                </Link>
+                <button
+                  className="btn btn-primary fw-bold"
+                  onClick={scrollToCertificate}
+                >
+                  View Certificate <FaUserClock className="ms-2" />
+                </button>
+              </div>
+            </div>
+            {/* Right */}
+            <div className="col-md-6 text-center">
+              <img
+                src="https://www.devacetech.com/wp-content/uploads/2024/11/what-is-tableau.webp"
+                alt="Tableau"
+                className="img-fluid rounded shadow"
+              />
+              <div className="d-flex justify-content-around mt-3">
+                <div>
+                  <FaStar className="text-warning" /> <strong>4.9</strong>{" "}
+                  Ratings
+                </div>
+                <div>
+                  <FaUsers className="text-success" /> <strong>7.6k</strong>{" "}
+                  Learners
+                </div>
               </div>
             </div>
           </div>
@@ -265,7 +302,7 @@ function Cloud() {
             <div className="stat-card purple">
               <FaMapMarkerAlt className="stat-icon" />
               <p className="stat-value">Guntur</p>
-              <h5>Branches</h5>
+              <h5>Branch</h5>
             </div>
           </div>
           <div className="col-md-3 col-6 mb-4">
@@ -288,24 +325,33 @@ function Cloud() {
       {/* ================= TOOLS COVERED ================= */}
       <div className="container my-5">
         <h2 className="tools-heading text-center mb-5">
-          <span className="text-primary fw-bold">Cloud Computing</span>{" "}
-          <span className="fw-semibold">Tools Covered</span>
+          <span className="text-primary fw-bold">
+          Tableau
+          </span>{" "}
+          <span className="fw-semibold">Topics Covered</span>
         </h2>
+
         <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
           {tools.map((tool, index) => (
             <div className="col" key={index}>
               <div className="tool-card shadow-sm h-100 d-flex flex-column align-items-center justify-content-center p-3">
+                {/* Image with tooltip */}
                 <img
                   src={tool.img}
                   alt={tool.name}
                   className="tool-logo mb-3"
+                  title={tool.desc} // 👈 Tooltip will appear on hover
                 />
-                <h6 className="fw-semibold">{tool.name}</h6>
+                {/* Name with tooltip */}
+                <h6 className="fw-semibold" title={tool.desc}>
+                  {tool.name}
+                </h6>
               </div>
             </div>
           ))}
         </div>
       </div>
+
       {/* ================= ROADMAP + FORM ================= */}
       <div className="container-fluid py-5">
         <div className="row">
@@ -313,7 +359,7 @@ function Cloud() {
           <div className="col-md-6 px-4">
             <div className="flowchart-scrollable">
               <h2 className="roadmap-heading text-primary fw-bold mb-5 text-center">
-                🚀 Cloud computing Roadmap
+                🚀 Tableau Roadmap
               </h2>
               <div className="timeline">
                 {steps.map((step, index) => (
@@ -394,14 +440,18 @@ function Cloud() {
           </div>
         </div>
       </div>
+
       {/* ================= CERTIFICATE (Wall) ================= */}
-      <section className="certificate-section container py-5">
+      <section
+        ref={certificateRef}
+        className="certificate-section container py-5"
+      >
         <div className="row align-items-center justify-content-center">
           {/* Left Side - Certificate Card */}
           <div className="col-md-6 mb-4">
             <div className="certificate-card p-4 rounded shadow-lg">
               <span className="badge bg-warning text-dark mb-3 ">
-                🎓 TechLynx Official Certificate
+                🎓 Techlynx Official Certificate
               </span>
               <div className="text-center">
                 <img
@@ -410,7 +460,9 @@ function Cloud() {
                   className="img-fluid rounded certificate-img"
                 />
               </div>
-              <h5 className="mt-4 text-success fw-bold">Cloud Computing</h5>
+              <h5 className="mt-4 text-success fw-bold">
+              Tableau
+              </h5>
               <p className="text-muted small">
                 <FaStar className="text-warning" /> Industry Recognized
                 Certification
@@ -435,13 +487,14 @@ function Cloud() {
               Certificate
             </h2>
             <p className="mt-3 text-secondary">
-              Upon successful completion of our <strong>Cloud Computing</strong>{" "}
-              program at <strong>TechLynx</strong>.
+              Upon successful completion of our{" "}
+              <strong>Tableau</strong> program at{" "}
+              <strong>Techlynx</strong>.
             </p>
             <ul className="list-unstyled mt-3 text-dark">
               <li>
                 <FaCheckCircle className="text-success me-2" /> Official
-                certification from TechLynx
+                certification from Techlynx
               </li>
               <li>
                 <FaCheckCircle className="text-success me-2" /> Industry
@@ -456,9 +509,10 @@ function Cloud() {
                 validity of certification
               </li>
             </ul>
+            <Link to="/enroll">
             <button className="btn btn-warning btn-lg mt-4 text-dark">
-              🚀 Start Your Journey with TechLynx
-            </button>
+              🚀 Start Your Journey with Techlynx
+            </button></Link>
           </div>
         </div>
       </section>
@@ -534,7 +588,7 @@ function Cloud() {
       <section className="course-fees-container container my-5 p-4 shadow rounded bg-color">
         <h2 className="text-center fw-bold mb-3">Course fees</h2>
         <p className="course-fee text-center fw-boldfw-bold">
-          💰 The course fee is <span className="highlight">₹34,999</span> + GST
+          💰 The course fee is <span className="highlight">₹24,999</span> + GST
         </p>
         <hr />
         <h5 className="text-center fw-semibold mb-4">Invest in your career</h5>
@@ -612,7 +666,7 @@ function Cloud() {
         </div>
       </footer>
     </div>
-  );
+  ); 
 }
 
-export default Cloud;
+export default Tableau;

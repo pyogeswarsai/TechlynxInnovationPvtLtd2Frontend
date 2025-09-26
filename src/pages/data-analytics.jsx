@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useRef } from "react";
 import {
   FaCheckCircle,
   FaStar,
@@ -22,87 +22,101 @@ import "./python.css";
 import { Link } from "react-router-dom";
 const tools = [
   {
-    name: "AWS",
-    img: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+    name: "Excel",
+    img: "https://cdn.worldvectorlogo.com/logos/microsoft-excel-2013.svg",
+    desc: "Excel is a spreadsheet software used for data analysis, reporting, and visualization.\nIt allows analysts to manage datasets, perform calculations, and create dashboards.",
   },
   {
-    name: "Microsoft Azure",
-    img: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_Azure.svg",
+    name: "SQL",
+    img: "https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png",
+    desc: "SQL (Structured Query Language) is used to query and manage databases.\nData analysts use SQL to extract, manipulate, and analyze data for business insights.",
   },
   {
-    name: "Google Cloud",
-    img: "https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_logo.svg",
+    name: "Python",
+    img: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg",
+    desc: "Python is a programming language used for data analysis, automation, and visualization.\nAnalysts use Python libraries like Pandas, NumPy, and Matplotlib for processing and plotting data.",
   },
   {
-    name: "Linux",
-    img: "https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg",
+    name: "R",
+    img: "https://upload.wikimedia.org/wikipedia/commons/1/1b/R_logo.svg",
+    desc: "R is a statistical computing language used for advanced data analysis, \nmodeling, and visualization.It is widely used for performing \nstatistical tests and generating insights.",
   },
   {
-    name: "Docker",
-    img: "https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png",
+    name: "Tableau",
+    img: "https://cdn.worldvectorlogo.com/logos/tableau-software.svg",
+    desc: "Tableau is a data visualization tool that helps\n convert raw data into interactive dashboards.It allows analysts to\n identify trends and present insights effectively.",
   },
   {
-    name: "Kubernetes",
-    img: "https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg",
+    name: "Power BI",
+    img: "https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg",
+    desc: "Power BI is a business intelligence tool used to visualize and share insights.\nIt connects to multiple data sources and creates real-time interactive reports.",
   },
   {
-    name: "Terraform",
-    img: "https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg",
+    name: "Google Data Studio",
+    img: "https://cdn.worldvectorlogo.com/logos/google-data-studio.svg",
+    desc: "Google Data Studio is a reporting tool that helps visualize business data.\nIt enables analysts to create interactive dashboards and reports for stakeholders.",
   },
   {
-    name: "Jenkins",
-    img: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Jenkins_logo.svg",
+    name: "GitHub",
+    img: "https://images.assets-landingi.com/uc/9627c60e-9f4a-4520-964e-790548c7c3d0/Font_Awesome_5_brands_github.svg",
+    desc: "GitHub is a platform for version control and collaboration.\nData analysts use GitHub to share scripts, notebooks, and collaborate with teams.",
   },
   {
-    name: "Git",
-    img: "https://images.assets-landingi.com/uc/37b05982-9ab4-4981-83e8-39f043c18937/GitLogo2Color.svg",
+    name: "Jira",
+    img: "https://upload.wikimedia.org/wikipedia/commons/8/82/Jira_%28Software%29_logo.svg",
+    desc: "Jira is a project management tool used to track tasks and issues.\nAnalysts can document requirements, track progress, and communicate with teams efficiently.",
   },
-  { name: "MySQL", img: "https://www.svgrepo.com/show/303251/mysql-logo.svg" },
+  {
+    name: "Confluence",
+    img: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Atlassian_Confluence_logo.svg",
+    desc: "Confluence is a collaboration and documentation platform.\nIt helps analysts document processes, create reports, and share insights with stakeholders.",
+  },
 ];
 
 // ---------------- FAQ ----------------
 const faqs = [
   {
-    question: "What is a Cloud Computing Full-Stack Developer course?",
+    question: "What is a Data Analytics course?",
     answer:
-      "This course trains you in cloud platforms (AWS, Azure, Google Cloud), DevOps tools (Docker, Kubernetes, Jenkins), and full-stack development (frontend, backend, databases, APIs) for building and deploying scalable applications.",
+      "This course trains you in analyzing data to derive actionable business insights. It covers Excel, SQL, Python/R, visualization tools, and reporting techniques.",
   },
   {
     question: "Do I need prior programming knowledge?",
     answer:
-      "Basic knowledge of programming and networking is helpful but not required. The course starts with cloud fundamentals before advancing to DevOps and full-stack concepts.",
+      "Basic knowledge of Excel or numbers is helpful but not required. The course usually begins with foundational data analysis concepts before advancing to tools and programming.",
   },
   {
-    question: "What technologies will I learn?",
+    question: "What tools and technologies will I learn?",
     answer:
-      "You will learn AWS, Azure, Google Cloud, Docker, Kubernetes, Terraform, Jenkins for DevOps, along with HTML, CSS, JavaScript, React, Python/Node.js, and Git/GitHub for development and version control.",
+      "You will learn Excel, SQL, Python, R, Tableau, Power BI, Google Data Studio, and version control tools like Git/GitHub for collaboration.",
   },
   {
     question: "What projects will I build during the course?",
     answer:
-      "You’ll build projects like Cloud-hosted Web Apps, Serverless Applications, CI/CD Pipelines, Containerized Applications, and Multi-Cloud Deployments.",
+      "You’ll build real-world projects such as dashboards, KPI reports, predictive models, and data visualizations to showcase in your portfolio.",
   },
   {
     question: "What career opportunities are available after this course?",
     answer:
-      "You can work as a Cloud Engineer, Cloud Full-Stack Developer, DevOps Engineer, Site Reliability Engineer (SRE), or Solutions Architect in IT companies.",
+      "You can work as a Data Analyst, BI Analyst, Reporting Analyst, Business Intelligence Developer, or Data Consultant in various industries.",
   },
   {
     question: "Will I receive a certificate after completion?",
     answer:
-      "Yes, upon successful completion, you’ll receive an industry-recognized certificate validating your cloud computing and full-stack development skills.",
+      "Yes, upon successful completion, you’ll receive an industry-recognized certificate validating your data analytics skills.",
   },
   {
     question: "Does the course include placement assistance?",
     answer:
-      "Yes, many programs include career guidance, resume building, interview preparation, and job referrals through hiring partners.",
+      "Many programs provide career guidance, resume building, interview preparation, and job referrals through hiring partners.",
   },
 ];
 
-function Cloud() {
+function DataAnalytics() {
+  
   const [submitted, setSubmitted] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
-
+  const certificateRef = useRef(null); 
   const toggleFaq = (index) => setOpenIndex(openIndex === index ? null : index);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -115,129 +129,141 @@ function Cloud() {
     e.preventDefault(); // prevent page reload
     setSubscribeSubmitted(true);
   };
+   const scrollToCertificate = () => {
+    certificateRef.current?.scrollIntoView({ behavior: "smooth" });
+  }; 
+const steps = [
+  {
+    title: "Module 1: Data Analysis Fundamentals",
+    details:
+      "Learn the basics of data analytics, including understanding datasets, descriptive statistics, data cleaning, and visualization concepts.",
+  },
+  {
+    title: "Module 2: Excel for Data Analytics",
+    details:
+      "Master Excel for data manipulation, formulas, pivot tables, charts, and dashboards to analyze and visualize business data effectively.",
+  },
+  {
+    title: "Module 3: SQL & Databases",
+    details:
+      "Learn SQL to query relational databases, perform joins, aggregations, filtering, and sorting. Work with MySQL, PostgreSQL, and other database tools.",
+  },
+  {
+    title: "Module 4: Python & R for Analytics",
+    details:
+      "Use Python and R for data cleaning, analysis, and visualization. Explore libraries like Pandas, NumPy, Matplotlib, Seaborn, and ggplot2.",
+  },
+  {
+    title: "Module 5: Data Visualization Tools",
+    details:
+      "Learn to create interactive and insightful dashboards using Tableau, Power BI, and Google Data Studio for business reporting.",
+  },
+  {
+    title: "Module 6: Business Intelligence Concepts",
+    details:
+      "Understand KPIs, metrics, reporting frameworks, and how to interpret business data to support strategic decisions.",
+  },
+  {
+    title: "Module 7: Advanced Analytics & Statistics",
+    details:
+      "Explore predictive analytics, regression analysis, hypothesis testing, and basic machine learning concepts for data-driven insights.",
+  },
+  {
+    title: "Module 8: Real-World Projects",
+    details:
+      "Build practical projects such as sales dashboards, marketing analytics reports, financial analysis dashboards, and customer behavior insights.",
+  },
+  {
+    title: "Module 9: Career Preparation",
+    details:
+      "Prepare for Data Analyst/BI roles with interview practice, resume building, portfolio development, and communication skills for stakeholder presentations.",
+  },
+];
 
-  const steps = [
-    {
-      title: "Module 1: Cloud Computing Fundamentals",
-      details:
-        "Introduction to cloud computing, service models (IaaS, PaaS, SaaS), cloud deployment models, and basics of AWS, Azure, and Google Cloud.",
-    },
-    {
-      title: "Module 2: Front-End Development",
-      details:
-        "Learn HTML, CSS, JavaScript, responsive design with Bootstrap/Tailwind, and React.js for building interactive UIs.",
-    },
-    {
-      title: "Module 3: Back-End Development",
-      details:
-        "Master Node.js/Python with Express/Django, build RESTful APIs, perform CRUD operations, and integrate with cloud databases.",
-    },
-    {
-      title: "Module 4: Databases in the Cloud",
-      details:
-        "Work with MySQL/PostgreSQL on RDS, NoSQL databases like DynamoDB, and learn database scaling and optimization.",
-    },
-    {
-      title: "Module 5: Cloud Services & Deployment",
-      details:
-        "Learn EC2, S3, Lambda, Azure Functions, and GCP App Engine. Deploy and manage applications in the cloud environment.",
-    },
-    {
-      title: "Module 6: DevOps Tools & Automation",
-      details:
-        "Work with Docker for containerization, Kubernetes for orchestration, Terraform for Infrastructure as Code, and Jenkins for CI/CD pipelines.",
-    },
-    {
-      title: "Module 7: Security & Monitoring",
-      details:
-        "Learn IAM (Identity and Access Management), cloud security best practices, monitoring with CloudWatch/Prometheus, and logging with ELK stack.",
-    },
-    {
-      title: "Module 8: Multi-Cloud & Serverless Computing",
-      details:
-        "Develop serverless applications using AWS Lambda, Azure Functions, and GCP Cloud Functions. Explore hybrid and multi-cloud deployment strategies.",
-    },
-    {
-      title: "Module 9: Career Preparation",
-      details:
-        "Prepare for cloud & DevOps job interviews with system design basics, cloud architecture scenarios, mock interviews, resume building, and communication skills.",
-    },
-  ];
   return (
     <div>
-      {/* ================= HERO ================= */}
-      <div className="hero-section d-flex flex-column justify-content-center align-items-center text-center text-white">
-        <h3 className="fw-bold display-5">
-          Advanced Certification in Cloud Computing
-        </h3>
-        <p className="fs-5 mt-2">
-          Have a look at all of the most popular courses here!
-        </p>
-      </div>
-      <div className="container my-5">
-        <div className="row align-items-center">
-          {/* Left */}
-          <div className="col-md-6">
-            <div className="container mb-5">
-              <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                  <li className="breadcrumb-item">
-                    <Link to="/courses">Courses</Link>
-                  </li>
-                  <li className="breadcrumb-item active" aria-current="page">
-                    Cloud Computing
-                  </li>
-                </ol>
-              </nav>
-            </div>
-            <h2 className="fw-bold">
-              Advanced Certification in Cloud Computing
-            </h2>
-            <p>Ranked #1 Full Stack Training Institute with Placement.</p>
-            <p>
-              Techlynx provides the Best Full Stack Training in Guntur & Online
-              with<strong> 100% placements.</strong>
-              Learn Full Stack Course from Basics to Advanced and get real-time
-              experience.
-            </p>
-            <ul className="list-unstyled">
-              <li>
-                <FaCheckCircle className="text-success me-2" /> Enroll Now for
-                Trending Courses with Job Assurance
-              </li>
-              <li>
-                <FaCheckCircle className="text-success me-2" /> 1 Years
-                experience in Software Training & Placements
-              </li>
-              <li>
-                <FaCheckCircle className="text-success me-2" /> Branch in Guntur
-              </li>
-            </ul>
-            <div className="d-flex gap-3 mt-4">
-              <Link to="/enroll">
-                <button className="btn btn-warning fw-bold">
-                  Enroll Now <FaArrowRight className="ms-2" />
-                </button>
-              </Link>
-              <button className="btn btn-primary fw-bold">
-                View Certificate <FaUserClock className="ms-2" />
-              </button>
-            </div>
-          </div>
-          {/* Right */}
-          <div className="col-md-6 text-center">
-            <img
-              src="/cl.png"
-              alt="Python Full Stack"
-              className="img-fluid rounded shadow"
-            />
-            <div className="d-flex justify-content-around mt-3">
-              <div>
-                <FaStar className="text-warning" /> <strong>4.9</strong> Ratings
+      <div>
+        {/* ================= HERO ================= */}
+        <div className="hero-section d-flex flex-column justify-content-center align-items-center text-center text-white">
+          <h3 className="fw-bold display-5">
+            Advanced Certification in Data Analytics
+          </h3>
+          <p className="fs-5 mt-2">
+            Have a look at all of the most popular courses here!
+          </p>
+        </div>
+        {/* ================= Content ================= */}
+        <div className="container my-5">
+          <div className="row align-items-center">
+            {/* Left */}
+            <div className="col-md-6">
+              <div className="container mb-5">
+                <nav aria-label="breadcrumb">
+                  <ol className="breadcrumb">
+                    <li className="breadcrumb-item">
+                      <Link to="/courses">Courses</Link>
+                    </li>
+                    <li className="breadcrumb-item active" aria-current="page">
+                       Data Analytics
+                    </li>
+                  </ol>
+                </nav>
               </div>
-              <div>
-                <FaUsers className="text-success" /> <strong>7.6k</strong>{" "}
-                Learners
+              <h2 className="fw-bold">
+                Advanced Certification in Data Analytics
+              </h2>
+              <p>Ranked #1 Full Stack Training Institute with Placement.</p>
+              <p>
+                Techlynx provides the Best Full Stack Training in Guntur &
+                Online with<strong> 100% placements.</strong>
+                Learn Full Stack Course from Basics to Advanced and get
+                real-time experience.
+              </p>
+              <ul className="list-unstyled">
+                <li>
+                  <FaCheckCircle className="text-success me-2" /> Enroll Now for
+                  Trending Courses with Job Assurance
+                </li>
+                <li>
+                  <FaCheckCircle className="text-success me-2" /> 1 Years
+                  experience in Software Training & Placements
+                </li>
+                <li>
+                  <FaCheckCircle className="text-success me-2" />
+                  In Guntur
+                </li>
+              </ul>
+              <div className="d-flex gap-3 mt-4">
+                <Link to="/enroll">
+                  <button className="btn btn-warning fw-bold">
+                    Enroll Now <FaArrowRight className="ms-2" />
+                  </button>
+                </Link>
+                <button
+                  className="btn btn-primary fw-bold"
+                  onClick={scrollToCertificate}
+                >
+                  View Certificate <FaUserClock className="ms-2" />
+                </button>
+              </div>
+            </div>
+            {/* Right */}
+            <div className="col-md-6 text-center">
+              <img
+                src="https://img.freepik.com/free-photo/business-data-analysis_53876-95296.jpg?semt=ais_hybrid&w=740&q=80"
+                alt=" Data Analytics"
+                className="img-fluid rounded shadow"
+                 style={{ width: "600px", height: "350px" }}
+              />
+              <div className="d-flex justify-content-around mt-3">
+                <div>
+                  <FaStar className="text-warning" /> <strong>4.9</strong>{" "}
+                  Ratings
+                </div>
+                <div>
+                  <FaUsers className="text-success" /> <strong>7.6k</strong>{" "}
+                  Learners
+                </div>
               </div>
             </div>
           </div>
@@ -265,7 +291,7 @@ function Cloud() {
             <div className="stat-card purple">
               <FaMapMarkerAlt className="stat-icon" />
               <p className="stat-value">Guntur</p>
-              <h5>Branches</h5>
+              <h5>Branch</h5>
             </div>
           </div>
           <div className="col-md-3 col-6 mb-4">
@@ -288,24 +314,33 @@ function Cloud() {
       {/* ================= TOOLS COVERED ================= */}
       <div className="container my-5">
         <h2 className="tools-heading text-center mb-5">
-          <span className="text-primary fw-bold">Cloud Computing</span>{" "}
+          <span className="text-primary fw-bold">
+             Data Analytics
+          </span>{" "}
           <span className="fw-semibold">Tools Covered</span>
         </h2>
+
         <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
           {tools.map((tool, index) => (
             <div className="col" key={index}>
               <div className="tool-card shadow-sm h-100 d-flex flex-column align-items-center justify-content-center p-3">
+                {/* Image with tooltip */}
                 <img
                   src={tool.img}
                   alt={tool.name}
                   className="tool-logo mb-3"
+                  title={tool.desc} // 👈 Tooltip will appear on hover
                 />
-                <h6 className="fw-semibold">{tool.name}</h6>
+                {/* Name with tooltip */}
+                <h6 className="fw-semibold" title={tool.desc}>
+                  {tool.name}
+                </h6>
               </div>
             </div>
           ))}
         </div>
       </div>
+
       {/* ================= ROADMAP + FORM ================= */}
       <div className="container-fluid py-5">
         <div className="row">
@@ -313,7 +348,7 @@ function Cloud() {
           <div className="col-md-6 px-4">
             <div className="flowchart-scrollable">
               <h2 className="roadmap-heading text-primary fw-bold mb-5 text-center">
-                🚀 Cloud computing Roadmap
+                🚀 Data Analytics Roadmap
               </h2>
               <div className="timeline">
                 {steps.map((step, index) => (
@@ -394,14 +429,18 @@ function Cloud() {
           </div>
         </div>
       </div>
+
       {/* ================= CERTIFICATE (Wall) ================= */}
-      <section className="certificate-section container py-5">
+      <section
+        ref={certificateRef}
+        className="certificate-section container py-5"
+      >
         <div className="row align-items-center justify-content-center">
           {/* Left Side - Certificate Card */}
           <div className="col-md-6 mb-4">
             <div className="certificate-card p-4 rounded shadow-lg">
               <span className="badge bg-warning text-dark mb-3 ">
-                🎓 TechLynx Official Certificate
+                🎓 Techlynx Official Certificate
               </span>
               <div className="text-center">
                 <img
@@ -410,7 +449,9 @@ function Cloud() {
                   className="img-fluid rounded certificate-img"
                 />
               </div>
-              <h5 className="mt-4 text-success fw-bold">Cloud Computing</h5>
+              <h5 className="mt-4 text-success fw-bold">
+                 Data Analytics
+              </h5>
               <p className="text-muted small">
                 <FaStar className="text-warning" /> Industry Recognized
                 Certification
@@ -435,13 +476,14 @@ function Cloud() {
               Certificate
             </h2>
             <p className="mt-3 text-secondary">
-              Upon successful completion of our <strong>Cloud Computing</strong>{" "}
-              program at <strong>TechLynx</strong>.
+              Upon successful completion of our{" "}
+              <strong> Data Analytics</strong> program at{" "}
+              <strong>Techlynx</strong>.
             </p>
             <ul className="list-unstyled mt-3 text-dark">
               <li>
                 <FaCheckCircle className="text-success me-2" /> Official
-                certification from TechLynx
+                certification from Techlynx
               </li>
               <li>
                 <FaCheckCircle className="text-success me-2" /> Industry
@@ -456,9 +498,10 @@ function Cloud() {
                 validity of certification
               </li>
             </ul>
+            <Link to="/enroll">
             <button className="btn btn-warning btn-lg mt-4 text-dark">
-              🚀 Start Your Journey with TechLynx
-            </button>
+              🚀 Start Your Journey with Techlynx
+            </button></Link>
           </div>
         </div>
       </section>
@@ -534,7 +577,7 @@ function Cloud() {
       <section className="course-fees-container container my-5 p-4 shadow rounded bg-color">
         <h2 className="text-center fw-bold mb-3">Course fees</h2>
         <p className="course-fee text-center fw-boldfw-bold">
-          💰 The course fee is <span className="highlight">₹34,999</span> + GST
+          💰 The course fee is <span className="highlight">₹29,999</span> + GST
         </p>
         <hr />
         <h5 className="text-center fw-semibold mb-4">Invest in your career</h5>
@@ -615,4 +658,4 @@ function Cloud() {
   );
 }
 
-export default Cloud;
+export default DataAnalytics;

@@ -24,6 +24,8 @@ import "./course.css";
 import HomeNavbar from "../components/HomeNavbar";
 import Homefooter from "../components/Homefooter";
 import Homesocialmedia from "../components/Homesocialmedia";
+import { Form } from "react-bootstrap";
+
 function Course() {
   const slides = [
     {
@@ -47,6 +49,7 @@ function Course() {
   ];
 
   // ---------- One (Courses with Filters) ----------
+// ---------- One (Courses with Filters) ----------
   const filterCategories = {
     "All Courses": ["ALL"],
     "Full Stack Development": [
@@ -56,179 +59,298 @@ function Course() {
       "MEAN Stack",
       "MERN Stack",
     ],
-    "Software Development": [
+    "Programming Languages & Frameworks": [
+      "Java",
+      "Python",
+      "Node.js",
+      "Flutter",
+      "React Native",
+    ],
+    "Web Development Roles": [
       "Frontend Developer",
       "Backend Developer",
       "Web Development",
+      "PHP Developer",
     ],
-    "Software Testing": ["Manual Testing", "Automation", "Selenium", "Junit"],
-    "Business & Digital": [
-      "Bussiness Analyst & Intelligence",
+    "Testing & QA": [
+      "Manual Testing",
+      "Automation",
+      "Selenium",
+      "JUnit",
+      "JMeter",
+    ],
+    "Data Science": ["Data Science", "Data Analytics", "PowerBI", "Tableau"],
+    "Business & Marketing": [
+      "Business Analyst",
+      "Business Intelligence",
       "Digital Marketing",
     ],
-    "Data Science": ["Data Science"],
-    "Database Administrator": ["Database Administrator"],
-    "AI & ML": ["Artificial Intelligence", "Machine Learning"],
-    "Emerging Technologies": [
+    Databases: ["Database Administrator", "MySQL", "MongoDB"],
+    "AI & ML": ["Artificial Intelligence", "Machine Learning", "Deep Learning"],
+    "Security & Emerging Technologies": [
       "Cyber Security",
       "Blockchain Technology",
       "DevOps",
       "Cloud Computing",
     ],
-    DevOps: ["DevOps"],
-    "Blockchain Technology": ["Blockchain Technology"],
-    "Cyber Security": ["Cyber Security"],
   };
 
   const allCourses = [
     {
       title: "Python Full Stack Development",
       duration: "6 Months · Online",
-      img: "python.png",
-      price: 49999,
+      img: "/python.png",
+      price: "49,999",
       path: "/courses/python-full-stack",
     },
     {
       title: "Java Full Stack Development",
       duration: "6 Months · Online",
-      img: "java.png",
-      price: 49999,
+      img: "/java.png",
+      price: "49,999",
       path: "/courses/java-full-stack",
     },
     {
       title: ".NET Full Stack Development",
       duration: "6 Months · Online",
-      img: "net.jpg",
-      price: 29999,
+      img: "/net.jpg",
+      price: "29,999",
       path: "/courses/net-full-stack",
     },
     {
       title: "MEAN Stack",
       duration: "6 Months · Online",
-      img: "mean.jpg",
-      price: 49999,
+      img: "/mean.jpg",
+      price: "49,999",
       path: "/courses/mean-full-stack",
     },
     {
       title: "MERN Stack",
       duration: "6 Months · Online",
-      img: "mern.jpeg",
-      price: 49999,
+      img: "/mern.jpeg",
+      price: "49,999",
       path: "/courses/mern-full-stack",
     },
     {
       title: "Artificial Intelligence",
       duration: "6 Months · Online",
-      img: "ai.jpg",
-      price: 99999,
+      img: "/ai.jpg",
+      price: "99,999",
       path: "/courses/artificial-intelligence",
     },
     {
       title: "Machine Learning",
       duration: "6 Months · Online",
-      img: "ml.jpeg",
-      price: 79999,
+      img: "/ml.jpeg",
+      price: "79,999",
       path: "/courses/machine-learning",
     },
     {
       title: "Web Development",
       duration: "6 Months · Online",
-      img: "web.jpg",
-      price: 49999,
+      img: "/web.jpg",
+      price: "49,999",
       path: "/courses/web-development",
     },
     {
       title: "Cloud Computing",
       duration: "6 Months · Online",
-      img: "cloud.jpg",
-      price: 34999,
+      img: "/cloud.jpg",
+      price: "34,999",
       path: "/courses/cloud-computing",
     },
     {
       title: "Database Administrator",
       duration: "6 Months · Online",
-      img: "data-ad.jpeg",
-      price: 34999,
+      img: "/data-ad.jpeg",
+      price: "34,999",
       path: "/courses/database-administration",
     },
     {
       title: "Cyber Security",
       duration: "6 Months · Online",
-      img: "cyber.jpg",
-      price: 49999,
+      img: "/cyber.jpg",
+      price: "49,999",
       path: "/courses/cybersecurity",
     },
     {
       title: "Data Science",
       duration: "6 Months · Online",
-      img: "data.jpeg",
-      price: 69999,
+      img: "/data.jpeg",
+      price: "69,999",
       path: "/courses/datascience",
     },
     {
       title: "Frontend Developer",
       duration: "6 Months · Online",
-      img: "front.jpg",
-      price: 34999,
+      img: "/front.jpg",
+      price: "34,999",
       path: "/courses/frontend-development",
     },
     {
       title: "Backend Developer",
       duration: "6 Months · Online",
-      img: "back.jpg",
-      price: 34999,
+      img: "/back.jpg",
+      price: "34,999",
       path: "/courses/backend-development",
     },
     {
       title: "Blockchain Technology",
       duration: "6 Months · Online",
-      img: "block.jpg",
-      price: 59999,
+      img: "/block.jpg",
+      price: "59,999",
       path: "/courses/blockchain-integration",
     },
     {
       title: "DevOps",
       duration: "6 Months · Online",
-      img: "devops.png",
-      price: 39999,
+      img: "/devops.png",
+      price: "39,999",
       path: "/courses/devops-engineering",
-    },
-    {
-      title: "Bussiness Analyst & Intelligence",
-      duration: "6 Months · Online",
-      img: "business.jpg",
-      price: 24999,
-      path: "/courses/business-analyst-intelligence",
     },
     {
       title: "Digital Marketing",
       duration: "6 Months · Online",
-      img: "digital.jpg",
-      price: 34999,
+      img: "/digital.jpg",
+      price: "34,999",
       path: "/courses/digital-marketing",
     },
     {
       title: "Manual Testing",
       duration: "6 Months · Online",
-      img: "test.jpg",
-      price: 24999,
+      img: "/test.jpg",
+      price: "24,999",
       path: "/courses/manual-testing",
     },
     {
       title: "Selenium",
       duration: "6 Months · Online",
-      img: "selenium.png",
-      price: 24999,
+      img: "/selenium.png",
+      price: "24,999",
       path: "/courses/selenium",
     },
     {
       title: "Automation",
       duration: "6 Months · Online",
-      img: "auto.jpg",
-      price: 24999,
+      img: "/auto.jpg",
+      price: "24,999",
       path: "/courses/automation-testing",
     },
+    {
+      title: "Java",
+      duration: "6 Months · Online",
+      img: "/javaCourse.jpg",
+      price: "29,999",
+      path: "/courses/java",
+    },
+    {
+      title: "Python",
+      duration: "6 Months · Online",
+      img: "/pythonCourse.jpg",
+      price: "29,999",
+      path: "/courses/python",
+    },
+    {
+      title: "Node.js",
+      duration: "6 Months · Online",
+      img: "/NodeCourse.jpg",
+      price: "19,999",
+      path: "/courses/node",
+    },
+    {
+      title: "Flutter",
+      duration: "6 Months · Online",
+      img: "/flutterCourse.jpg",
+      price: "14,999",
+      path: "/courses/flutter",
+    },
+    {
+      title: "React Native",
+      duration: "6 Months · Online",
+      img: "/reactNativeCourse.jpg",
+      price: "19,999",
+      path: "/courses/react-native",
+    },
+    {
+      title: "PHP Developer",
+      duration: "6 Months · Online",
+      img: "/phpCourse.jpg",
+      price: "39,999",
+      path: "/courses/php-development",
+    },
+    {
+      title: "JUnit",
+      duration: "6 Months · Online",
+      img: "/junitCourse.jpg",
+      price: "17,999",
+      path: "/courses/junit",
+    },
+    {
+      title: "JMeter",
+      duration: "6 Months · Online",
+      img: "/jmeterCourse.jpg",
+      price: "17,999",
+      path: "/courses/jmeter",
+    },
+    {
+      title: "Data Analytics",
+      duration: "6 Months · Online",
+      img: "/dataAnalyticsCourse.jpg",
+      price: "29,999",
+      path: "/courses/data-analytics",
+    },
+    {
+      title: "PowerBI",
+      duration: "6 Months · Online",
+      img: "/powerBICourse.jpg",
+      price: "24,999",
+      path: "/courses/powerbi",
+    },
+    {
+      title: "Tableau",
+      duration: "6 Months · Online",
+      img: "/tableauCourse.jpg",
+      price: "24,999",
+      path: "/courses/tableau",
+    },
+    {
+      title: "Deep Learning",
+      duration: "6 Months · Online",
+      img: "/deepLearningCourse.jpg",
+      price: "99,999",
+      path: "/courses/deep-learning",
+    },
+    {
+      title: "MySQL",
+      duration: "6 Months · Online",
+      img: "/mysqlCourse.jpg",
+      price: "34,999",
+      path: "/courses/mysql",
+    },
+    {
+      title: "MongoDB",
+      duration: "6 Months · Online",
+      img: "/mongodbCourse.jpg",
+      price: "34,999",
+      path: "/courses/mongoDB",
+    },
+    {
+      title: "Business Intelligence",
+      duration: "6 Months · Online",
+      img: "/businessIntelligenceCourse.webp",
+      price: "24,999",
+      path: "/courses/business-intelligence",
+    },
+    {
+      title: "Business Analyst",
+      duration: "6 Months · Online",
+      img: "/businessAnalystCourse.png",
+      price: "24,999",
+      path: "/courses/business-analyst",
+    },
   ];
+
+  const [searchTerm, setSearchTerm] = useState("");
 
   const [visibleCount, setVisibleCount] = useState(6);
   const [selectedCategory, setSelectedCategory] = useState("All Courses");
@@ -241,6 +363,10 @@ function Course() {
       : allCourses.filter((course) =>
           filterCategories[selectedCategory].includes(course.title)
         );
+
+  const finalCourses = filteredCourses.filter((course) =>
+    course.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const highlights = [
     {
@@ -409,13 +535,24 @@ function Course() {
               </div>
             </Col>
 
-            <Col md={9} className="p-4 course-content1">
+<Col md={9} className="p-4 course-content1">
               <div className="course-scrollable-content1">
                 <h3 className="mb-4 text-center">
                   The Best Courses that we provide
                 </h3>
+
+                {/* Search Bar */}
+                <Form className="mb-4 w-75 mx-auto">
+                  <Form.Control
+                    type="text"
+                    placeholder="🔍 Search courses..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
+                </Form>
+
                 <Row>
-                  {filteredCourses.slice(0, visibleCount).map((course, idx) => (
+                  {finalCourses.slice(0, visibleCount).map((course, idx) => (
                     <Col md={6} lg={4} key={idx} className="mb-4">
                       <Card className="h-100 shadow-sm">
                         <Card.Img variant="top" src={course.img} />
@@ -432,14 +569,15 @@ function Course() {
                                 View Program
                               </Button>
                             </Link>
-                            <div className="price-circle">₹{course.price}</div>
+                            <div className="price-circle">
+                              ₹{course.price}/-
+                            </div>
                           </div>
                         </Card.Body>
                       </Card>
                     </Col>
                   ))}
                 </Row>
-
                 <div className="text-center mt-4">
                   {visibleCount < filteredCourses.length ? (
                     <Button

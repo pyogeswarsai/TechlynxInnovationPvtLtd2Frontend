@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useRef } from "react";
 import {
   FaCheckCircle,
   FaStar,
@@ -22,87 +22,102 @@ import "./python.css";
 import { Link } from "react-router-dom";
 const tools = [
   {
-    name: "AWS",
-    img: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+    name: "Introduction to MySQL",
+    img: "https://www.mysql.com/common/logos/logo-mysql-170x115.png",
+    desc: "Get started with MySQL, learn its features, \ninstallation, and basic database concepts.",
   },
   {
-    name: "Microsoft Azure",
-    img: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_Azure.svg",
+    name: "Database Design & ER Diagrams",
+    img: "https://miro.medium.com/v2/resize:fit:530/1*1fc2dDk1RywRv6nDw_EE_A.png",
+    desc: "Learn about tables, relationships, normalization,\n primary & foreign keys, and ER diagrams.",
   },
   {
-    name: "Google Cloud",
-    img: "https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_logo.svg",
+    name: "CRUD Operations",
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvcB77erOARi1UB6Mk02abnTZ4qPlRsUIJJA&s",
+    desc: "Master Create, Read, Update, and \nDelete operations using SQL queries.",
   },
   {
-    name: "Linux",
-    img: "https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg",
+    name: "Joins & Subqueries",
+    img: "https://media.geeksforgeeks.org/wp-content/uploads/20250607125822884856/SQL-Join.webp",
+    desc: "Understand INNER, LEFT, RIGHT, FULL joins and\n write efficient subqueries for complex data retrieval.",
   },
   {
-    name: "Docker",
-    img: "https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png",
+    name: "Indexes & Optimization",
+    img: "https://www.theknowledgeacademy.com/_files/images/Different_types_of_SQL_Indexes.png",
+    desc: "Learn indexing, query optimization, and\n performance tuning for large databases.",
   },
   {
-    name: "Kubernetes",
-    img: "https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg",
+    name: "Stored Procedures & Functions",
+    img: "https://miro.medium.com/v2/resize:fit:493/1*zfae8_sPmKxJ73bBI8PGWg.png",
+    desc: "Create reusable stored procedures, functions,\n and triggers to automate database tasks.",
   },
   {
-    name: "Terraform",
-    img: "https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg",
+    name: "Transactions & Security",
+    img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgB6UK6F1kerv5HVXpp3z_LcBkQoc50lNQ9ZRPFzuIfSfjnaQo2Fr-O36SEhOvzGmXLSCnOY_yU6aMuVSInWE7nA0JglQoQzytnxcb0CHje9bk_8Wox2OzO6nfqqlfSuw4gBc5DXPrJ8rtn_uwERMgwvzA9nM03nVl9kKvpv_C_SJv8hmxfg0sMjLznDA/s16000/transaction.jpg",
+    desc: "Understand transactions, ACID properties, user\n privileges, and securing your MySQL database.",
   },
   {
-    name: "Jenkins",
-    img: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Jenkins_logo.svg",
+    name: "Backup & Restore",
+    img: "https://www.seguetech.com/wp-content/uploads/2013/06/segue-blog-considerations-planning-sql-server-database-backup-restore-strategy.png",
+    desc: "Learn how to backup and restore databases using \ncommands and tools to prevent data loss.",
   },
   {
-    name: "Git",
-    img: "https://images.assets-landingi.com/uc/37b05982-9ab4-4981-83e8-39f043c18937/GitLogo2Color.svg",
+    name: "Advanced SQL Queries",
+    img: "https://miro.medium.com/v2/resize:fit:1400/1*cPgKtezA83eLGKInq7SyXQ.png",
+    desc: "Practice advanced SQL queries including UNION,\n CASE statements, and analytical functions.",
   },
-  { name: "MySQL", img: "https://www.svgrepo.com/show/303251/mysql-logo.svg" },
+  {
+    name: "Real-World Projects",
+    img: "https://miro.medium.com/0*Ae6S7hr75JdBNgnZ",
+    desc: "Work on projects like Employee Management,\n Inventory System, and E-commerce Database design.",
+  },
 ];
 
 // ---------------- FAQ ----------------
 const faqs = [
   {
-    question: "What is a Cloud Computing Full-Stack Developer course?",
+    question: "What is a MySQL Programming course?",
     answer:
-      "This course trains you in cloud platforms (AWS, Azure, Google Cloud), DevOps tools (Docker, Kubernetes, Jenkins), and full-stack development (frontend, backend, databases, APIs) for building and deploying scalable applications.",
+      "This course trains you in MySQL, from basic database concepts to advanced topics like stored procedures, optimization, and real-world project development.",
   },
   {
     question: "Do I need prior programming knowledge?",
     answer:
-      "Basic knowledge of programming and networking is helpful but not required. The course starts with cloud fundamentals before advancing to DevOps and full-stack concepts.",
+      "Basic knowledge of SQL or programming concepts is helpful but not required. The course starts with fundamental database concepts.",
   },
   {
-    question: "What technologies will I learn?",
+    question: "What topics will I learn?",
     answer:
-      "You will learn AWS, Azure, Google Cloud, Docker, Kubernetes, Terraform, Jenkins for DevOps, along with HTML, CSS, JavaScript, React, Python/Node.js, and Git/GitHub for development and version control.",
+      "You will learn database design, CRUD operations, joins, subqueries, indexes, optimization, transactions, stored procedures, security, and real-world project applications.",
   },
   {
     question: "What projects will I build during the course?",
     answer:
-      "You’ll build projects like Cloud-hosted Web Apps, Serverless Applications, CI/CD Pipelines, Containerized Applications, and Multi-Cloud Deployments.",
+      "You’ll build projects like an Employee Management System, Inventory Tracking, Student Database, and E-commerce databases.",
   },
   {
     question: "What career opportunities are available after this course?",
     answer:
-      "You can work as a Cloud Engineer, Cloud Full-Stack Developer, DevOps Engineer, Site Reliability Engineer (SRE), or Solutions Architect in IT companies.",
+      "You can work as a Database Administrator, Backend Developer, Data Analyst, SQL Developer, or Full-Stack Developer.",
   },
   {
     question: "Will I receive a certificate after completion?",
     answer:
-      "Yes, upon successful completion, you’ll receive an industry-recognized certificate validating your cloud computing and full-stack development skills.",
+      "Yes, upon successful completion, you’ll receive a certificate validating your MySQL skills, which can be shared with employers or on LinkedIn.",
   },
   {
-    question: "Does the course include placement assistance?",
+    question: "Does the course include guidance for job preparation?",
     answer:
-      "Yes, many programs include career guidance, resume building, interview preparation, and job referrals through hiring partners.",
+      "Yes, the course provides guidance for database interview preparation, SQL challenges, resume building, and career advice for database-related roles.",
   },
 ];
 
-function Cloud() {
+
+function MySql() {
+  
   const [submitted, setSubmitted] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
-
+  const certificateRef = useRef(null); 
   const toggleFaq = (index) => setOpenIndex(openIndex === index ? null : index);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -115,129 +130,153 @@ function Cloud() {
     e.preventDefault(); // prevent page reload
     setSubscribeSubmitted(true);
   };
+   const scrollToCertificate = () => {
+    certificateRef.current?.scrollIntoView({ behavior: "smooth" });
+  }; const steps = [
+  {
+    title: "Module 1: Introduction to MySQL",
+    details:
+      "Learn the basics of MySQL, installation, database concepts, and how MySQL differs from other database systems. Create your first database and table.",
+  },
+  {
+    title: "Module 2: Database Design & ER Diagrams",
+    details:
+      "Understand database design principles, normalization, relationships, and how to create Entity-Relationship (ER) diagrams for structured databases.",
+  },
+  {
+    title: "Module 3: CRUD Operations",
+    details:
+      "Master basic SQL operations: Create, Read, Update, and Delete records in MySQL databases using queries.",
+  },
+  {
+    title: "Module 4: Joins & Subqueries",
+    details:
+      "Learn how to combine data from multiple tables using INNER, LEFT, RIGHT, and FULL JOINs. Practice writing subqueries for complex data retrieval.",
+  },
+  {
+    title: "Module 5: Indexes & Optimization",
+    details:
+      "Understand indexing, query optimization techniques, and performance tuning for efficient database operations.",
+  },
+  {
+    title: "Module 6: Stored Procedures & Functions",
+    details:
+      "Learn how to create reusable stored procedures, functions, and triggers to automate database tasks and maintain data integrity.",
+  },
+  {
+    title: "Module 7: Transactions & Security",
+    details:
+      "Understand transactions, ACID properties, locking, user privileges, and securing MySQL databases against unauthorized access.",
+  },
+  {
+    title: "Module 8: Backup & Restore",
+    details:
+      "Learn methods for backing up and restoring MySQL databases to prevent data loss and ensure data recovery in case of failures.",
+  },
+  {
+    title: "Module 9: Advanced SQL Queries",
+    details:
+      "Practice advanced SQL queries, including UNION, CASE statements, and analytical functions to handle complex reporting and analysis tasks.",
+  },
+  {
+    title: "Module 10: Database Administration",
+    details:
+      "Learn basic database administration tasks like creating users, managing privileges, monitoring performance, and maintaining database health.",
+  },
+  {
+    title: "Module 11: Real-World Projects",
+    details:
+      "Build real-world projects such as Employee Management, Inventory System, and E-commerce Database to apply MySQL concepts practically.",
+  },
+  {
+    title: "Module 12: Career Preparation & Certification",
+    details:
+      "Prepare for database-related roles, interview questions, and practical assessments. Earn an industry-recognized certificate to boost your career.",
+  },
+];
 
-  const steps = [
-    {
-      title: "Module 1: Cloud Computing Fundamentals",
-      details:
-        "Introduction to cloud computing, service models (IaaS, PaaS, SaaS), cloud deployment models, and basics of AWS, Azure, and Google Cloud.",
-    },
-    {
-      title: "Module 2: Front-End Development",
-      details:
-        "Learn HTML, CSS, JavaScript, responsive design with Bootstrap/Tailwind, and React.js for building interactive UIs.",
-    },
-    {
-      title: "Module 3: Back-End Development",
-      details:
-        "Master Node.js/Python with Express/Django, build RESTful APIs, perform CRUD operations, and integrate with cloud databases.",
-    },
-    {
-      title: "Module 4: Databases in the Cloud",
-      details:
-        "Work with MySQL/PostgreSQL on RDS, NoSQL databases like DynamoDB, and learn database scaling and optimization.",
-    },
-    {
-      title: "Module 5: Cloud Services & Deployment",
-      details:
-        "Learn EC2, S3, Lambda, Azure Functions, and GCP App Engine. Deploy and manage applications in the cloud environment.",
-    },
-    {
-      title: "Module 6: DevOps Tools & Automation",
-      details:
-        "Work with Docker for containerization, Kubernetes for orchestration, Terraform for Infrastructure as Code, and Jenkins for CI/CD pipelines.",
-    },
-    {
-      title: "Module 7: Security & Monitoring",
-      details:
-        "Learn IAM (Identity and Access Management), cloud security best practices, monitoring with CloudWatch/Prometheus, and logging with ELK stack.",
-    },
-    {
-      title: "Module 8: Multi-Cloud & Serverless Computing",
-      details:
-        "Develop serverless applications using AWS Lambda, Azure Functions, and GCP Cloud Functions. Explore hybrid and multi-cloud deployment strategies.",
-    },
-    {
-      title: "Module 9: Career Preparation",
-      details:
-        "Prepare for cloud & DevOps job interviews with system design basics, cloud architecture scenarios, mock interviews, resume building, and communication skills.",
-    },
-  ];
   return (
     <div>
-      {/* ================= HERO ================= */}
-      <div className="hero-section d-flex flex-column justify-content-center align-items-center text-center text-white">
-        <h3 className="fw-bold display-5">
-          Advanced Certification in Cloud Computing
-        </h3>
-        <p className="fs-5 mt-2">
-          Have a look at all of the most popular courses here!
-        </p>
-      </div>
-      <div className="container my-5">
-        <div className="row align-items-center">
-          {/* Left */}
-          <div className="col-md-6">
-            <div className="container mb-5">
-              <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                  <li className="breadcrumb-item">
-                    <Link to="/courses">Courses</Link>
-                  </li>
-                  <li className="breadcrumb-item active" aria-current="page">
-                    Cloud Computing
-                  </li>
-                </ol>
-              </nav>
-            </div>
-            <h2 className="fw-bold">
-              Advanced Certification in Cloud Computing
-            </h2>
-            <p>Ranked #1 Full Stack Training Institute with Placement.</p>
-            <p>
-              Techlynx provides the Best Full Stack Training in Guntur & Online
-              with<strong> 100% placements.</strong>
-              Learn Full Stack Course from Basics to Advanced and get real-time
-              experience.
-            </p>
-            <ul className="list-unstyled">
-              <li>
-                <FaCheckCircle className="text-success me-2" /> Enroll Now for
-                Trending Courses with Job Assurance
-              </li>
-              <li>
-                <FaCheckCircle className="text-success me-2" /> 1 Years
-                experience in Software Training & Placements
-              </li>
-              <li>
-                <FaCheckCircle className="text-success me-2" /> Branch in Guntur
-              </li>
-            </ul>
-            <div className="d-flex gap-3 mt-4">
-              <Link to="/enroll">
-                <button className="btn btn-warning fw-bold">
-                  Enroll Now <FaArrowRight className="ms-2" />
-                </button>
-              </Link>
-              <button className="btn btn-primary fw-bold">
-                View Certificate <FaUserClock className="ms-2" />
-              </button>
-            </div>
-          </div>
-          {/* Right */}
-          <div className="col-md-6 text-center">
-            <img
-              src="/cl.png"
-              alt="Python Full Stack"
-              className="img-fluid rounded shadow"
-            />
-            <div className="d-flex justify-content-around mt-3">
-              <div>
-                <FaStar className="text-warning" /> <strong>4.9</strong> Ratings
+      <div>
+        {/* ================= HERO ================= */}
+        <div className="hero-section d-flex flex-column justify-content-center align-items-center text-center text-white">
+          <h3 className="fw-bold display-5">
+            Advanced Certification in MySQL
+          </h3>
+          <p className="fs-5 mt-2">
+            Have a look at all of the most popular courses here!
+          </p>
+        </div>
+        {/* ================= Content ================= */}
+        <div className="container my-5">
+          <div className="row align-items-center">
+            {/* Left */}
+            <div className="col-md-6">
+              <div className="container mb-5">
+                <nav aria-label="breadcrumb">
+                  <ol className="breadcrumb">
+                    <li className="breadcrumb-item">
+                      <Link to="/courses">Courses</Link>
+                    </li>
+                    <li className="breadcrumb-item active" aria-current="page">
+                   MySQL
+                    </li>
+                  </ol>
+                </nav>
               </div>
-              <div>
-                <FaUsers className="text-success" /> <strong>7.6k</strong>{" "}
-                Learners
+              <h2 className="fw-bold">
+                Advanced Certification in MySQL
+              </h2>
+              <p>Ranked #1 Full Stack Training Institute with Placement.</p>
+              <p>
+                Techlynx provides the Best Full Stack Training in Guntur &
+                Online with<strong> 100% placements.</strong>
+                Learn Full Stack Course from Basics to Advanced and get
+                real-time experience.
+              </p>
+              <ul className="list-unstyled">
+                <li>
+                  <FaCheckCircle className="text-success me-2" /> Enroll Now for
+                  Trending Courses with Job Assurance
+                </li>
+                <li>
+                  <FaCheckCircle className="text-success me-2" /> 1 Years
+                  experience in Software Training & Placements
+                </li>
+                <li>
+                  <FaCheckCircle className="text-success me-2" />  In Guntur
+                </li>
+              </ul>
+              <div className="d-flex gap-3 mt-4">
+                <Link to="/enroll">
+                  <button className="btn btn-warning fw-bold">
+                    Enroll Now <FaArrowRight className="ms-2" />
+                  </button>
+                </Link>
+                <button
+                  className="btn btn-primary fw-bold"
+                  onClick={scrollToCertificate}
+                >
+                  View Certificate <FaUserClock className="ms-2" />
+                </button>
+              </div>
+            </div>
+            {/* Right */}
+            <div className="col-md-6 text-center">
+              <img
+                src="https://cdn.intuji.com/2023/10/MySQL.png"
+                alt="MySQL"
+                className="img-fluid rounded shadow"
+              />
+              <div className="d-flex justify-content-around mt-3">
+                <div>
+                  <FaStar className="text-warning" /> <strong>4.9</strong>{" "}
+                  Ratings
+                </div>
+                <div>
+                  <FaUsers className="text-success" /> <strong>7.6k</strong>{" "}
+                  Learners
+                </div>
               </div>
             </div>
           </div>
@@ -265,7 +304,7 @@ function Cloud() {
             <div className="stat-card purple">
               <FaMapMarkerAlt className="stat-icon" />
               <p className="stat-value">Guntur</p>
-              <h5>Branches</h5>
+              <h5>Branch</h5>
             </div>
           </div>
           <div className="col-md-3 col-6 mb-4">
@@ -288,24 +327,33 @@ function Cloud() {
       {/* ================= TOOLS COVERED ================= */}
       <div className="container my-5">
         <h2 className="tools-heading text-center mb-5">
-          <span className="text-primary fw-bold">Cloud Computing</span>{" "}
-          <span className="fw-semibold">Tools Covered</span>
+          <span className="text-primary fw-bold">
+           MySQL
+          </span>{" "}
+          <span className="fw-semibold">Topics Covered</span>
         </h2>
+
         <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
           {tools.map((tool, index) => (
             <div className="col" key={index}>
               <div className="tool-card shadow-sm h-100 d-flex flex-column align-items-center justify-content-center p-3">
+                {/* Image with tooltip */}
                 <img
                   src={tool.img}
                   alt={tool.name}
                   className="tool-logo mb-3"
+                  title={tool.desc} // 👈 Tooltip will appear on hover
                 />
-                <h6 className="fw-semibold">{tool.name}</h6>
+                {/* Name with tooltip */}
+                <h6 className="fw-semibold" title={tool.desc}>
+                  {tool.name}
+                </h6>
               </div>
             </div>
           ))}
         </div>
       </div>
+
       {/* ================= ROADMAP + FORM ================= */}
       <div className="container-fluid py-5">
         <div className="row">
@@ -313,7 +361,7 @@ function Cloud() {
           <div className="col-md-6 px-4">
             <div className="flowchart-scrollable">
               <h2 className="roadmap-heading text-primary fw-bold mb-5 text-center">
-                🚀 Cloud computing Roadmap
+                🚀 MySQL Roadmap
               </h2>
               <div className="timeline">
                 {steps.map((step, index) => (
@@ -394,14 +442,18 @@ function Cloud() {
           </div>
         </div>
       </div>
+
       {/* ================= CERTIFICATE (Wall) ================= */}
-      <section className="certificate-section container py-5">
+      <section
+        ref={certificateRef}
+        className="certificate-section container py-5"
+      >
         <div className="row align-items-center justify-content-center">
           {/* Left Side - Certificate Card */}
           <div className="col-md-6 mb-4">
             <div className="certificate-card p-4 rounded shadow-lg">
               <span className="badge bg-warning text-dark mb-3 ">
-                🎓 TechLynx Official Certificate
+                🎓 Techlynx Official Certificate
               </span>
               <div className="text-center">
                 <img
@@ -410,7 +462,9 @@ function Cloud() {
                   className="img-fluid rounded certificate-img"
                 />
               </div>
-              <h5 className="mt-4 text-success fw-bold">Cloud Computing</h5>
+              <h5 className="mt-4 text-success fw-bold">
+             MySQL
+              </h5>
               <p className="text-muted small">
                 <FaStar className="text-warning" /> Industry Recognized
                 Certification
@@ -435,13 +489,14 @@ function Cloud() {
               Certificate
             </h2>
             <p className="mt-3 text-secondary">
-              Upon successful completion of our <strong>Cloud Computing</strong>{" "}
-              program at <strong>TechLynx</strong>.
+              Upon successful completion of our{" "}
+              <strong>MySQL</strong> program at{" "}
+              <strong>Techlynx</strong>.
             </p>
             <ul className="list-unstyled mt-3 text-dark">
               <li>
                 <FaCheckCircle className="text-success me-2" /> Official
-                certification from TechLynx
+                certification from Techlynx
               </li>
               <li>
                 <FaCheckCircle className="text-success me-2" /> Industry
@@ -456,9 +511,10 @@ function Cloud() {
                 validity of certification
               </li>
             </ul>
+            <Link to="/enroll">
             <button className="btn btn-warning btn-lg mt-4 text-dark">
-              🚀 Start Your Journey with TechLynx
-            </button>
+              🚀 Start Your Journey with Techlynx
+            </button></Link>
           </div>
         </div>
       </section>
@@ -615,4 +671,4 @@ function Cloud() {
   );
 }
 
-export default Cloud;
+export default MySql;

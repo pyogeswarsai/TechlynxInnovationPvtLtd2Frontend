@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useRef } from "react";
 import {
   FaCheckCircle,
   FaStar,
@@ -22,87 +22,102 @@ import "./python.css";
 import { Link } from "react-router-dom";
 const tools = [
   {
-    name: "AWS",
-    img: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+    name: "Introduction to React Native",
+    img: "https://reactnative.dev/img/header_logo.svg",
+    desc: "Get started with React Native, understand \nwhat it is, how it differs from React.js, installation,\n and setting up your first mobile app.",
   },
   {
-    name: "Microsoft Azure",
-    img: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_Azure.svg",
+    name: "React Native Components",
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU_0u36Bw_8F6pD4et6OaZPhrWNiTNOXAriw&s",
+    desc: "Learn about core components like View, Text, \nImage, TextInput, ScrollView, and StyleSheet for building UIs.",
   },
   {
-    name: "Google Cloud",
-    img: "https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_logo.svg",
+    name: "Styling in React Native",
+    img: "https://media2.dev.to/dynamic/image/width=1280,height=720,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F4r0fr0b7ll58mwbvq67f.png",
+    desc: "Apply styles using Flexbox, StyleSheet,\n responsive layouts, and explore UI libraries for \nfaster development.",
   },
   {
-    name: "Linux",
-    img: "https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg",
+    name: "Navigation",
+    img: "https://reactnavigation.org/img/spiro.svg",
+    desc: "Implement navigation using React Navigation.\n Learn about stack, tab, drawer navigators, and \nnavigation props.",
   },
   {
-    name: "Docker",
-    img: "https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png",
+    name: "State & Props",
+    img: "https://cdn.iconscout.com/icon/free/png-256/free-react-4-1175110.png",
+    desc: "Understand how to pass data with props, \nmanage component-level state, and use hooks like \nuseState and useEffect.",
   },
   {
-    name: "Kubernetes",
-    img: "https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg",
+    name: "APIs & Data Fetching",
+    img: "https://uploads.keitaro.com/uploads/2024/07/integrating-apis-with-react.png",
+    desc: "Fetch and display data from REST APIs\n using Fetch API or Axios, and handle async/await \neffectively.",
   },
   {
-    name: "Terraform",
-    img: "https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg",
+    name: "Forms & User Input",
+    img: "https://miro.medium.com/1*qZ0fcDcWZ80iPZ0sJr6CfA.jpeg",
+    desc: "Build forms with TextInput, Picker, and \nSwitch. Validate inputs and manage form state.",
   },
-  {
-    name: "Jenkins",
-    img: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Jenkins_logo.svg",
-  },
-  {
-    name: "Git",
-    img: "https://images.assets-landingi.com/uc/37b05982-9ab4-4981-83e8-39f043c18937/GitLogo2Color.svg",
-  },
-  { name: "MySQL", img: "https://www.svgrepo.com/show/303251/mysql-logo.svg" },
+{
+  name: "State Management",
+  img: "https://redux.js.org/img/redux-logo-landscape.png",
+  desc: "Learn state management techniques using\n Context API, Redux, or Recoil to manage global\n app state effectively.",
+},
+{
+  name: "Animations & Gestures",
+  img: "https://blog.logrocket.com/wp-content/uploads/2022/07/best-react-animation-libraries.png",
+  desc: "Create smooth user experiences with React\n Native Reanimated and Gesture Handler for interactive\n UI animations.",
+},
+{
+  name: "Performance Optimization",
+  img: "https://pagepro.co/blog/wp-content/uploads/2024/08/Optimizing-Performance-in-React-Native-App.png",
+  desc: "Improve app performance with FlatList\n optimizations, lazy loading, code splitting, and \nefficient rendering practices.",
+},
+
 ];
 
 // ---------------- FAQ ----------------
 const faqs = [
   {
-    question: "What is a Cloud Computing Full-Stack Developer course?",
+    question: "What is a React Native course?",
     answer:
-      "This course trains you in cloud platforms (AWS, Azure, Google Cloud), DevOps tools (Docker, Kubernetes, Jenkins), and full-stack development (frontend, backend, databases, APIs) for building and deploying scalable applications.",
+      "This course trains you in React Native, starting from the basics to advanced topics like navigation, APIs, storage, authentication, and deployment.",
   },
   {
     question: "Do I need prior programming knowledge?",
     answer:
-      "Basic knowledge of programming and networking is helpful but not required. The course starts with cloud fundamentals before advancing to DevOps and full-stack concepts.",
+      "Basic knowledge of JavaScript or React is recommended since React Native is built on React. No prior mobile development experience is required.",
   },
   {
-    question: "What technologies will I learn?",
+    question: "What topics will I learn?",
     answer:
-      "You will learn AWS, Azure, Google Cloud, Docker, Kubernetes, Terraform, Jenkins for DevOps, along with HTML, CSS, JavaScript, React, Python/Node.js, and Git/GitHub for development and version control.",
+      "You will learn React Native fundamentals, components, styling, navigation, state management, APIs, storage, authentication, and deployment.",
   },
   {
     question: "What projects will I build during the course?",
     answer:
-      "You’ll build projects like Cloud-hosted Web Apps, Serverless Applications, CI/CD Pipelines, Containerized Applications, and Multi-Cloud Deployments.",
+      "You’ll build projects like a To-Do App, Weather App, Chat Application, E-commerce App, and other real-world mobile apps.",
   },
   {
     question: "What career opportunities are available after this course?",
     answer:
-      "You can work as a Cloud Engineer, Cloud Full-Stack Developer, DevOps Engineer, Site Reliability Engineer (SRE), or Solutions Architect in IT companies.",
+      "You can work as a Mobile App Developer, React Native Developer, Full-Stack Mobile Developer, or Hybrid App Developer.",
   },
   {
     question: "Will I receive a certificate after completion?",
     answer:
-      "Yes, upon successful completion, you’ll receive an industry-recognized certificate validating your cloud computing and full-stack development skills.",
+      "Yes, upon successful completion, you’ll receive a certificate validating your React Native skills, which can be shared with employers or on LinkedIn.",
   },
   {
-    question: "Does the course include placement assistance?",
+    question: "Does the course include guidance for job preparation?",
     answer:
-      "Yes, many programs include career guidance, resume building, interview preparation, and job referrals through hiring partners.",
+      "Yes, many programs include coding challenges, interview preparation, resume building, and career advice for mobile developer roles.",
   },
 ];
 
-function Cloud() {
+function React() {
+  
   const [submitted, setSubmitted] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
-
+  const certificateRef = useRef(null); 
   const toggleFaq = (index) => setOpenIndex(openIndex === index ? null : index);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -115,129 +130,153 @@ function Cloud() {
     e.preventDefault(); // prevent page reload
     setSubscribeSubmitted(true);
   };
+   const scrollToCertificate = () => {
+    certificateRef.current?.scrollIntoView({ behavior: "smooth" });
+  }; const steps = [
+  {
+    title: "Module 1: Introduction to React Native",
+    details:
+      "Learn the basics of React Native, its advantages, and setup (Node.js, React Native CLI, or Expo). Build your first mobile app and understand the project structure.",
+  },
+  {
+    title: "Module 2: React Native Core Components",
+    details:
+      "Understand core components like View, Text, Image, ScrollView, TextInput, Button, FlatList, and StyleSheet for building UI.",
+  },
+  {
+    title: "Module 3: Styling in React Native",
+    details:
+      "Apply styling using Flexbox, StyleSheet, and responsive layouts. Learn how to handle themes, dark mode, and adaptive design.",
+  },
+  {
+    title: "Module 4: State & Props Management",
+    details:
+      "Learn how to pass data using props, manage component state with useState and useEffect hooks, and build reusable components.",
+  },
+  {
+    title: "Module 5: Navigation",
+    details:
+      "Implement multi-screen apps using React Navigation. Work with Stack, Tab, and Drawer navigators for smooth navigation.",
+  },
+  {
+    title: "Module 6: Forms & User Input",
+    details:
+      "Build interactive forms, handle user input, validations, and manage form state using libraries like Formik and Yup.",
+  },
+  {
+    title: "Module 7: Local Storage & Databases",
+    details:
+      "Store data using AsyncStorage, integrate SQLite for local databases, and connect with Firebase for real-time data.",
+  },
+  {
+    title: "Module 8: APIs & Networking",
+    details:
+      "Fetch and send data using REST APIs. Work with Axios/Fetch API and handle authentication with tokens or Firebase Auth.",
+  },
+  {
+    title: "Module 9: Authentication & Security",
+    details:
+      "Implement authentication flows (login, signup, logout) with Firebase/Auth0. Learn secure storage, JWT handling, and app security best practices.",
+  },
+  {
+    title: "Module 10: Animations & Gestures",
+    details:
+      "Enhance UX with animations using React Native Reanimated and Gesture Handler. Build interactive swipe, drag, and tap gestures.",
+  },
+  {
+    title: "Module 11: Testing & Debugging",
+    details:
+      "Debug apps using React Native Debugger, Flipper, and Chrome tools. Write tests with Jest and React Native Testing Library.",
+  },
+  {
+    title: "Module 12: Deployment & Career Preparation",
+    details:
+      "Prepare your app for release on Google Play Store and Apple App Store. Learn performance optimization, CI/CD basics, and get ready for mobile developer interviews.",
+  },
+];
 
-  const steps = [
-    {
-      title: "Module 1: Cloud Computing Fundamentals",
-      details:
-        "Introduction to cloud computing, service models (IaaS, PaaS, SaaS), cloud deployment models, and basics of AWS, Azure, and Google Cloud.",
-    },
-    {
-      title: "Module 2: Front-End Development",
-      details:
-        "Learn HTML, CSS, JavaScript, responsive design with Bootstrap/Tailwind, and React.js for building interactive UIs.",
-    },
-    {
-      title: "Module 3: Back-End Development",
-      details:
-        "Master Node.js/Python with Express/Django, build RESTful APIs, perform CRUD operations, and integrate with cloud databases.",
-    },
-    {
-      title: "Module 4: Databases in the Cloud",
-      details:
-        "Work with MySQL/PostgreSQL on RDS, NoSQL databases like DynamoDB, and learn database scaling and optimization.",
-    },
-    {
-      title: "Module 5: Cloud Services & Deployment",
-      details:
-        "Learn EC2, S3, Lambda, Azure Functions, and GCP App Engine. Deploy and manage applications in the cloud environment.",
-    },
-    {
-      title: "Module 6: DevOps Tools & Automation",
-      details:
-        "Work with Docker for containerization, Kubernetes for orchestration, Terraform for Infrastructure as Code, and Jenkins for CI/CD pipelines.",
-    },
-    {
-      title: "Module 7: Security & Monitoring",
-      details:
-        "Learn IAM (Identity and Access Management), cloud security best practices, monitoring with CloudWatch/Prometheus, and logging with ELK stack.",
-    },
-    {
-      title: "Module 8: Multi-Cloud & Serverless Computing",
-      details:
-        "Develop serverless applications using AWS Lambda, Azure Functions, and GCP Cloud Functions. Explore hybrid and multi-cloud deployment strategies.",
-    },
-    {
-      title: "Module 9: Career Preparation",
-      details:
-        "Prepare for cloud & DevOps job interviews with system design basics, cloud architecture scenarios, mock interviews, resume building, and communication skills.",
-    },
-  ];
   return (
     <div>
-      {/* ================= HERO ================= */}
-      <div className="hero-section d-flex flex-column justify-content-center align-items-center text-center text-white">
-        <h3 className="fw-bold display-5">
-          Advanced Certification in Cloud Computing
-        </h3>
-        <p className="fs-5 mt-2">
-          Have a look at all of the most popular courses here!
-        </p>
-      </div>
-      <div className="container my-5">
-        <div className="row align-items-center">
-          {/* Left */}
-          <div className="col-md-6">
-            <div className="container mb-5">
-              <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                  <li className="breadcrumb-item">
-                    <Link to="/courses">Courses</Link>
-                  </li>
-                  <li className="breadcrumb-item active" aria-current="page">
-                    Cloud Computing
-                  </li>
-                </ol>
-              </nav>
-            </div>
-            <h2 className="fw-bold">
-              Advanced Certification in Cloud Computing
-            </h2>
-            <p>Ranked #1 Full Stack Training Institute with Placement.</p>
-            <p>
-              Techlynx provides the Best Full Stack Training in Guntur & Online
-              with<strong> 100% placements.</strong>
-              Learn Full Stack Course from Basics to Advanced and get real-time
-              experience.
-            </p>
-            <ul className="list-unstyled">
-              <li>
-                <FaCheckCircle className="text-success me-2" /> Enroll Now for
-                Trending Courses with Job Assurance
-              </li>
-              <li>
-                <FaCheckCircle className="text-success me-2" /> 1 Years
-                experience in Software Training & Placements
-              </li>
-              <li>
-                <FaCheckCircle className="text-success me-2" /> Branch in Guntur
-              </li>
-            </ul>
-            <div className="d-flex gap-3 mt-4">
-              <Link to="/enroll">
-                <button className="btn btn-warning fw-bold">
-                  Enroll Now <FaArrowRight className="ms-2" />
-                </button>
-              </Link>
-              <button className="btn btn-primary fw-bold">
-                View Certificate <FaUserClock className="ms-2" />
-              </button>
-            </div>
-          </div>
-          {/* Right */}
-          <div className="col-md-6 text-center">
-            <img
-              src="/cl.png"
-              alt="Python Full Stack"
-              className="img-fluid rounded shadow"
-            />
-            <div className="d-flex justify-content-around mt-3">
-              <div>
-                <FaStar className="text-warning" /> <strong>4.9</strong> Ratings
+      <div>
+        {/* ================= HERO ================= */}
+        <div className="hero-section d-flex flex-column justify-content-center align-items-center text-center text-white">
+          <h3 className="fw-bold display-5">
+            Advanced Certification in React Native
+          </h3>
+          <p className="fs-5 mt-2">
+            Have a look at all of the most popular courses here!
+          </p>
+        </div>
+        {/* ================= Content ================= */}
+        <div className="container my-5">
+          <div className="row align-items-center">
+            {/* Left */}
+            <div className="col-md-6">
+              <div className="container mb-5">
+                <nav aria-label="breadcrumb">
+                  <ol className="breadcrumb">
+                    <li className="breadcrumb-item">
+                      <Link to="/courses">Courses</Link>
+                    </li>
+                    <li className="breadcrumb-item active" aria-current="page">
+                    React Native
+                    </li>
+                  </ol>
+                </nav>
               </div>
-              <div>
-                <FaUsers className="text-success" /> <strong>7.6k</strong>{" "}
-                Learners
+              <h2 className="fw-bold">
+                Advanced Certification in React Native
+              </h2>
+              <p>Ranked #1 Full Stack Training Institute with Placement.</p>
+              <p>
+                Techlynx provides the Best Full Stack Training in Guntur &
+                Online with<strong> 100% placements.</strong>
+                Learn Full Stack Course from Basics to Advanced and get
+                real-time experience.
+              </p>
+              <ul className="list-unstyled">
+                <li>
+                  <FaCheckCircle className="text-success me-2" /> Enroll Now for
+                  Trending Courses with Job Assurance
+                </li>
+                <li>
+                  <FaCheckCircle className="text-success me-2" /> 1 Years
+                  experience in Software Training & Placements
+                </li>
+                <li>
+                  <FaCheckCircle className="text-success me-2" />  In Guntur
+                </li>
+              </ul>
+              <div className="d-flex gap-3 mt-4">
+                <Link to="/enroll">
+                  <button className="btn btn-warning fw-bold">
+                    Enroll Now <FaArrowRight className="ms-2" />
+                  </button>
+                </Link>
+                <button
+                  className="btn btn-primary fw-bold"
+                  onClick={scrollToCertificate}
+                >
+                  View Certificate <FaUserClock className="ms-2" />
+                </button>
+              </div>
+            </div>
+            {/* Right */}
+            <div className="col-md-6 text-center">
+              <img
+                src="https://img-c.udemycdn.com/course/750x422/5226364_1b19.jpg"
+                alt="React Native"
+                className="img-fluid rounded shadow"
+              />
+              <div className="d-flex justify-content-around mt-3">
+                <div>
+                  <FaStar className="text-warning" /> <strong>4.9</strong>{" "}
+                  Ratings
+                </div>
+                <div>
+                  <FaUsers className="text-success" /> <strong>7.6k</strong>{" "}
+                  Learners
+                </div>
               </div>
             </div>
           </div>
@@ -265,7 +304,7 @@ function Cloud() {
             <div className="stat-card purple">
               <FaMapMarkerAlt className="stat-icon" />
               <p className="stat-value">Guntur</p>
-              <h5>Branches</h5>
+              <h5>Branch</h5>
             </div>
           </div>
           <div className="col-md-3 col-6 mb-4">
@@ -288,24 +327,33 @@ function Cloud() {
       {/* ================= TOOLS COVERED ================= */}
       <div className="container my-5">
         <h2 className="tools-heading text-center mb-5">
-          <span className="text-primary fw-bold">Cloud Computing</span>{" "}
-          <span className="fw-semibold">Tools Covered</span>
+          <span className="text-primary fw-bold">
+          React Native
+          </span>{" "}
+          <span className="fw-semibold">Topics Covered</span>
         </h2>
+
         <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
           {tools.map((tool, index) => (
             <div className="col" key={index}>
               <div className="tool-card shadow-sm h-100 d-flex flex-column align-items-center justify-content-center p-3">
+                {/* Image with tooltip */}
                 <img
                   src={tool.img}
                   alt={tool.name}
                   className="tool-logo mb-3"
+                  title={tool.desc} // 👈 Tooltip will appear on hover
                 />
-                <h6 className="fw-semibold">{tool.name}</h6>
+                {/* Name with tooltip */}
+                <h6 className="fw-semibold" title={tool.desc}>
+                  {tool.name}
+                </h6>
               </div>
             </div>
           ))}
         </div>
       </div>
+
       {/* ================= ROADMAP + FORM ================= */}
       <div className="container-fluid py-5">
         <div className="row">
@@ -313,7 +361,7 @@ function Cloud() {
           <div className="col-md-6 px-4">
             <div className="flowchart-scrollable">
               <h2 className="roadmap-heading text-primary fw-bold mb-5 text-center">
-                🚀 Cloud computing Roadmap
+                🚀 React Native Roadmap
               </h2>
               <div className="timeline">
                 {steps.map((step, index) => (
@@ -394,14 +442,18 @@ function Cloud() {
           </div>
         </div>
       </div>
+
       {/* ================= CERTIFICATE (Wall) ================= */}
-      <section className="certificate-section container py-5">
+      <section
+        ref={certificateRef}
+        className="certificate-section container py-5"
+      >
         <div className="row align-items-center justify-content-center">
           {/* Left Side - Certificate Card */}
           <div className="col-md-6 mb-4">
             <div className="certificate-card p-4 rounded shadow-lg">
               <span className="badge bg-warning text-dark mb-3 ">
-                🎓 TechLynx Official Certificate
+                🎓 Techlynx Official Certificate
               </span>
               <div className="text-center">
                 <img
@@ -410,7 +462,9 @@ function Cloud() {
                   className="img-fluid rounded certificate-img"
                 />
               </div>
-              <h5 className="mt-4 text-success fw-bold">Cloud Computing</h5>
+              <h5 className="mt-4 text-success fw-bold">
+             React Native
+              </h5>
               <p className="text-muted small">
                 <FaStar className="text-warning" /> Industry Recognized
                 Certification
@@ -435,13 +489,14 @@ function Cloud() {
               Certificate
             </h2>
             <p className="mt-3 text-secondary">
-              Upon successful completion of our <strong>Cloud Computing</strong>{" "}
-              program at <strong>TechLynx</strong>.
+              Upon successful completion of our{" "}
+              <strong>React Native</strong> program at{" "}
+              <strong>Techlynx</strong>.
             </p>
             <ul className="list-unstyled mt-3 text-dark">
               <li>
                 <FaCheckCircle className="text-success me-2" /> Official
-                certification from TechLynx
+                certification from Techlynx
               </li>
               <li>
                 <FaCheckCircle className="text-success me-2" /> Industry
@@ -456,9 +511,10 @@ function Cloud() {
                 validity of certification
               </li>
             </ul>
+            <Link to="/enroll">
             <button className="btn btn-warning btn-lg mt-4 text-dark">
-              🚀 Start Your Journey with TechLynx
-            </button>
+              🚀 Start Your Journey with Techlynx
+            </button></Link>
           </div>
         </div>
       </section>
@@ -534,7 +590,7 @@ function Cloud() {
       <section className="course-fees-container container my-5 p-4 shadow rounded bg-color">
         <h2 className="text-center fw-bold mb-3">Course fees</h2>
         <p className="course-fee text-center fw-boldfw-bold">
-          💰 The course fee is <span className="highlight">₹34,999</span> + GST
+          💰 The course fee is <span className="highlight">₹19,999</span> + GST
         </p>
         <hr />
         <h5 className="text-center fw-semibold mb-4">Invest in your career</h5>
@@ -615,4 +671,4 @@ function Cloud() {
   );
 }
 
-export default Cloud;
+export default React;

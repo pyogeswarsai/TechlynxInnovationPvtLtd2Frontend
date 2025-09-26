@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   FaCheckCircle,
   FaStar,
@@ -22,87 +22,100 @@ import "./python.css";
 import { Link } from "react-router-dom";
 const tools = [
   {
-    name: "AWS",
-    img: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+    name: "Horovod",
+    img: "https://raw.githubusercontent.com/horovod/horovod/master/docs/_static/logo.png",
+    desc: "Horovod is a distributed deep learning training \nframework by Uber. It helps scale training across multiple\n GPUs and machines efficiently.",
   },
   {
-    name: "Microsoft Azure",
-    img: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_Azure.svg",
+    name: "Weights & Biases (W&B)",
+    img: "https://wandb.ai/logo.png",
+    desc: "W&B is a powerful experiment tracking and \nvisualization tool. It helps monitor model performance,\n hyperparameters, and datasets during training.",
   },
   {
-    name: "Google Cloud",
-    img: "https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_logo.svg",
+    name: "Pandas",
+    img: "https://cdn.iconscout.com/icon/free/png-512/free-pandas-3629950-3030481.png",
+    desc: "Pandas is used for data manipulation and analysis.\n It helps preprocess datasets, handle missing values,\nand prepare structured data for training models.",
   },
   {
-    name: "Linux",
-    img: "https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg",
+    name: "Matplotlib & Seaborn",
+    img: "https://matplotlib.org/stable/_static/logo_dark.svg",
+    desc: "Matplotlib and Seaborn are Python libraries for data visualization.\n They help in understanding datasets, plotting graphs, and\n analyzing model performance visually.",
   },
   {
-    name: "Docker",
-    img: "https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png",
+    name: "TensorFlow",
+    img: "https://www.vectorlogo.zone/logos/tensorflow/tensorflow-icon.svg",
+    desc: "TensorFlow is an open-source deep learning framework by Google.\n It enables building, training, and deploying large-scale neural networks.",
   },
   {
-    name: "Kubernetes",
-    img: "https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg",
+    name: "Keras",
+    img: "https://upload.wikimedia.org/wikipedia/commons/a/ae/Keras_logo.svg",
+    desc: "Keras is a high-level API built on TensorFlow.\n It simplifies the creation of neural networks with\n easy-to-use layers and model-building workflows.",
   },
   {
-    name: "Terraform",
-    img: "https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg",
+    name: "PyTorch",
+    img: "https://www.vectorlogo.zone/logos/pytorch/pytorch-icon.svg",
+    desc: "PyTorch is a deep learning framework by Facebook.\n It is widely used in research and production for\n its dynamic computation graphs and flexibility.",
   },
   {
-    name: "Jenkins",
-    img: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Jenkins_logo.svg",
+    name: "Scikit-learn",
+    img: "https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg",
+    desc: "Scikit-learn provides machine learning algorithms\n like classification, regression, and clustering,\n and is often used for preprocessing before deep learning.",
   },
   {
-    name: "Git",
-    img: "https://images.assets-landingi.com/uc/37b05982-9ab4-4981-83e8-39f043c18937/GitLogo2Color.svg",
+    name: "OpenCV",
+    img: "https://upload.wikimedia.org/wikipedia/commons/3/32/OpenCV_Logo_with_text_svg_version.svg",
+    desc: "OpenCV is an open-source library for computer vision.\n It is used with deep learning models for image\n processing, recognition, and real-time applications.",
   },
-  { name: "MySQL", img: "https://www.svgrepo.com/show/303251/mysql-logo.svg" },
+  {
+    name: "Google Colab & Jupyter",
+    img: "https://colab.research.google.com/img/colab_favicon_256px.png",
+    desc: "Google Colab and Jupyter notebooks provide an\n interactive environment to write, train, and run\n deep learning models with GPU/TPU acceleration.",
+  },
 ];
 
 // ---------------- FAQ ----------------
 const faqs = [
   {
-    question: "What is a Cloud Computing Full-Stack Developer course?",
+    question: "What is a Deep Learning course?",
     answer:
-      "This course trains you in cloud platforms (AWS, Azure, Google Cloud), DevOps tools (Docker, Kubernetes, Jenkins), and full-stack development (frontend, backend, databases, APIs) for building and deploying scalable applications.",
+      "This course trains you in the fundamentals and advanced topics of deep learning, including neural networks, CNNs, RNNs, transformers, and deployment of AI models.",
   },
   {
-    question: "Do I need prior programming knowledge?",
+    question: "Do I need prior programming or ML knowledge?",
     answer:
-      "Basic knowledge of programming and networking is helpful but not required. The course starts with cloud fundamentals before advancing to DevOps and full-stack concepts.",
+      "Basic Python and mathematics (linear algebra, probability, calculus) are helpful but not mandatory. The course starts with ML and Python libraries before diving into deep learning.",
   },
   {
     question: "What technologies will I learn?",
     answer:
-      "You will learn AWS, Azure, Google Cloud, Docker, Kubernetes, Terraform, Jenkins for DevOps, along with HTML, CSS, JavaScript, React, Python/Node.js, and Git/GitHub for development and version control.",
+      "You will learn Python, NumPy, Pandas, TensorFlow, Keras, PyTorch, Scikit-learn, OpenCV, and cloud-based platforms like Google Colab for training models.",
   },
   {
     question: "What projects will I build during the course?",
     answer:
-      "You’ll build projects like Cloud-hosted Web Apps, Serverless Applications, CI/CD Pipelines, Containerized Applications, and Multi-Cloud Deployments.",
+      "You’ll build projects such as image classification with CNNs, sentiment analysis with RNNs, object detection, facial recognition, and generative AI models (GANs).",
   },
   {
     question: "What career opportunities are available after this course?",
     answer:
-      "You can work as a Cloud Engineer, Cloud Full-Stack Developer, DevOps Engineer, Site Reliability Engineer (SRE), or Solutions Architect in IT companies.",
+      "You can work as a Deep Learning Engineer, Machine Learning Engineer, AI Engineer, Data Scientist, or Computer Vision Specialist in IT and research industries.",
   },
   {
     question: "Will I receive a certificate after completion?",
     answer:
-      "Yes, upon successful completion, you’ll receive an industry-recognized certificate validating your cloud computing and full-stack development skills.",
+      "Yes, upon successful completion, you’ll receive an industry-recognized certificate validating your deep learning skills and project experience.",
   },
   {
     question: "Does the course include placement assistance?",
     answer:
-      "Yes, many programs include career guidance, resume building, interview preparation, and job referrals through hiring partners.",
+      "Yes, many programs include career guidance, resume building, interview prep, and job referrals in AI and data science roles.",
   },
 ];
 
-function Cloud() {
+function DeepLearning() {
   const [submitted, setSubmitted] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
-
+  const certificateRef = useRef(null);
   const toggleFaq = (index) => setOpenIndex(openIndex === index ? null : index);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -115,129 +128,149 @@ function Cloud() {
     e.preventDefault(); // prevent page reload
     setSubscribeSubmitted(true);
   };
-
+  const scrollToCertificate = () => {
+    certificateRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
   const steps = [
     {
-      title: "Module 1: Cloud Computing Fundamentals",
+      title: "Module 1: Python & Math Foundations",
       details:
-        "Introduction to cloud computing, service models (IaaS, PaaS, SaaS), cloud deployment models, and basics of AWS, Azure, and Google Cloud.",
+        "Learn Python programming essentials and refresh core mathematics: linear algebra, probability, statistics, and calculus for deep learning.",
     },
     {
-      title: "Module 2: Front-End Development",
+      title: "Module 2: Data Handling & Preprocessing",
       details:
-        "Learn HTML, CSS, JavaScript, responsive design with Bootstrap/Tailwind, and React.js for building interactive UIs.",
+        "Work with NumPy, Pandas, and data visualization tools (Matplotlib/Seaborn). Learn data cleaning, feature scaling, normalization, and dataset preparation.",
     },
     {
-      title: "Module 3: Back-End Development",
+      title: "Module 3: Machine Learning Basics",
       details:
-        "Master Node.js/Python with Express/Django, build RESTful APIs, perform CRUD operations, and integrate with cloud databases.",
+        "Understand ML concepts: supervised vs unsupervised learning, regression, classification, clustering, and evaluation metrics using Scikit-learn.",
     },
     {
-      title: "Module 4: Databases in the Cloud",
+      title: "Module 4: Neural Networks Fundamentals",
       details:
-        "Work with MySQL/PostgreSQL on RDS, NoSQL databases like DynamoDB, and learn database scaling and optimization.",
+        "Learn perceptrons, activation functions, forward & backward propagation, gradient descent, and implement basic neural networks from scratch.",
     },
     {
-      title: "Module 5: Cloud Services & Deployment",
+      title: "Module 5: Deep Learning with TensorFlow & Keras",
       details:
-        "Learn EC2, S3, Lambda, Azure Functions, and GCP App Engine. Deploy and manage applications in the cloud environment.",
+        "Build and train deep neural networks, use Keras APIs, optimize models with optimizers, regularization, and dropout techniques.",
     },
     {
-      title: "Module 6: DevOps Tools & Automation",
+      title: "Module 6: Convolutional Neural Networks (CNNs)",
       details:
-        "Work with Docker for containerization, Kubernetes for orchestration, Terraform for Infrastructure as Code, and Jenkins for CI/CD pipelines.",
+        "Explore CNN architectures for image classification, object detection, and computer vision tasks with TensorFlow and PyTorch.",
     },
     {
-      title: "Module 7: Security & Monitoring",
+      title: "Module 7: Recurrent Neural Networks (RNNs) & NLP",
       details:
-        "Learn IAM (Identity and Access Management), cloud security best practices, monitoring with CloudWatch/Prometheus, and logging with ELK stack.",
+        "Understand sequential models (RNN, LSTM, GRU), and apply them in natural language processing tasks like sentiment analysis and text generation.",
     },
     {
-      title: "Module 8: Multi-Cloud & Serverless Computing",
+      title: "Module 8: Advanced Architectures",
       details:
-        "Develop serverless applications using AWS Lambda, Azure Functions, and GCP Cloud Functions. Explore hybrid and multi-cloud deployment strategies.",
+        "Learn about transfer learning, transformers, attention mechanisms, BERT, and GPT models for advanced NLP and vision tasks.",
     },
     {
-      title: "Module 9: Career Preparation",
+      title: "Module 9: Generative Models (GANs)",
       details:
-        "Prepare for cloud & DevOps job interviews with system design basics, cloud architecture scenarios, mock interviews, resume building, and communication skills.",
+        "Build and train Generative Adversarial Networks to generate synthetic images, enhance data, and explore creative AI applications.",
+    },
+    {
+      title: "Module 10: Model Deployment & Optimization",
+      details:
+        "Deploy deep learning models using TensorFlow Serving, Flask/FastAPI, and cloud platforms. Optimize models with quantization and pruning.",
+    },
+    {
+      title: "Module 11: Final Projects & Career Preparation",
+      details:
+        "Work on real-world AI projects: image classifier, chatbot, recommendation system, GAN-based generator. Prepare resumes, portfolios, and practice interviews.",
     },
   ];
+
   return (
     <div>
-      {/* ================= HERO ================= */}
-      <div className="hero-section d-flex flex-column justify-content-center align-items-center text-center text-white">
-        <h3 className="fw-bold display-5">
-          Advanced Certification in Cloud Computing
-        </h3>
-        <p className="fs-5 mt-2">
-          Have a look at all of the most popular courses here!
-        </p>
-      </div>
-      <div className="container my-5">
-        <div className="row align-items-center">
-          {/* Left */}
-          <div className="col-md-6">
-            <div className="container mb-5">
-              <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                  <li className="breadcrumb-item">
-                    <Link to="/courses">Courses</Link>
-                  </li>
-                  <li className="breadcrumb-item active" aria-current="page">
-                    Cloud Computing
-                  </li>
-                </ol>
-              </nav>
-            </div>
-            <h2 className="fw-bold">
-              Advanced Certification in Cloud Computing
-            </h2>
-            <p>Ranked #1 Full Stack Training Institute with Placement.</p>
-            <p>
-              Techlynx provides the Best Full Stack Training in Guntur & Online
-              with<strong> 100% placements.</strong>
-              Learn Full Stack Course from Basics to Advanced and get real-time
-              experience.
-            </p>
-            <ul className="list-unstyled">
-              <li>
-                <FaCheckCircle className="text-success me-2" /> Enroll Now for
-                Trending Courses with Job Assurance
-              </li>
-              <li>
-                <FaCheckCircle className="text-success me-2" /> 1 Years
-                experience in Software Training & Placements
-              </li>
-              <li>
-                <FaCheckCircle className="text-success me-2" /> Branch in Guntur
-              </li>
-            </ul>
-            <div className="d-flex gap-3 mt-4">
-              <Link to="/enroll">
-                <button className="btn btn-warning fw-bold">
-                  Enroll Now <FaArrowRight className="ms-2" />
-                </button>
-              </Link>
-              <button className="btn btn-primary fw-bold">
-                View Certificate <FaUserClock className="ms-2" />
-              </button>
-            </div>
-          </div>
-          {/* Right */}
-          <div className="col-md-6 text-center">
-            <img
-              src="/cl.png"
-              alt="Python Full Stack"
-              className="img-fluid rounded shadow"
-            />
-            <div className="d-flex justify-content-around mt-3">
-              <div>
-                <FaStar className="text-warning" /> <strong>4.9</strong> Ratings
+      <div>
+        {/* ================= HERO ================= */}
+        <div className="hero-section d-flex flex-column justify-content-center align-items-center text-center text-white">
+          <h3 className="fw-bold display-5">
+            Advanced Certification in Deep Learning
+          </h3>
+          <p className="fs-5 mt-2">
+            Have a look at all of the most popular courses here!
+          </p>
+        </div>
+        {/* ================= Content ================= */}
+        <div className="container my-5">
+          <div className="row align-items-center">
+            {/* Left */}
+            <div className="col-md-6">
+              <div className="container mb-5">
+                <nav aria-label="breadcrumb">
+                  <ol className="breadcrumb">
+                    <li className="breadcrumb-item">
+                      <Link to="/courses">Courses</Link>
+                    </li>
+                    <li className="breadcrumb-item active" aria-current="page">
+                      Deep Learning
+                    </li>
+                  </ol>
+                </nav>
               </div>
-              <div>
-                <FaUsers className="text-success" /> <strong>7.6k</strong>{" "}
-                Learners
+              <h2 className="fw-bold">
+                Advanced Certification in Deep Learning
+              </h2>
+              <p>Ranked #1 Full Stack Training Institute with Placement.</p>
+              <p>
+                Techlynx provides the Best Full Stack Training in Guntur &
+                Online with<strong> 100% placements.</strong>
+                Learn Full Stack Course from Basics to Advanced and get
+                real-time experience.
+              </p>
+              <ul className="list-unstyled">
+                <li>
+                  <FaCheckCircle className="text-success me-2" /> Enroll Now for
+                  Trending Courses with Job Assurance
+                </li>
+                <li>
+                  <FaCheckCircle className="text-success me-2" /> 1 Years
+                  experience in Software Training & Placements
+                </li>
+                <li>
+                  <FaCheckCircle className="text-success me-2" /> In Guntur
+                </li>
+              </ul>
+              <div className="d-flex gap-3 mt-4">
+                <Link to="/enroll">
+                  <button className="btn btn-warning fw-bold">
+                    Enroll Now <FaArrowRight className="ms-2" />
+                  </button>
+                </Link>
+                <button
+                  className="btn btn-primary fw-bold"
+                  onClick={scrollToCertificate}
+                >
+                  View Certificate <FaUserClock className="ms-2" />
+                </button>
+              </div>
+            </div>
+            {/* Right */}
+            <div className="col-md-6 text-center">
+              <img
+                src="https://cdn.shopaccino.com/igmguru/articles/deep-learning.jpg?v=532"
+                alt="Deep Learning"
+                className="img-fluid rounded shadow"
+              />
+              <div className="d-flex justify-content-around mt-3">
+                <div>
+                  <FaStar className="text-warning" /> <strong>4.9</strong>{" "}
+                  Ratings
+                </div>
+                <div>
+                  <FaUsers className="text-success" /> <strong>7.6k</strong>{" "}
+                  Learners
+                </div>
               </div>
             </div>
           </div>
@@ -265,7 +298,7 @@ function Cloud() {
             <div className="stat-card purple">
               <FaMapMarkerAlt className="stat-icon" />
               <p className="stat-value">Guntur</p>
-              <h5>Branches</h5>
+              <h5>Branch</h5>
             </div>
           </div>
           <div className="col-md-3 col-6 mb-4">
@@ -288,24 +321,33 @@ function Cloud() {
       {/* ================= TOOLS COVERED ================= */}
       <div className="container my-5">
         <h2 className="tools-heading text-center mb-5">
-          <span className="text-primary fw-bold">Cloud Computing</span>{" "}
+          <span className="text-primary fw-bold">
+            Deep Learning
+          </span>{" "}
           <span className="fw-semibold">Tools Covered</span>
         </h2>
+
         <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
           {tools.map((tool, index) => (
             <div className="col" key={index}>
               <div className="tool-card shadow-sm h-100 d-flex flex-column align-items-center justify-content-center p-3">
+                {/* Image with tooltip */}
                 <img
                   src={tool.img}
                   alt={tool.name}
                   className="tool-logo mb-3"
+                  title={tool.desc} // 👈 Tooltip will appear on hover
                 />
-                <h6 className="fw-semibold">{tool.name}</h6>
+                {/* Name with tooltip */}
+                <h6 className="fw-semibold" title={tool.desc}>
+                  {tool.name}
+                </h6>
               </div>
             </div>
           ))}
         </div>
       </div>
+
       {/* ================= ROADMAP + FORM ================= */}
       <div className="container-fluid py-5">
         <div className="row">
@@ -313,7 +355,7 @@ function Cloud() {
           <div className="col-md-6 px-4">
             <div className="flowchart-scrollable">
               <h2 className="roadmap-heading text-primary fw-bold mb-5 text-center">
-                🚀 Cloud computing Roadmap
+                🚀 Deep Learning Roadmap
               </h2>
               <div className="timeline">
                 {steps.map((step, index) => (
@@ -394,14 +436,18 @@ function Cloud() {
           </div>
         </div>
       </div>
+
       {/* ================= CERTIFICATE (Wall) ================= */}
-      <section className="certificate-section container py-5">
+      <section
+        ref={certificateRef}
+        className="certificate-section container py-5"
+      >
         <div className="row align-items-center justify-content-center">
           {/* Left Side - Certificate Card */}
           <div className="col-md-6 mb-4">
             <div className="certificate-card p-4 rounded shadow-lg">
               <span className="badge bg-warning text-dark mb-3 ">
-                🎓 TechLynx Official Certificate
+                🎓 Techlynx Official Certificate
               </span>
               <div className="text-center">
                 <img
@@ -410,7 +456,9 @@ function Cloud() {
                   className="img-fluid rounded certificate-img"
                 />
               </div>
-              <h5 className="mt-4 text-success fw-bold">Cloud Computing</h5>
+              <h5 className="mt-4 text-success fw-bold">
+                Deep Learning
+              </h5>
               <p className="text-muted small">
                 <FaStar className="text-warning" /> Industry Recognized
                 Certification
@@ -435,13 +483,14 @@ function Cloud() {
               Certificate
             </h2>
             <p className="mt-3 text-secondary">
-              Upon successful completion of our <strong>Cloud Computing</strong>{" "}
-              program at <strong>TechLynx</strong>.
+              Upon successful completion of our{" "}
+              <strong>Deep Learning</strong> program at{" "}
+              <strong>Techlynx</strong>.
             </p>
             <ul className="list-unstyled mt-3 text-dark">
               <li>
                 <FaCheckCircle className="text-success me-2" /> Official
-                certification from TechLynx
+                certification from Techlynx
               </li>
               <li>
                 <FaCheckCircle className="text-success me-2" /> Industry
@@ -456,9 +505,11 @@ function Cloud() {
                 validity of certification
               </li>
             </ul>
-            <button className="btn btn-warning btn-lg mt-4 text-dark">
-              🚀 Start Your Journey with TechLynx
-            </button>
+            <Link to="/enroll">
+              <button className="btn btn-warning btn-lg mt-4 text-dark">
+                🚀 Start Your Journey with Techlynx
+              </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -534,7 +585,7 @@ function Cloud() {
       <section className="course-fees-container container my-5 p-4 shadow rounded bg-color">
         <h2 className="text-center fw-bold mb-3">Course fees</h2>
         <p className="course-fee text-center fw-boldfw-bold">
-          💰 The course fee is <span className="highlight">₹34,999</span> + GST
+          💰 The course fee is <span className="highlight">₹99,999</span> + GST
         </p>
         <hr />
         <h5 className="text-center fw-semibold mb-4">Invest in your career</h5>
@@ -615,4 +666,4 @@ function Cloud() {
   );
 }
 
-export default Cloud;
+export default DeepLearning;

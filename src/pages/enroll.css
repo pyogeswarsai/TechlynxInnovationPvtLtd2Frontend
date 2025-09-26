@@ -1,6 +1,6 @@
 /* 🌐 Section */
 .enroll-section {
-  background: linear-gradient(135deg, #f9f9ff, #eef1ff);
+  background-image: url("https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?cs=srgb&dl=pexels-pixabay-531880.jpg&fm=jpg");
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -180,7 +180,4 @@
 
 .breadcrumb-link:hover {
   text-decoration: underline;
-}
-.custom-breadcrumb {
-  margin-left: 200px; /* Adjust as needed */
 }

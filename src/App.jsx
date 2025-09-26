@@ -1,4 +1,3 @@
-import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Homepage from './pages/Homepage';
@@ -52,6 +51,23 @@ import GameDevelopmentService from './pages/GameDevelopmentService';
 import GraphicDesignBrandingService from './pages/GraphicDesignBrandingService';
 import ThreeDModelingAnimationService from './pages/ThreeDModelingAnimationService';
 
+import Junit from './pages/junit';
+import Businessanalyst from './pages/business-analyst';
+import BusinessIntelligence from './pages/business-intelligence';
+import DataAnalytics from './pages/data-analytics';
+import Python from './pages/python';
+import JavaCourse from './pages/javaCourse';
+import DeepLearning from './pages/deep-learning';
+import Jmeter from './pages/jmeter';
+import PowerBi from './pages/powerbi';
+import Nodejs from './pages/nodejs';
+import Flutter from './pages/flutter';
+import React from './pages/react';
+import Php from './pages/php';
+import Tableau from './pages/tableau';
+import MySql from './pages/mysql';
+import MongoDB from './pages/mongodb';
+
 import TrainingPage from './pages/TrainingPage';
 
 import HiringSection from "./pages/HiringSection"
@@ -91,6 +107,23 @@ const App = () => {
       <Route path="/courses/manual-testing" element={<Testing />} />
       <Route path="/courses/selenium" element={<Selenium />} />
       <Route path="/courses/automation-testing" element={<Automation />} />
+      <Route path="/courses/junit" element={<Junit />} />
+      <Route path="/courses/business-analyst" element={<Businessanalyst />} />
+      <Route path="/courses/business-intelligence" element={<BusinessIntelligence />} />
+      <Route path="/courses/data-analytics" element={<DataAnalytics />} />
+      <Route path="/courses/python" element={<Python />} />
+      <Route path="/courses/java" element={<JavaCourse />} />
+      <Route path="/courses/deep-learning" element={<DeepLearning />} />
+      <Route path='/courses/jmeter' element={<Jmeter/>}/>
+      <Route path='/courses/powerbi' element={<PowerBi/>}/>
+      <Route path='/courses/node' element={<Nodejs/>}/>
+      <Route path='/courses/flutter' element={<Flutter/>}/>
+      <Route path='/courses/react-native' element={<React/>}/>
+      <Route path='/courses/php-development' element={<Php/>}/>
+      <Route path='/courses/tableau' element={<Tableau/>}/>
+      <Route path='/courses/mysql' element={<MySql/>}/>
+      <Route path='/courses/mongoDB' element={<MongoDB/>}/>
+      
       <Route path="/enroll" element={<EnrollForm />} />
 
       <Route path='/services' element={<ServiceHomepage />} />

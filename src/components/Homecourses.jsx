@@ -49,7 +49,7 @@ const coursesData = {
       description:
         "Learn Core Java, OOP concepts, control structures, arrays, and build simple console-based applications.",
       image: "/javaCourse.jpg",
-      link: "/courses/java-full-stack",
+      link: "/courses/java",
     },
     {
       name: "Python",
@@ -57,7 +57,7 @@ const coursesData = {
       description:
         "Learn Python syntax, data types, control flow, functions, and build simple console-based programs.",
       image: "/pythonCourse.jpg",
-      link: "/courses/python-full-stack",
+      link: "/courses/python",
     },
     {
       name: "Node.js",
@@ -65,7 +65,7 @@ const coursesData = {
       description:
         "Learn Node.js fundamentals, modules, HTTP server creation, file handling, and build simple backend APIs.",
       image: "/NodeCourse.jpg",
-      link: "/courses/net-full-stack",
+      link: "/courses/node",
     },
     {
       name: "Flutter",
@@ -73,7 +73,7 @@ const coursesData = {
       description:
         "Learn Dart, Flutter widgets, UI design, navigation, and build cross-platform mobile apps.",
       image: "/flutterCourse.jpg",
-      link: "/courses/mern-full-stack",
+      link: "/courses/flutter",
     },
     {
       name: "React Native",
@@ -81,7 +81,7 @@ const coursesData = {
       description:
         "Learn React Native components, navigation, state management, and build cross-platform mobile apps.",
       image: "/reactNativeCourse.jpg",
-      link: "/courses/mean-full-stack",
+      link: "/courses/react-native",
     },
   ],
 
@@ -113,7 +113,7 @@ const coursesData = {
       description:
         "Learn PHP syntax, forms, sessions, MySQL integration, and build dynamic web pages with backend logic.",
       image: "/phpCourse.jpg",
-      link: "/courses/web-development",
+      link: "/courses/php-development",
     },
   ],
 
@@ -145,7 +145,7 @@ const coursesData = {
       description:
         "Learn unit testing principles, JUnit annotations, assertions, and build reliable test cases for Java applications.",
       image: "/junitCourse.jpg",
-      link: "/courses/selenium",
+      link: "/courses/junit",
     },
     {
       name: "Jmeter",
@@ -153,7 +153,7 @@ const coursesData = {
       description:
         "Learn JMeter installation, test plans, thread groups, samplers, assertions, and perform load & performance testing.",
       image: "/jmeterCourse.jpg",
-      link: "/courses/selenium",
+      link: "/courses/jmeter",
     },
   ],
 
@@ -172,7 +172,7 @@ const coursesData = {
       description:
         "Learn Excel, SQL, Python, statistics, and data visualization to extract insights and support decision-making.",
       image: "/dataAnalyticsCourse.jpg",
-      link: "/courses/datascience",
+      link: "/courses/data-analytics",
     },
     {
       name: "Power BI",
@@ -180,7 +180,7 @@ const coursesData = {
       description:
         "Learn data import, Power Query, DAX basics, and build interactive dashboards for business insights.",
       image: "/powerBICourse.jpg",
-      link: "/courses/datascience",
+      link: "/courses/powerbi",
     },
     {
       name: "Tableau",
@@ -188,7 +188,7 @@ const coursesData = {
       description:
         "Learn data connections, charts, filters, dashboards, and build interactive visualizations for business insights.",
       image: "/tableauCourse.jpg",
-      link: "/courses/datascience",
+      link: "/courses/tableau",
     },
   ],
 
@@ -215,7 +215,7 @@ const coursesData = {
       description:
         "Learn neural networks, CNNs, RNNs, and build intelligent models using Python and TensorFlow for real-world data.",
       image: "/deepLearningCourse.jpg",
-      link: "/courses/machine-learning",
+      link: "/courses/deep-learning",
     },
   ],
 
@@ -234,7 +234,7 @@ const coursesData = {
       description:
         "Learn SQL syntax, CRUD operations, joins, constraints, and manage relational databases with real-world queries.",
       image: "/mysqlCourse.jpg",
-      link: "/courses/database-administration",
+      link: "/courses/mysql",
     },
     {
       name: "Mongo DB",
@@ -242,7 +242,7 @@ const coursesData = {
       description:
         "Learn NoSQL concepts, collections, CRUD operations, aggregation, and build scalable databases with MongoDB.",
       image: "/mongodbCourse.jpg",
-      link: "/courses/database-administration",
+      link: "/courses/mongoDB",
     },
   ],
 
@@ -253,7 +253,7 @@ const coursesData = {
       description:
         "Learn business analysis fundamentals, documentation, Agile processes, Excel, SQL, Power BI, and data-driven decision-making.",
       image: "/businessAnalystCourse.png",
-      link: "/courses/business-analyst-intelligence",
+      link: "/courses/business-analyst",
     },
     {
       name: "Business Intelligence",
@@ -261,7 +261,7 @@ const coursesData = {
       description:
         "Learn data warehousing, ETL, dashboards, OLAP, and BI tools like Power BI/Tableau to drive data-informed decisions.",
       image: "/businessIntelligenceCourse.webp",
-      link: "/courses/business-analyst-intelligence",
+      link: "/courses/business-intelligence",
     },
     {
       name: "Digital Marketing",
