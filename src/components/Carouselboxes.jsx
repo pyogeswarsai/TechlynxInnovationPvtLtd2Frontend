@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import './Carousel.css';
+import { Link } from "react-router-dom";
 
 // 🔹 Reusable carousel for one category
 function CourseCarousel({ title, courses }) {
@@ -52,12 +53,8 @@ function CourseCarousel({ title, courses }) {
         {/* Cards */}
         <div className="d-flex justify-content-center flex-wrap">
           {visibleCourses.map((course, i) => (
-            <a
-              key={i}
-              href={course.link}
-              rel="noopener noreferrer"
-              className="text-decoration-none"
-            >
+
+            <Link to={course.link} className="link-caro">
               <div
                 className="card shadow-sm text-center p-3 mx-2"
                 style={{
@@ -89,7 +86,7 @@ function CourseCarousel({ title, courses }) {
 
                 <h6 className="mt-3 text-dark">{course.name}</h6>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
 

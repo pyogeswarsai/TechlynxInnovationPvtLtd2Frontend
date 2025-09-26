@@ -35,3 +35,12 @@
     line-height: 1;
   }
 }
+.link-caro {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.link-caro:hover {
+  text-decoration: none;
+}
