@@ -47,7 +47,6 @@ const FeedbackSection = () => {
     const feedbackEmail = e.target.feedbackEmail.value.trim();
     const feedbackText = e.target.feedbackText.value.trim();
     const suggestions = e.target.suggestions.value.trim();
-    const anonymous = e.target.anonymous.checked;
 
     if (
       !feedbackName ||
