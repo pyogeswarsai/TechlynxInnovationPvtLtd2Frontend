@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useRef } from "react";
 import {
   FaCheckCircle,
   FaStar,
@@ -24,44 +24,55 @@ const tools = [
   {
     name: "Python",
     img: "https://cdn.iconscout.com/icon/free/png-512/free-python-3521655-2945099.png",
+    desc: "A versatile programming language\nused for data analysis, AI,\nand scientific computing.",
   },
   {
     name: "R",
     img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/r/r-original.svg",
+    desc: "A statistical programming language\nused for data analysis, visualization,\nand statistical modeling.",
   },
   {
     name: "SQL",
     img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg",
+    desc: "A language for managing and querying\nstructured data in relational databases\nfor analytics and reporting.",
   },
   {
     name: "Pandas",
     img: "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/pandas.svg",
+    desc: "A Python library for data manipulation\nand analysis using DataFrames\nand time series functionality.",
   },
   {
     name: "NumPy",
     img: "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/numpy.svg",
+    desc: "A Python library for numerical computing\nand handling arrays,\nmatrix operations efficiently.",
   },
   {
     name: "Matplotlib",
     img: "https://upload.wikimedia.org/wikipedia/commons/8/84/Matplotlib_icon.svg",
+    desc: "A Python plotting library\nused for creating static, interactive,\nand animated visualizations.",
   },
   {
     name: "Scikit-Learn",
     img: "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/scikitlearn.svg",
+    desc: "A Python library for machine learning\nproviding tools for classification,\nregression, and clustering.",
   },
   {
     name: "TensorFlow",
     img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg",
+    desc: "An open-source library\nfor building and training\nmachine learning and deep learning models.",
   },
   {
     name: "PyTorch",
     img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg",
+    desc: "A deep learning framework\nfor building neural networks\nand performing research or production AI tasks.",
   },
   {
     name: "Tableau",
     img: "https://cdn.worldvectorlogo.com/logos/tableau-software.svg",
+    desc: "A data visualization tool\nused to create interactive dashboards\nand share insights effectively.",
   },
 ];
+
 
 // ---------------- FAQ ----------------
 const faqs = [
@@ -104,6 +115,7 @@ const faqs = [
 function DataScience() {
   const [submitted, setSubmitted] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
+ const certificateRef = useRef(null); 
 
   const toggleFaq = (index) => setOpenIndex(openIndex === index ? null : index);
   const handleSubmit = (e) => {
@@ -116,6 +128,9 @@ function DataScience() {
   const handleSubscribeSubmit = (e) => {
     e.preventDefault(); // prevent page reload
     setSubscribeSubmitted(true);
+  };
+   const scrollToCertificate = () => {
+    certificateRef.current?.scrollIntoView({ behavior: "smooth" });
   };
   const steps = [
     {
@@ -209,7 +224,7 @@ function DataScience() {
                 experience in Software Training & Placements
               </li>
               <li>
-                <FaCheckCircle className="text-success me-2" /> Branch in Guntur
+                <FaCheckCircle className="text-success me-2" /> In Guntur
               </li>
             </ul>
             <div className="d-flex gap-3 mt-4">
@@ -218,9 +233,12 @@ function DataScience() {
                   Enroll Now <FaArrowRight className="ms-2" />
                 </button>
               </Link>
-              <button className="btn btn-primary fw-bold">
-                View Certificate <FaUserClock className="ms-2" />
-              </button>
+<button
+                  className="btn btn-primary fw-bold"
+                  onClick={scrollToCertificate}
+                >
+                  View Certificate <FaUserClock className="ms-2" />
+                </button>
             </div>
           </div>
           {/* Right */}
@@ -265,7 +283,7 @@ function DataScience() {
             <div className="stat-card purple">
               <FaMapMarkerAlt className="stat-icon" />
               <p className="stat-value">Guntur</p>
-              <h5>Branches</h5>
+              <h5>Branch</h5>
             </div>
           </div>
           <div className="col-md-3 col-6 mb-4">
@@ -288,24 +306,33 @@ function DataScience() {
       {/* ================= TOOLS COVERED ================= */}
       <div className="container my-5">
         <h2 className="tools-heading text-center mb-5">
-          <span className="text-primary fw-bold">Data Science</span>{" "}
+          <span className="text-primary fw-bold">
+        Data Science
+          </span>{" "}
           <span className="fw-semibold">Tools Covered</span>
         </h2>
+
         <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
           {tools.map((tool, index) => (
             <div className="col" key={index}>
               <div className="tool-card shadow-sm h-100 d-flex flex-column align-items-center justify-content-center p-3">
+                {/* Image with tooltip */}
                 <img
                   src={tool.img}
                   alt={tool.name}
                   className="tool-logo mb-3"
+                  title={tool.desc} // 👈 Tooltip will appear on hover
                 />
-                <h6 className="fw-semibold">{tool.name}</h6>
+                {/* Name with tooltip */}
+                <h6 className="fw-semibold" title={tool.desc}>
+                  {tool.name}
+                </h6>
               </div>
             </div>
           ))}
         </div>
       </div>
+
       {/* ================= ROADMAP + FORM ================= */}
       <div className="container-fluid py-5">
         <div className="row">
@@ -395,7 +422,7 @@ function DataScience() {
         </div>
       </div>
       {/* ================= CERTIFICATE (Wall) ================= */}
-      <section className="certificate-section container py-5">
+      <section ref={certificateRef} className="certificate-section container py-5">
         <div className="row align-items-center justify-content-center">
           {/* Left Side - Certificate Card */}
           <div className="col-md-6 mb-4">

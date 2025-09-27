@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useRef } from "react";
 import {
   FaCheckCircle,
   FaStar,
@@ -24,31 +24,42 @@ const tools = [
   {
     name: "Selenium",
     img: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Selenium_Logo.png",
+    desc: "An open-source tool\nfor automating web browsers\nand testing web applications.",
   },
-  { name: "Playwright", img: "https://playwright.dev/img/playwright-logo.svg" },
+  {
+    name: "Playwright",
+    img: "https://playwright.dev/img/playwright-logo.svg",
+    desc: "A modern end-to-end testing framework\nthat supports multiple browsers\nand fast automation.",
+  },
   {
     name: "JUnit",
     img: "https://upload.wikimedia.org/wikipedia/commons/5/59/JUnit_5_Banner.png",
+    desc: "A popular Java testing framework\nused for unit testing\nand test-driven development (TDD).",
   },
   {
     name: "Robot Framework",
     img: "https://upload.wikimedia.org/wikipedia/commons/e/e4/Robot-framework-logo.png",
+    desc: "An open-source automation framework\nfor acceptance testing\nand robotic process automation (RPA).",
   },
   {
     name: "Maven",
     img: "https://maven.apache.org/images/logos/build-by-maven-black.png",
+    desc: "A build automation tool\nmainly for Java projects,\nused for dependency management.",
   },
   {
     name: "Jenkins",
     img: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Jenkins_logo.svg",
+    desc: "An open-source automation server\nused for continuous integration (CI)\nand continuous delivery (CD).",
   },
   {
     name: "Postman",
     img: "https://upload.wikimedia.org/wikipedia/commons/c/c2/Postman_%28software%29.png",
+    desc: "A collaboration platform\nfor API development, testing,\nand documentation.",
   },
   {
     name: "Docker",
     img: "https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png",
+    desc: "A platform for building,\npackaging, and running applications\ninside lightweight containers.",
   },
 ];
 
@@ -94,7 +105,7 @@ const faqs = [
 function Automation() {
   const [submitted, setSubmitted] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
-
+ const certificateRef = useRef(null); 
   const toggleFaq = (index) => setOpenIndex(openIndex === index ? null : index);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -107,6 +118,11 @@ function Automation() {
     e.preventDefault(); // prevent page reload
     setSubscribeSubmitted(true);
   };
+
+  const scrollToCertificate = () => {
+    certificateRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
 
   const steps = [
     {
@@ -199,7 +215,7 @@ function Automation() {
                 experience in Software Training & Placements
               </li>
               <li>
-                <FaCheckCircle className="text-success me-2" /> Branch in Guntur
+                <FaCheckCircle className="text-success me-2" /> In Guntur
               </li>
             </ul>
             <div className="d-flex gap-3 mt-4">
@@ -208,9 +224,13 @@ function Automation() {
                   Enroll Now <FaArrowRight className="ms-2" />
                 </button>
               </Link>
-              <button className="btn btn-primary fw-bold">
-                View Certificate <FaUserClock className="ms-2" />
-              </button>
+              <button
+                  className="btn btn-primary fw-bold"
+                  onClick={scrollToCertificate}
+                >
+                  View Certificate <FaUserClock className="ms-2" />
+                </button>
+
             </div>
           </div>
           {/* Right */}
@@ -254,7 +274,7 @@ function Automation() {
             <div className="stat-card purple">
               <FaMapMarkerAlt className="stat-icon" />
               <p className="stat-value">Guntur</p>
-              <h5>Branches</h5>
+              <h5>Branch</h5>
             </div>
           </div>
           <div className="col-md-3 col-6 mb-4">
@@ -275,21 +295,29 @@ function Automation() {
       </div>
 
       {/* ================= TOOLS COVERED ================= */}
-      <div className="container my-5">
+     <div className="container my-5">
         <h2 className="tools-heading text-center mb-5">
-          <span className="text-primary fw-bold">Automation</span>{" "}
+          <span className="text-primary fw-bold">
+          Automation
+          </span>{" "}
           <span className="fw-semibold">Tools Covered</span>
         </h2>
+
         <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
           {tools.map((tool, index) => (
             <div className="col" key={index}>
               <div className="tool-card shadow-sm h-100 d-flex flex-column align-items-center justify-content-center p-3">
+                {/* Image with tooltip */}
                 <img
                   src={tool.img}
                   alt={tool.name}
                   className="tool-logo mb-3"
+                  title={tool.desc} // 👈 Tooltip will appear on hover
                 />
-                <h6 className="fw-semibold">{tool.name}</h6>
+                {/* Name with tooltip */}
+                <h6 className="fw-semibold" title={tool.desc}>
+                  {tool.name}
+                </h6>
               </div>
             </div>
           ))}
@@ -384,7 +412,7 @@ function Automation() {
         </div>
       </div>
       {/* ================= CERTIFICATE (Wall) ================= */}
-      <section className="certificate-section container py-5">
+      <section ref={certificateRef} className="certificate-section container py-5">
         <div className="row align-items-center justify-content-center">
           {/* Left Side - Certificate Card */}
           <div className="col-md-6 mb-4">

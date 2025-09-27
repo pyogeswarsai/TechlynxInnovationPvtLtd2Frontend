@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useRef } from "react";
 import {
   FaCheckCircle,
   FaStar,
@@ -24,24 +24,30 @@ const tools = [
   {
     name: "Jira",
     img: "https://www.vectorlogo.zone/logos/atlassian_jira/atlassian_jira-icon.svg",
+    desc: "A project management tool\nfor tracking issues, bugs,\nand agile development tasks.",
   },
   {
     name: "Quality Center (HP ALM)",
     img: "https://cdn.worldvectorlogo.com/logos/hp-2.svg",
+    desc: "A test management tool\nfor planning, executing, and\ntracking QA activities.",
   },
   {
     name: "Postman",
     img: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg",
+    desc: "A tool for testing APIs\nwith requests and responses\nfor backend and integration testing.",
   },
   {
     name: "Excel",
     img: "https://cdn.worldvectorlogo.com/logos/microsoft-excel-2013.svg",
+    desc: "A spreadsheet software\nfor data analysis, reporting,\nand test case documentation.",
   },
   {
     name: "Selenium",
     img: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Selenium_Logo.png",
+    desc: "A framework for automating\nweb browser testing\nacross different platforms.",
   },
 ];
+
 
 // ---------------- FAQ ----------------
 const faqs = [
@@ -85,6 +91,7 @@ const faqs = [
 function Testing() {
   const [submitted, setSubmitted] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
+ const certificateRef = useRef(null); 
 
   const toggleFaq = (index) => setOpenIndex(openIndex === index ? null : index);
   const handleSubmit = (e) => {
@@ -98,6 +105,9 @@ function Testing() {
     setSubscribeSubmitted(true);
   };
 
+   const scrollToCertificate = () => {
+    certificateRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
   const steps = [
     {
       title: "Module 1: Introduction to Testing",
@@ -192,7 +202,7 @@ function Testing() {
                 experience in Software Training & Placements
               </li>
               <li>
-                <FaCheckCircle className="text-success me-2" /> Branch in Guntur
+                <FaCheckCircle className="text-success me-2" /> In Guntur
               </li>
             </ul>
             <div className="d-flex gap-3 mt-4">
@@ -201,9 +211,12 @@ function Testing() {
                   Enroll Now <FaArrowRight className="ms-2" />
                 </button>
               </Link>
-              <button className="btn btn-primary fw-bold">
-                View Certificate <FaUserClock className="ms-2" />
-              </button>
+              <button
+                  className="btn btn-primary fw-bold"
+                  onClick={scrollToCertificate}
+                >
+                  View Certificate <FaUserClock className="ms-2" />
+                </button>
             </div>
           </div>
           {/* Right */}
@@ -247,7 +260,7 @@ function Testing() {
             <div className="stat-card purple">
               <FaMapMarkerAlt className="stat-icon" />
               <p className="stat-value">Guntur</p>
-              <h5>Branches</h5>
+              <h5>Branch</h5>
             </div>
           </div>
           <div className="col-md-3 col-6 mb-4">
@@ -268,26 +281,37 @@ function Testing() {
       </div>
 
       {/* ================= TOOLS COVERED ================= */}
-      <div className="container my-5">
+    <div className="container my-5">
         <h2 className="tools-heading text-center mb-5">
-          <span className="text-primary fw-bold">Manual Testing</span>{" "}
+          <span className="text-primary fw-bold">
+         Testing
+          </span>{" "}
           <span className="fw-semibold">Tools Covered</span>
         </h2>
+
         <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
           {tools.map((tool, index) => (
             <div className="col" key={index}>
               <div className="tool-card shadow-sm h-100 d-flex flex-column align-items-center justify-content-center p-3">
+                {/* Image with tooltip */}
                 <img
                   src={tool.img}
                   alt={tool.name}
                   className="tool-logo mb-3"
+                  title={tool.desc} // 👈 Tooltip will appear on hover
                 />
-                <h6 className="fw-semibold">{tool.name}</h6>
+                {/* Name with tooltip */}
+                <h6 className="fw-semibold" title={tool.desc}>
+                  {tool.name}
+                </h6>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+
+
       {/* ================= ROADMAP + FORM ================= */}
       <div className="container-fluid py-5">
         <div className="row">
@@ -377,7 +401,8 @@ function Testing() {
         </div>
       </div>
       {/* ================= CERTIFICATE (Wall) ================= */}
-      <section className="certificate-section container py-5">
+      <section 
+ref={certificateRef} className="certificate-section container py-5">
         <div className="row align-items-center justify-content-center">
           {/* Left Side - Certificate Card */}
           <div className="col-md-6 mb-4">

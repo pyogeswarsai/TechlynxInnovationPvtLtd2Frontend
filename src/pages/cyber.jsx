@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useRef } from "react";
 import {
   FaCheckCircle,
   FaStar,
@@ -24,31 +24,42 @@ const tools = [
   {
     name: "Python",
     img: "https://cdn.iconscout.com/icon/free/png-512/python-2-226051.png",
+    desc: "A versatile programming language\nused for scripting, automation,\nand cybersecurity tools development.",
   },
   {
     name: "Linux",
     img: "https://cdn.iconscout.com/icon/free/png-512/linux-17-570099.png",
+    desc: "An open-source operating system\nwidely used for servers,\nsecurity, and penetration testing.",
   },
   {
     name: "Wireshark",
     img: "https://icons.iconarchive.com/icons/papirus-team/papirus-apps/512/wireshark-icon.png",
+    desc: "A network protocol analyzer\nused to capture and inspect\nnetwork traffic for analysis.",
   },
   {
     name: "Metasploit",
     img: "https://avatars.githubusercontent.com/u/1398959?s=200&v=4",
+    desc: "A penetration testing framework\nused to find, exploit,\nand validate vulnerabilities in systems.",
   },
   {
     name: "Kali Linux",
     img: "https://upload.wikimedia.org/wikipedia/commons/2/2b/Kali-dragon-icon.svg",
+    desc: "A Linux distribution\nspecialized for penetration testing\nand security research.",
   },
-  { name: "Nmap", img: "https://nmap.org/images/nmap-logo-256x256.png" },
+  {
+    name: "Nmap",
+    img: "https://nmap.org/images/nmap-logo-256x256.png",
+    desc: "A network scanning tool\nused to discover hosts, services,\nand security vulnerabilities.",
+  },
   {
     name: "SQLMap",
     img: "https://www.kali.org/tools/sqlmap/images/sqlmap-logo.svg",
+    desc: "An open-source tool\nused to automate the detection\nand exploitation of SQL injection flaws.",
   },
   {
     name: "Git",
     img: "https://images.assets-landingi.com/uc/37b05982-9ab4-4981-83e8-39f043c18937/GitLogo2Color.svg",
+    desc: "A version control system\nthat tracks code changes\nand enables collaborative development.",
   },
 ];
 
@@ -94,6 +105,7 @@ const faqs = [
 function Cyber() {
   const [submitted, setSubmitted] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
+ const certificateRef = useRef(null); 
 
   const toggleFaq = (index) => setOpenIndex(openIndex === index ? null : index);
   const handleSubmit = (e) => {
@@ -106,6 +118,11 @@ function Cyber() {
   const handleSubscribeSubmit = (e) => {
     e.preventDefault(); // prevent page reload
     setSubscribeSubmitted(true);
+  };
+
+  
+ const scrollToCertificate = () => {
+    certificateRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   const steps = [
@@ -202,7 +219,7 @@ function Cyber() {
                 experience in Software Training & Placements
               </li>
               <li>
-                <FaCheckCircle className="text-success me-2" /> Branch in Guntur
+                <FaCheckCircle className="text-success me-2" /> In Guntur
               </li>
             </ul>
             <div className="d-flex gap-3 mt-4">
@@ -211,9 +228,13 @@ function Cyber() {
                   Enroll Now <FaArrowRight className="ms-2" />
                 </button>
               </Link>
-              <button className="btn btn-primary fw-bold">
-                View Certificate <FaUserClock className="ms-2" />
-              </button>
+             <button
+                  className="btn btn-primary fw-bold"
+                  onClick={scrollToCertificate}
+                >
+                  View Certificate <FaUserClock className="ms-2" />
+                </button>
+
             </div>
           </div>
           {/* Right */}
@@ -258,7 +279,7 @@ function Cyber() {
             <div className="stat-card purple">
               <FaMapMarkerAlt className="stat-icon" />
               <p className="stat-value">Guntur</p>
-              <h5>Branches</h5>
+              <h5>Branch</h5>
             </div>
           </div>
           <div className="col-md-3 col-6 mb-4">
@@ -279,26 +300,35 @@ function Cyber() {
       </div>
 
       {/* ================= TOOLS COVERED ================= */}
-      <div className="container my-5">
+     <div className="container my-5">
         <h2 className="tools-heading text-center mb-5">
-          <span className="text-primary fw-bold">Cyber Security</span>{" "}
+          <span className="text-primary fw-bold">
+         Cyber Security
+          </span>{" "}
           <span className="fw-semibold">Tools Covered</span>
         </h2>
+
         <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
           {tools.map((tool, index) => (
             <div className="col" key={index}>
               <div className="tool-card shadow-sm h-100 d-flex flex-column align-items-center justify-content-center p-3">
+                {/* Image with tooltip */}
                 <img
                   src={tool.img}
                   alt={tool.name}
                   className="tool-logo mb-3"
+                  title={tool.desc} // 👈 Tooltip will appear on hover
                 />
-                <h6 className="fw-semibold">{tool.name}</h6>
+                {/* Name with tooltip */}
+                <h6 className="fw-semibold" title={tool.desc}>
+                  {tool.name}
+                </h6>
               </div>
             </div>
           ))}
         </div>
       </div>
+
       {/* ================= ROADMAP + FORM ================= */}
       <div className="container-fluid py-5">
         <div className="row">
@@ -388,7 +418,8 @@ function Cyber() {
         </div>
       </div>
       {/* ================= CERTIFICATE (Wall) ================= */}
-      <section className="certificate-section container py-5">
+      <section 
+ref={certificateRef} className="certificate-section container py-5">
         <div className="row align-items-center justify-content-center">
           {/* Left Side - Certificate Card */}
           <div className="col-md-6 mb-4">

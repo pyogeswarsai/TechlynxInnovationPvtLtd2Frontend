@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState ,useRef} from "react";
 import {
   FaCheckCircle,
   FaStar,
@@ -25,42 +25,52 @@ const tools = [
   {
     name: "Google Analytics",
     img: "https://www.vectorlogo.zone/logos/google_analytics/google_analytics-icon.svg",
+    desc: "A web analytics tool\nused to track website traffic\nand user behavior.",
   },
   {
     name: "Google Ads",
     img: "https://www.vectorlogo.zone/logos/google_ads/google_ads-icon.svg",
+    desc: "An online advertising platform\nfor creating and managing\nsearch and display ads.",
   },
   {
     name: "Facebook Ads",
     img: "https://www.vectorlogo.zone/logos/facebook/facebook-icon.svg",
+    desc: "A social media advertising platform\nused to target audiences\non Facebook.",
   },
   {
     name: "Instagram",
     img: "https://www.vectorlogo.zone/logos/instagram/instagram-icon.svg",
+    desc: "A social media platform\nfor sharing photos, videos,\nand engaging with audiences.",
   },
   {
     name: "LinkedIn Ads",
     img: "https://www.vectorlogo.zone/logos/linkedin/linkedin-icon.svg",
+    desc: "A professional network advertising tool\nused to target audiences\non LinkedIn.",
   },
   {
     name: "Twitter (X) Ads",
     img: "https://upload.wikimedia.org/wikipedia/commons/5/53/X_logo_2023_original.svg",
+    desc: "A platform for promoting content\nand reaching audiences\nvia paid campaigns on X.",
   },
   {
     name: "Canva",
     img: "https://www.vectorlogo.zone/logos/canva/canva-icon.svg",
+    desc: "A graphic design tool\nfor creating visuals,\nsocial media posts, and marketing content.",
   },
   {
     name: "Mailchimp",
     img: "https://www.vectorlogo.zone/logos/mailchimp/mailchimp-icon.svg",
+    desc: "An email marketing platform\nfor designing campaigns,\nsending newsletters, and tracking results.",
   },
   {
     name: "Hootsuite",
     img: "https://www.vectorlogo.zone/logos/hootsuite/hootsuite-icon.svg",
+    desc: "A social media management tool\nfor scheduling posts,\nmonitoring engagement, and analytics.",
   },
   {
     name: "WordPress",
     img: "https://www.vectorlogo.zone/logos/wordpress/wordpress-icon.svg",
+    desc: "A content management system (CMS)\nfor building websites, blogs,\nand managing online content.",
   },
 ];
 
@@ -106,7 +116,7 @@ const faqs = [
 function Digital() {
   const [submitted, setSubmitted] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
-
+ const certificateRef = useRef(null); 
   const toggleFaq = (index) => setOpenIndex(openIndex === index ? null : index);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -117,6 +127,9 @@ function Digital() {
   const handleSubscribeSubmit = (e) => {
     e.preventDefault(); // prevent page reload
     setSubscribeSubmitted(true);
+  };
+ const scrollToCertificate = () => {
+    certificateRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   const steps = [
@@ -213,7 +226,7 @@ function Digital() {
                 experience in Software Training & Placements
               </li>
               <li>
-                <FaCheckCircle className="text-success me-2" /> Branch in Guntur
+                <FaCheckCircle className="text-success me-2" /> In Guntur
               </li>
             </ul>
             <div className="d-flex gap-3 mt-4">
@@ -222,9 +235,13 @@ function Digital() {
                   Enroll Now <FaArrowRight className="ms-2" />
                 </button>
               </Link>
-              <button className="btn btn-primary fw-bold">
-                View Certificate <FaUserClock className="ms-2" />
-              </button>
+             <button
+                  className="btn btn-primary fw-bold"
+                  onClick={scrollToCertificate}
+                >
+                  View Certificate <FaUserClock className="ms-2" />
+                </button>
+
             </div>
           </div>
           {/* Right */}
@@ -268,7 +285,7 @@ function Digital() {
             <div className="stat-card purple">
               <FaMapMarkerAlt className="stat-icon" />
               <p className="stat-value">Guntur</p>
-              <h5>Branches</h5>
+              <h5>Branch</h5>
             </div>
           </div>
           <div className="col-md-3 col-6 mb-4">
@@ -289,21 +306,29 @@ function Digital() {
       </div>
 
       {/* ================= TOOLS COVERED ================= */}
-      <div className="container my-5">
+     <div className="container my-5">
         <h2 className="tools-heading text-center mb-5">
-          <span className="text-primary fw-bold">Digital Marketing</span>{" "}
+          <span className="text-primary fw-bold">
+          Digital Marketing
+          </span>{" "}
           <span className="fw-semibold">Tools Covered</span>
         </h2>
+
         <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
           {tools.map((tool, index) => (
             <div className="col" key={index}>
               <div className="tool-card shadow-sm h-100 d-flex flex-column align-items-center justify-content-center p-3">
+                {/* Image with tooltip */}
                 <img
                   src={tool.img}
                   alt={tool.name}
                   className="tool-logo mb-3"
+                  title={tool.desc} // 👈 Tooltip will appear on hover
                 />
-                <h6 className="fw-semibold">{tool.name}</h6>
+                {/* Name with tooltip */}
+                <h6 className="fw-semibold" title={tool.desc}>
+                  {tool.name}
+                </h6>
               </div>
             </div>
           ))}
@@ -398,7 +423,8 @@ function Digital() {
         </div>
       </div>
       {/* ================= CERTIFICATE (Wall) ================= */}
-      <section className="certificate-section container py-5">
+      <section 
+ref={certificateRef} className="certificate-section container py-5">
         <div className="row align-items-center justify-content-center">
           {/* Left Side - Certificate Card */}
           <div className="col-md-6 mb-4">

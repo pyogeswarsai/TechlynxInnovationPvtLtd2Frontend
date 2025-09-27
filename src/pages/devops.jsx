@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useRef } from "react";
 import {
   FaCheckCircle,
   FaStar,
@@ -24,42 +24,52 @@ const tools = [
   {
     name: "Git",
     img: "https://images.assets-landingi.com/uc/37b05982-9ab4-4981-83e8-39f043c18937/GitLogo2Color.svg",
+    desc: "A version control system\nthat tracks changes in code\nand enables team collaboration.",
   },
   {
     name: "Azure",
     img: "https://upload.wikimedia.org/wikipedia/commons/a/a8/Microsoft_Azure_Logo.svg",
+    desc: "A cloud computing platform\nthat provides services for building,\ndeploying, and managing applications.",
   },
   {
     name: "Docker",
     img: "https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png",
+    desc: "A platform for containerizing applications\nso they run consistently across\ndifferent environments.",
   },
   {
     name: "Kubernetes",
     img: "https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg",
+    desc: "An open-source system for automating\ndeployment, scaling, and management\nof containerized applications.",
   },
   {
     name: "Jenkins",
     img: "https://www.jenkins.io/images/logos/jenkins/jenkins.svg",
+    desc: "An automation server\nused for continuous integration (CI)\nand continuous delivery (CD).",
   },
   {
     name: "Ansible",
     img: "https://upload.wikimedia.org/wikipedia/commons/2/24/Ansible_logo.svg",
+    desc: "An open-source automation tool\nused for configuration management,\ndeployment, and orchestration.",
   },
   {
     name: "Terraform",
     img: "https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg",
+    desc: "An infrastructure-as-code tool\nfor building, changing, and versioning\ncloud and on-prem resources.",
   },
   {
     name: "Prometheus",
     img: "https://upload.wikimedia.org/wikipedia/commons/3/38/Prometheus_software_logo.svg",
+    desc: "An open-source monitoring system\nused for collecting metrics\nand alerting on system performance.",
   },
   {
     name: "Grafana",
     img: "https://upload.wikimedia.org/wikipedia/commons/3/3b/Grafana_icon.svg",
+    desc: "A visualization and analytics platform\nused to create interactive dashboards\nand monitor metrics.",
   },
   {
     name: "AWS",
     img: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+    desc: "A cloud platform offering computing,\nstorage, and a wide range of services\nfor scalable applications.",
   },
 ];
 
@@ -105,7 +115,7 @@ const faqs = [
 function Devops() {
   const [submitted, setSubmitted] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
-
+ const certificateRef = useRef(null); 
   const toggleFaq = (index) => setOpenIndex(openIndex === index ? null : index);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -116,6 +126,9 @@ function Devops() {
   const handleSubscribeSubmit = (e) => {
     e.preventDefault(); // prevent page reload
     setSubscribeSubmitted(true);
+  };
+ const scrollToCertificate = () => {
+    certificateRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   const steps = [
@@ -213,7 +226,7 @@ function Devops() {
                 experience in Software Training & Placements
               </li>
               <li>
-                <FaCheckCircle className="text-success me-2" /> Branch in Guntur
+                <FaCheckCircle className="text-success me-2" /> In Guntur
               </li>
             </ul>
             <div className="d-flex gap-3 mt-4">
@@ -222,9 +235,13 @@ function Devops() {
                   Enroll Now <FaArrowRight className="ms-2" />
                 </button>
               </Link>
-              <button className="btn btn-primary fw-bold">
-                View Certificate <FaUserClock className="ms-2" />
-              </button>
+              <button
+                  className="btn btn-primary fw-bold"
+                  onClick={scrollToCertificate}
+                >
+                  View Certificate <FaUserClock className="ms-2" />
+                </button>
+
             </div>
           </div>
           {/* Right */}
@@ -268,7 +285,7 @@ function Devops() {
             <div className="stat-card purple">
               <FaMapMarkerAlt className="stat-icon" />
               <p className="stat-value">Guntur</p>
-              <h5>Branches</h5>
+              <h5>Branch</h5>
             </div>
           </div>
           <div className="col-md-3 col-6 mb-4">
@@ -289,21 +306,29 @@ function Devops() {
       </div>
 
       {/* ================= TOOLS COVERED ================= */}
-      <div className="container my-5">
+     <div className="container my-5">
         <h2 className="tools-heading text-center mb-5">
-          <span className="text-primary fw-bold">DevOps</span>{" "}
+          <span className="text-primary fw-bold">
+          DevOps
+          </span>{" "}
           <span className="fw-semibold">Tools Covered</span>
         </h2>
+
         <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
           {tools.map((tool, index) => (
             <div className="col" key={index}>
               <div className="tool-card shadow-sm h-100 d-flex flex-column align-items-center justify-content-center p-3">
+                {/* Image with tooltip */}
                 <img
                   src={tool.img}
                   alt={tool.name}
                   className="tool-logo mb-3"
+                  title={tool.desc} // 👈 Tooltip will appear on hover
                 />
-                <h6 className="fw-semibold">{tool.name}</h6>
+                {/* Name with tooltip */}
+                <h6 className="fw-semibold" title={tool.desc}>
+                  {tool.name}
+                </h6>
               </div>
             </div>
           ))}
@@ -398,7 +423,8 @@ function Devops() {
         </div>
       </div>
       {/* ================= CERTIFICATE (Wall) ================= */}
-      <section className="certificate-section container py-5">
+      <section  
+ref={certificateRef} className="certificate-section container py-5">
         <div className="row align-items-center justify-content-center">
           {/* Left Side - Certificate Card */}
           <div className="col-md-6 mb-4">

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState ,useRef} from "react";
 import {
   FaCheckCircle,
   FaStar,
@@ -24,38 +24,55 @@ const tools = [
   {
     name: "Java",
     img: "https://cdn.iconscout.com/icon/free/png-512/free-java-60-1174953.png?f=webp&w=256",
+    desc: "A versatile programming language\nused for building applications,\nweb services, and backend systems.",
   },
   {
     name: "HTML",
     img: "https://images.assets-landingi.com/uc/c3aa8c83-aa59-4147-ad10-63ce234b2e3c/HTML5_logo_and_wordmark.svg",
+    desc: "A markup language for structuring\nweb content and creating\ninteractive web pages.",
   },
   {
     name: "CSS",
     img: "https://images.assets-landingi.com/uc/51803206-f3bf-420e-8507-911635943599/CSS3_logo_and_wordmark.svg",
+    desc: "A style sheet language\nfor designing and styling\nweb pages with colors and layouts.",
   },
   {
     name: "JavaScript",
     img: "https://images.assets-landingi.com/uc/1a0842ed-b090-46dc-af8a-def1fd4f8927/javascript1.svg",
+    desc: "A scripting language that adds\ninteractivity and dynamic behavior\nto websites and web applications.",
   },
   {
     name: "React",
     img: "https://images.assets-landingi.com/uc/9e03cefd-4c19-4c84-9f35-e8c8807ab66b/Reacticon.svg",
+    desc: "A JavaScript library\nfor building interactive user interfaces\nand single-page applications.",
   },
   {
     name: "Spring Boot",
     img: "https://cdn.iconscout.com/icon/free/png-512/free-spring-16-283031.png?f=webp&w=256",
+    desc: "A Java-based framework\nfor building production-ready\nbackend applications quickly.",
   },
-  { name: "Hibernate", img: "https://hibernate.org/images/hibernate-logo.svg" },
-  { name: "MySQL", img: "https://www.svgrepo.com/show/303251/mysql-logo.svg" },
+  {
+    name: "Hibernate",
+    img: "https://hibernate.org/images/hibernate-logo.svg",
+    desc: "An ORM framework for Java\nthat simplifies database\ninteractions and object mapping.",
+  },
+  {
+    name: "MySQL",
+    img: "https://www.svgrepo.com/show/303251/mysql-logo.svg",
+    desc: "A relational database system\nused to store structured data\nand support SQL-based queries.",
+  },
   {
     name: "Maven",
     img: "https://maven.apache.org/images/maven-logo-black-on-white.png",
+    desc: "A build automation tool\nfor managing project dependencies,\nbuilds, and documentation.",
   },
   {
     name: "Git",
     img: "https://images.assets-landingi.com/uc/37b05982-9ab4-4981-83e8-39f043c18937/GitLogo2Color.svg",
+    desc: "A version control system\nthat tracks code changes\nand enables collaborative development.",
   },
 ];
+
 // ---------------- FAQ ----------------
 const faqs = [
   {
@@ -98,7 +115,7 @@ const faqs = [
 function Java() {
   const [submitted, setSubmitted] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
-
+ const certificateRef = useRef(null); 
   const toggleFaq = (index) => setOpenIndex(openIndex === index ? null : index);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -110,7 +127,9 @@ function Java() {
     e.preventDefault(); // prevent page reload
     setSubscribeSubmitted(true);
   };
-
+ const scrollToCertificate = () => {
+    certificateRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
   const steps = [
     {
       title: "Module 1: Programming Fundamentals",
@@ -206,7 +225,7 @@ function Java() {
                 experience in Software Training & Placements
               </li>
               <li>
-                <FaCheckCircle className="text-success me-2" /> Branch in Guntur
+                <FaCheckCircle className="text-success me-2" /> In Guntur
               </li>
             </ul>
             <div className="d-flex gap-3 mt-4">
@@ -215,9 +234,13 @@ function Java() {
                   Enroll Now <FaArrowRight className="ms-2" />
                 </button>
               </Link>
-              <button className="btn btn-primary fw-bold">
-                View Certificate <FaUserClock className="ms-2" />
-              </button>
+              <button
+                  className="btn btn-primary fw-bold"
+                  onClick={scrollToCertificate}
+                >
+                  View Certificate <FaUserClock className="ms-2" />
+                </button>
+
             </div>
           </div>
           {/* Right */}
@@ -261,7 +284,7 @@ function Java() {
             <div className="stat-card purple">
               <FaMapMarkerAlt className="stat-icon" />
               <p className="stat-value">Guntur</p>
-              <h5>Branches</h5>
+              <h5>Branch</h5>
             </div>
           </div>
           <div className="col-md-3 col-6 mb-4">
@@ -285,25 +308,33 @@ function Java() {
       <div className="container my-5">
         <h2 className="tools-heading text-center mb-5">
           <span className="text-primary fw-bold">
-            Java Full Stack Developer
+          Java Full Stack
           </span>{" "}
           <span className="fw-semibold">Tools Covered</span>
         </h2>
+
         <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
           {tools.map((tool, index) => (
             <div className="col" key={index}>
               <div className="tool-card shadow-sm h-100 d-flex flex-column align-items-center justify-content-center p-3">
+                {/* Image with tooltip */}
                 <img
                   src={tool.img}
                   alt={tool.name}
                   className="tool-logo mb-3"
+                  title={tool.desc} // 👈 Tooltip will appear on hover
                 />
-                <h6 className="fw-semibold">{tool.name}</h6>
+                {/* Name with tooltip */}
+                <h6 className="fw-semibold" title={tool.desc}>
+                  {tool.name}
+                </h6>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+
       {/* ================= ROADMAP + FORM ================= */}
       <div className="container-fluid py-5">
         <div className="row">
@@ -393,7 +424,7 @@ function Java() {
         </div>
       </div>
       {/* ================= CERTIFICATE (Wall) ================= */}
-      <section className="certificate-section container py-5">
+      <section ref={certificateRef} className="certificate-section container py-5">
         <div className="row align-items-center justify-content-center">
           {/* Left Side - Certificate Card */}
           <div className="col-md-6 mb-4">

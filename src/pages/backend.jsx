@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useRef } from "react";
 import {
   FaCheckCircle,
   FaStar,
@@ -24,39 +24,52 @@ const tools = [
   {
     name: "Node.js",
     img: "https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg",
+    desc: "A JavaScript runtime environment\nthat executes code outside the browser\nand enables server-side development.",
   },
   {
     name: "Express.js",
     img: "https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png",
+    desc: "A minimal and flexible Node.js framework\nused to build web applications\nand RESTful APIs quickly.",
   },
   {
     name: "MongoDB",
     img: "https://webimages.mongodb.com/_com_assets/cms/mongodb-logo-rgb-j6w271g1xn.jpg",
+    desc: "A NoSQL database\nthat stores data in flexible, JSON-like documents\nfor scalability and performance.",
   },
   {
     name: "MySQL",
     img: "https://upload.wikimedia.org/wikipedia/commons/0/0a/MySQL_textlogo.svg",
+    desc: "A relational database management system\nused to store and manage structured data\nwith SQL queries.",
   },
   {
     name: "PostgreSQL",
     img: "https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg",
+    desc: "An advanced open-source relational database\nknown for reliability, robustness,\nand support for complex queries.",
   },
   {
     name: "REST APIs",
     img: "https://cdn-icons-png.flaticon.com/512/906/906334.png",
-  }, // Working generic API icon
-  { name: "JWT", img: "https://jwt.io/img/pic_logo.svg" },
+    desc: "A design architecture for web services\nthat allows communication between clients\nand servers over HTTP.",
+  },
+  {
+    name: "JWT",
+    img: "https://jwt.io/img/pic_logo.svg",
+    desc: "JSON Web Tokens used\nfor securely transmitting information\nbetween parties as a JSON object.",
+  },
   {
     name: "Git",
     img: "https://images.assets-landingi.com/uc/37b05982-9ab4-4981-83e8-39f043c18937/GitLogo2Color.svg",
+    desc: "A version control system\nthat tracks code changes\nand enables collaborative development.",
   },
   {
     name: "VS Code",
     img: "https://cdn.worldvectorlogo.com/logos/visual-studio-code-1.svg",
+    desc: "A lightweight and powerful code editor\nwith support for debugging, extensions,\nand Git integration.",
   },
   {
     name: "GitHub",
     img: "https://images.assets-landingi.com/uc/9627c60e-9f4a-4520-964e-790548c7c3d0/Font_Awesome_5_brands_github.svg",
+    desc: "A web-based platform for Git repositories\nthat allows version control, collaboration,\nand project management.",
   },
 ];
 
@@ -101,7 +114,7 @@ const faqs = [
 function Backend() {
   const [submitted, setSubmitted] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
-
+ const certificateRef = useRef(null); 
   const toggleFaq = (index) => setOpenIndex(openIndex === index ? null : index);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -114,7 +127,9 @@ function Backend() {
     e.preventDefault(); // prevent page reload
     setSubscribeSubmitted(true);
   };
-
+ const scrollToCertificate = () => {
+    certificateRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
   const steps = [
     {
       title: "Module 1: Introduction to Backend Development",
@@ -214,7 +229,7 @@ function Backend() {
                 experience in Software Training & Placements
               </li>
               <li>
-                <FaCheckCircle className="text-success me-2" /> Branch in Guntur
+                <FaCheckCircle className="text-success me-2" /> In Guntur
               </li>
             </ul>
             <div className="d-flex gap-3 mt-4">
@@ -223,9 +238,12 @@ function Backend() {
                   Enroll Now <FaArrowRight className="ms-2" />
                 </button>
               </Link>
-              <button className="btn btn-primary fw-bold">
-                View Certificate <FaUserClock className="ms-2" />
-              </button>
+             <button
+                  className="btn btn-primary fw-bold"
+                  onClick={scrollToCertificate}
+                >
+                  View Certificate <FaUserClock className="ms-2" />
+                </button>
             </div>
           </div>
           {/* Right */}
@@ -293,24 +311,33 @@ function Backend() {
       {/* ================= TOOLS COVERED ================= */}
       <div className="container my-5">
         <h2 className="tools-heading text-center mb-5">
-          <span className="text-primary fw-bold">Backend Developer</span>{" "}
+          <span className="text-primary fw-bold">
+          Backend
+          </span>{" "}
           <span className="fw-semibold">Tools Covered</span>
         </h2>
+
         <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
           {tools.map((tool, index) => (
             <div className="col" key={index}>
               <div className="tool-card shadow-sm h-100 d-flex flex-column align-items-center justify-content-center p-3">
+                {/* Image with tooltip */}
                 <img
                   src={tool.img}
                   alt={tool.name}
                   className="tool-logo mb-3"
+                  title={tool.desc} // 👈 Tooltip will appear on hover
                 />
-                <h6 className="fw-semibold">{tool.name}</h6>
+                {/* Name with tooltip */}
+                <h6 className="fw-semibold" title={tool.desc}>
+                  {tool.name}
+                </h6>
               </div>
             </div>
           ))}
         </div>
       </div>
+
       {/* ================= ROADMAP + FORM ================= */}
       <div className="container-fluid py-5">
         <div className="row">
@@ -400,7 +427,7 @@ function Backend() {
         </div>
       </div>
       {/* ================= CERTIFICATE (Wall) ================= */}
-      <section className="certificate-section container py-5">
+      <section ref={certificateRef} className="certificate-section container py-5">
         <div className="row align-items-center justify-content-center">
           {/* Left Side - Certificate Card */}
           <div className="col-md-6 mb-4">

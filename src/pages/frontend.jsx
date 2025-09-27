@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState ,useRef} from "react";
 import {
   FaCheckCircle,
   FaStar,
@@ -24,39 +24,52 @@ const tools = [
   {
     name: "HTML5",
     img: "https://images.assets-landingi.com/uc/c3aa8c83-aa59-4147-ad10-63ce234b2e3c/HTML5_logo_and_wordmark.svg",
+    desc: "A markup language for creating\nthe structure of web pages\nand web applications.",
   },
   {
     name: "CSS3",
     img: "https://images.assets-landingi.com/uc/51803206-f3bf-420e-8507-911635943599/CSS3_logo_and_wordmark.svg",
+    desc: "A style sheet language\nused to design and layout\nweb pages with colors and fonts.",
   },
   {
     name: "JavaScript",
     img: "https://images.assets-landingi.com/uc/1a0842ed-b090-46dc-af8a-def1fd4f8927/javascript1.svg",
+    desc: "A programming language\nthat adds interactivity\nand dynamic behavior to websites.",
   },
   {
     name: "Bootstrap",
     img: "https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo-shadow.png",
+    desc: "A front-end framework\nfor building responsive, mobile-first\nwebsites quickly using prebuilt components.",
   },
   {
     name: "Tailwind CSS",
     img: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
+    desc: "A utility-first CSS framework\nfor rapidly designing custom\nand responsive user interfaces.",
   },
   {
     name: "React.js",
     img: "https://images.assets-landingi.com/uc/9e03cefd-4c19-4c84-9f35-e8c8807ab66b/Reacticon.svg",
+    desc: "A JavaScript library\nfor building user interfaces\nand single-page applications efficiently.",
   },
-  { name: "Redux", img: "https://cdn.worldvectorlogo.com/logos/redux.svg" },
+  {
+    name: "Redux",
+    img: "https://cdn.worldvectorlogo.com/logos/redux.svg",
+    desc: "A state management library\nfor managing and centralizing\napplication state in React apps.",
+  },
   {
     name: "Git",
     img: "https://images.assets-landingi.com/uc/37b05982-9ab4-4981-83e8-39f043c18937/GitLogo2Color.svg",
+    desc: "A version control system\nthat tracks changes in code\nand enables collaboration.",
   },
   {
     name: "VS Code",
     img: "https://cdn.worldvectorlogo.com/logos/visual-studio-code-1.svg",
+    desc: "A lightweight code editor\nwith debugging, extensions,\nand Git integration support.",
   },
   {
     name: "GitHub",
     img: "https://images.assets-landingi.com/uc/9627c60e-9f4a-4520-964e-790548c7c3d0/Font_Awesome_5_brands_github.svg",
+    desc: "A web-based platform\nfor hosting Git repositories\nand collaborating on projects.",
   },
 ];
 
@@ -102,6 +115,7 @@ const faqs = [
 function Frontend() {
   const [submitted, setSubmitted] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
+ const certificateRef = useRef(null); 
 
   const toggleFaq = (index) => setOpenIndex(openIndex === index ? null : index);
   const handleSubmit = (e) => {
@@ -113,6 +127,10 @@ function Frontend() {
   const handleSubscribeSubmit = (e) => {
     e.preventDefault(); // prevent page reload
     setSubscribeSubmitted(true);
+  };
+  
+ const scrollToCertificate = () => {
+    certificateRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   const steps = [
@@ -214,7 +232,7 @@ function Frontend() {
                 experience in Software Training & Placements
               </li>
               <li>
-                <FaCheckCircle className="text-success me-2" /> Branch in Guntur
+                <FaCheckCircle className="text-success me-2" /> In Guntur
               </li>
             </ul>
             <div className="d-flex gap-3 mt-4">
@@ -223,9 +241,12 @@ function Frontend() {
                   Enroll Now <FaArrowRight className="ms-2" />
                 </button>
               </Link>
-              <button className="btn btn-primary fw-bold">
-                View Certificate <FaUserClock className="ms-2" />
-              </button>
+             <button
+                  className="btn btn-primary fw-bold"
+                  onClick={scrollToCertificate}
+                >
+                  View Certificate <FaUserClock className="ms-2" />
+                </button>
             </div>
           </div>
           {/* Right */}
@@ -269,7 +290,7 @@ function Frontend() {
             <div className="stat-card purple">
               <FaMapMarkerAlt className="stat-icon" />
               <p className="stat-value">Guntur</p>
-              <h5>Branches</h5>
+              <h5>Branch</h5>
             </div>
           </div>
           <div className="col-md-3 col-6 mb-4">
@@ -290,26 +311,35 @@ function Frontend() {
       </div>
 
       {/* ================= TOOLS COVERED ================= */}
-      <div className="container my-5">
+     <div className="container my-5">
         <h2 className="tools-heading text-center mb-5">
-          <span className="text-primary fw-bold">Frontend Developer</span>{" "}
+          <span className="text-primary fw-bold">
+          Frontend
+          </span>{" "}
           <span className="fw-semibold">Tools Covered</span>
         </h2>
+
         <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
           {tools.map((tool, index) => (
             <div className="col" key={index}>
               <div className="tool-card shadow-sm h-100 d-flex flex-column align-items-center justify-content-center p-3">
+                {/* Image with tooltip */}
                 <img
                   src={tool.img}
                   alt={tool.name}
                   className="tool-logo mb-3"
+                  title={tool.desc} // 👈 Tooltip will appear on hover
                 />
-                <h6 className="fw-semibold">{tool.name}</h6>
+                {/* Name with tooltip */}
+                <h6 className="fw-semibold" title={tool.desc}>
+                  {tool.name}
+                </h6>
               </div>
             </div>
           ))}
         </div>
       </div>
+
       {/* ================= ROADMAP + FORM ================= */}
       <div className="container-fluid py-5">
         <div className="row">
@@ -399,7 +429,8 @@ function Frontend() {
         </div>
       </div>
       {/* ================= CERTIFICATE (Wall) ================= */}
-      <section className="certificate-section container py-5">
+      <section 
+ref={certificateRef} className="certificate-section container py-5">
         <div className="row align-items-center justify-content-center">
           {/* Left Side - Certificate Card */}
           <div className="col-md-6 mb-4">
@@ -470,7 +501,7 @@ function Frontend() {
         </div>
       </section>
       {/* ================= FAQ + SUBSCRIBE ================= */}
-      <section className="faq-section container py-5">
+      <section  className="faq-section container py-5">
         <div className="row g-4 align-items-start">
           <div className="col-lg-7 ">
             <h2 className="fw-bold mb-4">❓ Frequently Asked Questions</h2>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState ,useRef} from "react";
 import {
   FaCheckCircle,
   FaStar,
@@ -24,41 +24,55 @@ const tools = [
   {
     name: "MySQL",
     img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg",
+    desc: "A relational database system\nused for storing structured data\nand supporting SQL queries.",
   },
   {
     name: "PostgreSQL",
     img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg",
+    desc: "An advanced open-source relational database\nknown for reliability, performance,\nand support for complex queries.",
   },
   {
     name: "Oracle DB",
     img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/oracle/oracle-original.svg",
+    desc: "A commercial relational database\nused for enterprise-level applications\nwith strong security features.",
   },
   {
     name: "MongoDB",
     img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg",
+    desc: "A NoSQL database\nthat stores data in flexible, JSON-like documents\nfor scalability and performance.",
   },
   {
     name: "SQL Server",
     img: "https://img.icons8.com/color/512/microsoft-sql-server.png",
+    desc: "A relational database system\nby Microsoft\nused in enterprise applications.",
   },
   {
     name: "Redis",
     img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/redis/redis-original.svg",
+    desc: "An in-memory key-value store\nused for caching, real-time analytics,\nand high-performance applications.",
   },
   {
     name: "Cassandra",
     img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/cassandra/cassandra-original.svg",
+    desc: "A distributed NoSQL database\ndesigned for handling large-scale data\nacross multiple servers.",
   },
-  { name: "DB2", img: "https://img.icons8.com/color/512/ibm.png" },
+  {
+    name: "DB2",
+    img: "https://img.icons8.com/color/512/ibm.png",
+    desc: "IBM's relational database\nused in enterprise environments\nfor structured data management.",
+  },
   {
     name: "SQLite",
     img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/sqlite/sqlite-original.svg",
+    desc: "A lightweight, file-based database\nused in mobile apps,\nembedded systems, and small projects.",
   },
   {
     name: "Elasticsearch",
     img: "https://raw.githubusercontent.com/devicons/devicon/master/icons/elasticsearch/elasticsearch-original.svg",
+    desc: "A search and analytics engine\nused for full-text search,\nlog analysis, and real-time data queries.",
   },
 ];
+
 
 // ---------------- FAQ ----------------
 const faqs = [
@@ -102,6 +116,7 @@ const faqs = [
 function DataBase() {
   const [submitted, setSubmitted] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
+ const certificateRef = useRef(null); 
 
   const toggleFaq = (index) => setOpenIndex(openIndex === index ? null : index);
   const handleSubmit = (e) => {
@@ -115,6 +130,12 @@ function DataBase() {
     e.preventDefault(); // prevent page reload
     setSubscribeSubmitted(true);
   };
+  
+ const scrollToCertificate = () => {
+    certificateRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+
   const steps = [
     {
       title: "Module 1: Introduction to Databases",
@@ -209,7 +230,7 @@ function DataBase() {
                 experience in Software Training & Placements
               </li>
               <li>
-                <FaCheckCircle className="text-success me-2" /> Branch in Guntur
+                <FaCheckCircle className="text-success me-2" /> In Guntur
               </li>
             </ul>
             <div className="d-flex gap-3 mt-4">
@@ -218,9 +239,13 @@ function DataBase() {
                   Enroll Now <FaArrowRight className="ms-2" />
                 </button>
               </Link>
-              <button className="btn btn-primary fw-bold">
-                View Certificate <FaUserClock className="ms-2" />
-              </button>
+              
+<button
+                  className="btn btn-primary fw-bold"
+                  onClick={scrollToCertificate}
+                >
+                  View Certificate <FaUserClock className="ms-2" />
+                </button>
             </div>
           </div>
           {/* Right */}
@@ -265,7 +290,7 @@ function DataBase() {
             <div className="stat-card purple">
               <FaMapMarkerAlt className="stat-icon" />
               <p className="stat-value">Guntur</p>
-              <h5>Branches</h5>
+              <h5>Branch</h5>
             </div>
           </div>
           <div className="col-md-3 col-6 mb-4">
@@ -286,21 +311,29 @@ function DataBase() {
       </div>
 
       {/* ================= TOOLS COVERED ================= */}
-      <div className="container my-5">
+       <div className="container my-5">
         <h2 className="tools-heading text-center mb-5">
-          <span className="text-primary fw-bold">Database Administrator</span>{" "}
+          <span className="text-primary fw-bold">
+          Database Administrator
+          </span>{" "}
           <span className="fw-semibold">Tools Covered</span>
         </h2>
+
         <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
           {tools.map((tool, index) => (
             <div className="col" key={index}>
               <div className="tool-card shadow-sm h-100 d-flex flex-column align-items-center justify-content-center p-3">
+                {/* Image with tooltip */}
                 <img
                   src={tool.img}
                   alt={tool.name}
                   className="tool-logo mb-3"
+                  title={tool.desc} // 👈 Tooltip will appear on hover
                 />
-                <h6 className="fw-semibold">{tool.name}</h6>
+                {/* Name with tooltip */}
+                <h6 className="fw-semibold" title={tool.desc}>
+                  {tool.name}
+                </h6>
               </div>
             </div>
           ))}
@@ -395,7 +428,7 @@ function DataBase() {
         </div>
       </div>
       {/* ================= CERTIFICATE (Wall) ================= */}
-      <section className="certificate-section container py-5">
+      <section  ref={certificateRef} className="certificate-section container py-5">
         <div className="row align-items-center justify-content-center">
           {/* Left Side - Certificate Card */}
           <div className="col-md-6 mb-4">
