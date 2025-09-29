@@ -147,7 +147,7 @@ function JobApplication() {
     });
 
     try {
-      const res = await fetch("https://techlynxinnovationspvtltd2backend.onrender.com/api/careers/apply", {
+      const res = await fetch("https://techlynxinnovationpvtltd2backend.onrender.com/api/careers/apply", {
         method: "POST",
         body: data,
       });

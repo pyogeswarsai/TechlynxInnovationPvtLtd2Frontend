@@ -76,7 +76,7 @@ const FeedbackSection = () => {
     };
 
     try {
-      const res = await axios.post("https://techlynxinnovationspvtltd2backend.onrender.com/feedback", payload);
+      const res = await axios.post("https://techlynxinnovationpvtltd2backend.onrender.com/feedback", payload);
       alert(res.data.message);
 
       setFormSubmitted(true);
