@@ -14,7 +14,6 @@ const NavbarContact = () => {
           <span>📞+91 9542982674</span>
           <span>📧info@techlynxinnovations.com</span>
           <span>📧hr@techlynxinnovations.com</span>
-          <span>HR: +91 6309390893</span>
         </div>
         <div className="scroll-bottom">
           <marquee behavior="scroll" direction="left">
